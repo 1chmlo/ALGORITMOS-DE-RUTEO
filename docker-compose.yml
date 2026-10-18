@@ -1,0 +1,30 @@
+services:
+  db:
+    image: pgrouting/pgrouting:16-3.5-4.0
+    environment:
+      POSTGRES_DB: ruteo
+      POSTGRES_USER: ruteo
+      POSTGRES_PASSWORD: ruteo
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - "./00 - DB/init.sql:/docker-entrypoint-initdb.d/init.sql:ro"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ruteo -d ruteo"]
+      interval: 3s
+      retries: 20
+
+  infraestructura:
+    build: "./01 - Infraestructura"
+    profiles: ["etl"]
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PGHOST: db
+    volumes:
+      - "./01 - Infraestructura/salida:/app/salida"
+
+volumes:
+  pgdata:

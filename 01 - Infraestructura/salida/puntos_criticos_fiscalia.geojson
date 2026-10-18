@@ -1,0 +1,137 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.749023,
+     -33.490288
+    ]
+   },
+   "properties": {
+    "nombre": "Vespucio Sur con Ruta 78 (Autopista del Sol)",
+    "tipo_delito": "encerrona",
+    "severidad": "alta",
+    "fuente": "fiscalia",
+    "fuente_url": "https://www.fiscaliadechile.cl/sites/default/files/documentos/INFORME_ROBO_VIOLENTO_DE_VEHICULOS.pdf",
+    "pagina_informe": 24,
+    "cita": "hay una concentración importante de casos en la intersección de Vespucio Sur con la Ruta 78 (Autopista del Sol) y en los alrededores de esta",
+    "cita_verificada": true,
+    "periodo": "2020-2025",
+    "separacion_vias_m": 37
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.681616,
+     -33.53213
+    ]
+   },
+   "properties": {
+    "nombre": "Vespucio Sur con Ruta 5",
+    "tipo_delito": "encerrona",
+    "severidad": "alta",
+    "fuente": "fiscalia",
+    "fuente_url": "https://www.fiscaliadechile.cl/sites/default/files/documentos/INFORME_ROBO_VIOLENTO_DE_VEHICULOS.pdf",
+    "pagina_informe": 24,
+    "cita": "se observa una alta densidad en la intersección de Vespucio Sur con la Ruta 5",
+    "cita_verificada": true,
+    "periodo": "2020-2025",
+    "separacion_vias_m": 18
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.703375,
+     -33.520343
+    ]
+   },
+   "properties": {
+    "nombre": "Vespucio Sur con General Velásquez",
+    "tipo_delito": "encerrona",
+    "severidad": "alta",
+    "fuente": "fiscalia",
+    "fuente_url": "https://www.fiscaliadechile.cl/sites/default/files/documentos/INFORME_ROBO_VIOLENTO_DE_VEHICULOS.pdf",
+    "pagina_informe": 24,
+    "cita": "se observa una alta densidad en la intersección de Vespucio Sur [...] con General Velásquez",
+    "cita_verificada": true,
+    "periodo": "2020-2025",
+    "separacion_vias_m": 89
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.691935,
+     -33.415863
+    ]
+   },
+   "properties": {
+    "nombre": "Costanera Norte con General Velásquez",
+    "tipo_delito": "encerrona",
+    "severidad": "media",
+    "fuente": "fiscalia",
+    "fuente_url": "https://www.fiscaliadechile.cl/sites/default/files/documentos/INFORME_ROBO_VIOLENTO_DE_VEHICULOS.pdf",
+    "pagina_informe": 24,
+    "cita": "Esta densidad es menor en la intersección de la Costanera Norte con General Velásquez",
+    "cita_verificada": true,
+    "periodo": "2020-2025",
+    "separacion_vias_m": 4
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.70018,
+     -33.366142
+    ]
+   },
+   "properties": {
+    "nombre": "Vespucio Norte con Ruta 5",
+    "tipo_delito": "encerrona",
+    "severidad": "baja",
+    "fuente": "fiscalia",
+    "fuente_url": "https://www.fiscaliadechile.cl/sites/default/files/documentos/INFORME_ROBO_VIOLENTO_DE_VEHICULOS.pdf",
+    "pagina_informe": 24,
+    "cita": "es menor aún en la intersección de Vespucio Norte con la Ruta 5",
+    "cita_verificada": true,
+    "periodo": "2020-2025",
+    "separacion_vias_m": 6
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.716989,
+     -33.609854
+    ]
+   },
+   "properties": {
+    "nombre": "Barrancón con Avenida Jorge Alessandri (San Bernardo)",
+    "tipo_delito": "encerrona",
+    "severidad": null,
+    "fuente": "emol",
+    "fuente_url": "https://www.emol.com/noticias/Nacional/2026/06/26/1203878/mapa-encerronas-portonazos-rm.html",
+    "pagina_informe": null,
+    "cita": "encerrona del 23-06-2026 que causó la muerte de un menor, en la intersección de la calle Barrancón con Avenida Jorge Alessandri (poca iluminación y cercanía a autopistas)",
+    "cita_verificada": true,
+    "periodo": "2026-06-23",
+    "separacion_vias_m": 0
+   }
+  }
+ ]
+}

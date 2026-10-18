@@ -1,0 +1,3461 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.73967599999997,
+     -33.44844900013182
+    ]
+   },
+   "properties": {
+    "objectid": 61,
+    "codigo_unidad": "13001",
+    "nombre": "26A. COM. PUDAHUEL",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Teniente Cruz 710, Pudahuel, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13124,
+    "comuna": "PUDAHUEL",
+    "prefectura": "SANTIAGO OCCIDENTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.66545399999995,
+     -33.54099700013059
+    ]
+   },
+   "properties": {
+    "objectid": 62,
+    "codigo_unidad": "13002",
+    "nombre": "10A. COM. LA CISTERNA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "José Miguel Carrera 9089, La Cisterna, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13109,
+    "comuna": "LA CISTERNA",
+    "prefectura": "SANTIAGO SUR",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.65088999999995,
+     -33.48971000013124
+    ]
+   },
+   "properties": {
+    "objectid": 63,
+    "codigo_unidad": "13003",
+    "nombre": "12A. COM. SAN MIGUEL",
+    "tipo_unidad": "Comisaría",
+    "direccion": "José Miguel Carrera 3868, San Miguel, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13130,
+    "comuna": "SAN MIGUEL",
+    "prefectura": "SANTIAGO SUR",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.61346999999995,
+     -33.53528000013067
+    ]
+   },
+   "properties": {
+    "objectid": 64,
+    "codigo_unidad": "13004",
+    "nombre": "13A. COM. LA GRANJA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Juan Meyer 851, La Granja, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13111,
+    "comuna": "LA GRANJA",
+    "prefectura": "SANTIAGO SUR",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.68677899999994,
+     -33.594302000129936
+    ]
+   },
+   "properties": {
+    "objectid": 65,
+    "codigo_unidad": "13005",
+    "nombre": "62A. COM. SAN BERNARDO",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Colón 713, San Bernardo, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 134,
+    "provincia": "MAIPO",
+    "cod_comuna": 13401,
+    "comuna": "SAN BERNARDO",
+    "prefectura": "DEL MAIPO",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.74481999999995,
+     -33.728171000128235
+    ]
+   },
+   "properties": {
+    "objectid": 66,
+    "codigo_unidad": "13006",
+    "nombre": "15A. COM. BUIN",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Manuel Rodríguez 705, Buin, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 134,
+    "provincia": "MAIPO",
+    "cod_comuna": 13402,
+    "comuna": "BUIN",
+    "prefectura": "DEL MAIPO",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.54425999999995,
+     -33.441480000131875
+    ]
+   },
+   "properties": {
+    "objectid": 67,
+    "codigo_unidad": "13007",
+    "nombre": "16A. COM. LA REINA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Echenique 8428, La Reina, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13113,
+    "comuna": "LA REINA",
+    "prefectura": "SANTIAGO ANDES",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.55408599999998,
+     -33.39417400013249
+    ]
+   },
+   "properties": {
+    "objectid": 68,
+    "codigo_unidad": "13008",
+    "nombre": "17A. COM. LAS CONDES",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Las Tranqueras 840, Las Condes, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13114,
+    "comuna": "LAS CONDES",
+    "prefectura": "SANTIAGO ANDES",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.57570999999996,
+     -33.45336000013174
+    ]
+   },
+   "properties": {
+    "objectid": 69,
+    "codigo_unidad": "13009",
+    "nombre": "18A. COM. NUNOA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "General José Alejandro Bernales 5147, Ñuñoa, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13120,
+    "comuna": "ÑUÑOA",
+    "prefectura": "SANTIAGO ORIENTE",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.62008999999995,
+     -33.43243000013199
+    ]
+   },
+   "properties": {
+    "objectid": 70,
+    "codigo_unidad": "13010",
+    "nombre": "19A. COM. PROVIDENCIA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Miguel Claro 300, Providencia, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13123,
+    "comuna": "PROVIDENCIA",
+    "prefectura": "SANTIAGO ORIENTE",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.64755999999994,
+     -33.43587000013196
+    ]
+   },
+   "properties": {
+    "objectid": 71,
+    "codigo_unidad": "13011",
+    "nombre": "1RA. COM. SANTIAGO",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Santo Domingo 714, Santiago, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13101,
+    "comuna": "SANTIAGO",
+    "prefectura": "CENTRAL NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.57531999999998,
+     -33.60743000012975
+    ]
+   },
+   "properties": {
+    "objectid": 72,
+    "codigo_unidad": "13012",
+    "nombre": "20A. COM. P. ALTO",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Balmaceda 431, Puente Alto, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 132,
+    "provincia": "CORDILLERA",
+    "cod_comuna": 13201,
+    "comuna": "PUENTE ALTO",
+    "prefectura": "SANTIAGO CORDILLERA",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.69241999999997,
+     -33.45131000013176
+    ]
+   },
+   "properties": {
+    "objectid": 73,
+    "codigo_unidad": "13013",
+    "nombre": "21A.COM. ESTACION CENTRAL",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Ecuador 4050, Estación Central, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13106,
+    "comuna": "ESTACIÓN CENTRAL",
+    "prefectura": "CENTRAL NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.71465098499993,
+     -33.42984481713203
+    ]
+   },
+   "properties": {
+    "objectid": 74,
+    "codigo_unidad": "13014",
+    "nombre": "22A. COM. QUINTA NORMAL",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Janequeo 5751, Quinta Normal, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13126,
+    "comuna": "QUINTA NORMAL",
+    "prefectura": "SANTIAGO OCCIDENTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.93878699999993,
+     -33.67065100012897
+    ]
+   },
+   "properties": {
+    "objectid": 75,
+    "codigo_unidad": "13015",
+    "nombre": "23A. COM. TALAGANTE",
+    "tipo_unidad": "Comisaría",
+    "direccion": "San Francisco875, Talagante, Región de Ñuble",
+    "cod_region": 13,
+    "region": "Salvador Allende",
+    "cod_provincia": 136,
+    "provincia": "TALAGANTE",
+    "cod_comuna": 13601,
+    "comuna": "TALAGANTE",
+    "prefectura": "COSTA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.21538599999997,
+     -33.687940000128755
+    ]
+   },
+   "properties": {
+    "objectid": 76,
+    "codigo_unidad": "13016",
+    "nombre": "24A. COM. MELIPILLA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Ortuzar 674, Melipilla, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 135,
+    "provincia": "MELIPILLA",
+    "cod_comuna": 13501,
+    "comuna": "MELIPILLA",
+    "prefectura": "COSTA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.75461899999993,
+     -33.50719700013103
+    ]
+   },
+   "properties": {
+    "objectid": 77,
+    "codigo_unidad": "13017",
+    "nombre": "25A. COM. MAIPU",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Bailen 2185, Maipú, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13119,
+    "comuna": "MAIPÚ",
+    "prefectura": "SANTIAGO RINCONADA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.66809999999998,
+     -33.454550000131746
+    ]
+   },
+   "properties": {
+    "objectid": 78,
+    "codigo_unidad": "13018",
+    "nombre": "2DA. COM. SANTIAGO",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Toesca 2345, Santiago, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13101,
+    "comuna": "SANTIAGO",
+    "prefectura": "CENTRAL SUR",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.64481499999994,
+     -33.54601100013055
+    ]
+   },
+   "properties": {
+    "objectid": 79,
+    "codigo_unidad": "13019",
+    "nombre": "31A. COM. SAN RAMON",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Vicuña Mackenna1759, San Ramón, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13131,
+    "comuna": "SAN RAMÓN",
+    "prefectura": "SANTIAGO SUR",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.61385999999999,
+     -33.47080000013148
+    ]
+   },
+   "properties": {
+    "objectid": 80,
+    "codigo_unidad": "13020",
+    "nombre": "33A. COM. NUNOA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Guillermo Mann 2100, Ñuñoa, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13120,
+    "comuna": "ÑUÑOA",
+    "prefectura": "SANTIAGO ORIENTE",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.59715299999993,
+     -33.53966700013063
+    ]
+   },
+   "properties": {
+    "objectid": 81,
+    "codigo_unidad": "13021",
+    "nombre": "36A. COM. LA FLORIDA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Sotero del Río 321, La Florida, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13110,
+    "comuna": "LA FLORIDA",
+    "prefectura": "SANTIAGO CORDILLERA",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.55448999999999,
+     -33.38941000013253
+    ]
+   },
+   "properties": {
+    "objectid": 82,
+    "codigo_unidad": "13022",
+    "nombre": "37A. COM. VITACURA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Puerto Rico 7905, Vitacura, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13132,
+    "comuna": "VITACURA",
+    "prefectura": "SANTIAGO ANDES",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.58150999999998,
+     -33.57892000013015
+    ]
+   },
+   "properties": {
+    "objectid": 83,
+    "codigo_unidad": "13023",
+    "nombre": "38A. COM. PUENTE ALTO",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Concha y Toro 3399, Puente Alto, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 132,
+    "provincia": "CORDILLERA",
+    "cod_comuna": 13201,
+    "comuna": "PUENTE ALTO",
+    "prefectura": "SANTIAGO CORDILLERA",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.66608299999996,
+     -33.56568200013031
+    ]
+   },
+   "properties": {
+    "objectid": 84,
+    "codigo_unidad": "13024",
+    "nombre": "39A. COM. EL BOSQUE",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Los Raulies11240, El Bosque, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13105,
+    "comuna": "EL BOSQUE",
+    "prefectura": "SANTIAGO SUR",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.65854999999993,
+     -33.44196000013192
+    ]
+   },
+   "properties": {
+    "objectid": 85,
+    "codigo_unidad": "13025",
+    "nombre": "3RA. COM. SANTIAGO",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Fernández Albano 165, Santiago, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13101,
+    "comuna": "SANTIAGO",
+    "prefectura": "CENTRAL NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.63152799999995,
+     -33.58296000013007
+    ]
+   },
+   "properties": {
+    "objectid": 86,
+    "codigo_unidad": "13026",
+    "nombre": "41A. COM. LA PINTANA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Baldomero Lillo 1901, La Pintana, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13112,
+    "comuna": "LA PINTANA",
+    "prefectura": "SANTIAGO SUR",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.54417599999994,
+     -33.47817800013141
+    ]
+   },
+   "properties": {
+    "objectid": 87,
+    "codigo_unidad": "13027",
+    "nombre": "43A. COM. PENALOLEN",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Consistorial 2060, Peñalolén, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13122,
+    "comuna": "PEÑALOLEN",
+    "prefectura": "SANTIAGO ORIENTE",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.71586099999996,
+     -33.442814000131854
+    ]
+   },
+   "properties": {
+    "objectid": 88,
+    "codigo_unidad": "13028",
+    "nombre": "44A. COM. LO PRADO",
+    "tipo_unidad": "Comisaría",
+    "direccion": "San Pablo 5829, Lo Prado, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13117,
+    "comuna": "LO PRADO",
+    "prefectura": "SANTIAGO OCCIDENTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.74282699999998,
+     -33.42274200013214
+    ]
+   },
+   "properties": {
+    "objectid": 89,
+    "codigo_unidad": "13029",
+    "nombre": "45A. COM. CERRO NAVIA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Los Conquistadores 7350, Cerro Navia, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13103,
+    "comuna": "CERRO NAVIA",
+    "prefectura": "SANTIAGO OCCIDENTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.60821999999996,
+     -33.49011000013126
+    ]
+   },
+   "properties": {
+    "objectid": 90,
+    "codigo_unidad": "13030",
+    "nombre": "46A. COM. MACUL",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Escuela Agrícola 2340, Macul, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13118,
+    "comuna": "MACUL",
+    "prefectura": "SANTIAGO ORIENTE",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.74738999999994,
+     -33.365600000132886
+    ]
+   },
+   "properties": {
+    "objectid": 91,
+    "codigo_unidad": "13031",
+    "nombre": "49A. COM. QUILICURA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "San Luis Calle a 526, Quilicura, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13125,
+    "comuna": "QUILICURA",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.64560999999998,
+     -33.46533000013164
+    ]
+   },
+   "properties": {
+    "objectid": 92,
+    "codigo_unidad": "13032",
+    "nombre": "4TA. COM. SANTIAGO",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Chiloé 1472, Santiago, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13101,
+    "comuna": "SANTIAGO",
+    "prefectura": "CENTRAL SUR",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.62987999999996,
+     -33.484480000131335
+    ]
+   },
+   "properties": {
+    "objectid": 93,
+    "codigo_unidad": "13033",
+    "nombre": "50A. COM. SAN JOAQUIN",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Carlos Valdovinos 282, San Joaquín, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13129,
+    "comuna": "SAN JOAQUÍN",
+    "prefectura": "SANTIAGO SUR",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.68446899999998,
+     -33.494167000131185
+    ]
+   },
+   "properties": {
+    "objectid": 94,
+    "codigo_unidad": "13034",
+    "nombre": "51A. COM. PEDRO AGUIRRE CERDA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Centro América 4210, PAC, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13121,
+    "comuna": "PEDRO AGUIRRE CERDA",
+    "prefectura": "SANTIAGO RINCONADA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.79093399999994,
+     -33.511141000130976
+    ]
+   },
+   "properties": {
+    "objectid": 95,
+    "codigo_unidad": "13035",
+    "nombre": "52A. COM. RINCONADA DE MAIPU",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Cuatro Poniente 2020, Maipú, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13119,
+    "comuna": "MAIPÚ",
+    "prefectura": "SANTIAGO RINCONADA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.63736999999998,
+     -33.37512000013276
+    ]
+   },
+   "properties": {
+    "objectid": 96,
+    "codigo_unidad": "13036",
+    "nombre": "54A. COM. HUECHURABA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Recoleta 5560, Huechuraba, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13107,
+    "comuna": "HUECHURABA",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.75521399999997,
+     -33.456552000131715
+    ]
+   },
+   "properties": {
+    "objectid": 97,
+    "codigo_unidad": "13037",
+    "nombre": "55A. COM. SUBOF. CRISTIAN VERA C.",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Oceanía 425, Pudahuel, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13124,
+    "comuna": "PUDAHUEL",
+    "prefectura": "SANTIAGO OCCIDENTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.66016799999994,
+     -33.39001800013253
+    ]
+   },
+   "properties": {
+    "objectid": 98,
+    "codigo_unidad": "13038",
+    "nombre": "5TA. COM. CONCHALI",
+    "tipo_unidad": "Comisaría",
+    "direccion": "General Gambino 3707, Conchalí, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13104,
+    "comuna": "CONCHALÍ",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.64197999999993,
+     -33.409490000132266
+    ]
+   },
+   "properties": {
+    "objectid": 99,
+    "codigo_unidad": "13039",
+    "nombre": "6TA. COM. RECOLETA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Gavilan 1980, Recoleta, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13127,
+    "comuna": "RECOLETA",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.70446999999996,
+     -33.403930000132355
+    ]
+   },
+   "properties": {
+    "objectid": 100,
+    "codigo_unidad": "13040",
+    "nombre": "7MA. COM. RENCA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Blanco Encalada 79, Renca, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13128,
+    "comuna": "RENCA",
+    "prefectura": "SANTIAGO OCCIDENTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.67589899999996,
+     -33.20410800013497
+    ]
+   },
+   "properties": {
+    "objectid": 101,
+    "codigo_unidad": "13041",
+    "nombre": "8VA. COM. COLINA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Ruta g-15km 29, Colina, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 133,
+    "provincia": "CHACABUCO",
+    "cod_comuna": 13301,
+    "comuna": "COLINA",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.65721999999994,
+     -33.40677000013237
+    ]
+   },
+   "properties": {
+    "objectid": 102,
+    "codigo_unidad": "13042",
+    "nombre": "9NA. COM. INDEPENDENCIA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Hipodromo Chile 1025, Independecia, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13108,
+    "comuna": "INDEPENDENCIA",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -69.96611454399994,
+     -34.17152254612274
+    ]
+   },
+   "properties": {
+    "objectid": 103,
+    "codigo_unidad": "13043",
+    "nombre": "AVANZADA CRUZ DE PIEDRA",
+    "tipo_unidad": "Avanzada",
+    "direccion": "Sector Cruz de Piedra, San José de Maipo, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 132,
+    "provincia": "CORDILLERA",
+    "cod_comuna": 13203,
+    "comuna": "SAN JOSÉ DE MAIPO",
+    "prefectura": "SANTIAGO CORDILLERA",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.68404361699999,
+     -33.73200157212816
+    ]
+   },
+   "properties": {
+    "objectid": 104,
+    "codigo_unidad": "13044",
+    "nombre": "TCIA. ALTO JAHUEL",
+    "tipo_unidad": "Tenencia",
+    "direccion": "Miraflores 10, Buin, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 134,
+    "provincia": "MAIPO",
+    "cod_comuna": 13402,
+    "comuna": "BUIN",
+    "prefectura": "DEL MAIPO",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.21136624099995,
+     -33.56896066913027
+    ]
+   },
+   "properties": {
+    "objectid": 105,
+    "codigo_unidad": "13045",
+    "nombre": "TCIA. BOLLENAR",
+    "tipo_unidad": "Tenencia",
+    "direccion": "Valparaíso 356, Melipilla, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 135,
+    "provincia": "MELIPILLA",
+    "cod_comuna": 13501,
+    "comuna": "MELIPILLA",
+    "prefectura": "COSTA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.99345899999997,
+     -33.00524900013763
+    ]
+   },
+   "properties": {
+    "objectid": 106,
+    "codigo_unidad": "13046",
+    "nombre": "RETEN CALEU",
+    "tipo_unidad": "Retén",
+    "direccion": "Capilla de Caleu S/N, Til Til, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 133,
+    "provincia": "CHACABUCO",
+    "cod_comuna": 13303,
+    "comuna": "TILTIL",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.68549599999994,
+     -33.44434400013182
+    ]
+   },
+   "properties": {
+    "objectid": 107,
+    "codigo_unidad": "13047",
+    "nombre": "RETEN CASA MONEDA",
+    "tipo_unidad": "Retén",
+    "direccion": "Portales 3586, Estación Central, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13106,
+    "comuna": "ESTACIÓN CENTRAL",
+    "prefectura": "CENTRAL NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.76358703799997,
+     -33.85498578812665
+    ]
+   },
+   "properties": {
+    "objectid": 108,
+    "codigo_unidad": "13048",
+    "nombre": "TCIA. CHAMPA",
+    "tipo_unidad": "Tenencia",
+    "direccion": "Darío Pavez S/N, Paine, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 134,
+    "provincia": "MAIPO",
+    "cod_comuna": 13404,
+    "comuna": "PAINE",
+    "prefectura": "DEL MAIPO",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.32402413099999,
+     -33.757167899127865
+    ]
+   },
+   "properties": {
+    "objectid": 109,
+    "codigo_unidad": "13049",
+    "nombre": "RETEN CODIGUA",
+    "tipo_unidad": "Retén",
+    "direccion": "Porvenir S/N, Melipilla, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 135,
+    "provincia": "MELIPILLA",
+    "cod_comuna": 13501,
+    "comuna": "MELIPILLA",
+    "prefectura": "COSTA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.68831399999993,
+     -33.551911000130474
+    ]
+   },
+   "properties": {
+    "objectid": 110,
+    "codigo_unidad": "13050",
+    "nombre": "TCIA. EL BOSQUE PONIENTE",
+    "tipo_unidad": "Tenencia",
+    "direccion": "El Pillán 1266, El Bosque, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13105,
+    "comuna": "EL BOSQUE",
+    "prefectura": "SANTIAGO SUR",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.61068399999994,
+     -33.59475000012994
+    ]
+   },
+   "properties": {
+    "objectid": 111,
+    "codigo_unidad": "13051",
+    "nombre": "SCOM. EL CASTILLO",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "Primavera 3741, La Pintana, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13112,
+    "comuna": "LA PINTANA",
+    "prefectura": "SANTIAGO SUR",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.05348099999998,
+     -33.68883600012874
+    ]
+   },
+   "properties": {
+    "objectid": 112,
+    "codigo_unidad": "13052",
+    "nombre": "RETEN EL PAICO",
+    "tipo_unidad": "Retén",
+    "direccion": "Libertadores 2008, El Monte, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 136,
+    "provincia": "TALAGANTE",
+    "cod_comuna": 13602,
+    "comuna": "EL MONTE",
+    "prefectura": "COSTA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.57280999999995,
+     -33.57520000013021
+    ]
+   },
+   "properties": {
+    "objectid": 113,
+    "codigo_unidad": "13053",
+    "nombre": "RETEN EL PERAL",
+    "tipo_unidad": "Retén",
+    "direccion": "Ciprés de las Guaitecas 3547, Puente Alto, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 132,
+    "provincia": "CORDILLERA",
+    "cod_comuna": 13201,
+    "comuna": "PUENTE ALTO",
+    "prefectura": "SANTIAGO CORDILLERA",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.65880099999998,
+     -33.38520600013264
+    ]
+   },
+   "properties": {
+    "objectid": 114,
+    "codigo_unidad": "13054",
+    "nombre": "RETEN ENEAS GONEL",
+    "tipo_unidad": "Retén",
+    "direccion": "Armando Carrera 4041, Conchalí, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13104,
+    "comuna": "CONCHALÍ",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.31554049999994,
+     -33.35235442113305
+    ]
+   },
+   "properties": {
+    "objectid": 115,
+    "codigo_unidad": "13055",
+    "nombre": "RETEN FARELLONES",
+    "tipo_unidad": "Retén",
+    "direccion": "Los Clonquis S/N, Lo Barnechea, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13115,
+    "comuna": "LO BARNECHEA",
+    "prefectura": "SANTIAGO ANDES",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.64183944799998,
+     -33.83244324012694
+    ]
+   },
+   "properties": {
+    "objectid": 116,
+    "codigo_unidad": "13056",
+    "nombre": "RETEN HUELQUEN",
+    "tipo_unidad": "Retén",
+    "direccion": "padre hurtado S/N, Paine, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 134,
+    "provincia": "MAIPO",
+    "cod_comuna": 13404,
+    "comuna": "PAINE",
+    "prefectura": "DEL MAIPO",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.79843792199995,
+     -33.136160023135865
+    ]
+   },
+   "properties": {
+    "objectid": 117,
+    "codigo_unidad": "13057",
+    "nombre": "RETEN HUERTOS FAMILIARES",
+    "tipo_unidad": "Retén",
+    "direccion": "3 Oriente 251, Til Til, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 133,
+    "provincia": "CHACABUCO",
+    "cod_comuna": 13303,
+    "comuna": "TILTIL",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.86586599999998,
+     -33.74732400012802
+    ]
+   },
+   "properties": {
+    "objectid": 118,
+    "codigo_unidad": "13058",
+    "nombre": "RETEN LA ISLITA",
+    "tipo_unidad": "Retén",
+    "direccion": "Balmaceda 3156, Isla de Maipo, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 136,
+    "provincia": "TALAGANTE",
+    "cod_comuna": 13603,
+    "comuna": "ISLA DE MAIPO",
+    "prefectura": "COSTA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.53068999999994,
+     -33.599280000129866
+    ]
+   },
+   "properties": {
+    "objectid": 119,
+    "codigo_unidad": "13059",
+    "nombre": "SCOM. LAS VIZCACHAS",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "Camino el Volcán 5109, Puente Alto, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 132,
+    "provincia": "CORDILLERA",
+    "cod_comuna": 13201,
+    "comuna": "PUENTE ALTO",
+    "prefectura": "SANTIAGO CORDILLERA",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.73563199999995,
+     -33.75982000012785
+    ]
+   },
+   "properties": {
+    "objectid": 120,
+    "codigo_unidad": "13060",
+    "nombre": "TCIA. LINDEROS",
+    "tipo_unidad": "Tenencia",
+    "direccion": "Francisco Javier Krugger 3717, Buin, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 134,
+    "provincia": "MAIPO",
+    "cod_comuna": 13402,
+    "comuna": "BUIN",
+    "prefectura": "DEL MAIPO",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.46973416999998,
+     -33.97633254312514
+    ]
+   },
+   "properties": {
+    "objectid": 121,
+    "codigo_unidad": "13061",
+    "nombre": "RETEN LOICA",
+    "tipo_unidad": "Retén",
+    "direccion": "Ruta g-690km 2, San Pedro, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 135,
+    "provincia": "MELIPILLA",
+    "cod_comuna": 13505,
+    "comuna": "SAN PEDRO",
+    "prefectura": "COSTA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.98708710499994,
+     -33.58478107713004
+    ]
+   },
+   "properties": {
+    "objectid": 122,
+    "codigo_unidad": "13062",
+    "nombre": "RETEN MALLARAUCO",
+    "tipo_unidad": "Retén",
+    "direccion": "Ruta g-380km 15, Melipilla, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 135,
+    "provincia": "MELIPILLA",
+    "cod_comuna": 13501,
+    "comuna": "MELIPILLA",
+    "prefectura": "COSTA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.88485377999996,
+     -33.87728522312635
+    ]
+   },
+   "properties": {
+    "objectid": 123,
+    "codigo_unidad": "13063",
+    "nombre": "RETEN PINTUE",
+    "tipo_unidad": "Retén",
+    "direccion": "Miguel Letelier Espinola S/N, Paine, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 134,
+    "provincia": "MAIPO",
+    "cod_comuna": 13404,
+    "comuna": "PAINE",
+    "prefectura": "DEL MAIPO",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.15117669599994,
+     -33.65074456012921
+    ]
+   },
+   "properties": {
+    "objectid": 124,
+    "codigo_unidad": "13064",
+    "nombre": "RETEN POMAIRE",
+    "tipo_unidad": "Retén",
+    "direccion": "San Antonio S/N, Melipilla, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 135,
+    "provincia": "MELIPILLA",
+    "cod_comuna": 13501,
+    "comuna": "MELIPILLA",
+    "prefectura": "COSTA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.88906980899998,
+     -33.006295270137585
+    ]
+   },
+   "properties": {
+    "objectid": 125,
+    "codigo_unidad": "13065",
+    "nombre": "RETEN RUNGUE",
+    "tipo_unidad": "Retén",
+    "direccion": "Estación S/N, Til Til, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 133,
+    "provincia": "CHACABUCO",
+    "cod_comuna": 13303,
+    "comuna": "TILTIL",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.23935126899994,
+     -33.78228976812754
+    ]
+   },
+   "properties": {
+    "objectid": 126,
+    "codigo_unidad": "13066",
+    "nombre": "RETEN SAN GABRIEL (F)",
+    "tipo_unidad": "Retén",
+    "direccion": "Ruta g-25km 56, San José de Maipo, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 132,
+    "provincia": "CORDILLERA",
+    "cod_comuna": 13203,
+    "comuna": "SAN JOSÉ DE MAIPO",
+    "prefectura": "SANTIAGO CORDILLERA",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.79154057199997,
+     -33.782423844127585
+    ]
+   },
+   "properties": {
+    "objectid": 127,
+    "codigo_unidad": "13067",
+    "nombre": "TCIA. VILUCO",
+    "tipo_unidad": "Tenencia",
+    "direccion": "Ruta g-46km 6, Buin, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 134,
+    "provincia": "MAIPO",
+    "cod_comuna": 13402,
+    "comuna": "BUIN",
+    "prefectura": "DEL MAIPO",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.79288699999995,
+     -33.40452200013238
+    ]
+   },
+   "properties": {
+    "objectid": 128,
+    "codigo_unidad": "13068",
+    "nombre": "27A. COM. AEROPUERTO INTERNACIONAL",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Armando Cortinez 1761, Pudahuel, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13124,
+    "comuna": "PUDAHUEL",
+    "prefectura": "SANTIAGO OCCIDENTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.56509999999997,
+     -33.51173000013097
+    ]
+   },
+   "properties": {
+    "objectid": 129,
+    "codigo_unidad": "13069",
+    "nombre": "61A. COM. CABO 2 PABLO SILVA P.",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Departamental 3273, La Florida, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13110,
+    "comuna": "LA FLORIDA",
+    "prefectura": "SANTIAGO CORDILLERA",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.69583399999993,
+     -33.42124600013212
+    ]
+   },
+   "properties": {
+    "objectid": 130,
+    "codigo_unidad": "13070",
+    "nombre": "SCOM. CARRASCAL",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "Embajador Gomez 2261, Quinta Normal, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13126,
+    "comuna": "QUINTA NORMAL",
+    "prefectura": "SANTIAGO OCCIDENTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.68795144199999,
+     -33.479598111131395
+    ]
+   },
+   "properties": {
+    "objectid": 131,
+    "codigo_unidad": "13071",
+    "nombre": "SCOM. CERRILLOS",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "Buzeta 3986, Cerrillos, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13102,
+    "comuna": "CERRILLOS",
+    "prefectura": "SANTIAGO RINCONADA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.68963099999996,
+     -33.36699100013288
+    ]
+   },
+   "properties": {
+    "objectid": 132,
+    "codigo_unidad": "13072",
+    "nombre": "SCOM. CONCHALI NORTE",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "Independencia 6208, Conchalí, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13104,
+    "comuna": "CONCHALÍ",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.12008118599994,
+     -33.401340798132416
+    ]
+   },
+   "properties": {
+    "objectid": 133,
+    "codigo_unidad": "13073",
+    "nombre": "63A. COM. CURACAVI",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Ambrosio 2211, Curacaví, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 135,
+    "provincia": "MELIPILLA",
+    "cod_comuna": 13503,
+    "comuna": "CURACAVÍ",
+    "prefectura": "SANTIAGO OCCIDENTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.59352399999995,
+     -33.56437600013034
+    ]
+   },
+   "properties": {
+    "objectid": 134,
+    "codigo_unidad": "13074",
+    "nombre": "SCOM. LOS QUILLAYES",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "Galvarino 4430, La Florida, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13110,
+    "comuna": "LA FLORIDA",
+    "prefectura": "SANTIAGO CORDILLERA",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.77475199999998,
+     -33.72949600012823
+    ]
+   },
+   "properties": {
+    "objectid": 135,
+    "codigo_unidad": "13075",
+    "nombre": "SCOM. MAIPO",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "García 70, Buin, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 134,
+    "provincia": "MAIPO",
+    "cod_comuna": 13402,
+    "comuna": "BUIN",
+    "prefectura": "DEL MAIPO",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.78973499999995,
+     -33.55822300013037
+    ]
+   },
+   "properties": {
+    "objectid": 136,
+    "codigo_unidad": "13076",
+    "nombre": "SCOM. MAIPU ORIENTE",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "Parque Central Oriente 671, Maipú, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13119,
+    "comuna": "MAIPÚ",
+    "prefectura": "SANTIAGO RINCONADA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.74164799999994,
+     -33.807869000127255
+    ]
+   },
+   "properties": {
+    "objectid": 137,
+    "codigo_unidad": "13077",
+    "nombre": "64A. COM. PAINE",
+    "tipo_unidad": "Comisaría",
+    "direccion": "18 de Septiembre 21, Paine, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 134,
+    "provincia": "MAIPO",
+    "cod_comuna": 13404,
+    "comuna": "PAINE",
+    "prefectura": "DEL MAIPO",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.61472999999995,
+     -33.51536000013096
+    ]
+   },
+   "properties": {
+    "objectid": 138,
+    "codigo_unidad": "13078",
+    "nombre": "SCOM. PARQUE BRASIL",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "Sebastopol 90, La Granja, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13111,
+    "comuna": "LA GRANJA",
+    "prefectura": "SANTIAGO SUR",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.90166999999997,
+     -33.607720000129774
+    ]
+   },
+   "properties": {
+    "objectid": 139,
+    "codigo_unidad": "13079",
+    "nombre": "56A. COM. PENAFLOR",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Dieciocho 169, Peñaflor, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 136,
+    "provincia": "TALAGANTE",
+    "cod_comuna": 13605,
+    "comuna": "PEÑAFLOR",
+    "prefectura": "COSTA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.56781999999998,
+     -33.48338600013133
+    ]
+   },
+   "properties": {
+    "objectid": 140,
+    "codigo_unidad": "13080",
+    "nombre": "SCOM. PENALOLEN",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "Los Presidentes 6799, Peñalolén, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13122,
+    "comuna": "PEÑALOLEN",
+    "prefectura": "SANTIAGO ORIENTE",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.69896899999998,
+     -33.469971000131544
+    ]
+   },
+   "properties": {
+    "objectid": 141,
+    "codigo_unidad": "13081",
+    "nombre": "58A. COM. PB. ALESSANDRI",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Antártica 4701, Estación Central, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13106,
+    "comuna": "ESTACIÓN CENTRAL",
+    "prefectura": "CENTRAL SUR",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.75986499999993,
+     -33.432656000132
+    ]
+   },
+   "properties": {
+    "objectid": 142,
+    "codigo_unidad": "13082",
+    "nombre": "SCOM. PUDAHUEL NORTE",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "El Arado 9033, Pudahuel, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13124,
+    "comuna": "PUDAHUEL",
+    "prefectura": "SANTIAGO OCCIDENTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.58906999999994,
+     -33.62275000012956
+    ]
+   },
+   "properties": {
+    "objectid": 143,
+    "codigo_unidad": "13083",
+    "nombre": "SCOM. SAN GERONIMO",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "Real Audiencia1254, Puente Alto, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 132,
+    "provincia": "CORDILLERA",
+    "cod_comuna": 13201,
+    "comuna": "PUENTE ALTO",
+    "prefectura": "SANTIAGO CORDILLERA",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.35317499999996,
+     -33.636318000129386
+    ]
+   },
+   "properties": {
+    "objectid": 144,
+    "codigo_unidad": "13084",
+    "nombre": "SCOM. SAN JOSE DE MAIPO (F)",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "Camino el Volcán 19333, San José de Maipo, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 132,
+    "provincia": "CORDILLERA",
+    "cod_comuna": 13203,
+    "comuna": "SAN JOSÉ DE MAIPO",
+    "prefectura": "SANTIAGO CORDILLERA",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.67252999999994,
+     -33.40488000013239
+    ]
+   },
+   "properties": {
+    "objectid": 145,
+    "codigo_unidad": "13085",
+    "nombre": "SCOM. V. MODERNA",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "Coronel Alvarado 2450, Independecia, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13108,
+    "comuna": "INDEPENDENCIA",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.73229264999998,
+     -33.498817650131166
+    ]
+   },
+   "properties": {
+    "objectid": 146,
+    "codigo_unidad": "13086",
+    "nombre": "34A. COM. VISTA ALEGRE",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Las Torres7468, Cerrillos, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13102,
+    "comuna": "CERRILLOS",
+    "prefectura": "SANTIAGO RINCONADA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.67429899999996,
+     -33.48087000013139
+    ]
+   },
+   "properties": {
+    "objectid": 147,
+    "codigo_unidad": "13087",
+    "nombre": "TCIA. ALC. CARLOS VALDOVINOS",
+    "tipo_unidad": "Tenencia",
+    "direccion": "Belén 3435, PAC, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13121,
+    "comuna": "PEDRO AGUIRRE CERDA",
+    "prefectura": "SANTIAGO RINCONADA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.80707699999994,
+     -33.23870800013452
+    ]
+   },
+   "properties": {
+    "objectid": 148,
+    "codigo_unidad": "13088",
+    "nombre": "TCIA. BATUCO",
+    "tipo_unidad": "Tenencia",
+    "direccion": "Las Mercedes S/N, Lampa, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 133,
+    "provincia": "CHACABUCO",
+    "cod_comuna": 13302,
+    "comuna": "LAMPA",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.18889072099995,
+     -33.40567224913235
+    ]
+   },
+   "properties": {
+    "objectid": 149,
+    "codigo_unidad": "13089",
+    "nombre": "TCIA. CARRET. CURACAVI",
+    "tipo_unidad": "Tenencia de Carreteras",
+    "direccion": "Ruta 68km 48, Curacaví, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 135,
+    "provincia": "MELIPILLA",
+    "cod_comuna": 13503,
+    "comuna": "CURACAVÍ",
+    "prefectura": "TRANSITO Y CARRETERAS",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.76078890999997,
+     -33.23230555413464
+    ]
+   },
+   "properties": {
+    "objectid": 150,
+    "codigo_unidad": "13090",
+    "nombre": "TCIA. CARRET. LAMPA",
+    "tipo_unidad": "Tenencia de Carreteras",
+    "direccion": "Ruta 5 nortekm 27, Lampa, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 133,
+    "provincia": "CHACABUCO",
+    "cod_comuna": 13302,
+    "comuna": "LAMPA",
+    "prefectura": "TRANSITO Y CARRETERAS",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.03294527999998,
+     -33.69754247512863
+    ]
+   },
+   "properties": {
+    "objectid": 151,
+    "codigo_unidad": "13091",
+    "nombre": "TCIA. CARRET. MELIPILLA",
+    "tipo_unidad": "Tenencia de Carreteras",
+    "direccion": "Ruta 78km 50, El Monte, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 136,
+    "provincia": "TALAGANTE",
+    "cod_comuna": 13602,
+    "comuna": "EL MONTE",
+    "prefectura": "TRANSITO Y CARRETERAS",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.81536999999997,
+     -33.56900000013025
+    ]
+   },
+   "properties": {
+    "objectid": 152,
+    "codigo_unidad": "13092",
+    "nombre": "SCOM. PADRE HURTADO (M.C.)",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "Melipilla 2333, Padre Hurtado, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 136,
+    "provincia": "TALAGANTE",
+    "cod_comuna": 13604,
+    "comuna": "PADRE HURTADO",
+    "prefectura": "COSTA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.73533421299999,
+     -33.89377388012618
+    ]
+   },
+   "properties": {
+    "objectid": 153,
+    "codigo_unidad": "13093",
+    "nombre": "TCIA. CARRET. PAINE",
+    "tipo_unidad": "Tenencia de Carreteras",
+    "direccion": "Ruta 5 surkm 53, Paine, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 134,
+    "provincia": "MAIPO",
+    "cod_comuna": 13404,
+    "comuna": "PAINE",
+    "prefectura": "TRANSITO Y CARRETERAS",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.97904399999999,
+     -33.67892400012889
+    ]
+   },
+   "properties": {
+    "objectid": 154,
+    "codigo_unidad": "13094",
+    "nombre": "SCOM.. EL MONTE",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "Libertadores 223, El Monte, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 136,
+    "provincia": "TALAGANTE",
+    "cod_comuna": 13602,
+    "comuna": "EL MONTE",
+    "prefectura": "COSTA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.62559999999996,
+     -33.3943300001325
+    ]
+   },
+   "properties": {
+    "objectid": 155,
+    "codigo_unidad": "13095",
+    "nombre": "TCIA. EL SALTO",
+    "tipo_unidad": "Tenencia",
+    "direccion": "El Salto 349, Recoleta, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13127,
+    "comuna": "RECOLETA",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.90272999999996,
+     -33.749850000127964
+    ]
+   },
+   "properties": {
+    "objectid": 156,
+    "codigo_unidad": "13096",
+    "nombre": "TCIA. ISLA DE MAIPO",
+    "tipo_unidad": "Tenencia",
+    "direccion": "Manuel Rodríguez 949, Isla de Maipo, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 136,
+    "provincia": "TALAGANTE",
+    "cod_comuna": 13603,
+    "comuna": "ISLA DE MAIPO",
+    "prefectura": "COSTA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.63695999999999,
+     -33.3941100001325
+    ]
+   },
+   "properties": {
+    "objectid": 157,
+    "codigo_unidad": "13097",
+    "nombre": "TCIA. JOSE SANTOS OSSA",
+    "tipo_unidad": "Tenencia",
+    "direccion": "José Santos Ossa3401, Recoleta, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13127,
+    "comuna": "RECOLETA",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.67090999999994,
+     -33.42147000013212
+    ]
+   },
+   "properties": {
+    "objectid": 158,
+    "codigo_unidad": "13098",
+    "nombre": "TCIA. JUAN ANTONIO RIOS",
+    "tipo_unidad": "Tenencia",
+    "direccion": "Sara Gajardo 940, Independecia, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13108,
+    "comuna": "INDEPENDENCIA",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.67965799999996,
+     -33.486792000131324
+    ]
+   },
+   "properties": {
+    "objectid": 159,
+    "codigo_unidad": "13099",
+    "nombre": "TCIA. LA VICTORIA",
+    "tipo_unidad": "Tenencia",
+    "direccion": "1 de Mayo 4560, PAC, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13121,
+    "comuna": "PEDRO AGUIRRE CERDA",
+    "prefectura": "SANTIAGO RINCONADA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.87289846499993,
+     -33.285618982133904
+    ]
+   },
+   "properties": {
+    "objectid": 160,
+    "codigo_unidad": "13100",
+    "nombre": "59A. COMISARIA LAMPA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Pedro Aguirre Cerda 1100, Lampa, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 133,
+    "provincia": "CHACABUCO",
+    "cod_comuna": 13302,
+    "comuna": "LAMPA",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.70369399999998,
+     -33.53220400013072
+    ]
+   },
+   "properties": {
+    "objectid": 161,
+    "codigo_unidad": "13101",
+    "nombre": "TCIA. LO SIERRA",
+    "tipo_unidad": "Tenencia",
+    "direccion": "Lo Espejo 3443, Lo Espejo, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13116,
+    "comuna": "LO ESPEJO",
+    "prefectura": "SANTIAGO RINCONADA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.74881999999997,
+     -33.398290000132455
+    ]
+   },
+   "properties": {
+    "objectid": 162,
+    "codigo_unidad": "13102",
+    "nombre": "SCOM. LO VELASQUEZ",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "Brasil 7845, Renca, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13128,
+    "comuna": "RENCA",
+    "prefectura": "SANTIAGO OCCIDENTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.57403999999997,
+     -33.534670000130674
+    ]
+   },
+   "properties": {
+    "objectid": 163,
+    "codigo_unidad": "13103",
+    "nombre": "SCOM. LOS JARDINES",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "La Florida 9081, La Florida, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13110,
+    "comuna": "LA FLORIDA",
+    "prefectura": "SANTIAGO CORDILLERA",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.85040999999995,
+     -33.60206000012987
+    ]
+   },
+   "properties": {
+    "objectid": 164,
+    "codigo_unidad": "13104",
+    "nombre": "TCIA. MALLOCO",
+    "tipo_unidad": "Tenencia",
+    "direccion": "Balmaceda  103, Peñaflor, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 136,
+    "provincia": "TALAGANTE",
+    "cod_comuna": 13605,
+    "comuna": "PEÑAFLOR",
+    "prefectura": "COSTA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.11842094899998,
+     -33.51567184913091
+    ]
+   },
+   "properties": {
+    "objectid": 165,
+    "codigo_unidad": "13105",
+    "nombre": "TCIA. MARIA PINTO",
+    "tipo_unidad": "Tenencia",
+    "direccion": "Dieciocho de Septiembre 615, María Pinto, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 135,
+    "provincia": "MELIPILLA",
+    "cod_comuna": 13504,
+    "comuna": "MARÍA PINTO",
+    "prefectura": "COSTA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.63417399999997,
+     -33.43741100013192
+    ]
+   },
+   "properties": {
+    "objectid": 166,
+    "codigo_unidad": "13106",
+    "nombre": "60A. COM. METRO SANTIAGO",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Estación Baquedano S/N, Providencia, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13123,
+    "comuna": "PROVIDENCIA",
+    "prefectura": "RADIOPATRULLAS E INTERV.",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.67253999999997,
+     -33.52834000013077
+    ]
+   },
+   "properties": {
+    "objectid": 167,
+    "codigo_unidad": "13107",
+    "nombre": "TCIA. NVA. ESPANA",
+    "tipo_unidad": "Tenencia",
+    "direccion": "José Miguel Carrera 9089, La Cisterna, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13109,
+    "comuna": "LA CISTERNA",
+    "prefectura": "SANTIAGO SUR",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.67600099999999,
+     -33.50397800013107
+    ]
+   },
+   "properties": {
+    "objectid": 168,
+    "codigo_unidad": "13108",
+    "nombre": "TCIA. P, A.C",
+    "tipo_unidad": "Tenencia",
+    "direccion": "Club Hípico 6035, PAC, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13121,
+    "comuna": "PEDRO AGUIRRE CERDA",
+    "prefectura": "SANTIAGO RINCONADA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.57311999999996,
+     -33.63436000012941
+    ]
+   },
+   "properties": {
+    "objectid": 169,
+    "codigo_unidad": "13109",
+    "nombre": "65A. COM. PIRQUE",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Concha y Toro 02510, Pirque, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 132,
+    "provincia": "CORDILLERA",
+    "cod_comuna": 13202,
+    "comuna": "PIRQUE",
+    "prefectura": "SANTIAGO CORDILLERA",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.65093199999995,
+     -33.42732000013206
+    ]
+   },
+   "properties": {
+    "objectid": 170,
+    "codigo_unidad": "13110",
+    "nombre": "SCOM. RECOLETA SUR",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "Dávila Baeza 880, Recoleta, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13127,
+    "comuna": "RECOLETA",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.57741899999996,
+     -33.50435900013108
+    ]
+   },
+   "properties": {
+    "objectid": 171,
+    "codigo_unidad": "13111",
+    "nombre": "TCIA. SAN LUIS",
+    "tipo_unidad": "Tenencia",
+    "direccion": "Principal 5682, Peñalolén, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13122,
+    "comuna": "PEÑALOLEN",
+    "prefectura": "SANTIAGO ORIENTE",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.45431857499995,
+     -33.89544006412613
+    ]
+   },
+   "properties": {
+    "objectid": 172,
+    "codigo_unidad": "13112",
+    "nombre": "TCIA. SAN PEDRO",
+    "tipo_unidad": "Tenencia",
+    "direccion": "San Pedro 13, San Pedro, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 135,
+    "provincia": "MELIPILLA",
+    "cod_comuna": 13505,
+    "comuna": "SAN PEDRO",
+    "prefectura": "COSTA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.67905999999994,
+     -33.50811100013105
+    ]
+   },
+   "properties": {
+    "objectid": 173,
+    "codigo_unidad": "13113",
+    "nombre": "TCIA. SANTA ADRIANA",
+    "tipo_unidad": "Tenencia",
+    "direccion": "Lo Ovalle 2480, Lo Espejo, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13116,
+    "comuna": "LO ESPEJO",
+    "prefectura": "SANTIAGO RINCONADA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.79565899999994,
+     -33.56417000013034
+    ]
+   },
+   "properties": {
+    "objectid": 174,
+    "codigo_unidad": "13114",
+    "nombre": "TCIA. SANTA ROSA CHENA",
+    "tipo_unidad": "Tenencia",
+    "direccion": "Teniente de Carabineros Jaime Saenz Neira 835, Padre Hurtado, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 136,
+    "provincia": "TALAGANTE",
+    "cod_comuna": 13604,
+    "comuna": "PADRE HURTADO",
+    "prefectura": "COSTA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.92179899999996,
+     -33.08709000013655
+    ]
+   },
+   "properties": {
+    "objectid": 175,
+    "codigo_unidad": "13115",
+    "nombre": "TCIA. TILTIL",
+    "tipo_unidad": "Tenencia",
+    "direccion": "José Manuel Aguilar S/N, Til Til, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 133,
+    "provincia": "CHACABUCO",
+    "cod_comuna": 13303,
+    "comuna": "TILTIL",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.61658999999997,
+     -33.55631000013038
+    ]
+   },
+   "properties": {
+    "objectid": 176,
+    "codigo_unidad": "13116",
+    "nombre": "TCIA. TTE. MAURICIO RIVERA L.",
+    "tipo_unidad": "Tenencia",
+    "direccion": "La Serena10537, La Granja, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13111,
+    "comuna": "LA GRANJA",
+    "prefectura": "SANTIAGO SUR",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.10052855099997,
+     -34.03083719812448
+    ]
+   },
+   "properties": {
+    "objectid": 177,
+    "codigo_unidad": "13117",
+    "nombre": "TCIA. VILLA ALHUE",
+    "tipo_unidad": "Tenencia",
+    "direccion": "11 de Septiembre 450, Alhué, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 135,
+    "provincia": "MELIPILLA",
+    "cod_comuna": 13502,
+    "comuna": "ALHUÉ",
+    "prefectura": "COSTA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.69637599999999,
+     -33.50727900013106
+    ]
+   },
+   "properties": {
+    "objectid": 178,
+    "codigo_unidad": "13118",
+    "nombre": "11A. COM. LO ESPEJO",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Cardenal Caro 3971, Lo Espejo, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13116,
+    "comuna": "LO ESPEJO",
+    "prefectura": "SANTIAGO RINCONADA",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.53778499999999,
+     -33.403971000132344
+    ]
+   },
+   "properties": {
+    "objectid": 179,
+    "codigo_unidad": "13119",
+    "nombre": "47A. COM. LOS DOMINICOS",
+    "tipo_unidad": "Comisaría",
+    "direccion": "El Alba 9210, Las Condes, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13114,
+    "comuna": "LAS CONDES",
+    "prefectura": "SANTIAGO ANDES",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.75826999999998,
+     -33.630996000129485
+    ]
+   },
+   "properties": {
+    "objectid": 180,
+    "codigo_unidad": "13120",
+    "nombre": "SCOM. CALERA DE TANGO",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "Calera de Tango S/N, Calera de Tango, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 134,
+    "provincia": "MAIPO",
+    "cod_comuna": 13403,
+    "comuna": "CALERA DE TANGO",
+    "prefectura": "DEL MAIPO",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.67634514899999,
+     -33.21921757713481
+    ]
+   },
+   "properties": {
+    "objectid": 181,
+    "codigo_unidad": "13121",
+    "nombre": "TCIA. CARRET. COLINA",
+    "tipo_unidad": "Tenencia de Carreteras",
+    "direccion": "General San Martín S/N, Colina, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 133,
+    "provincia": "CHACABUCO",
+    "cod_comuna": 13301,
+    "comuna": "COLINA",
+    "prefectura": "TRANSITO Y CARRETERAS",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.50612840499997,
+     -33.358674637132964
+    ]
+   },
+   "properties": {
+    "objectid": 863,
+    "codigo_unidad": "13122",
+    "nombre": "53A.  COM. LO BARNECHEA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Lo Barnechea 1149, Lo Barnechea, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13115,
+    "comuna": "LO BARNECHEA",
+    "prefectura": "SANTIAGO ANDES",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.66117490999994,
+     -33.417872630132194
+    ]
+   },
+   "properties": {
+    "objectid": 864,
+    "codigo_unidad": "13123",
+    "nombre": "57A. COM. MOTORIZADA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Bezanilla 1546, Independecia, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13108,
+    "comuna": "INDEPENDENCIA",
+    "prefectura": "TRANSITO Y CARRETERAS",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2015,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.66123659999994,
+     -33.419107460132174
+    ]
+   },
+   "properties": {
+    "objectid": 865,
+    "codigo_unidad": "13124",
+    "nombre": "30A. COM. RADIOPATRULLAS",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Carrión 1795, Independecia, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13108,
+    "comuna": "INDEPENDENCIA",
+    "prefectura": "TRANSITO Y CARRETERAS",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2015,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.65498199999996,
+     -33.278504128133996
+    ]
+   },
+   "properties": {
+    "objectid": 867,
+    "codigo_unidad": "13125",
+    "nombre": "SCOM. CHICUREO",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "El Valle S/N, Colina, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 133,
+    "provincia": "CHACABUCO",
+    "cod_comuna": 13301,
+    "comuna": "COLINA",
+    "prefectura": "SANTIAGO NORTE",
+    "zona": "METROPOLITANA OESTE",
+    "anio_creacion": 2014,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.52048618299995,
+     -33.333377379133275
+    ]
+   },
+   "properties": {
+    "objectid": 869,
+    "codigo_unidad": "13126",
+    "nombre": "SCOM. LO BARNECHEA",
+    "tipo_unidad": "Subcomisaría",
+    "direccion": "La Dehesa, Lo Barnechea, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 131,
+    "provincia": "SANTIAGO",
+    "cod_comuna": 13115,
+    "comuna": "LO BARNECHEA",
+    "prefectura": "SANTIAGO ANDES",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2016,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.61279224999998,
+     -33.625553389129514
+    ]
+   },
+   "properties": {
+    "objectid": 873,
+    "codigo_unidad": "13127",
+    "nombre": "66A. COM. BAJOS DE MENA",
+    "tipo_unidad": "Comisaría",
+    "direccion": "Avenida Juanita 699, Puente Alto, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 132,
+    "provincia": "CORDILLERA",
+    "cod_comuna": 13201,
+    "comuna": "PUENTE ALTO",
+    "prefectura": "SANTIAGO CORDILLERA",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2017,
+    "vigente": true
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.70129022199995,
+     -33.592108185129966
+    ]
+   },
+   "properties": {
+    "objectid": 874,
+    "codigo_unidad": "13128",
+    "nombre": "14A. COM. SAN BERNARDO",
+    "tipo_unidad": "Comisaría",
+    "direccion": "O'Higgins 326, San Bernardo, Región Metropolitana",
+    "cod_region": 13,
+    "region": "METROPOLITANA DE SANTIAGO",
+    "cod_provincia": 134,
+    "provincia": "MAIPO",
+    "cod_comuna": 13401,
+    "comuna": "SAN BERNARDO",
+    "prefectura": "DEL MAIPO",
+    "zona": "METROPOLITANA ESTE",
+    "anio_creacion": 2018,
+    "vigente": true
+   }
+  }
+ ]
+}
