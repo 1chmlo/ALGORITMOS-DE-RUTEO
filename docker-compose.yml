@@ -38,5 +38,17 @@ services:
     volumes:
       - "./02 - Metadata/salida:/app/salida"
 
+  amenazas:
+    build: "./03 - Amenazas"
+    profiles: ["etl"]
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - PGHOST=db
+      - TOMTOM_API_KEY
+    volumes:
+      - "./03 - Amenazas/salidas:/app/salidas"
+
 volumes:
   pgdata:

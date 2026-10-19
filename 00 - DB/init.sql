@@ -155,3 +155,32 @@ CREATE TABLE IF NOT EXISTS tomtom_trafico (
     geom                      geometry(LineString, 4326) NOT NULL
 );
 CREATE INDEX IF NOT EXISTS tomtom_trafico_geom_idx ON tomtom_trafico USING GIST (geom);
+
+-- ===== 03 - AMENAZAS =====
+
+-- Cortes de ruta totales activos (TomTom Traffic Incidents API v5, iconCategory = 8).
+CREATE TABLE IF NOT EXISTS cortes_ruta_tomtom (
+    id                 SERIAL PRIMARY KEY,
+    incident_id        TEXT NOT NULL UNIQUE,
+    icon_category      SMALLINT NOT NULL,
+    tipo_amenaza       TEXT NOT NULL,
+    descripcion_evento TEXT,
+    codigo_evento      INTEGER,
+    magnitud_retraso   SMALLINT,
+    desde_via          TEXT,
+    hasta_via          TEXT,
+    numeros_ruta       TEXT,
+    longitud_m         DOUBLE PRECISION,
+    retraso_seg        INTEGER,
+    probabilidad       TEXT,
+    validez_temporal   TEXT,
+    fecha_inicio       TIMESTAMPTZ,
+    fecha_fin          TIMESTAMPTZ,
+    en_maipu           BOOLEAN,
+    bloqueo_total      BOOLEAN,
+    centroide_lon      DOUBLE PRECISION,
+    centroide_lat      DOUBLE PRECISION,
+    fuente             TEXT,
+    geom               geometry(LineString, 4326) NOT NULL
+);
+CREATE INDEX IF NOT EXISTS cortes_ruta_tomtom_geom_idx ON cortes_ruta_tomtom USING GIST (geom);
