@@ -19,6 +19,9 @@ echo "==> 01 - Infraestructura: carga a la base de datos"
 $INFRA python carga_comisarias.py
 $INFRA python carga_puntos_criticos_fiscalia.py
 
+echo "==> 01 - Infraestructura: generando grafo aéreo y aristas para Dijkstra"
+docker compose exec -T db psql -U ruteo -d ruteo < "00 - DB/dijkstra.sql"
+
 echo "==> 02 - Metadata: extraccion y transformacion"
 $META python etl_robo_con_violencia.py
 $META python extract_luminarias_mapillary.py

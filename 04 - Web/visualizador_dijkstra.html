@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de Grafo y Ruteo Dijkstra - Comuna de Maipú</title>
+    <!-- Leaflet CSS desde CDNJS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #0f172a;
+            color: #f8fafc;
+        }
+
+        /* Mapa en pantalla completa */
+        #map {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            background: #e2e8f0;
+            transition: background 0.3s;
+        }
+
+        /* Modo Oscuro del Mapa (Transformación nativa de alta fidelidad) */
+        #map.dark-mode-map {
+            background: #0b0f19 !important;
+        }
+
+        #map.dark-mode-map .leaflet-tile-pane {
+            filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(115%);
+        }
+
+        /* Panel flotante lateral */
+        .panel {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            width: 410px;
+            max-height: calc(100vh - 32px);
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            border-radius: 14px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .panel-header {
+            padding: 16px 18px 12px 18px;
+            background: rgba(30, 41, 59, 0.7);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+            color: #4ade80;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+        }
+
+        .badge::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 6px #22c55e;
+        }
+
+        .panel-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #f8fafc;
+        }
+
+        .panel-desc {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 4px;
+            line-height: 1.35;
+        }
+
+        /* Selector de Modos de Vista */
+        .mode-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 4px;
+            background: rgba(15, 23, 42, 0.8);
+            padding: 4px;
+            border-radius: 10px;
+            margin-top: 12px;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .mode-tab {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            padding: 8px 6px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .mode-tab:hover {
+            color: #f8fafc;
+            background: rgba(51, 65, 85, 0.5);
+        }
+
+        .mode-tab.active {
+            background: #0284c7;
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+        }
+
+        .panel-body {
+            padding: 16px 18px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #94a3b8;
+        }
+
+        /* Botones de Drones */
+        .drone-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .btn-drone {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            color: #f8fafc;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .btn-drone:hover {
+            border-color: #38bdf8;
+            background: rgba(51, 65, 85, 0.9);
+        }
+
+        .btn-drone.active {
+            border-color: #22c55e;
+            background: rgba(34, 197, 94, 0.15);
+            box-shadow: 0 0 12px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-drone.dron-all.active {
+            border-color: #38bdf8;
+            background: rgba(56, 189, 248, 0.15);
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+        }
+
+        .drone-badge {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .drone-name {
+            font-size: 11px;
+            color: #cbd5e1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Tarjeta de Métricas */
+        .metrics {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 10px;
+            padding: 12px 14px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .metric-title {
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #94a3b8;
+        }
+
+        .metric-value {
+            font-size: 18px;
+            font-weight: 800;
+            color: #22c55e;
+        }
+
+        .metric-note {
+            font-size: 10px;
+            color: #64748b;
+        }
+
+        /* Itinerario */
+        .itinerary {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            max-height: 200px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .itinerary-step {
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 3px solid #22c55e;
+            border-radius: 4px;
+            padding: 7px 10px;
+            font-size: 11px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .itinerary-step.retorno {
+            border-left-color: #38bdf8;
+        }
+
+        /* Lista de Puntos (Modo Solo Puntos) */
+        .points-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            max-height: 320px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .point-item {
+            background: rgba(30, 41, 59, 0.7);
+            border-left: 4px solid #ef4444;
+            border-radius: 6px;
+            padding: 8px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .point-item:hover {
+            background: rgba(51, 65, 85, 0.9);
+            transform: translateX(2px);
+        }
+
+        .point-item.comisaria {
+            border-left-color: #22c55e;
+        }
+
+        .point-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            color: #f8fafc;
+        }
+
+        .point-desc {
+            color: #94a3b8;
+            font-size: 10px;
+        }
+
+        /* Toggles */
+        .toggles {
+            border-top: 1px solid rgba(148, 163, 184, 0.2);
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .toggle-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #94a3b8;
+            cursor: pointer;
+        }
+
+        .toggle-item input {
+            cursor: pointer;
+            accent-color: #22c55e;
+        }
+
+        /* Leyenda inferior derecha */
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            border-radius: 12px;
+            padding: 12px 16px;
+            z-index: 1000;
+            font-size: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .legend-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dot-green {
+            width: 14px;
+            height: 14px;
+            background: #22c55e;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #22c55e;
+        }
+
+        .dot-red {
+            width: 12px;
+            height: 12px;
+            background: #ef4444;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #ef4444;
+        }
+
+        .line-route {
+            width: 18px;
+            height: 4px;
+            background: #22c55e;
+            border-radius: 2px;
+            box-shadow: 0 0 6px #22c55e;
+        }
+
+        /* Flechas direccionales */
+        .arrow-badge-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .arrow-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #0f172a;
+            border: 2px solid #22c55e;
+            border-radius: 20px;
+            padding: 3px 8px;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: transform 0.15s ease-in-out;
+        }
+
+        .arrow-badge:hover {
+            transform: scale(1.18);
+            z-index: 9999;
+        }
+
+        .arrow-svg {
+            display: inline-block;
+            width: 13px;
+            height: 13px;
+            fill: currentColor;
+        }
+
+        /* Etiqueta Comisaría Activada y Paradas */
+        .node-step-badge {
+            background: #0f172a;
+            border: 1.5px solid #ffffff;
+            border-radius: 6px;
+            padding: 2px 7px;
+            font-size: 10px;
+            font-weight: 800;
+            color: #ffffff;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.5);
+            white-space: nowrap;
+            text-align: center;
+            margin-top: -38px;
+            pointer-events: none;
+        }
+
+        /* Etiqueta de Costo sobre cada arista (Modo Grafo Completo) */
+        .cost-label {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(56, 189, 248, 0.6);
+            color: #38bdf8;
+            font-weight: 800;
+            font-size: 10px;
+            padding: 2px 5px;
+            border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+            white-space: nowrap;
+            pointer-events: auto;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .cost-label:hover {
+            transform: scale(1.25);
+            border-color: #22c55e;
+            color: #22c55e;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Panel de control -->
+    <div class="panel">
+        <div class="panel-header">
+            <div class="badge">100% Comuna de Maipú</div>
+            <div class="panel-title">🌐 Visualizador Espacial y Ruteo</div>
+            <div class="panel-desc">
+                Selecciona la vista para explorar la infraestructura, el grafo de costos o las rutas óptimas con Dijkstra.
+            </div>
+
+            <!-- Selector de Modos de Vista -->
+            <div class="mode-tabs">
+                <button class="mode-tab" id="tab-puntos" onclick="cambiarModo('puntos')">
+                    <span>📍 Puntos</span>
+                    <span style="font-size: 9px; opacity: 0.8;">Infraestructura</span>
+                </button>
+                <button class="mode-tab" id="tab-grafo" onclick="cambiarModo('grafo')">
+                    <span>🕸️ Grafo</span>
+                    <span style="font-size: 9px; opacity: 0.8;">Costos en km</span>
+                </button>
+                <button class="mode-tab active" id="tab-dijkstra" onclick="cambiarModo('dijkstra')">
+                    <span>🚁 Dijkstra</span>
+                    <span style="font-size: 9px; opacity: 0.8;">Rutas Drones</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="panel-body">
+            <!-- CONTENIDO MODO 1: SOLO PUNTOS -->
+            <div id="content-puntos" style="display: none;">
+                <span class="section-label">Puntos en la Comuna de Maipú (9 Nodos)</span>
+                <div style="font-size: 11px; color: #94a3b8; margin: 4px 0 8px 0;">
+                    3 Comisarías (Bases policiales) y 6 Puntos Críticos de autopistas y focos STOP de encerronas.
+                </div>
+                <div class="points-list" id="points-list-container"></div>
+            </div>
+
+            <!-- CONTENIDO MODO 2: GRAFO COMPLETO CON COSTOS -->
+            <div id="content-grafo" style="display: none;">
+                <div class="metrics" style="grid-template-columns: 1fr 1fr; margin-bottom: 6px;">
+                    <div>
+                        <div class="metric-title">Total Aristas</div>
+                        <div class="metric-value" style="color: #38bdf8;">33 Vuelos</div>
+                        <div class="metric-note">Conexiones directas</div>
+                    </div>
+                    <div>
+                        <div class="metric-title">Regla de Topología</div>
+                        <div style="font-size: 11px; font-weight: 700; color: #f8fafc; margin-top: 4px;">
+                            Sin enlace base ⟷ base
+                        </div>
+                        <div class="metric-note">Comisarías aisladas</div>
+                    </div>
+                </div>
+                <span class="section-label">Topología del Grafo Aéreo</span>
+                <div style="font-size: 11px; color: #94a3b8; line-height: 1.4;">
+                    Cada arista muestra su <b>costo euclidiano exacto en kilómetros</b> sobre la línea. Haz clic en cualquier etiqueta para ver el detalle del tramo y sus nodos extremos.
+                </div>
+            </div>
+
+            <!-- CONTENIDO MODO 3: RUTAS DIJKSTRA (Lo que ya estaba) -->
+            <div id="content-dijkstra">
+                <span class="section-label">Seleccionar Dron de Patrullaje</span>
+                <div class="drone-selector">
+                    <button class="btn-drone active" id="btn-dron-1" onclick="seleccionarDron(1)">
+                        <span class="drone-badge" style="color: #22c55e;">Dron 1 (Base 1)</span>
+                        <span class="drone-name">25A. Com. Maipú</span>
+                    </button>
+                    <button class="btn-drone" id="btn-dron-2" onclick="seleccionarDron(2)">
+                        <span class="drone-badge" style="color: #06b6d4;">Dron 2 (Base 2)</span>
+                        <span class="drone-name">52A. Rinconada</span>
+                    </button>
+                    <button class="btn-drone" id="btn-dron-3" onclick="seleccionarDron(3)">
+                        <span class="drone-badge" style="color: #f59e0b;">Dron 3 (Base 3)</span>
+                        <span class="drone-name">SCom. Oriente</span>
+                    </button>
+                    <button class="btn-drone dron-all" id="btn-dron-all" onclick="seleccionarDron('all')">
+                        <span class="drone-badge" style="color: #38bdf8;">Flota Completa</span>
+                        <span class="drone-name">Ver los 3 simultáneos</span>
+                    </button>
+                </div>
+
+                <!-- Métricas (Solo Distancia) -->
+                <div class="metrics" style="grid-template-columns: 1fr;">
+                    <div>
+                        <div class="metric-title">Distancia Total del Circuito</div>
+                        <div class="metric-value" id="val-distancia">18.83 km</div>
+                        <div class="metric-note">Distancia euclidiana total calculada con Dijkstra</div>
+                    </div>
+                </div>
+
+                <!-- Itinerario de sobrevuelo -->
+                <span class="section-label" id="itinerary-title">Secuencia Completa (Visita Todos los Puntos)</span>
+                <div class="itinerary" id="itinerary-steps"></div>
+            </div>
+
+            <!-- Toggles de Capas Generales -->
+            <div class="toggles">
+                <label class="toggle-item">
+                    <span>Modo oscuro</span>
+                    <input type="checkbox" id="chk-dark">
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leyenda dinámicamente actualizada según el modo -->
+    <div class="legend" id="legend-box">
+        <div style="font-weight: 700; margin-bottom: 2px;">Referencias de Maipú</div>
+        <div class="legend-row">
+            <div class="dot-green"></div>
+            <span><b>Comisaría (Verde)</b> - Base de despegue</span>
+        </div>
+        <div class="legend-row">
+            <div class="dot-red"></div>
+            <span><b>Punto Crítico (Rojo)</b> - Autopistas / STOP</span>
+        </div>
+        <div class="legend-row" id="legend-route-row">
+            <div class="line-route" id="legend-line"></div>
+            <span id="legend-route-label">Ruta óptima del Dron</span>
+        </div>
+        <div class="legend-row" id="legend-arrow-row">
+            <span style="background:#0f172a; border:1px solid #22c55e; border-radius:12px; padding:2px 6px; font-weight:800; font-size:10px; color:#22c55e;">
+                Tramo 1 ➔
+            </span>
+            <span style="font-size: 11px; color:#cbd5e1;">Flecha orientada y número de tramo</span>
+        </div>
+    </div>
+
+    <!-- Contenedor del Mapa -->
+    <div id="map"></div>
+
+    <!-- Leaflet JS desde CDNJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script>
+        // Nodos 100% dentro de Maipú (3 comisarías verdes, 6 puntos críticos rojos)
+        const NODOS = [
+            { id: 1, tipo: "comisaria", nombre: "25A. COM. MAIPU", desc: "Base policial central (Pajaritos / 5 de Abril)", lat: -33.507197, lon: -70.754619 },
+            { id: 2, tipo: "comisaria", nombre: "52A. COM. RINCONADA DE MAIPU", desc: "Base policial poniente", lat: -33.511141, lon: -70.790934 },
+            { id: 3, tipo: "comisaria", nombre: "SCOM. MAIPU ORIENTE", desc: "Base policial sur (Melipilla / 3 Poniente)", lat: -33.558223, lon: -70.789735 },
+            { id: 4, tipo: "interes", nombre: "Vespucio Sur con Ruta 78 (Autopista del Sol)", desc: "Enlace autopistas - Punto crítico Fiscalía", lat: -33.490288, lon: -70.749023 },
+            { id: 5, tipo: "interes", nombre: "Autopista del Sol con Av. Pajaritos (Mall Arauco)", desc: "Salida autopista - Foco STOP 36 delitos", lat: -33.481600, lon: -70.746100 },
+            { id: 6, tipo: "interes", nombre: "Plaza de Maipú / Pajaritos con 5 de Abril", desc: "Centro comunal - Foco STOP 49 delitos", lat: -33.514500, lon: -70.755300 },
+            { id: 7, tipo: "interes", nombre: "Autopista del Sol con Camino a Rinconada", desc: "Enlace autopista poniente - Foco STOP 42 delitos", lat: -33.514900, lon: -70.794000 },
+            { id: 8, tipo: "interes", nombre: "Camino a Melipilla con 3 Poniente", desc: "Acceso sur a Ruta 78 y corredor industrial", lat: -33.535000, lon: -70.778000 },
+            { id: 9, tipo: "interes", nombre: "Vespucio Sur con Av. Lumen / Segunda Transversal", desc: "Enlace autopista oriente - Foco STOP 21 delitos", lat: -33.509500, lon: -70.726300 }
+        ];
+
+        // 33 Aristas con sus costos exactos en km calculados en PostGIS
+        const ARISTAS_DETALLE = [
+            { id: 1, u: 1, v: 4, cost_km: 1.95, cost_m: 1946 },
+            { id: 2, u: 1, v: 5, cost_km: 2.95, cost_m: 2951 },
+            { id: 3, u: 1, v: 6, cost_km: 0.81, cost_m: 813 },
+            { id: 4, u: 1, v: 7, cost_km: 3.76, cost_m: 3757 },
+            { id: 5, u: 1, v: 8, cost_km: 3.77, cost_m: 3772 },
+            { id: 6, u: 1, v: 9, cost_km: 2.64, cost_m: 2644 },
+            { id: 7, u: 2, v: 4, cost_km: 4.53, cost_m: 4530 },
+            { id: 8, u: 2, v: 5, cost_km: 5.30, cost_m: 5300 },
+            { id: 9, u: 2, v: 6, cost_km: 3.33, cost_m: 3332 },
+            { id: 10, u: 2, v: 7, cost_km: 0.50, cost_m: 505 },
+            { id: 11, u: 2, v: 8, cost_km: 2.91, cost_m: 2906 },
+            { id: 12, u: 2, v: 9, cost_km: 6.01, cost_m: 6008 },
+            { id: 13, u: 3, v: 4, cost_km: 8.43, cost_m: 8431 },
+            { id: 14, u: 3, v: 5, cost_km: 9.42, cost_m: 9416 },
+            { id: 15, u: 3, v: 6, cost_km: 5.81, cost_m: 5809 },
+            { id: 16, u: 3, v: 7, cost_km: 4.82, cost_m: 4821 },
+            { id: 17, u: 3, v: 8, cost_km: 2.80, cost_m: 2797 },
+            { id: 18, u: 3, v: 9, cost_km: 8.00, cost_m: 7995 },
+            { id: 19, u: 4, v: 5, cost_km: 1.00, cost_m: 1001 },
+            { id: 20, u: 4, v: 6, cost_km: 2.75, cost_m: 2748 },
+            { id: 21, u: 4, v: 7, cost_km: 4.99, cost_m: 4992 },
+            { id: 22, u: 4, v: 8, cost_km: 5.64, cost_m: 5643 },
+            { id: 23, u: 4, v: 9, cost_km: 3.00, cost_m: 3000 },
+            { id: 24, u: 5, v: 6, cost_km: 3.75, cost_m: 3748 },
+            { id: 25, u: 5, v: 7, cost_km: 5.78, cost_m: 5784 },
+            { id: 26, u: 5, v: 8, cost_km: 6.62, cost_m: 6623 },
+            { id: 27, u: 5, v: 9, cost_km: 3.60, cost_m: 3600 },
+            { id: 28, u: 6, v: 7, cost_km: 3.60, cost_m: 3596 },
+            { id: 29, u: 6, v: 8, cost_km: 3.10, cost_m: 3101 },
+            { id: 30, u: 6, v: 9, cost_km: 2.75, cost_m: 2751 },
+            { id: 31, u: 7, v: 8, cost_km: 2.68, cost_m: 2679 },
+            { id: 32, u: 7, v: 9, cost_km: 6.32, cost_m: 6318 },
+            { id: 33, u: 8, v: 9, cost_km: 5.57, cost_m: 5574 }
+        ];
+
+        // Rutas óptimas calculadas con pgr_dijkstra en PostgreSQL:
+        const RUTAS_DRONES = {
+            1: {
+                nombre: "Dron 1 - 25A. Comisaría Maipú",
+                color: "#22c55e",
+                secuencia: [1, 6, 8, 7, 4, 5, 9, 1],
+                distancia_km: 18.83,
+                tiempo_min: 19
+            },
+            2: {
+                nombre: "Dron 2 - 52A. Comisaría Rinconada",
+                color: "#06b6d4",
+                secuencia: [2, 4, 5, 9, 6, 8, 7, 2],
+                distancia_km: 18.17,
+                tiempo_min: 18
+            },
+            3: {
+                nombre: "Dron 3 - SCom. Maipú Oriente",
+                color: "#f59e0b",
+                secuencia: [3, 7, 4, 5, 9, 6, 8, 3],
+                distancia_km: 23.06,
+                tiempo_min: 23
+            }
+        };
+
+        // Estado actual de vista
+        let modoActual = 'dijkstra'; // 'puntos', 'grafo', 'dijkstra'
+
+        function calcularRumbo(lat1, lon1, lat2, lon2) {
+            const p1 = lat1 * Math.PI / 180;
+            const p2 = lat2 * Math.PI / 180;
+            const dl = (lon2 - lon1) * Math.PI / 180;
+            const y = Math.sin(dl) * Math.cos(p2);
+            const x = Math.cos(p1) * Math.sin(p2) - Math.sin(p1) * Math.cos(p2) * Math.cos(dl);
+            const b = Math.atan2(y, x) * 180 / Math.PI;
+            return (b + 360) % 360;
+        }
+
+        // Inicializar mapa centrado en Maipú
+        const map = L.map('map', {
+            zoomControl: false
+        }).setView([-33.515, -70.760], 13);
+
+        L.control.zoom({ position: 'topright' }).addTo(map);
+
+        // Capas base
+        const osmLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors',
+            maxZoom: 19
+        }).addTo(map);
+
+        const darkLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap &copy; CARTO',
+            maxZoom: 19
+        });
+
+        // Capas de dibujo
+        const graphEdgesLayer = L.layerGroup().addTo(map);
+        const graphCostsLayer = L.layerGroup().addTo(map);
+        const routeLayer = L.layerGroup().addTo(map);
+        const arrowsLayer = L.layerGroup().addTo(map);
+        const nodesLayer = L.layerGroup().addTo(map);
+        const orderBadgesLayer = L.layerGroup().addTo(map);
+
+        // Dibujar nodos diferenciados
+        function dibujarNodos() {
+            nodesLayer.clearLayers();
+            NODOS.forEach(n => {
+                const isComisaria = n.tipo === 'comisaria';
+                const color = isComisaria ? '#22c55e' : '#ef4444';
+                const fillColor = isComisaria ? '#4ade80' : '#f87171';
+                const radio = isComisaria ? 13 : 9.5;
+
+                const marker = L.circleMarker([n.lat, n.lon], {
+                    radius: radio,
+                    fillColor: fillColor,
+                    color: '#ffffff',
+                    weight: 2.5,
+                    opacity: 1,
+                    fillOpacity: 0.95
+                });
+
+                marker.bindPopup(`
+                    <div style="font-family: inherit; min-width: 220px;">
+                        <span style="font-size: 11px; font-weight: 800; text-transform: uppercase; color: ${color};">
+                            ${isComisaria ? 'BASE POLICIAL (COMISARÍA)' : 'PUNTO CRÍTICO DE MAIPÚ'} [ID ${n.id}]
+                        </span>
+                        <div style="font-size: 13px; font-weight: 700; margin-top: 4px; color: #1e293b;">
+                            ${n.nombre}
+                        </div>
+                        <div style="font-size: 11px; color: #475569; margin-top: 3px;">
+                            ${n.desc}
+                        </div>
+                        <div style="font-size: 10px; color: #94a3b8; margin-top: 4px;">
+                            Coords: ${n.lat.toFixed(4)}, ${n.lon.toFixed(4)}
+                        </div>
+                    </div>
+                `);
+
+                marker.bindTooltip(`<b>${n.nombre.split(' (')[0]}</b>`, {
+                    permanent: false,
+                    direction: 'top'
+                });
+
+                nodesLayer.addLayer(marker);
+            });
+        }
+
+        // Llenar lista del panel para el Modo "Solo Puntos"
+        function llenarListaPuntos() {
+            const container = document.getElementById('points-list-container');
+            container.innerHTML = '';
+            NODOS.forEach(n => {
+                const isCom = n.tipo === 'comisaria';
+                const el = document.createElement('div');
+                el.className = `point-item ${isCom ? 'comisaria' : ''}`;
+                el.innerHTML = `
+                    <div class="point-header">
+                        <span>${isCom ? '🟢' : '🔴'} ID ${n.id}: ${n.nombre.split(' (')[0]}</span>
+                        <span style="font-size: 9px; opacity:0.8; text-transform:uppercase;">${isCom ? 'Base' : 'Punto Crítico'}</span>
+                    </div>
+                    <div class="point-desc">${n.desc}</div>
+                `;
+                el.addEventListener('click', () => {
+                    map.setView([n.lat, n.lon], 15);
+                });
+                container.appendChild(el);
+            });
+        }
+
+        // Dibujar el Grafo Completo con todas las Aristas y Costos en km
+        function dibujarGrafoCompletoConCostos() {
+            graphEdgesLayer.clearLayers();
+            graphCostsLayer.clearLayers();
+
+            ARISTAS_DETALLE.forEach(arista => {
+                const u = NODOS.find(n => n.id === arista.u);
+                const v = NODOS.find(n => n.id === arista.v);
+                if (!u || !v) return;
+
+                // Línea de conexión
+                const line = L.polyline([[u.lat, u.lon], [v.lat, v.lon]], {
+                    color: '#38bdf8',
+                    weight: 2,
+                    opacity: 0.55,
+                    dashArray: '4, 4'
+                });
+
+                line.bindPopup(`
+                    <div style="font-family: inherit;">
+                        <span style="font-size:10px; font-weight:800; color:#38bdf8; text-transform:uppercase;">
+                            Arista #${arista.id} del Grafo
+                        </span>
+                        <div style="font-size:12px; font-weight:700; margin-top:2px;">
+                            ${u.nombre.split(' (')[0]} ⟷ ${v.nombre.split(' (')[0]}
+                        </div>
+                        <div style="font-size:13px; font-weight:800; color:#22c55e; margin-top:4px;">
+                            Costo: ${arista.cost_km} km (${arista.cost_m} m)
+                        </div>
+                    </div>
+                `);
+
+                graphEdgesLayer.addLayer(line);
+
+                // Etiqueta flotante con el costo numérico en km sobre la arista
+                const midLat = (u.lat + v.lat) / 2;
+                const midLon = (u.lon + v.lon) / 2;
+
+                const costMarker = L.marker([midLat, midLon], {
+                    icon: L.divIcon({
+                        html: `<div class="cost-label" title="${u.nombre} ⟷ ${v.nombre}">${arista.cost_km} km</div>`,
+                        className: '',
+                        iconSize: [52, 20],
+                        iconAnchor: [26, 10]
+                    })
+                });
+
+                costMarker.bindPopup(`
+                    <b>Arista #${arista.id}</b><br>
+                    ${u.nombre} ⟷ ${v.nombre}<br>
+                    <b>Distancia / Costo:</b> ${arista.cost_km} km
+                `);
+
+                graphCostsLayer.addLayer(costMarker);
+            });
+        }
+
+        // Cambiar entre los 3 Modos de Visualización
+        function cambiarModo(nuevoModo) {
+            modoActual = nuevoModo;
+
+            // Actualizar pestañas
+            document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById(`tab-${nuevoModo}`).classList.add('active');
+
+            // Ocultar todos los paneles de contenido
+            document.getElementById('content-puntos').style.display = 'none';
+            document.getElementById('content-grafo').style.display = 'none';
+            document.getElementById('content-dijkstra').style.display = 'none';
+
+            // Limpiar capas transitorias
+            graphEdgesLayer.clearLayers();
+            graphCostsLayer.clearLayers();
+            routeLayer.clearLayers();
+            arrowsLayer.clearLayers();
+            orderBadgesLayer.clearLayers();
+
+            if (nuevoModo === 'puntos') {
+                document.getElementById('content-puntos').style.display = 'block';
+                document.getElementById('legend-route-row').style.display = 'none';
+                document.getElementById('legend-arrow-row').style.display = 'none';
+                map.setView([-33.515, -70.760], 13);
+            } else if (nuevoModo === 'grafo') {
+                document.getElementById('content-grafo').style.display = 'block';
+                document.getElementById('legend-route-row').style.display = 'none';
+                document.getElementById('legend-arrow-row').style.display = 'none';
+                dibujarGrafoCompletoConCostos();
+                map.setView([-33.515, -70.760], 13);
+            } else if (nuevoModo === 'dijkstra') {
+                document.getElementById('content-dijkstra').style.display = 'block';
+                document.getElementById('legend-route-row').style.display = 'flex';
+                document.getElementById('legend-arrow-row').style.display = 'flex';
+                seleccionarDron(1);
+            }
+        }
+
+        // Modo Dijkstra: selección de drones con flechas y COMISARÍA ACTIVADA
+        function seleccionarDron(dronId) {
+            document.querySelectorAll('.btn-drone').forEach(b => b.classList.remove('active'));
+            if (dronId === 'all') {
+                document.getElementById('btn-dron-all').classList.add('active');
+            } else {
+                document.getElementById(`btn-dron-${dronId}`).classList.add('active');
+            }
+
+            routeLayer.clearLayers();
+            arrowsLayer.clearLayers();
+            orderBadgesLayer.clearLayers();
+
+            const itineraryEl = document.getElementById('itinerary-steps');
+            itineraryEl.innerHTML = '';
+
+            if (dronId === 'all') {
+                document.getElementById('val-distancia').textContent = "60.06 km";
+                document.getElementById('val-tiempo').textContent = "Flota 3 Drones";
+                document.getElementById('itinerary-title').textContent = "Patrullaje Simultáneo de 3 Drones en Maipú";
+
+                [1, 2, 3].forEach(id => {
+                    const r = RUTAS_DRONES[id];
+                    const latlngs = r.secuencia.map(nid => {
+                        const n = NODOS.find(nodo => nodo.id === nid);
+                        return [n.lat, n.lon];
+                    });
+
+                    L.polyline(latlngs, {
+                        color: r.color,
+                        weight: 4.5,
+                        opacity: 0.9,
+                        dashArray: id === 2 ? '7, 5' : (id === 3 ? '4, 4' : null)
+                    }).addTo(routeLayer);
+
+                    // Flechas con número para cada dron
+                    for (let i = 0; i < r.secuencia.length - 1; i++) {
+                        const u = NODOS.find(n => n.id === r.secuencia[i]);
+                        const v = NODOS.find(n => n.id === r.secuencia[i+1]);
+                        const midLat = (u.lat + v.lat) / 2;
+                        const midLon = (u.lon + v.lon) / 2;
+                        const rumbo = calcularRumbo(u.lat, u.lon, v.lat, v.lon);
+
+                        const arrowHtml = `
+                            <div class="arrow-badge" style="border-color:${r.color}; color:${r.color}; padding:2px 6px; font-size:10px;">
+                                <span>D${id}·${i+1}</span>
+                                <svg class="arrow-svg" style="transform: rotate(${rumbo}deg); fill:${r.color};" viewBox="0 0 24 24">
+                                    <path d="M12 2L19 21L12 17L5 21L12 2Z" />
+                                </svg>
+                            </div>
+                        `;
+                        const marker = L.marker([midLat, midLon], {
+                            icon: L.divIcon({
+                                html: arrowHtml,
+                                className: 'arrow-badge-container',
+                                iconSize: [54, 22],
+                                iconAnchor: [27, 11]
+                            })
+                        });
+                        arrowsLayer.addLayer(marker);
+                    }
+
+                    const step = document.createElement('div');
+                    step.className = 'itinerary-step';
+                    step.style.borderLeftColor = r.color;
+                    step.innerHTML = `
+                        <div><b>Dron ${id}:</b> ${r.nombre.split(' - ')[1]}</div>
+                        <div style="font-weight:700; color:${r.color};">${r.distancia_km} km</div>
+                    `;
+                    itineraryEl.appendChild(step);
+                });
+
+                document.getElementById('legend-line').style.background = '#38bdf8';
+                document.getElementById('legend-route-label').textContent = 'Flota Completa (3 Drones)';
+            } else {
+                const r = RUTAS_DRONES[dronId];
+                document.getElementById('val-distancia').textContent = `${r.distancia_km} km`;
+                document.getElementById('itinerary-title').textContent = `Itinerario Dron ${dronId} (Visita 100% de los puntos)`;
+                document.getElementById('legend-line').style.background = r.color;
+                document.getElementById('legend-route-label').textContent = `Ruta Óptima Dron ${dronId}`;
+
+                const latlngs = r.secuencia.map(nid => {
+                    const n = NODOS.find(nodo => nodo.id === nid);
+                    return [n.lat, n.lon];
+                });
+
+                // Polilínea de ruta
+                const poly = L.polyline(latlngs, {
+                    color: r.color,
+                    weight: 5.5,
+                    opacity: 0.95,
+                    lineJoin: 'round'
+                }).addTo(routeLayer);
+
+                // Halo suave
+                L.polyline(latlngs, {
+                    color: r.color,
+                    weight: 12,
+                    opacity: 0.25
+                }).addTo(routeLayer);
+
+                // Flechas numeradas en cada tramo
+                for (let i = 0; i < r.secuencia.length - 1; i++) {
+                    const u = NODOS.find(n => n.id === r.secuencia[i]);
+                    const v = NODOS.find(n => n.id === r.secuencia[i+1]);
+                    const esRetorno = i === r.secuencia.length - 2;
+
+                    const midLat = (u.lat + v.lat) / 2;
+                    const midLon = (u.lon + v.lon) / 2;
+                    const rumbo = calcularRumbo(u.lat, u.lon, v.lat, v.lon);
+                    const colorPaso = esRetorno ? '#38bdf8' : r.color;
+
+                    const arrowHtml = `
+                        <div class="arrow-badge" style="border-color: ${colorPaso};" title="Tramo ${i+1}: ${u.nombre.split(' (')[0]} ➔ ${v.nombre.split(' (')[0]}">
+                            <span style="color: ${colorPaso};">Tramo ${i + 1}</span>
+                            <svg class="arrow-svg" style="transform: rotate(${rumbo}deg); fill: ${colorPaso};" viewBox="0 0 24 24">
+                                <path d="M12 2L19 21L12 17L5 21L12 2Z" />
+                            </svg>
+                        </div>
+                    `;
+
+                    const arrowMarker = L.marker([midLat, midLon], {
+                        icon: L.divIcon({
+                            html: arrowHtml,
+                            className: 'arrow-badge-container',
+                            iconSize: [68, 24],
+                            iconAnchor: [34, 12]
+                        })
+                    });
+
+                    arrowMarker.bindPopup(`
+                        <div style="font-family: inherit;">
+                            <div style="font-size: 11px; font-weight: 800; color: ${colorPaso};">
+                                ${esRetorno ? 'TRAMO DE RETORNO A BASE' : `TRAMO ${i + 1} DE PATRULLAJE`}
+                            </div>
+                            <div style="font-size: 12px; font-weight: 700; margin-top: 3px;">
+                                ${u.nombre.split(' (')[0]} ➔ ${v.nombre.split(' (')[0]}
+                            </div>
+                        </div>
+                    `);
+
+                    arrowsLayer.addLayer(arrowMarker);
+
+                    // ==============================================================
+                    // ETIQUETA SOLO "COMISARÍA ACTIVADA" Y PARADAS NUMERADAS
+                    // ==============================================================
+                    if (i === 0) {
+                        const baseBadge = L.marker([u.lat, u.lon], {
+                            icon: L.divIcon({
+                                html: `<div class="node-step-badge" style="border-color: #22c55e; color: #4ade80; background: rgba(15,23,42,0.95); font-size: 11px; padding: 3px 8px; border-width: 2px;">🟢 COMISARIA ACTIVADA</div>`,
+                                className: '',
+                                iconSize: [150, 24],
+                                iconAnchor: [75, 12]
+                            })
+                        });
+                        orderBadgesLayer.addLayer(baseBadge);
+                    }
+
+                    if (!esRetorno) {
+                        const stepBadge = L.marker([v.lat, v.lon], {
+                            icon: L.divIcon({
+                                html: `<div class="node-step-badge" style="border-color: #ef4444; color: #fca5a5;">🔴 Parada #${i + 1}</div>`,
+                                className: '',
+                                iconSize: [85, 20],
+                                iconAnchor: [42, 10]
+                            })
+                        });
+                        orderBadgesLayer.addLayer(stepBadge);
+                    }
+
+                    // Buscar distancia exacta del tramo
+                    const edgeObj = ARISTAS_DETALLE.find(a => (a.u === u.id && a.v === v.id) || (a.u === v.id && a.v === u.id));
+                    const tramoKm = edgeObj ? edgeObj.cost_km : 0;
+
+                    // Paso en el itinerario lateral
+                    const item = document.createElement('div');
+                    item.className = `itinerary-step ${esRetorno ? 'retorno' : ''}`;
+                    item.style.borderLeftColor = esRetorno ? '#38bdf8' : r.color;
+                    item.innerHTML = `
+                        <div style="flex: 1;">
+                            <b>Tramo ${i + 1}:</b> ${u.nombre.split(' (')[0]} <span style="color:#38bdf8;">➔</span> ${v.nombre.split(' (')[0]}
+                            <div style="font-size: 10px; color: #94a3b8; margin-top: 2px;">
+                                ${esRetorno ? 'Retorno a Base' : `Parada #${i + 1}`}
+                            </div>
+                        </div>
+                        <div style="font-weight: 800; color: #38bdf8; font-size: 12px; margin-left: 8px; white-space: nowrap;">
+                            ${tramoKm.toFixed(2)} km
+                        </div>
+                    `;
+                    itineraryEl.appendChild(item);
+                }
+
+                map.fitBounds(poly.getBounds(), { padding: [55, 55] });
+            }
+        }
+
+        // Toggle Modo Oscuro de Alta Confiabilidad (Filtro nativo sin fallas de red)
+        const chkDark = document.getElementById('chk-dark');
+        const mapEl = document.getElementById('map');
+
+        function aplicarModoOscuro(activar) {
+            if (activar) {
+                mapEl.classList.add('dark-mode-map');
+            } else {
+                mapEl.classList.remove('dark-mode-map');
+            }
+        }
+
+        chkDark.addEventListener('change', (e) => {
+            aplicarModoOscuro(e.target.checked);
+        });
+
+        // Inicializar
+        window.addEventListener('load', () => {
+            chkDark.checked = true;
+            aplicarModoOscuro(true);
+            dibujarNodos();
+            llenarListaPuntos();
+            cambiarModo('dijkstra');
+            setTimeout(() => map.invalidateSize(), 300);
+        });
+    </script>
+</body>
+</html>
