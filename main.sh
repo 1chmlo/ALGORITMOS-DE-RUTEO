@@ -21,10 +21,14 @@ $INFRA python carga_puntos_criticos_fiscalia.py
 echo "==> 02 - Metadata: extraccion y transformacion"
 $META python etl_robo_con_violencia.py
 $META python extract_luminarias_mapillary.py
+$META python etl_overpass_formas_viales.py
+$META python etl_tomtom_trafico.py
 
 echo "==> 02 - Metadata: carga a la base de datos"
 $META python carga_robo_con_violencia_hexagonos.py
 $META python carga_robo_con_violencia_centroides.py
 $META python load_luminarias_mapillary.py
+$META python carga_overpass_formas_viales.py
+$META python carga_tomtom_trafico.py
 
 # TODO: 03 - Amenazas, 04 - Web

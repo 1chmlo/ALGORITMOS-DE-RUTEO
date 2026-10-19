@@ -102,3 +102,56 @@ CREATE TABLE IF NOT EXISTS luminarias_mapillary (
     geom                geometry(Point, 4326) NOT NULL
 );
 CREATE INDEX IF NOT EXISTS luminarias_mapillary_geom_idx ON luminarias_mapillary USING GIST (geom);
+
+-- Morfología de carreteras, enlaces/salidas y curvas en Maipú (Overpass API / OSM).
+CREATE TABLE IF NOT EXISTS overpass_formas_viales (
+    id                       SERIAL PRIMARY KEY,
+    osm_id                   BIGINT NOT NULL UNIQUE,
+    nombre                   TEXT,
+    ref_via                  TEXT,
+    highway                  TEXT NOT NULL,
+    junction                 TEXT,
+    comuna                   TEXT,
+    oneway                   BOOLEAN,
+    lanes                    SMALLINT,
+    maxspeed_kmh             SMALLINT,
+    es_enlace_salida         BOOLEAN,
+    es_curva_pronunciada     BOOLEAN,
+    forma_vial               TEXT,
+    longitud_m               DOUBLE PRECISION,
+    distancia_recta_m        DOUBLE PRECISION,
+    indice_sinuosidad        DOUBLE PRECISION,
+    angulo_giro_max_grados   DOUBLE PRECISION,
+    angulo_giro_total_grados DOUBLE PRECISION,
+    factor_riesgo_geom       DOUBLE PRECISION,
+    centroide_lon            DOUBLE PRECISION,
+    centroide_lat            DOUBLE PRECISION,
+    geom                     geometry(LineString, 4326) NOT NULL
+);
+CREATE INDEX IF NOT EXISTS overpass_formas_viales_geom_idx ON overpass_formas_viales USING GIST (geom);
+
+-- Velocidad actual vs. velocidad de flujo libre en autopistas y arterias de Maipú (TomTom API v4).
+CREATE TABLE IF NOT EXISTS tomtom_trafico (
+    id                        SERIAL PRIMARY KEY,
+    segment_id                TEXT NOT NULL UNIQUE,
+    corredor_vial             TEXT,
+    comuna                    TEXT,
+    frc                       TEXT,
+    velocidad_actual_kmh      DOUBLE PRECISION NOT NULL,
+    velocidad_flujo_libre_kmh DOUBLE PRECISION NOT NULL,
+    diferencia_velocidad_kmh  DOUBLE PRECISION,
+    razon_velocidad           DOUBLE PRECISION,
+    indice_congestion         DOUBLE PRECISION,
+    tiempo_actual_seg         INTEGER,
+    tiempo_flujo_libre_seg    INTEGER,
+    demora_seg                INTEGER,
+    confianza                 DOUBLE PRECISION,
+    cierre_vial               BOOLEAN,
+    nivel_riesgo_trafico      TEXT,
+    factor_riesgo_trafico     DOUBLE PRECISION,
+    punto_consulta_lat        DOUBLE PRECISION,
+    punto_consulta_lon        DOUBLE PRECISION,
+    vertices_count            INTEGER,
+    geom                      geometry(LineString, 4326) NOT NULL
+);
+CREATE INDEX IF NOT EXISTS tomtom_trafico_geom_idx ON tomtom_trafico USING GIST (geom);
