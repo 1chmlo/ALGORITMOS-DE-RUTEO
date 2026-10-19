@@ -102,3 +102,42 @@ CREATE TABLE IF NOT EXISTS luminarias_mapillary (
     geom                geometry(Point, 4326) NOT NULL
 );
 CREATE INDEX IF NOT EXISTS luminarias_mapillary_geom_idx ON luminarias_mapillary USING GIST (geom);
+
+-- ===== 03 - AMENAZAS =====
+
+-- Robos con violencia recientes de STOP (ventana de 7 días): hacia dónde se mueve el delito.
+-- Misma grilla que robo_con_violencia_hexagonos (mismos hex_id), para poder cruzarlas.
+-- Se reemplaza completa en cada carga.
+CREATE TABLE IF NOT EXISTS robo_con_violencia_semanal_hexagonos (
+    id                 SERIAL PRIMARY KEY,
+    hex_id             TEXT NOT NULL UNIQUE,
+    stop_id            TEXT,
+    codigo_delito      TEXT NOT NULL,
+    tipo_delito        TEXT NOT NULL,
+    cantidad           INTEGER NOT NULL,
+    nivel              SMALLINT NOT NULL,
+    niveles_total      SMALLINT NOT NULL,
+    rango              TEXT,
+    color              TEXT,
+    color_border       TEXT,
+    fecha_min          DATE,
+    fecha_max          DATE,
+    periodo_desde      DATE,
+    periodo_hasta      DATE,
+    ventana_dias       SMALLINT,
+    tamanio_hexagono_m INTEGER,
+    fuente             TEXT,
+    geom               geometry(Polygon, 4326) NOT NULL
+);
+CREATE INDEX IF NOT EXISTS robo_con_violencia_semanal_hexagonos_geom_idx ON robo_con_violencia_semanal_hexagonos USING GIST (geom);
+
+CREATE TABLE IF NOT EXISTS robo_con_violencia_semanal_centroides (
+    id            SERIAL PRIMARY KEY,
+    hex_id        TEXT NOT NULL UNIQUE REFERENCES robo_con_violencia_semanal_hexagonos (hex_id) ON DELETE CASCADE,
+    cantidad      INTEGER NOT NULL,
+    nivel         SMALLINT NOT NULL,
+    niveles_total SMALLINT NOT NULL,
+    color         TEXT,
+    geom          geometry(Point, 4326) NOT NULL
+);
+CREATE INDEX IF NOT EXISTS robo_con_violencia_semanal_centroides_geom_idx ON robo_con_violencia_semanal_centroides USING GIST (geom);

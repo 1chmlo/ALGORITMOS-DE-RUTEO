@@ -5,10 +5,11 @@ cd "$(dirname "$0")"
 
 INFRA="docker compose run --rm infraestructura"
 META="docker compose run --rm metadata"
+AMEN="docker compose run --rm amenazas"
 
 echo "==> Levantando base de datos (PostGIS + pgRouting)"
 docker compose up -d --wait db
-docker compose build infraestructura metadata
+docker compose build infraestructura metadata amenazas
 
 echo "==> 01 - Infraestructura: extraccion y transformacion"
 $INFRA python etl_comisarias.py
@@ -27,4 +28,11 @@ $META python carga_robo_con_violencia_hexagonos.py
 $META python carga_robo_con_violencia_centroides.py
 $META python load_luminarias_mapillary.py
 
-# TODO: 03 - Amenazas, 04 - Web
+echo "==> 03 - Amenazas: extraccion y transformacion"
+$AMEN python etl_robo_con_violencia_semanal.py
+
+echo "==> 03 - Amenazas: carga a la base de datos"
+$AMEN python carga_robo_con_violencia_semanal_hexagonos.py
+$AMEN python carga_robo_con_violencia_semanal_centroides.py
+
+# TODO: 04 - Web

@@ -38,5 +38,16 @@ services:
     volumes:
       - "./02 - Metadata/salida:/app/salida"
 
+  amenazas:
+    build: "./03 - Amenazas"
+    profiles: ["etl"]
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PGHOST: db
+    volumes:
+      - "./03 - Amenazas/salida:/app/salida"
+
 volumes:
   pgdata:
