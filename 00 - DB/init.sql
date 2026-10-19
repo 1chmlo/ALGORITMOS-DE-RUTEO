@@ -1,7 +1,9 @@
--- Esquema inicial. Por ahora solo infraestructura puntual; metadata, amenazas y
--- la red vial (nodos/aristas para pgRouting) se agregan en entregas posteriores.
+-- Esquema inicial: infraestructura puntual y metadata. Las amenazas y la red vial
+-- (nodos/aristas para pgRouting) se agregan en entregas posteriores.
 CREATE EXTENSION IF NOT EXISTS postgis;
 CREATE EXTENSION IF NOT EXISTS pgrouting;
+
+-- ===== 01 - INFRAESTRUCTURA =====
 
 -- Unidades de Carabineros de la Región Metropolitana (ArcGIS MDSF).
 CREATE TABLE IF NOT EXISTS comisarias (
@@ -41,6 +43,8 @@ CREATE TABLE IF NOT EXISTS puntos_criticos_fiscalia (
     geom              geometry(Point, 4326) NOT NULL
 );
 CREATE INDEX IF NOT EXISTS puntos_criticos_fiscalia_geom_idx ON puntos_criticos_fiscalia USING GIST (geom);
+
+-- ===== 02 - METADATA =====
 
 -- Robos con violencia de la plataforma STOP (Carabineros): grilla de hexágonos de la RM,
 -- ventana móvil de 90 días. Se reemplaza completa en cada carga.

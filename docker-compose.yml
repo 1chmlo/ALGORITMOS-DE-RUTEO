@@ -27,17 +27,16 @@ services:
       - "./01 - Infraestructura/salida:/app/salida"
 
   metadata:
-    build: "./02 - Metadata/luminaria"
+    build: "./02 - Metadata"
     profiles: ["etl"]
     depends_on:
       db:
         condition: service_healthy
     environment:
       - PGHOST=db
-      - OUT_DIR=/app/salida
       - MAPILLARY_TOKEN # opcional: si no está definido en el host se usa el del script
     volumes:
-      - "./02 - Metadata/luminaria:/app/salida"
+      - "./02 - Metadata/salida:/app/salida"
 
 volumes:
   pgdata:

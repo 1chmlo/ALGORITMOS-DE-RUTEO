@@ -18,12 +18,11 @@ def conectar():
     )
 
 
-def cargar_puntos(archivo, tabla, columnas, clave, reemplazar=False):
+def cargar_puntos(archivo, tabla, columnas, clave):
     """Upsert de los features de `archivo` en `tabla`.
 
     `columnas` son las propiedades del GeoJSON que se guardan con el mismo nombre;
-    `clave` es la columna única usada para ON CONFLICT. Con `reemplazar` se vacía antes la
-    tabla (en la misma transacción), para datos que son una foto y no un acumulado.
+    `clave` es la columna única usada para ON CONFLICT.
     """
     features = json.loads((OUT_DIR / archivo).read_text(encoding="utf-8"))["features"]
     cols = ", ".join(columnas)
@@ -39,7 +38,5 @@ def cargar_puntos(archivo, tabla, columnas, clave, reemplazar=False):
         for f in features
     ]
     with conectar() as con:
-        if reemplazar:
-            con.execute(f"DELETE FROM {tabla}")
         con.cursor().executemany(sql, filas)
     print(f"{len(filas)} filas -> {tabla}")
