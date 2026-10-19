@@ -41,3 +41,24 @@ CREATE TABLE IF NOT EXISTS puntos_criticos_fiscalia (
     geom              geometry(Point, 4326) NOT NULL
 );
 CREATE INDEX IF NOT EXISTS puntos_criticos_fiscalia_geom_idx ON puntos_criticos_fiscalia USING GIST (geom);
+
+-- Luminarias públicas detectadas en Maipú (Mapillary Graph API v4).
+CREATE TABLE IF NOT EXISTS luminarias_mapillary (
+    id                  SERIAL PRIMARY KEY,
+    mapillary_id        TEXT NOT NULL UNIQUE,
+    object_value        TEXT NOT NULL,
+    object_type         TEXT,
+    comuna              TEXT,
+    region              TEXT,
+    latitud             DOUBLE PRECISION NOT NULL,
+    longitud            DOUBLE PRECISION NOT NULL,
+    aligned_direction   DOUBLE PRECISION,
+    first_seen_at       TIMESTAMPTZ,
+    last_seen_at        TIMESTAMPTZ,
+    detections_count    INTEGER,
+    confianza_deteccion TEXT,
+    factor_iluminacion  DOUBLE PRECISION,
+    radio_cobertura_m   DOUBLE PRECISION,
+    geom                geometry(Point, 4326) NOT NULL
+);
+CREATE INDEX IF NOT EXISTS luminarias_mapillary_geom_idx ON luminarias_mapillary USING GIST (geom);
