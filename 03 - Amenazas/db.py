@@ -1,11 +1,11 @@
-"""Conexión y carga genérica de un GeoJSON (puntos o polígonos) a una tabla PostGIS."""
+"""Conexión y carga genérica de un GeoJSON de amenazas a una tabla PostGIS."""
 import json
 import os
 from pathlib import Path
 
 import psycopg
 
-OUT_DIR = Path(os.environ.get("OUT_DIR", Path(__file__).parent / "salida"))
+OUT_DIR = Path(os.environ.get("OUT_DIR", Path(__file__).parent / "salidas"))
 
 
 def conectar():
@@ -23,7 +23,7 @@ def cargar_puntos(archivo, tabla, columnas, clave, reemplazar=False):
 
     `columnas` son las propiedades del GeoJSON que se guardan con el mismo nombre;
     `clave` es la columna única usada para ON CONFLICT. Con `reemplazar` se vacía antes la
-    tabla (en la misma transacción), para datos que son una foto y no un acumulado.
+    tabla (en la misma transacción), para datos de amenazas activas en tiempo real.
     """
     features = json.loads((OUT_DIR / archivo).read_text(encoding="utf-8"))["features"]
     cols = ", ".join(columnas)

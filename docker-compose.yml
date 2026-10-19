@@ -45,9 +45,10 @@ services:
       db:
         condition: service_healthy
     environment:
-      PGHOST: db
+      - PGHOST=db
+      - TOMTOM_API_KEY
     volumes:
-      - "./03 - Amenazas/salida:/app/salida"
+      - "./03 - Amenazas/salidas:/app/salidas"
 
 volumes:
   pgdata:

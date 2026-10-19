@@ -5,7 +5,7 @@ cd "$(dirname "$0")"
 
 INFRA="docker compose run --rm infraestructura"
 META="docker compose run --rm metadata"
-AMEN="docker compose run --rm amenazas"
+AMENAZAS="docker compose run --rm amenazas"
 
 echo "==> Levantando base de datos (PostGIS + pgRouting)"
 docker compose up -d --wait db
@@ -22,17 +22,23 @@ $INFRA python carga_puntos_criticos_fiscalia.py
 echo "==> 02 - Metadata: extraccion y transformacion"
 $META python etl_robo_con_violencia.py
 $META python extract_luminarias_mapillary.py
+$META python etl_overpass_formas_viales.py
+$META python etl_tomtom_trafico.py
 
 echo "==> 02 - Metadata: carga a la base de datos"
 $META python carga_robo_con_violencia_hexagonos.py
 $META python carga_robo_con_violencia_centroides.py
 $META python load_luminarias_mapillary.py
+$META python carga_overpass_formas_viales.py
+$META python carga_tomtom_trafico.py
 
 echo "==> 03 - Amenazas: extraccion y transformacion"
-$AMEN python etl_robo_con_violencia_semanal.py
+$AMENAZAS python etl_cortes_ruta_tomtom.py
+$AMENAZAS python etl_robo_con_violencia_semanal.py
 
 echo "==> 03 - Amenazas: carga a la base de datos"
-$AMEN python carga_robo_con_violencia_semanal_hexagonos.py
-$AMEN python carga_robo_con_violencia_semanal_centroides.py
+$AMENAZAS python carga_cortes_ruta_tomtom.py
+$AMENAZAS python carga_robo_con_violencia_semanal_hexagonos.py
+$AMENAZAS python carga_robo_con_violencia_semanal_centroides.py
 
 # TODO: 04 - Web

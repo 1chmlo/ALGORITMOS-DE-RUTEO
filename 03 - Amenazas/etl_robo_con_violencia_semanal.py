@@ -37,7 +37,7 @@ NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
 # del bbox los rangos de la leyenda, por eso se fija en vez de tomarlo de Nominatim.
 BBOX_RM = (-71.72, -34.30, -69.76, -32.92)
 
-OUT_DIR = Path(os.environ.get("OUT_DIR", Path(__file__).parent / "salida"))
+OUT_DIR = Path(os.environ.get("OUT_DIR", Path(__file__).parent / "salidas"))
 
 
 def poligono_rm():

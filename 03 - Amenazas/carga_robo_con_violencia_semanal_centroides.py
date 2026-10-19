@@ -1,4 +1,4 @@
-"""Carga salida/robo_con_violencia_semanal_centroides.geojson en la tabla robo_con_violencia_semanal_centroides.
+"""Carga salidas/robo_con_violencia_semanal_centroides.geojson en la tabla robo_con_violencia_semanal_centroides.
 
 Debe ejecutarse después de carga_robo_con_violencia_semanal_hexagonos.py (hex_id es clave foránea).
 """

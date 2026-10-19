@@ -1,4 +1,4 @@
-"""Carga salida/robo_con_violencia_semanal_hexagonos.geojson en la tabla robo_con_violencia_semanal_hexagonos.
+"""Carga salidas/robo_con_violencia_semanal_hexagonos.geojson en la tabla robo_con_violencia_semanal_hexagonos.
 
 La tabla se reemplaza completa: es una ventana móvil de 7 días, no un histórico.
 Al vaciarla se borran también los centroides (ON DELETE CASCADE), que se cargan después.
