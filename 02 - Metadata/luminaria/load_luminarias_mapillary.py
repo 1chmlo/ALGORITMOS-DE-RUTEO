@@ -30,7 +30,7 @@ PGDATABASE = os.environ.get("PGDATABASE", os.environ.get("DB_NAME", "ruteo"))
 PGUSER = os.environ.get("PGUSER", os.environ.get("DB_USER", "ruteo"))
 PGPASSWORD = os.environ.get("PGPASSWORD", os.environ.get("DB_PASSWORD", "ruteo"))
 
-INPUT_JSON_PATH = Path(__file__).parent / "luminarias_mapillary.json"
+INPUT_JSON_PATH = Path(os.environ.get("OUT_DIR", Path(__file__).parent)) / "luminarias_mapillary.json"
 
 COLUMNAS = [
     "mapillary_id",

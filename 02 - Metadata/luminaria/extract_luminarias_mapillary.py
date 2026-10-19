@@ -42,8 +42,9 @@ MAPILLARY_ENDPOINT = "https://graph.mapillary.com/map_features"
 OBJECT_VALUE = "object--street-light"
 FIELDS = "id,aligned_direction,first_seen_at,last_seen_at,object_value,object_type,geometry,images"
 
+# OUT_DIR permite montar un volumen en Docker (ver docker-compose.yml); por defecto, junto al script.
 OUTPUT_FILENAME = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)),
+    os.environ.get("OUT_DIR", os.path.dirname(os.path.abspath(__file__))),
     "luminarias_mapillary.json",
 )
 

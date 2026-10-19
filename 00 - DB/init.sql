@@ -42,6 +42,42 @@ CREATE TABLE IF NOT EXISTS puntos_criticos_fiscalia (
 );
 CREATE INDEX IF NOT EXISTS puntos_criticos_fiscalia_geom_idx ON puntos_criticos_fiscalia USING GIST (geom);
 
+-- Robos con violencia de la plataforma STOP (Carabineros): grilla de hexágonos de la RM,
+-- ventana móvil de 90 días. Se reemplaza completa en cada carga.
+CREATE TABLE IF NOT EXISTS robo_con_violencia_hexagonos (
+    id                 SERIAL PRIMARY KEY,
+    hex_id             TEXT NOT NULL UNIQUE,
+    stop_id            TEXT,
+    codigo_delito      TEXT NOT NULL,
+    tipo_delito        TEXT NOT NULL,
+    cantidad           INTEGER NOT NULL,
+    nivel              SMALLINT NOT NULL,
+    niveles_total      SMALLINT NOT NULL,
+    rango              TEXT,
+    color              TEXT,
+    color_border       TEXT,
+    fecha_min          DATE,
+    fecha_max          DATE,
+    periodo_desde      DATE,
+    periodo_hasta      DATE,
+    tamanio_hexagono_m INTEGER,
+    fuente             TEXT,
+    geom               geometry(Polygon, 4326) NOT NULL
+);
+CREATE INDEX IF NOT EXISTS robo_con_violencia_hexagonos_geom_idx ON robo_con_violencia_hexagonos USING GIST (geom);
+
+-- Centroide de cada hexágono (un punto por hexágono, para cruzar con la red vial).
+CREATE TABLE IF NOT EXISTS robo_con_violencia_centroides (
+    id            SERIAL PRIMARY KEY,
+    hex_id        TEXT NOT NULL UNIQUE REFERENCES robo_con_violencia_hexagonos (hex_id) ON DELETE CASCADE,
+    cantidad      INTEGER NOT NULL,
+    nivel         SMALLINT NOT NULL,
+    niveles_total SMALLINT NOT NULL,
+    color         TEXT,
+    geom          geometry(Point, 4326) NOT NULL
+);
+CREATE INDEX IF NOT EXISTS robo_con_violencia_centroides_geom_idx ON robo_con_violencia_centroides USING GIST (geom);
+
 -- Luminarias públicas detectadas en Maipú (Mapillary Graph API v4).
 CREATE TABLE IF NOT EXISTS luminarias_mapillary (
     id                  SERIAL PRIMARY KEY,
