@@ -50,5 +50,15 @@ services:
     volumes:
       - "./03 - Amenazas/salidas:/app/salidas"
 
+  web:
+    build: "./04 - Web"
+    ports:
+      - "8080:80"
+    volumes:
+      - "./04 - Web:/usr/share/nginx/html:ro"
+    depends_on:
+      db:
+        condition: service_healthy
+
 volumes:
   pgdata:

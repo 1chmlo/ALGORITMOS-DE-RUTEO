@@ -9,7 +9,7 @@ AMENAZAS="docker compose run --rm amenazas"
 
 echo "==> Levantando base de datos (PostGIS + pgRouting)"
 docker compose up -d --wait db
-docker compose build infraestructura metadata amenazas
+docker compose build infraestructura metadata amenazas web
 
 echo "==> 01 - Infraestructura: extraccion y transformacion"
 $INFRA python etl_comisarias.py
@@ -44,4 +44,6 @@ $AMENAZAS python carga_cortes_ruta_tomtom.py
 $AMENAZAS python carga_robo_con_violencia_semanal_hexagonos.py
 $AMENAZAS python carga_robo_con_violencia_semanal_centroides.py
 
-# TODO: 04 - Web
+echo "==> 04 - Web: levantando visualizador"
+docker compose up -d web
+echo "==> Visualizador web disponible en: http://localhost:8080"
