@@ -34,14 +34,14 @@ FROM comisarias
 WHERE comuna ILIKE 'MAIP%'
 ORDER BY id;
 
--- Insertar los 6 Puntos Críticos 100% dentro de Maipú (Autopistas y accesos críticos)
+-- Insertar los 6 Puntos Críticos 100% dentro de Maipú (Autopistas y accesos críticos) con coordenadas viales exactas
 INSERT INTO nodos_aereos (tipo, nombre, descripcion, geom) VALUES
-('interes', 'Vespucio Sur con Ruta 78 (Autopista del Sol)', 'Enlace autopistas - Punto crítico Fiscalía', ST_SetSRID(ST_MakePoint(-70.749023, -33.490288), 4326)),
-('interes', 'Autopista del Sol con Av. Pajaritos (Mall Arauco)', 'Salida de autopista - Foco STOP 36 delitos', ST_SetSRID(ST_MakePoint(-70.746100, -33.481600), 4326)),
-('interes', 'Plaza de Maipú / Pajaritos con 5 de Abril', 'Centro neurálgico - Foco STOP 49 delitos', ST_SetSRID(ST_MakePoint(-70.755300, -33.514500), 4326)),
-('interes', 'Autopista del Sol con Camino a Rinconada', 'Enlace autopista poniente - Foco STOP 42 delitos', ST_SetSRID(ST_MakePoint(-70.794000, -33.514900), 4326)),
-('interes', 'Camino a Melipilla con 3 Poniente', 'Acceso sur a Ruta 78 y corredor industrial', ST_SetSRID(ST_MakePoint(-70.778000, -33.535000), 4326)),
-('interes', 'Vespucio Sur con Av. Lumen / Segunda Transversal', 'Enlace autopista oriente - Foco STOP 21 delitos', ST_SetSRID(ST_MakePoint(-70.726300, -33.509500), 4326));
+('interes', 'Vespucio Sur con Ruta 78 (Autopista del Sol)', 'Enlace autopistas - Punto crítico Fiscalía', ST_SetSRID(ST_MakePoint(-70.749150, -33.490599), 4326)),
+('interes', 'Vespucio Norte con Av. Pajaritos (Mall Arauco)', 'Enlace autopista y centro comercial - Foco STOP', ST_SetSRID(ST_MakePoint(-70.750800, -33.487700), 4326)),
+('interes', 'Plaza de Maipú / Pajaritos con 5 de Abril', 'Centro neurálgico comunal - Foco STOP', ST_SetSRID(ST_MakePoint(-70.757457, -33.510502), 4326)),
+('interes', 'Autopista del Sol con Camino a Rinconada', 'Enlace autopista poniente - Foco STOP', ST_SetSRID(ST_MakePoint(-70.799200, -33.507620), 4326)),
+('interes', 'Camino a Melipilla con 3 Poniente', 'Acceso sur a autopista y zona industrial', ST_SetSRID(ST_MakePoint(-70.769815, -33.536100), 4326)),
+('interes', 'Vespucio Sur con Segunda Transversal', 'Enlace autopista y paso sobre nivel - Foco STOP', ST_SetSRID(ST_MakePoint(-70.745594, -33.496924), 4326));
 
 CREATE INDEX IF NOT EXISTS nodos_aereos_geom_idx ON nodos_aereos USING GIST (geom);
 

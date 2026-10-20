@@ -221,3 +221,26 @@ CREATE TABLE IF NOT EXISTS robo_con_violencia_semanal_centroides (
     geom          geometry(Point, 4326) NOT NULL
 );
 CREATE INDEX IF NOT EXISTS robo_con_violencia_semanal_centroides_geom_idx ON robo_con_violencia_semanal_centroides USING GIST (geom);
+
+-- ===== 04 - RED VIAL Y GRAFO AÉREO (pgRouting) =====
+
+CREATE TABLE IF NOT EXISTS nodos_aereos (
+    id SERIAL PRIMARY KEY,
+    tipo TEXT NOT NULL CHECK (tipo IN ('comisaria', 'interes')),
+    nombre TEXT NOT NULL,
+    descripcion TEXT,
+    geom geometry(Point, 4326) NOT NULL
+);
+CREATE INDEX IF NOT EXISTS nodos_aereos_geom_idx ON nodos_aereos USING GIST (geom);
+
+CREATE TABLE IF NOT EXISTS aristas_aereas (
+    id SERIAL PRIMARY KEY,
+    source INTEGER NOT NULL REFERENCES nodos_aereos(id) ON DELETE CASCADE,
+    target INTEGER NOT NULL REFERENCES nodos_aereos(id) ON DELETE CASCADE,
+    cost DOUBLE PRECISION NOT NULL,
+    reverse_cost DOUBLE PRECISION NOT NULL,
+    geom geometry(LineString, 4326) NOT NULL
+);
+CREATE INDEX IF NOT EXISTS aristas_aereas_geom_idx ON aristas_aereas USING GIST (geom);
+CREATE INDEX IF NOT EXISTS aristas_aereas_source_idx ON aristas_aereas (source);
+CREATE INDEX IF NOT EXISTS aristas_aereas_target_idx ON aristas_aereas (target);

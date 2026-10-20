@@ -549,7 +549,7 @@
                 <div class="metrics" style="grid-template-columns: 1fr;">
                     <div>
                         <div class="metric-title">Distancia Total del Circuito</div>
-                        <div class="metric-value" id="val-distancia">18.83 km</div>
+                        <div class="metric-value" id="val-distancia">15.61 km</div>
                         <div class="metric-note">Distancia euclidiana total calculada con Dijkstra</div>
                     </div>
                 </div>
@@ -603,49 +603,49 @@
             { id: 1, tipo: "comisaria", nombre: "25A. COM. MAIPU", desc: "Base policial central (Pajaritos / 5 de Abril)", lat: -33.507197, lon: -70.754619 },
             { id: 2, tipo: "comisaria", nombre: "52A. COM. RINCONADA DE MAIPU", desc: "Base policial poniente", lat: -33.511141, lon: -70.790934 },
             { id: 3, tipo: "comisaria", nombre: "SCOM. MAIPU ORIENTE", desc: "Base policial sur (Melipilla / 3 Poniente)", lat: -33.558223, lon: -70.789735 },
-            { id: 4, tipo: "interes", nombre: "Vespucio Sur con Ruta 78 (Autopista del Sol)", desc: "Enlace autopistas - Punto crítico Fiscalía", lat: -33.490288, lon: -70.749023 },
-            { id: 5, tipo: "interes", nombre: "Autopista del Sol con Av. Pajaritos (Mall Arauco)", desc: "Salida autopista - Foco STOP 36 delitos", lat: -33.481600, lon: -70.746100 },
-            { id: 6, tipo: "interes", nombre: "Plaza de Maipú / Pajaritos con 5 de Abril", desc: "Centro comunal - Foco STOP 49 delitos", lat: -33.514500, lon: -70.755300 },
-            { id: 7, tipo: "interes", nombre: "Autopista del Sol con Camino a Rinconada", desc: "Enlace autopista poniente - Foco STOP 42 delitos", lat: -33.514900, lon: -70.794000 },
-            { id: 8, tipo: "interes", nombre: "Camino a Melipilla con 3 Poniente", desc: "Acceso sur a Ruta 78 y corredor industrial", lat: -33.535000, lon: -70.778000 },
-            { id: 9, tipo: "interes", nombre: "Vespucio Sur con Av. Lumen / Segunda Transversal", desc: "Enlace autopista oriente - Foco STOP 21 delitos", lat: -33.509500, lon: -70.726300 }
+            { id: 4, tipo: "interes", nombre: "Vespucio Sur con Ruta 78 (Autopista del Sol)", desc: "Enlace autopistas - Punto crítico Fiscalía", lat: -33.490599, lon: -70.749150 },
+            { id: 5, tipo: "interes", nombre: "Vespucio Norte con Av. Pajaritos (Mall Arauco)", desc: "Enlace autopista y centro comercial - Foco STOP", lat: -33.487700, lon: -70.750800 },
+            { id: 6, tipo: "interes", nombre: "Plaza de Maipú / Pajaritos con 5 de Abril", desc: "Centro neurálgico comunal - Foco STOP", lat: -33.510502, lon: -70.757457 },
+            { id: 7, tipo: "interes", nombre: "Autopista del Sol con Camino a Rinconada", desc: "Enlace autopista poniente - Foco STOP", lat: -33.507620, lon: -70.799200 },
+            { id: 8, tipo: "interes", nombre: "Camino a Melipilla con 3 Poniente", desc: "Acceso sur a autopista y zona industrial", lat: -33.536100, lon: -70.769815 },
+            { id: 9, tipo: "interes", nombre: "Vespucio Sur con Segunda Transversal", desc: "Enlace autopista y paso sobre nivel - Foco STOP", lat: -33.496924, lon: -70.745594 }
         ];
 
         // 33 Aristas con sus costos exactos en km calculados en PostGIS
         const ARISTAS_DETALLE = [
-            { id: 1, u: 1, v: 4, cost_km: 1.95, cost_m: 1946 },
-            { id: 2, u: 1, v: 5, cost_km: 2.95, cost_m: 2951 },
-            { id: 3, u: 1, v: 6, cost_km: 0.81, cost_m: 813 },
-            { id: 4, u: 1, v: 7, cost_km: 3.76, cost_m: 3757 },
-            { id: 5, u: 1, v: 8, cost_km: 3.77, cost_m: 3772 },
-            { id: 6, u: 1, v: 9, cost_km: 2.64, cost_m: 2644 },
-            { id: 7, u: 2, v: 4, cost_km: 4.53, cost_m: 4530 },
-            { id: 8, u: 2, v: 5, cost_km: 5.30, cost_m: 5300 },
-            { id: 9, u: 2, v: 6, cost_km: 3.33, cost_m: 3332 },
-            { id: 10, u: 2, v: 7, cost_km: 0.50, cost_m: 505 },
-            { id: 11, u: 2, v: 8, cost_km: 2.91, cost_m: 2906 },
-            { id: 12, u: 2, v: 9, cost_km: 6.01, cost_m: 6008 },
-            { id: 13, u: 3, v: 4, cost_km: 8.43, cost_m: 8431 },
-            { id: 14, u: 3, v: 5, cost_km: 9.42, cost_m: 9416 },
-            { id: 15, u: 3, v: 6, cost_km: 5.81, cost_m: 5809 },
-            { id: 16, u: 3, v: 7, cost_km: 4.82, cost_m: 4821 },
-            { id: 17, u: 3, v: 8, cost_km: 2.80, cost_m: 2797 },
-            { id: 18, u: 3, v: 9, cost_km: 8.00, cost_m: 7995 },
-            { id: 19, u: 4, v: 5, cost_km: 1.00, cost_m: 1001 },
-            { id: 20, u: 4, v: 6, cost_km: 2.75, cost_m: 2748 },
-            { id: 21, u: 4, v: 7, cost_km: 4.99, cost_m: 4992 },
-            { id: 22, u: 4, v: 8, cost_km: 5.64, cost_m: 5643 },
-            { id: 23, u: 4, v: 9, cost_km: 3.00, cost_m: 3000 },
-            { id: 24, u: 5, v: 6, cost_km: 3.75, cost_m: 3748 },
-            { id: 25, u: 5, v: 7, cost_km: 5.78, cost_m: 5784 },
-            { id: 26, u: 5, v: 8, cost_km: 6.62, cost_m: 6623 },
-            { id: 27, u: 5, v: 9, cost_km: 3.60, cost_m: 3600 },
-            { id: 28, u: 6, v: 7, cost_km: 3.60, cost_m: 3596 },
-            { id: 29, u: 6, v: 8, cost_km: 3.10, cost_m: 3101 },
-            { id: 30, u: 6, v: 9, cost_km: 2.75, cost_m: 2751 },
-            { id: 31, u: 7, v: 8, cost_km: 2.68, cost_m: 2679 },
-            { id: 32, u: 7, v: 9, cost_km: 6.32, cost_m: 6318 },
-            { id: 33, u: 8, v: 9, cost_km: 5.57, cost_m: 5574 }
+            { id: 1, u: 1, v: 4, cost_km: 1.91, cost_m: 1910 },
+            { id: 2, u: 1, v: 5, cost_km: 2.19, cost_m: 2191 },
+            { id: 3, u: 1, v: 6, cost_km: 0.45, cost_m: 452 },
+            { id: 4, u: 1, v: 7, cost_km: 4.14, cost_m: 4142 },
+            { id: 5, u: 1, v: 8, cost_km: 3.50, cost_m: 3503 },
+            { id: 6, u: 1, v: 9, cost_km: 1.41, cost_m: 1415 },
+            { id: 7, u: 2, v: 4, cost_km: 4.50, cost_m: 4502 },
+            { id: 8, u: 2, v: 5, cost_km: 4.55, cost_m: 4546 },
+            { id: 9, u: 2, v: 6, cost_km: 3.11, cost_m: 3111 },
+            { id: 10, u: 2, v: 7, cost_km: 0.86, cost_m: 862 },
+            { id: 11, u: 2, v: 8, cost_km: 3.39, cost_m: 3393 },
+            { id: 12, u: 2, v: 9, cost_km: 4.50, cost_m: 4498 },
+            { id: 13, u: 3, v: 4, cost_km: 8.39, cost_m: 8395 },
+            { id: 14, u: 3, v: 5, cost_km: 8.62, cost_m: 8618 },
+            { id: 15, u: 3, v: 6, cost_km: 6.08, cost_m: 6083 },
+            { id: 16, u: 3, v: 7, cost_km: 5.68, cost_m: 5681 },
+            { id: 17, u: 3, v: 8, cost_km: 3.07, cost_m: 3073 },
+            { id: 18, u: 3, v: 9, cost_km: 7.94, cost_m: 7940 },
+            { id: 19, u: 4, v: 5, cost_km: 0.36, cost_m: 356 },
+            { id: 20, u: 4, v: 6, cost_km: 2.34, cost_m: 2339 },
+            { id: 21, u: 4, v: 7, cost_km: 5.02, cost_m: 5019 },
+            { id: 22, u: 4, v: 8, cost_km: 5.40, cost_m: 5400 },
+            { id: 23, u: 4, v: 9, cost_km: 0.78, cost_m: 775 },
+            { id: 24, u: 5, v: 6, cost_km: 2.60, cost_m: 2604 },
+            { id: 25, u: 5, v: 7, cost_km: 5.01, cost_m: 5011 },
+            { id: 26, u: 5, v: 8, cost_km: 5.65, cost_m: 5651 },
+            { id: 27, u: 5, v: 9, cost_km: 1.13, cost_m: 1132 },
+            { id: 28, u: 6, v: 7, cost_km: 3.89, cost_m: 3892 },
+            { id: 29, u: 6, v: 8, cost_km: 3.06, cost_m: 3062 },
+            { id: 30, u: 6, v: 9, cost_km: 1.87, cost_m: 1866 },
+            { id: 31, u: 7, v: 8, cost_km: 4.17, cost_m: 4175 },
+            { id: 32, u: 7, v: 9, cost_km: 5.12, cost_m: 5120 },
+            { id: 33, u: 8, v: 9, cost_km: 4.89, cost_m: 4893 }
         ];
 
         // Rutas óptimas calculadas con pgr_dijkstra en PostgreSQL:
@@ -654,22 +654,22 @@
                 nombre: "Dron 1 - 25A. Comisaría Maipú",
                 color: "#22c55e",
                 secuencia: [1, 6, 8, 7, 4, 5, 9, 1],
-                distancia_km: 18.83,
-                tiempo_min: 19
+                distancia_km: 15.61,
+                tiempo_min: 16
             },
             2: {
                 nombre: "Dron 2 - 52A. Comisaría Rinconada",
                 color: "#06b6d4",
                 secuencia: [2, 4, 5, 9, 6, 8, 7, 2],
-                distancia_km: 18.17,
-                tiempo_min: 18
+                distancia_km: 15.96,
+                tiempo_min: 16
             },
             3: {
                 nombre: "Dron 3 - SCom. Maipú Oriente",
                 color: "#f59e0b",
                 secuencia: [3, 7, 4, 5, 9, 6, 8, 3],
-                distancia_km: 23.06,
-                tiempo_min: 23
+                distancia_km: 20.19,
+                tiempo_min: 20
             }
         };
 
