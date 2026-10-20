@@ -5,7 +5,7 @@ https://www.emol.com/noticias/Nacional/2026/06/26/1203878/mapa-encerronas-porton
 
 INFRAESTRUCTURA:
 
-- Puntos Criticos de encerronas segun Emol y fiscalia (definir fuentes extras)
+- Puntos Criticos de encerronas segun Emol, fiscalia y otras fuentes.
 
 METADATA:
 
