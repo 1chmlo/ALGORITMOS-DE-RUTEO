@@ -109,7 +109,7 @@
         /* Selector de Modos de Vista */
         .mode-tabs {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: repeat(4, 1fr);
             gap: 4px;
             background: rgba(15, 23, 42, 0.8);
             padding: 4px;
@@ -122,9 +122,9 @@
             background: transparent;
             border: none;
             color: #94a3b8;
-            padding: 8px 6px;
+            padding: 8px 3px;
             border-radius: 8px;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 700;
             cursor: pointer;
             text-align: center;
@@ -144,6 +144,68 @@
             background: #0284c7;
             color: #ffffff;
             box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+        }
+
+        /* Tarjeta de detalle de metadata */
+        .meta-detail-box {
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            border-radius: 10px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+
+        .meta-header {
+            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+            padding-bottom: 8px;
+        }
+
+        .meta-title {
+            font-size: 13px;
+            font-weight: 800;
+            color: #f8fafc;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .meta-stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .meta-stat-card {
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid rgba(148, 163, 184, 0.15);
+            border-radius: 8px;
+            padding: 8px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .meta-stat-card .label {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #94a3b8;
+            letter-spacing: 0.03em;
+        }
+
+        .meta-stat-card .value {
+            font-size: 13px;
+            font-weight: 800;
+            color: #f8fafc;
+        }
+
+        .meta-stat-card .desc {
+            font-size: 9px;
+            color: #64748b;
+            line-height: 1.25;
         }
 
         .panel-body {
@@ -478,15 +540,19 @@
             <div class="mode-tabs">
                 <button class="mode-tab" id="tab-puntos" onclick="cambiarModo('puntos')">
                     <span>📍 Puntos</span>
-                    <span style="font-size: 9px; opacity: 0.8;">Infraestructura</span>
+                    <span style="font-size: 8.5px; opacity: 0.8;">Nodos</span>
                 </button>
                 <button class="mode-tab" id="tab-grafo" onclick="cambiarModo('grafo')">
                     <span>🕸️ Grafo</span>
-                    <span style="font-size: 9px; opacity: 0.8;">Costos en km</span>
+                    <span style="font-size: 8.5px; opacity: 0.8;">Costos</span>
+                </button>
+                <button class="mode-tab" id="tab-metadata" onclick="cambiarModo('metadata')">
+                    <span>📊 Metadata</span>
+                    <span style="font-size: 8.5px; opacity: 0.8;">Inspección</span>
                 </button>
                 <button class="mode-tab active" id="tab-dijkstra" onclick="cambiarModo('dijkstra')">
                     <span>🚁 Dijkstra</span>
-                    <span style="font-size: 9px; opacity: 0.8;">Rutas Drones</span>
+                    <span style="font-size: 8.5px; opacity: 0.8;">Rutas</span>
                 </button>
             </div>
         </div>
@@ -519,7 +585,45 @@
                 </div>
                 <span class="section-label">Topología del Grafo Aéreo</span>
                 <div style="font-size: 11px; color: #94a3b8; line-height: 1.4;">
-                    Cada arista muestra su <b>costo euclidiano exacto en kilómetros</b> sobre la línea. Haz clic en cualquier etiqueta para ver el detalle del tramo y sus nodos extremos.
+                    Cada arista muestra su <b>costo euclidiano exacto en kilómetros</b> sobre la línea. Haz clic en cualquier arista para ver el detalle del tramo y sus nodos extremos.
+                </div>
+            </div>
+
+            <!-- CONTENIDO MODO 3: GRAFO CON METADATA -->
+            <div id="content-metadata" style="display: none;">
+                <span class="section-label">Inspección de Metadata y Amenazas</span>
+                <div style="font-size: 11px; color: #94a3b8; margin: 4px 0 8px 0; line-height: 1.35;">
+                    Haz clic en cualquier <b>nodo</b> o <b>arista</b> del mapa para inspeccionar sus fuentes de datos: STOP, Mapillary, TomTom y Overpass.
+                </div>
+
+                <!-- Tarjeta interactiva de detalle -->
+                <div id="metadata-detail-card" class="meta-detail-box">
+                    <div style="text-align: center; color: #94a3b8; font-size: 11px; padding: 16px 8px; line-height: 1.4;">
+                        👆 <b>Selecciona un nodo o arista en el mapa</b> para ver sus métricas de delitos, iluminación, tráfico y morfología vial.
+                    </div>
+                </div>
+
+                <!-- Toggles de Capas Espaciales -->
+                <span class="section-label" style="margin-top: 6px;">Capas de Amenazas y Metadata</span>
+                <div class="toggles" style="display: flex; flex-direction: column; gap: 6px; margin-top: 4px;">
+                    <label class="toggle-item">
+                        <span style="font-size: 11px; display: flex; align-items: center; gap: 6px;">
+                            <span style="color: #ef4444;">🔴</span> Focos Delitos STOP (Carabineros)
+                        </span>
+                        <input type="checkbox" id="chk-layer-stop" onchange="toggleCapa('stop', this.checked)">
+                    </label>
+                    <label class="toggle-item">
+                        <span style="font-size: 11px; display: flex; align-items: center; gap: 6px;">
+                            <span style="color: #f43f5e;">🚧</span> Cortes de Ruta Activos (TomTom)
+                        </span>
+                        <input type="checkbox" id="chk-layer-cortes" onchange="toggleCapa('cortes', this.checked)">
+                    </label>
+                    <label class="toggle-item">
+                        <span style="font-size: 11px; display: flex; align-items: center; gap: 6px;">
+                            <span style="color: #38bdf8;">🚗</span> Corredores de Tráfico (TomTom)
+                        </span>
+                        <input type="checkbox" id="chk-layer-trafico" onchange="toggleCapa('trafico', this.checked)">
+                    </label>
                 </div>
             </div>
 
@@ -597,6 +701,8 @@
 
     <!-- Leaflet JS desde CDNJS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <!-- Metadata consolidada (STOP, Mapillary, TomTom, Overpass) -->
+    <script src="metadata.js"></script>
     <script>
         // Nodos 100% dentro de Maipú (3 comisarías verdes, 6 puntos críticos rojos)
         const NODOS = [
@@ -712,6 +818,11 @@
         const nodesLayer = L.layerGroup().addTo(map);
         const orderBadgesLayer = L.layerGroup().addTo(map);
 
+        // Capas espaciales de metadata y amenazas
+        const stopLayer = L.layerGroup().addTo(map);
+        const cortesLayer = L.layerGroup().addTo(map);
+        const traficoLayer = L.layerGroup().addTo(map);
+
         // Dibujar nodos diferenciados
         function dibujarNodos() {
             nodesLayer.clearLayers();
@@ -730,8 +841,23 @@
                     fillOpacity: 0.95
                 });
 
+                let metaSummary = '';
+                if (typeof METADATA_COMPLETA !== 'undefined' && METADATA_COMPLETA.nodos) {
+                    const m = METADATA_COMPLETA.nodos.find(x => x.id === n.id);
+                    if (m) {
+                        metaSummary = `
+                            <div style="margin-top:6px; padding-top:6px; border-top:1px solid #e2e8f0; font-size:10px; color:#334155; line-height:1.4;">
+                                🚔 <b>Delitos STOP:</b> ${m.stop_90d} (90d) · ${m.stop_7d} (7d)<br>
+                                💡 <b>Luminarias:</b> ${m.luminarias} postes en 500m<br>
+                                🚗 <b>Tráfico TomTom:</b> ${m.vel_actual} km/h (Flujo: ${m.vel_libre})<br>
+                                🛣️ <b>Overpass:</b> ${m.es_enlace ? 'Enlace/Rampa' : 'Trazado continuo'} ${m.es_curva ? '· Curvas' : ''}
+                            </div>
+                        `;
+                    }
+                }
+
                 marker.bindPopup(`
-                    <div style="font-family: inherit; min-width: 220px;">
+                    <div style="font-family: inherit; min-width: 230px;">
                         <span style="font-size: 11px; font-weight: 800; text-transform: uppercase; color: ${color};">
                             ${isComisaria ? 'BASE POLICIAL (COMISARÍA)' : 'PUNTO CRÍTICO DE MAIPÚ'} [ID ${n.id}]
                         </span>
@@ -741,15 +867,22 @@
                         <div style="font-size: 11px; color: #475569; margin-top: 3px;">
                             ${n.desc}
                         </div>
-                        <div style="font-size: 10px; color: #94a3b8; margin-top: 4px;">
-                            Coords: ${n.lat.toFixed(4)}, ${n.lon.toFixed(4)}
-                        </div>
+                        ${metaSummary}
+                        <button onclick="cambiarModo('metadata'); mostrarDetalleNodoMetadata(${n.id});" style="margin-top:8px; width:100%; padding:5px; background:#0284c7; color:#fff; border:none; border-radius:6px; font-weight:700; font-size:11px; cursor:pointer;">
+                            📊 Ver en Panel de Metadata
+                        </button>
                     </div>
                 `);
 
                 marker.bindTooltip(`<b>${n.nombre.split(' (')[0]}</b>`, {
                     permanent: false,
                     direction: 'top'
+                });
+
+                marker.on('click', () => {
+                    if (modoActual === 'metadata') {
+                        mostrarDetalleNodoMetadata(n.id);
+                    }
                 });
 
                 nodesLayer.addLayer(marker);
@@ -796,8 +929,10 @@
                     dashArray: '4, 4'
                 });
 
+                const tiempoMin = Math.max(1, Math.round((arista.cost_km / (60 / 60))));
+
                 line.bindPopup(`
-                    <div style="font-family: inherit;">
+                    <div style="font-family: inherit; min-width: 220px;">
                         <span style="font-size:10px; font-weight:800; color:#38bdf8; text-transform:uppercase;">
                             Arista #${arista.id} del Grafo
                         </span>
@@ -807,8 +942,20 @@
                         <div style="font-size:13px; font-weight:800; color:#22c55e; margin-top:4px;">
                             Costo: ${arista.cost_km} km (${arista.cost_m} m)
                         </div>
+                        <div style="font-size:11px; color:#64748b; margin-top:2px;">
+                            Tiempo estimado dron: ~${tiempoMin} min (60 km/h)
+                        </div>
+                        <button onclick="cambiarModo('metadata'); mostrarDetalleAristaMetadata(${arista.id});" style="margin-top:6px; width:100%; padding:4px; background:#0284c7; color:#fff; border:none; border-radius:4px; font-weight:700; font-size:10px; cursor:pointer;">
+                            📏 Ver en Panel de Metadata
+                        </button>
                     </div>
                 `);
+
+                line.on('click', () => {
+                    if (modoActual === 'metadata') {
+                        mostrarDetalleAristaMetadata(arista.id);
+                    }
+                });
 
                 graphEdgesLayer.addLayer(line);
 
@@ -826,16 +973,217 @@
                 });
 
                 costMarker.bindPopup(`
-                    <b>Arista #${arista.id}</b><br>
-                    ${u.nombre} ⟷ ${v.nombre}<br>
-                    <b>Distancia / Costo:</b> ${arista.cost_km} km
+                    <div style="font-family: inherit; font-size:11px;">
+                        <b>Arista #${arista.id}</b><br>
+                        ${u.nombre} ⟷ ${v.nombre}<br>
+                        <b>Distancia euclidiana:</b> ${arista.cost_km} km (${arista.cost_m} m)<br>
+                        <b>Tiempo de vuelo:</b> ~${tiempoMin} min
+                    </div>
                 `);
+
+                costMarker.on('click', () => {
+                    if (modoActual === 'metadata') {
+                        mostrarDetalleAristaMetadata(arista.id);
+                    }
+                });
 
                 graphCostsLayer.addLayer(costMarker);
             });
         }
 
-        // Cambiar entre los 3 Modos de Visualización
+        // Inspección detallada de un Nodo
+        function mostrarDetalleNodoMetadata(nodoId) {
+            if (typeof METADATA_COMPLETA === 'undefined' || !METADATA_COMPLETA.nodos) return;
+            const meta = METADATA_COMPLETA.nodos.find(n => n.id === nodoId);
+            if (!meta) return;
+
+            const isCom = meta.tipo === 'comisaria';
+            const colorTipo = isCom ? '#22c55e' : '#ef4444';
+            const badgeTipo = isCom ? 'Base Policial' : 'Punto Crítico';
+
+            const stopNivelTxt = meta.stop_90d >= 30 ? '🔴 Muy Alto Foco' : (meta.stop_90d > 0 ? '🟠 Foco Activo' : '🟢 Sin Delitos 90d');
+            const stopSemanalTxt = meta.stop_7d > 0 ? `⚠️ ${meta.stop_7d} delitos última sem.` : '✅ Estable (0 delitos 7d)';
+            const luzTxt = meta.luminarias > 200 ? '💡 Muy Iluminado (>200)' : (meta.luminarias > 50 ? '🟡 Luz Moderada' : '🌑 Zona Oscura (<50)');
+            const traficoTxt = (meta.vel_actual < meta.vel_libre * 0.75) ? '🔴 Congestión Frecuente' : '🟢 Flujo Normal';
+            const viasTxt = (meta.es_enlace ? 'Enlace/Salida Autopista' : 'Vía Urbana Regular') + (meta.es_curva ? ' · Curvas Pronunciadas' : '');
+            const cortesTxt = meta.cortes_ruta > 0 ? `🚧 ${meta.cortes_ruta} corte(s) vial(es) activo(s)` : '✅ Sin cortes de ruta cercanos';
+
+            const card = document.getElementById('metadata-detail-card');
+            if (card) {
+                card.innerHTML = `
+                    <div class="meta-header">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                            <span class="meta-badge-tipo" style="background:${colorTipo}22; color:${colorTipo}; border:1px solid ${colorTipo};">
+                                ${badgeTipo} · ID ${meta.id}
+                            </span>
+                            <span style="font-size:10px; color:#94a3b8;">Radio buffer: 500m</span>
+                        </div>
+                        <div class="meta-title">${meta.nombre}</div>
+                        <div style="font-size:10px; color:#94a3b8; margin-top:2px;">${meta.descripcion || ''}</div>
+                    </div>
+
+                    <div class="meta-stat-grid">
+                        <div class="meta-stat-card">
+                            <span class="label">🚔 Delitos STOP (90d)</span>
+                            <span class="value" style="color:#f87171;">${meta.stop_90d} delitos</span>
+                            <span class="desc">${stopNivelTxt}</span>
+                        </div>
+                        <div class="meta-stat-card">
+                            <span class="label">⚠️ STOP Semanal (7d)</span>
+                            <span class="value" style="color:#fbbf24;">${meta.stop_7d} del/sem</span>
+                            <span class="desc">${stopSemanalTxt}</span>
+                        </div>
+                        <div class="meta-stat-card">
+                            <span class="label">💡 Mapillary (Luz)</span>
+                            <span class="value" style="color:#38bdf8;">${meta.luminarias} postes</span>
+                            <span class="desc">${luzTxt}</span>
+                        </div>
+                        <div class="meta-stat-card">
+                            <span class="label">🚗 TomTom Tráfico</span>
+                            <span class="value" style="color:#a78bfa;">${meta.vel_actual} km/h</span>
+                            <span class="desc">${traficoTxt} (Flujo libre ${meta.vel_libre})</span>
+                        </div>
+                    </div>
+
+                    <div style="background:rgba(15,23,42,0.6); border:1px solid rgba(148,163,184,0.15); border-radius:8px; padding:8px 10px; font-size:11px;">
+                        <div style="color:#94a3b8; font-size:9.5px; font-weight:700; text-transform:uppercase;">🛣️ Morfología Vial (Overpass)</div>
+                        <div style="color:#f8fafc; font-weight:600; margin-top:2px;">${viasTxt}</div>
+                    </div>
+
+                    <div style="background:rgba(15,23,42,0.6); border:1px solid rgba(148,163,184,0.15); border-radius:8px; padding:8px 10px; font-size:11px;">
+                        <div style="color:#94a3b8; font-size:9.5px; font-weight:700; text-transform:uppercase;">🚧 Amenaza Cortes de Ruta (TomTom)</div>
+                        <div style="color:#f8fafc; font-weight:600; margin-top:2px;">${cortesTxt}</div>
+                    </div>
+                `;
+            }
+        }
+
+        // Inspección detallada de una Arista
+        function mostrarDetalleAristaMetadata(aristaId) {
+            const arista = ARISTAS_DETALLE.find(a => a.id === aristaId);
+            if (!arista) return;
+            const u = NODOS.find(n => n.id === arista.u);
+            const v = NODOS.find(n => n.id === arista.v);
+            if (!u || !v) return;
+
+            const tiempoMin = Math.max(1, Math.round((arista.cost_km / (60 / 60))));
+
+            const card = document.getElementById('metadata-detail-card');
+            if (card) {
+                card.innerHTML = `
+                    <div class="meta-header">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                            <span class="meta-badge-tipo" style="background:#38bdf822; color:#38bdf8; border:1px solid #38bdf8;">
+                                Tramo / Arista #${arista.id}
+                            </span>
+                            <span style="font-size:10px; color:#22c55e; font-weight:700;">Vuelo Bidireccional</span>
+                        </div>
+                        <div class="meta-title" style="font-size:12px;">
+                            ${u.nombre.split(' (')[0]} ⟷ ${v.nombre.split(' (')[0]}
+                        </div>
+                    </div>
+
+                    <div class="meta-stat-grid" style="grid-template-columns:1fr 1fr;">
+                        <div class="meta-stat-card">
+                            <span class="label">📏 Distancia Euclidiana</span>
+                            <span class="value" style="color:#22c55e;">${arista.cost_km} km</span>
+                            <span class="desc">${arista.cost_m} metros exactos</span>
+                        </div>
+                        <div class="meta-stat-card">
+                            <span class="label">⏱️ Tiempo Estimado Dron</span>
+                            <span class="value" style="color:#38bdf8;">~${tiempoMin} min</span>
+                            <span class="desc">A velocidad crucero 60 km/h</span>
+                        </div>
+                    </div>
+
+                    <div style="background:rgba(15,23,42,0.6); border:1px solid rgba(148,163,184,0.15); border-radius:8px; padding:8px 10px; font-size:11px;">
+                        <div style="color:#94a3b8; font-size:9.5px; font-weight:700; text-transform:uppercase;">Extremos del Enlace Aéreo</div>
+                        <div style="margin-top:3px; color:#cbd5e1;"><b>Origen (ID ${u.id}):</b> ${u.nombre}</div>
+                        <div style="margin-top:2px; color:#cbd5e1;"><b>Destino (ID ${v.id}):</b> ${v.nombre}</div>
+                    </div>
+                `;
+            }
+        }
+
+        // Toggles de capas espaciales adicionales
+        function toggleCapa(tipo, activo) {
+            if (typeof METADATA_COMPLETA === 'undefined') return;
+
+            if (tipo === 'stop') {
+                stopLayer.clearLayers();
+                if (activo && METADATA_COMPLETA.stop_puntos) {
+                    METADATA_COMPLETA.stop_puntos.forEach(p => {
+                        const marker = L.circleMarker([p.lat, p.lon], {
+                            radius: p.nivel >= 3 ? 6.5 : (p.nivel === 2 ? 5 : 3.5),
+                            fillColor: p.nivel >= 3 ? '#ef4444' : (p.nivel === 2 ? '#f97316' : '#eab308'),
+                            color: '#ffffff',
+                            weight: 1,
+                            opacity: 0.9,
+                            fillOpacity: 0.75
+                        });
+                        marker.bindPopup(`
+                            <div style="font-family: inherit; font-size:11px;">
+                                <b style="color:#ef4444;">Foco Delictual STOP (Carabineros)</b><br>
+                                Cantidad: <b>${p.cantidad}</b> robos violentos<br>
+                                Nivel de gravedad: Nivel ${p.nivel}
+                            </div>
+                        `);
+                        stopLayer.addLayer(marker);
+                    });
+                }
+            } else if (tipo === 'cortes') {
+                cortesLayer.clearLayers();
+                if (activo && METADATA_COMPLETA.cortes_tomtom) {
+                    METADATA_COMPLETA.cortes_tomtom.forEach(c => {
+                        if (!c.coords || c.coords.length < 2) return;
+                        const latlngs = c.coords.map(pt => [pt[1], pt[0]]);
+                        const line = L.polyline(latlngs, {
+                            color: '#f43f5e',
+                            weight: 6,
+                            opacity: 0.9,
+                            dashArray: '6, 6'
+                        });
+                        line.bindPopup(`
+                            <div style="font-family: inherit; font-size:11px;">
+                                <b style="color:#f43f5e;">🚧 Corte de Ruta Total (TomTom)</b><br>
+                                Evento: <b>${c.evento || 'Cerrado'}</b><br>
+                                Desde: ${c.desde || 'N/A'}<br>
+                                Hasta: ${c.hasta || 'N/A'}<br>
+                                Extensión: ${c.longitud_m} m
+                            </div>
+                        `);
+                        cortesLayer.addLayer(line);
+                    });
+                }
+            } else if (tipo === 'trafico') {
+                traficoLayer.clearLayers();
+                if (activo && METADATA_COMPLETA.trafico_tomtom) {
+                    METADATA_COMPLETA.trafico_tomtom.forEach(t => {
+                        if (!t.coords || t.coords.length < 2) return;
+                        const latlngs = t.coords.map(pt => [pt[1], pt[0]]);
+                        const esCongestion = t.vel_actual < t.vel_libre * 0.75;
+                        const color = esCongestion ? '#ef4444' : '#06b6d4';
+                        const line = L.polyline(latlngs, {
+                            color: color,
+                            weight: 4.5,
+                            opacity: 0.8
+                        });
+                        line.bindPopup(`
+                            <div style="font-family: inherit; font-size:11px;">
+                                <b style="color:${color};">🚗 Corredor Vial TomTom</b><br>
+                                Vía: <b>${t.corredor}</b><br>
+                                Velocidad actual: <b>${t.vel_actual} km/h</b><br>
+                                Flujo libre: ${t.vel_libre} km/h<br>
+                                Estado: ${esCongestion ? '🔴 Congestión' : '🟢 Fluido'}
+                            </div>
+                        `);
+                        traficoLayer.addLayer(line);
+                    });
+                }
+            }
+        }
+
+        // Cambiar entre los 4 Modos de Visualización
         function cambiarModo(nuevoModo) {
             modoActual = nuevoModo;
 
@@ -846,6 +1194,7 @@
             // Ocultar todos los paneles de contenido
             document.getElementById('content-puntos').style.display = 'none';
             document.getElementById('content-grafo').style.display = 'none';
+            document.getElementById('content-metadata').style.display = 'none';
             document.getElementById('content-dijkstra').style.display = 'none';
 
             // Limpiar capas transitorias
@@ -866,6 +1215,13 @@
                 document.getElementById('legend-arrow-row').style.display = 'none';
                 dibujarGrafoCompletoConCostos();
                 map.setView([-33.515, -70.760], 13);
+            } else if (nuevoModo === 'metadata') {
+                document.getElementById('content-metadata').style.display = 'block';
+                document.getElementById('legend-route-row').style.display = 'none';
+                document.getElementById('legend-arrow-row').style.display = 'none';
+                dibujarGrafoCompletoConCostos();
+                map.setView([-33.515, -70.760], 13);
+                mostrarDetalleNodoMetadata(4); // Mostrar punto crítico de la fiscalía por defecto
             } else if (nuevoModo === 'dijkstra') {
                 document.getElementById('content-dijkstra').style.display = 'block';
                 document.getElementById('legend-route-row').style.display = 'flex';
