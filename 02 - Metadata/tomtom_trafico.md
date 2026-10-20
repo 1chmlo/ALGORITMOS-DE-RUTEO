@@ -4,9 +4,26 @@ Segmentos de flujo vehicular en tiempo real (**velocidad actual vs. velocidad de
 
 - **Generado por:** `etl_tomtom_trafico.py`
 - **Cargado a la BD por:** `carga_tomtom_trafico.py` → tabla `tomtom_trafico`
-- **Fuente:** TomTom Traffic Services v4 (`https://api.tomtom.com/traffic/services/4/flowSegmentData/absolute/10/json`).
+- **Fuente:** TomTom Traffic Services v4 (`https://api.tomtom.com/traffic/services/4/flowSegmentData/absolute/14/json`; el `14` es el nivel de zoom de la consulta, que determina la resolución de los segmentos). Se consulta una lista fija de puntos de muestreo en Maipú y se devuelve el segmento vial que contiene a cada punto; los segmentos repetidos se eliminan.
 - **Justificación en el modelo de ruteo:** Cuando la velocidad actual cae por debajo de la velocidad de flujo libre (congestión, cuellos de botella en enlaces de autopistas o detenciones), los vehículos quedan expuestos y sin maniobrabilidad, aumentando la probabilidad de sufrir robos con violencia o encerronas (**menor velocidad = mayor riesgo de delito**).
 - **Formato:** GeoJSON `FeatureCollection`, CRS WGS84 (`EPSG:4326`), coordenadas `[longitud, latitud]`. Un `Feature` de tipo `LineString` por tramo vial entregado por TomTom.
+
+## Bloque `metadata`
+
+El archivo trae, además de los `features`, un bloque `metadata` en la raíz:
+
+| Campo | Tipo | Descripción |
+|---|---|---|
+| `fuente` | texto | `TomTom Traffic Flow API v4 (flowSegmentData)` |
+| `endpoint` | texto | URL del endpoint consultado |
+| `descripcion` | texto | Propósito del dataset en el modelo de ruteo |
+| `comuna`, `region` | texto | `Maipú`, `Región Metropolitana de Santiago` |
+| `crs` | texto | Sistema de referencia (`EPSG:4326 (WGS84)`) |
+| `puntos_muestreados` | entero | Cantidad de puntos consultados a TomTom (fijos en el script) |
+| `total_segmentos_unicos` | entero | Segmentos distintos obtenidos tras eliminar los repetidos (varios puntos pueden caer en el mismo segmento); es el número de `Feature` |
+| `velocidad_actual_promedio_kmh` | flotante | Promedio simple de `velocidad_actual_kmh` de los segmentos (sin ponderar por largo) |
+| `velocidad_flujo_libre_promedio_kmh` | flotante | Promedio simple de `velocidad_flujo_libre_kmh` de los segmentos |
+| `fecha_extraccion_utc` | texto ISO 8601 | Cuándo se ejecutó el ETL. Los datos son una foto de ese momento: la velocidad cambia con la hora del día |
 
 ## Propiedades (`properties`)
 

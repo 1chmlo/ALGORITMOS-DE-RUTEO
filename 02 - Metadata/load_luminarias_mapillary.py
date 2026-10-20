@@ -73,7 +73,7 @@ CREATE INDEX IF NOT EXISTS luminarias_mapillary_geom_idx ON luminarias_mapillary
 
 
 def cargar_luminarias(json_path: Path = INPUT_JSON_PATH) -> None:
-    """Inserta o actualiza los puntos de luminarias_mapillary.json en la tabla luminarias_mapillary."""
+    """Reemplaza el contenido de la tabla luminarias_mapillary por los puntos de luminarias_mapillary.json."""
     if not json_path.exists():
         raise FileNotFoundError(
             f"No se encontró '{json_path}'. Ejecute primero 'extract_luminarias_mapillary.py'."
@@ -109,6 +109,7 @@ def cargar_luminarias(json_path: Path = INPUT_JSON_PATH) -> None:
         ) as con:
             with con.cursor() as cur:
                 cur.execute(DDL_ENSURE_TABLE)
+                cur.execute("DELETE FROM luminarias_mapillary")  # la tabla refleja la última extracción
                 cur.executemany(sql, filas)
     elif psycopg2 is not None:
         con = psycopg2.connect(
@@ -122,6 +123,7 @@ def cargar_luminarias(json_path: Path = INPUT_JSON_PATH) -> None:
             with con:
                 with con.cursor() as cur:
                     cur.execute(DDL_ENSURE_TABLE)
+                    cur.execute("DELETE FROM luminarias_mapillary")  # la tabla refleja la última extracción
                     cur.executemany(sql, filas)
         finally:
             con.close()

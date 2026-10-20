@@ -7,6 +7,11 @@ En el contexto del algoritmo de ruteo:
 - **Zonas iluminadas**: Aristas (calles/pasajes) que cuentan con luminarias cercanas dentro de su radio de cobertura (`25 m`) presentan menor riesgo de delitos nocturnos y, por tanto, reciben una bonificación o menor penalización en su función de costo.
 - **Zonas sin luz (+ Delitos)**: Aristas sin presencia de luminarias cercanas se identifican como tramos oscuros con mayor vulnerabilidad delictual, incrementando el peso/costo de transitar por dichas vías.
 
+### Cómo se obtienen los datos (y por qué las celdas son adaptativas)
+`extract_luminarias_mapillary.py` consulta el endpoint `/map_features` por celdas. La API **recorta resultados en silencio en celdas densas, incluso muy por debajo del parámetro `limit`**: una celda que devolvió 465 luminarias tenía 1.126 al dividirla en cuatro. Con celdas fijas grandes (0,03° × 0,025°) se perdía cerca del 70 % de las luminarias. Por eso el script parte de celdas de 0,015° × 0,0125° y **divide en cuatro toda celda que falle o devuelva 200 resultados o más**, hasta un mínimo de ~400 m. Las consultas van en paralelo (4 hilos). En las pruebas, con umbrales de 200 y de 100 resultados se obtuvieron 15.363 y 15.351 luminarias.
+
+Si alguna celda no puede obtenerse (Mapillary responde HTTP 500 de forma intermitente), **no se escribe el archivo** para no pasar zonas con luminarias por zonas oscuras; se conserva el archivo anterior y se avisa. La tabla `luminarias_mapillary` se reemplaza completa en cada carga.
+
 ---
 
 ## 2. Estructura General del JSON (GeoJSON `FeatureCollection`)

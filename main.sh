@@ -50,4 +50,4 @@ echo "==> Visualizador web disponible en: http://localhost:8080"
 
 echo "==> Levantando explorador de la base de datos (pgAdmin)"
 docker compose up -d pgadmin
-echo "==> pgAdmin disponible en: http://localhost:5050 (sin login, servidor 'ruteo' ya registrado)"
+echo "==> pgAdmin disponible en: http://localhost:5050"

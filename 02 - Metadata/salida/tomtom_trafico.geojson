@@ -9,217 +9,11 @@
   "crs": "EPSG:4326 (WGS84)",
   "puntos_muestreados": 36,
   "total_segmentos_unicos": 32,
-  "velocidad_actual_promedio_kmh": 33.88,
-  "velocidad_flujo_libre_promedio_kmh": 34.78,
-  "fecha_extraccion_utc": "2026-10-20T01:06:52.586590+00:00"
+  "velocidad_actual_promedio_kmh": 34.75,
+  "velocidad_flujo_libre_promedio_kmh": 34.84,
+  "fecha_extraccion_utc": "2026-10-20T03:02:51.401164+00:00"
  },
  "features": [
-  {
-   "type": "Feature",
-   "id": "tomtom_ddcc0a85f776",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -70.761592,
-      -33.511821
-     ],
-     [
-      -70.761594,
-      -33.51089
-     ],
-     [
-      -70.761596,
-      -33.510768
-     ],
-     [
-      -70.760771,
-      -33.51075
-     ],
-     [
-      -70.760528,
-      -33.510743
-     ],
-     [
-      -70.759941,
-      -33.510729
-     ],
-     [
-      -70.758867,
-      -33.510712
-     ],
-     [
-      -70.758686,
-      -33.510709
-     ],
-     [
-      -70.758415,
-      -33.510707
-     ],
-     [
-      -70.758023,
-      -33.510701
-     ],
-     [
-      -70.757694,
-      -33.510693
-     ],
-     [
-      -70.757452,
-      -33.510688
-     ],
-     [
-      -70.75733,
-      -33.510688
-     ],
-     [
-      -70.757268,
-      -33.510688
-     ],
-     [
-      -70.756953,
-      -33.510699
-     ],
-     [
-      -70.756537,
-      -33.510713
-     ],
-     [
-      -70.756259,
-      -33.510719
-     ],
-     [
-      -70.756031,
-      -33.510724
-     ],
-     [
-      -70.755711,
-      -33.510738
-     ],
-     [
-      -70.75537,
-      -33.510746
-     ],
-     [
-      -70.755117,
-      -33.510752
-     ],
-     [
-      -70.754619,
-      -33.510766
-     ],
-     [
-      -70.753862,
-      -33.510798
-     ],
-     [
-      -70.753223,
-      -33.510837
-     ],
-     [
-      -70.752781,
-      -33.510866
-     ],
-     [
-      -70.749008,
-      -33.511012
-     ],
-     [
-      -70.748056,
-      -33.511077
-     ],
-     [
-      -70.747451,
-      -33.511077
-     ],
-     [
-      -70.747377,
-      -33.511081
-     ],
-     [
-      -70.747249,
-      -33.511067
-     ],
-     [
-      -70.747179,
-      -33.511063
-     ],
-     [
-      -70.746413,
-      -33.511007
-     ],
-     [
-      -70.745914,
-      -33.51097
-     ],
-     [
-      -70.745324,
-      -33.510939
-     ],
-     [
-      -70.74471,
-      -33.510892
-     ],
-     [
-      -70.744234,
-      -33.510862
-     ],
-     [
-      -70.743742,
-      -33.510833
-     ],
-     [
-      -70.743449,
-      -33.510822
-     ],
-     [
-      -70.743189,
-      -33.510815
-     ],
-     [
-      -70.742983,
-      -33.510797
-     ],
-     [
-      -70.742289,
-      -33.510767
-     ],
-     [
-      -70.741726,
-      -33.510739
-     ],
-     [
-      -70.740697,
-      -33.510676
-     ],
-     [
-      -70.740339,
-      -33.510652
-     ]
-    ]
-   },
-   "properties": {
-    "segment_id": "tomtom_ddcc0a85f776",
-    "corredor_vial": "Autopista del Sol (Ruta 78) - Enlace Vespucio Sur",
-    "comuna": "Maipú",
-    "frc": "FRC5",
-    "velocidad_actual_kmh": 19.0,
-    "velocidad_flujo_libre_kmh": 22.0,
-    "diferencia_velocidad_kmh": 3.0,
-    "razon_velocidad": 0.8636,
-    "indice_congestion": 0.1364,
-    "tiempo_actual_seg": 396,
-    "tiempo_flujo_libre_seg": 342,
-    "demora_seg": 54,
-    "confianza": 0.904201,
-    "cierre_vial": true,
-    "nivel_riesgo_trafico": "alto",
-    "factor_riesgo_trafico": 1.0,
-    "punto_consulta_lat": -33.5112,
-    "punto_consulta_lon": -70.7415,
-    "vertices_count": 44
-   }
-  },
   {
    "type": "Feature",
    "id": "tomtom_629c5f1e4208",
@@ -449,13 +243,219 @@
     "tiempo_actual_seg": 357,
     "tiempo_flujo_libre_seg": 357,
     "demora_seg": 0,
-    "confianza": 0.516865,
+    "confianza": 0.537013,
     "cierre_vial": true,
     "nivel_riesgo_trafico": "alto",
     "factor_riesgo_trafico": 1.0,
     "punto_consulta_lat": -33.509,
     "punto_consulta_lon": -70.746,
     "vertices_count": 52
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "tomtom_ddcc0a85f776",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.761592,
+      -33.511821
+     ],
+     [
+      -70.761594,
+      -33.51089
+     ],
+     [
+      -70.761596,
+      -33.510768
+     ],
+     [
+      -70.760771,
+      -33.51075
+     ],
+     [
+      -70.760528,
+      -33.510743
+     ],
+     [
+      -70.759941,
+      -33.510729
+     ],
+     [
+      -70.758867,
+      -33.510712
+     ],
+     [
+      -70.758686,
+      -33.510709
+     ],
+     [
+      -70.758415,
+      -33.510707
+     ],
+     [
+      -70.758023,
+      -33.510701
+     ],
+     [
+      -70.757694,
+      -33.510693
+     ],
+     [
+      -70.757452,
+      -33.510688
+     ],
+     [
+      -70.75733,
+      -33.510688
+     ],
+     [
+      -70.757268,
+      -33.510688
+     ],
+     [
+      -70.756953,
+      -33.510699
+     ],
+     [
+      -70.756537,
+      -33.510713
+     ],
+     [
+      -70.756259,
+      -33.510719
+     ],
+     [
+      -70.756031,
+      -33.510724
+     ],
+     [
+      -70.755711,
+      -33.510738
+     ],
+     [
+      -70.75537,
+      -33.510746
+     ],
+     [
+      -70.755117,
+      -33.510752
+     ],
+     [
+      -70.754619,
+      -33.510766
+     ],
+     [
+      -70.753862,
+      -33.510798
+     ],
+     [
+      -70.753223,
+      -33.510837
+     ],
+     [
+      -70.752781,
+      -33.510866
+     ],
+     [
+      -70.749008,
+      -33.511012
+     ],
+     [
+      -70.748056,
+      -33.511077
+     ],
+     [
+      -70.747451,
+      -33.511077
+     ],
+     [
+      -70.747377,
+      -33.511081
+     ],
+     [
+      -70.747249,
+      -33.511067
+     ],
+     [
+      -70.747179,
+      -33.511063
+     ],
+     [
+      -70.746413,
+      -33.511007
+     ],
+     [
+      -70.745914,
+      -33.51097
+     ],
+     [
+      -70.745324,
+      -33.510939
+     ],
+     [
+      -70.74471,
+      -33.510892
+     ],
+     [
+      -70.744234,
+      -33.510862
+     ],
+     [
+      -70.743742,
+      -33.510833
+     ],
+     [
+      -70.743449,
+      -33.510822
+     ],
+     [
+      -70.743189,
+      -33.510815
+     ],
+     [
+      -70.742983,
+      -33.510797
+     ],
+     [
+      -70.742289,
+      -33.510767
+     ],
+     [
+      -70.741726,
+      -33.510739
+     ],
+     [
+      -70.740697,
+      -33.510676
+     ],
+     [
+      -70.740339,
+      -33.510652
+     ]
+    ]
+   },
+   "properties": {
+    "segment_id": "tomtom_ddcc0a85f776",
+    "corredor_vial": "Autopista del Sol (Ruta 78) - Enlace Vespucio Sur",
+    "comuna": "Maipú",
+    "frc": "FRC5",
+    "velocidad_actual_kmh": 23.0,
+    "velocidad_flujo_libre_kmh": 23.0,
+    "diferencia_velocidad_kmh": 0.0,
+    "razon_velocidad": 1.0,
+    "indice_congestion": 0.0,
+    "tiempo_actual_seg": 327,
+    "tiempo_flujo_libre_seg": 327,
+    "demora_seg": 0,
+    "confianza": 0.861877,
+    "cierre_vial": true,
+    "nivel_riesgo_trafico": "alto",
+    "factor_riesgo_trafico": 1.0,
+    "punto_consulta_lat": -33.5112,
+    "punto_consulta_lon": -70.7415,
+    "vertices_count": 44
    }
   },
   {
@@ -931,15 +931,15 @@
     "corredor_vial": "Américo Vespucio Sur - Cruce Ruta 78 (Autopista del Sol)",
     "comuna": "Maipú",
     "frc": "FRC6",
-    "velocidad_actual_kmh": 25.0,
+    "velocidad_actual_kmh": 27.0,
     "velocidad_flujo_libre_kmh": 27.0,
-    "diferencia_velocidad_kmh": 2.0,
-    "razon_velocidad": 0.9259,
-    "indice_congestion": 0.0741,
-    "tiempo_actual_seg": 524,
+    "diferencia_velocidad_kmh": 0.0,
+    "razon_velocidad": 1.0,
+    "indice_congestion": 0.0,
+    "tiempo_actual_seg": 485,
     "tiempo_flujo_libre_seg": 485,
-    "demora_seg": 39,
-    "confianza": 0.679945,
+    "demora_seg": 0,
+    "confianza": 0.539104,
     "cierre_vial": true,
     "nivel_riesgo_trafico": "alto",
     "factor_riesgo_trafico": 1.0,
@@ -1725,15 +1725,15 @@
     "corredor_vial": "Américo Vespucio Sur - Sector Camino a Melipilla / Cerrillos",
     "comuna": "Maipú",
     "frc": "FRC5",
-    "velocidad_actual_kmh": 31.0,
-    "velocidad_flujo_libre_kmh": 37.0,
-    "diferencia_velocidad_kmh": 6.0,
-    "razon_velocidad": 0.8378,
-    "indice_congestion": 0.1622,
-    "tiempo_actual_seg": 677,
-    "tiempo_flujo_libre_seg": 567,
-    "demora_seg": 110,
-    "confianza": 0.926366,
+    "velocidad_actual_kmh": 38.0,
+    "velocidad_flujo_libre_kmh": 38.0,
+    "diferencia_velocidad_kmh": 0.0,
+    "razon_velocidad": 1.0,
+    "indice_congestion": 0.0,
+    "tiempo_actual_seg": 552,
+    "tiempo_flujo_libre_seg": 552,
+    "demora_seg": 0,
+    "confianza": 0.742489,
     "cierre_vial": true,
     "nivel_riesgo_trafico": "alto",
     "factor_riesgo_trafico": 1.0,
@@ -1827,147 +1827,21 @@
     "corredor_vial": "Av. Los Pajaritos - Sector Esquina Blanca / Chacabuco",
     "comuna": "Maipú",
     "frc": "FRC5",
-    "velocidad_actual_kmh": 13.0,
+    "velocidad_actual_kmh": 17.0,
     "velocidad_flujo_libre_kmh": 20.0,
-    "diferencia_velocidad_kmh": 7.0,
-    "razon_velocidad": 0.65,
-    "indice_congestion": 0.35,
-    "tiempo_actual_seg": 160,
+    "diferencia_velocidad_kmh": 3.0,
+    "razon_velocidad": 0.85,
+    "indice_congestion": 0.15,
+    "tiempo_actual_seg": 122,
     "tiempo_flujo_libre_seg": 104,
-    "demora_seg": 56,
-    "confianza": 0.934356,
+    "demora_seg": 18,
+    "confianza": 0.892883,
     "cierre_vial": false,
     "nivel_riesgo_trafico": "alto",
-    "factor_riesgo_trafico": 0.5017,
+    "factor_riesgo_trafico": 0.3483,
     "punto_consulta_lat": -33.5105,
     "punto_consulta_lon": -70.7575,
     "vertices_count": 18
-   }
-  },
-  {
-   "type": "Feature",
-   "id": "tomtom_192f918bbcef",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -70.785941,
-      -33.518426
-     ],
-     [
-      -70.786212,
-      -33.51845
-     ],
-     [
-      -70.786754,
-      -33.518527
-     ],
-     [
-      -70.787101,
-      -33.518576
-     ],
-     [
-      -70.787527,
-      -33.518643
-     ],
-     [
-      -70.787965,
-      -33.518702
-     ],
-     [
-      -70.788158,
-      -33.518736
-     ],
-     [
-      -70.788402,
-      -33.518761
-     ],
-     [
-      -70.788764,
-      -33.518812
-     ],
-     [
-      -70.789019,
-      -33.518843
-     ],
-     [
-      -70.789096,
-      -33.518851
-     ],
-     [
-      -70.789265,
-      -33.518871
-     ],
-     [
-      -70.789394,
-      -33.518886
-     ],
-     [
-      -70.78945,
-      -33.518869
-     ],
-     [
-      -70.789518,
-      -33.518877
-     ],
-     [
-      -70.789622,
-      -33.518889
-     ],
-     [
-      -70.789772,
-      -33.518906
-     ],
-     [
-      -70.78991,
-      -33.518926
-     ],
-     [
-      -70.790101,
-      -33.518953
-     ],
-     [
-      -70.790306,
-      -33.518983
-     ],
-     [
-      -70.790746,
-      -33.519046
-     ],
-     [
-      -70.790991,
-      -33.519082
-     ],
-     [
-      -70.791242,
-      -33.519117
-     ],
-     [
-      -70.791382,
-      -33.519137
-     ]
-    ]
-   },
-   "properties": {
-    "segment_id": "tomtom_192f918bbcef",
-    "corredor_vial": "Av. Portales - Sector Cuatro Poniente / El Conquistador",
-    "comuna": "Maipú",
-    "frc": "FRC6",
-    "velocidad_actual_kmh": 20.0,
-    "velocidad_flujo_libre_kmh": 31.0,
-    "diferencia_velocidad_kmh": 11.0,
-    "razon_velocidad": 0.6452,
-    "indice_congestion": 0.3548,
-    "tiempo_actual_seg": 92,
-    "tiempo_flujo_libre_seg": 59,
-    "demora_seg": 33,
-    "confianza": 0.9,
-    "cierre_vial": false,
-    "nivel_riesgo_trafico": "alto",
-    "factor_riesgo_trafico": 0.464,
-    "punto_consulta_lat": -33.518,
-    "punto_consulta_lon": -70.79,
-    "vertices_count": 24
    }
   },
   {
@@ -6884,6 +6758,132 @@
     "punto_consulta_lat": -33.4955,
     "punto_consulta_lon": -70.7418,
     "vertices_count": 87
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "tomtom_192f918bbcef",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.785941,
+      -33.518426
+     ],
+     [
+      -70.786212,
+      -33.51845
+     ],
+     [
+      -70.786754,
+      -33.518527
+     ],
+     [
+      -70.787101,
+      -33.518576
+     ],
+     [
+      -70.787527,
+      -33.518643
+     ],
+     [
+      -70.787965,
+      -33.518702
+     ],
+     [
+      -70.788158,
+      -33.518736
+     ],
+     [
+      -70.788402,
+      -33.518761
+     ],
+     [
+      -70.788764,
+      -33.518812
+     ],
+     [
+      -70.789019,
+      -33.518843
+     ],
+     [
+      -70.789096,
+      -33.518851
+     ],
+     [
+      -70.789265,
+      -33.518871
+     ],
+     [
+      -70.789394,
+      -33.518886
+     ],
+     [
+      -70.78945,
+      -33.518869
+     ],
+     [
+      -70.789518,
+      -33.518877
+     ],
+     [
+      -70.789622,
+      -33.518889
+     ],
+     [
+      -70.789772,
+      -33.518906
+     ],
+     [
+      -70.78991,
+      -33.518926
+     ],
+     [
+      -70.790101,
+      -33.518953
+     ],
+     [
+      -70.790306,
+      -33.518983
+     ],
+     [
+      -70.790746,
+      -33.519046
+     ],
+     [
+      -70.790991,
+      -33.519082
+     ],
+     [
+      -70.791242,
+      -33.519117
+     ],
+     [
+      -70.791382,
+      -33.519137
+     ]
+    ]
+   },
+   "properties": {
+    "segment_id": "tomtom_192f918bbcef",
+    "corredor_vial": "Av. Portales - Sector Cuatro Poniente / El Conquistador",
+    "comuna": "Maipú",
+    "frc": "FRC6",
+    "velocidad_actual_kmh": 31.0,
+    "velocidad_flujo_libre_kmh": 31.0,
+    "diferencia_velocidad_kmh": 0.0,
+    "razon_velocidad": 1.0,
+    "indice_congestion": 0.0,
+    "tiempo_actual_seg": 59,
+    "tiempo_flujo_libre_seg": 59,
+    "demora_seg": 0,
+    "confianza": 1.0,
+    "cierre_vial": false,
+    "nivel_riesgo_trafico": "medio",
+    "factor_riesgo_trafico": 0.1692,
+    "punto_consulta_lat": -33.518,
+    "punto_consulta_lon": -70.79,
+    "vertices_count": 24
    }
   },
   {

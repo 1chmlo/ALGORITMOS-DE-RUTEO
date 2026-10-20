@@ -8,6 +8,20 @@ Morfología y geometría de carreteras, autopistas, enlaces de salida/entrada (`
 - **Justificación en el modelo de ruteo:** Estudios criminológicos en EE.UU. y el análisis espacial de encerronas en la RM demuestran que los robos violentos de vehículos se concentran en **salidas/enlaces de autopistas, rotondas y curvas cerradas**, donde la geometría obliga a disminuir la velocidad y reduce las vías de escape.
 - **Formato:** GeoJSON `FeatureCollection`, CRS WGS84 (`EPSG:4326`), coordenadas `[longitud, latitud]`. Un `Feature` de tipo `LineString` por tramo vial.
 
+## Bloque `metadata`
+
+El archivo trae, además de los `features`, un bloque `metadata` en la raíz:
+
+| Campo | Tipo | Descripción |
+|---|---|---|
+| `fuente` | texto | `OpenStreetMap via Overpass API` |
+| `descripcion` | texto | Propósito del dataset en el modelo de ruteo |
+| `bbox_sur_oeste_norte_este` | arreglo de 4 flotantes | Ventana consultada, **en el orden de Overpass** `[sur_lat, oeste_lon, norte_lat, este_lon]` (`[-33.56, -70.825, -33.465, -70.705]`). Ojo: no es el orden `[min_lon, min_lat, max_lon, max_lat]` de los otros archivos |
+| `crs` | texto | Sistema de referencia (`EPSG:4326 (WGS84)`) |
+| `total_tramos` | entero | Cantidad de tramos viales (`Feature`) del archivo |
+| `resumen_formas_viales` | objeto | Conteo de tramos por `forma_vial` (`recta`, `salida_recta`, `salida_curva`, `curva_pronunciada`, `rotonda`) |
+| `fecha_extraccion_utc` | texto ISO 8601 | Cuándo se ejecutó el ETL |
+
 ## Propiedades (`properties`)
 
 | Campo | Tipo | Descripción |

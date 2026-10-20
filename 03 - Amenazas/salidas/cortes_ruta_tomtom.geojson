@@ -18,9 +18,9 @@
    -70.71,
    -33.46
   ],
-  "total_cortes_rm": 153,
+  "total_cortes_rm": 155,
   "total_cortes_maipu": 8,
-  "fecha_extraccion_utc": "2026-10-20T01:07:00.432944+00:00"
+  "fecha_extraccion_utc": "2026-10-20T03:03:03.049174+00:00"
  },
  "features": [
   {
@@ -818,6 +818,277 @@
     "bloqueo_total": true,
     "centroide_lon": -70.523171,
     "centroide_lat": -33.412649,
+    "fuente": "TomTom Traffic Incidents API v5"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29311531444064000",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.659033,
+      -33.429814
+     ],
+     [
+      -70.659257,
+      -33.429701
+     ],
+     [
+      -70.659326,
+      -33.429666
+     ],
+     [
+      -70.659386,
+      -33.429626
+     ],
+     [
+      -70.659524,
+      -33.429531
+     ],
+     [
+      -70.659595,
+      -33.429459
+     ],
+     [
+      -70.659748,
+      -33.4293
+     ],
+     [
+      -70.659825,
+      -33.429221
+     ],
+     [
+      -70.659964,
+      -33.429071
+     ],
+     [
+      -70.660101,
+      -33.428956
+     ],
+     [
+      -70.660265,
+      -33.428859
+     ],
+     [
+      -70.660329,
+      -33.428832
+     ],
+     [
+      -70.660369,
+      -33.428816
+     ],
+     [
+      -70.660539,
+      -33.428746
+     ],
+     [
+      -70.660577,
+      -33.428732
+     ],
+     [
+      -70.660656,
+      -33.428714
+     ],
+     [
+      -70.660892,
+      -33.428673
+     ],
+     [
+      -70.661072,
+      -33.428662
+     ],
+     [
+      -70.661219,
+      -33.428674
+     ],
+     [
+      -70.661278,
+      -33.428679
+     ],
+     [
+      -70.661445,
+      -33.428705
+     ],
+     [
+      -70.661492,
+      -33.42872
+     ],
+     [
+      -70.661541,
+      -33.428738
+     ],
+     [
+      -70.6617,
+      -33.428799
+     ],
+     [
+      -70.661742,
+      -33.428813
+     ],
+     [
+      -70.66183,
+      -33.428843
+     ],
+     [
+      -70.662043,
+      -33.428938
+     ],
+     [
+      -70.662177,
+      -33.429008
+     ],
+     [
+      -70.662303,
+      -33.429084
+     ],
+     [
+      -70.662347,
+      -33.429121
+     ],
+     [
+      -70.662392,
+      -33.429155
+     ],
+     [
+      -70.662514,
+      -33.429255
+     ],
+     [
+      -70.662571,
+      -33.429302
+     ],
+     [
+      -70.662637,
+      -33.429386
+     ],
+     [
+      -70.662681,
+      -33.429459
+     ],
+     [
+      -70.662786,
+      -33.429712
+     ],
+     [
+      -70.662795,
+      -33.429754
+     ],
+     [
+      -70.662807,
+      -33.429839
+     ],
+     [
+      -70.662809,
+      -33.429912
+     ],
+     [
+      -70.662791,
+      -33.429996
+     ],
+     [
+      -70.662752,
+      -33.430094
+     ],
+     [
+      -70.662699,
+      -33.430192
+     ],
+     [
+      -70.662621,
+      -33.430313
+     ],
+     [
+      -70.662526,
+      -33.43042
+     ],
+     [
+      -70.662443,
+      -33.430525
+     ],
+     [
+      -70.662365,
+      -33.430605
+     ],
+     [
+      -70.662127,
+      -33.430796
+     ],
+     [
+      -70.662074,
+      -33.430849
+     ],
+     [
+      -70.662067,
+      -33.430851
+     ],
+     [
+      -70.66198,
+      -33.430916
+     ],
+     [
+      -70.661787,
+      -33.431058
+     ],
+     [
+      -70.661678,
+      -33.43114
+     ],
+     [
+      -70.661465,
+      -33.431358
+     ],
+     [
+      -70.661366,
+      -33.4315
+     ],
+     [
+      -70.661325,
+      -33.431564
+     ],
+     [
+      -70.661238,
+      -33.431701
+     ],
+     [
+      -70.661112,
+      -33.431937
+     ],
+     [
+      -70.661063,
+      -33.43204
+     ],
+     [
+      -70.661008,
+      -33.432117
+     ],
+     [
+      -70.660947,
+      -33.432168
+     ]
+    ]
+   },
+   "properties": {
+    "incident_id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29311531444064000",
+    "icon_category": 8,
+    "tipo_amenaza": "Corte de ruta total",
+    "descripcion_evento": "Túnel cerrado",
+    "codigo_evento": 25,
+    "magnitud_retraso": 4,
+    "desde_via": "Autopista Costanera Norte",
+    "hasta_via": "Autopista Central",
+    "numeros_ruta": null,
+    "longitud_m": 778.74,
+    "retraso_seg": null,
+    "probabilidad": "probable",
+    "validez_temporal": "present",
+    "fecha_inicio": "2026-10-20T02:22:30Z",
+    "fecha_fin": null,
+    "en_maipu": false,
+    "bloqueo_total": true,
+    "centroide_lon": -70.662392,
+    "centroide_lat": -33.429155,
     "fuente": "TomTom Traffic Incidents API v5"
    }
   },
@@ -2198,6 +2469,89 @@
     "bloqueo_total": true,
     "centroide_lon": -70.800162,
     "centroide_lat": -33.364048,
+    "fuente": "TomTom Traffic Incidents API v5"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29308645796014000",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.654966,
+      -33.441181
+     ],
+     [
+      -70.65481,
+      -33.441699
+     ],
+     [
+      -70.654719,
+      -33.441979
+     ],
+     [
+      -70.654672,
+      -33.442149
+     ],
+     [
+      -70.654623,
+      -33.442328
+     ],
+     [
+      -70.654586,
+      -33.442498
+     ],
+     [
+      -70.654553,
+      -33.442685
+     ],
+     [
+      -70.654452,
+      -33.443334
+     ],
+     [
+      -70.654381,
+      -33.443782
+     ],
+     [
+      -70.65435,
+      -33.443932
+     ],
+     [
+      -70.654319,
+      -33.444078
+     ],
+     [
+      -70.654274,
+      -33.444294
+     ],
+     [
+      -70.65423,
+      -33.44451
+     ]
+    ]
+   },
+   "properties": {
+    "incident_id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29308645796014000",
+    "icon_category": 8,
+    "tipo_amenaza": "Corte de ruta total",
+    "descripcion_evento": "Cerrado",
+    "codigo_evento": 401,
+    "magnitud_retraso": 4,
+    "desde_via": "Calle Agustinas",
+    "hasta_via": "Avenida Libertador Bernardo O'Higgins / Calle Plaza de La Ciudadanía",
+    "numeros_ruta": null,
+    "longitud_m": 376.84,
+    "retraso_seg": null,
+    "probabilidad": "probable",
+    "validez_temporal": "present",
+    "fecha_inicio": "2026-10-20T00:50:00Z",
+    "fecha_fin": null,
+    "en_maipu": false,
+    "bloqueo_total": true,
+    "centroide_lon": -70.654553,
+    "centroide_lat": -33.442685,
     "fuente": "TomTom Traffic Incidents API v5"
    }
   },
@@ -3585,53 +3939,6 @@
   },
   {
    "type": "Feature",
-   "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29302874708030000",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -70.660055,
-      -33.454273
-     ],
-     [
-      -70.659951,
-      -33.454875
-     ],
-     [
-      -70.659856,
-      -33.455426
-     ],
-     [
-      -70.659653,
-      -33.456577
-     ]
-    ]
-   },
-   "properties": {
-    "incident_id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29302874708030000",
-    "icon_category": 8,
-    "tipo_amenaza": "Corte de ruta total",
-    "descripcion_evento": "Cerrado",
-    "codigo_evento": 401,
-    "magnitud_retraso": 4,
-    "desde_via": "Calle Gay",
-    "hasta_via": "Avenida Tupper",
-    "numeros_ruta": null,
-    "longitud_m": 258.9,
-    "retraso_seg": null,
-    "probabilidad": "probable",
-    "validez_temporal": "present",
-    "fecha_inicio": "2026-10-16T01:04:30Z",
-    "fecha_fin": null,
-    "en_maipu": false,
-    "bloqueo_total": true,
-    "centroide_lon": -70.659856,
-    "centroide_lat": -33.455426,
-    "fuente": "TomTom Traffic Incidents API v5"
-   }
-  },
-  {
-   "type": "Feature",
    "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29328844836028000",
    "geometry": {
     "type": "LineString",
@@ -4505,69 +4812,6 @@
   },
   {
    "type": "Feature",
-   "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29265362032014000",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -70.675312,
-      -33.548378
-     ],
-     [
-      -70.675453,
-      -33.548362
-     ],
-     [
-      -70.675752,
-      -33.54831
-     ],
-     [
-      -70.676222,
-      -33.548242
-     ],
-     [
-      -70.676677,
-      -33.548152
-     ],
-     [
-      -70.677046,
-      -33.548093
-     ],
-     [
-      -70.677256,
-      -33.548056
-     ],
-     [
-      -70.677478,
-      -33.548016
-     ]
-    ]
-   },
-   "properties": {
-    "incident_id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29265362032014000",
-    "icon_category": 8,
-    "tipo_amenaza": "Corte de ruta total",
-    "descripcion_evento": "Cerrado",
-    "codigo_evento": 401,
-    "magnitud_retraso": 4,
-    "desde_via": "Calle Manuel Magallanes Moure / Pasaje Manuel Magallanes Moure",
-    "hasta_via": "Calle Machalí",
-    "numeros_ruta": null,
-    "longitud_m": 204.79,
-    "retraso_seg": null,
-    "probabilidad": "probable",
-    "validez_temporal": "present",
-    "fecha_inicio": "2026-10-19T18:15:00Z",
-    "fecha_fin": null,
-    "en_maipu": false,
-    "bloqueo_total": true,
-    "centroide_lon": -70.676677,
-    "centroide_lat": -33.548152,
-    "fuente": "TomTom Traffic Incidents API v5"
-   }
-  },
-  {
-   "type": "Feature",
    "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29331730228022000",
    "geometry": {
     "type": "LineString",
@@ -5081,6 +5325,77 @@
     "bloqueo_total": true,
     "centroide_lon": -70.656984,
     "centroide_lat": -33.55334,
+    "fuente": "TomTom Traffic Incidents API v5"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29276905288014000",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.755413,
+      -33.456771
+     ],
+     [
+      -70.755232,
+      -33.456804
+     ],
+     [
+      -70.754944,
+      -33.456857
+     ],
+     [
+      -70.754814,
+      -33.456876
+     ],
+     [
+      -70.754728,
+      -33.456894
+     ],
+     [
+      -70.754594,
+      -33.456911
+     ],
+     [
+      -70.754485,
+      -33.456934
+     ],
+     [
+      -70.75417,
+      -33.456997
+     ],
+     [
+      -70.753837,
+      -33.457064
+     ],
+     [
+      -70.753584,
+      -33.457111
+     ]
+    ]
+   },
+   "properties": {
+    "incident_id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29276905288014000",
+    "icon_category": 8,
+    "tipo_amenaza": "Corte de ruta total",
+    "descripcion_evento": "Cerrado",
+    "codigo_evento": 401,
+    "magnitud_retraso": 4,
+    "desde_via": "Calle Oceanía",
+    "hasta_via": "Pasaje La Palmera",
+    "numeros_ruta": null,
+    "longitud_m": 173.9,
+    "retraso_seg": null,
+    "probabilidad": "probable",
+    "validez_temporal": "present",
+    "fecha_inicio": "2026-10-17T03:59:00Z",
+    "fecha_fin": null,
+    "en_maipu": false,
+    "bloqueo_total": true,
+    "centroide_lon": -70.754594,
+    "centroide_lat": -33.456911,
     "fuente": "TomTom Traffic Incidents API v5"
    }
   },
@@ -5848,6 +6163,49 @@
   },
   {
    "type": "Feature",
+   "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29360584908021000",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.519345,
+      -33.403434
+     ],
+     [
+      -70.520273,
+      -33.403374
+     ],
+     [
+      -70.520957,
+      -33.40333
+     ]
+    ]
+   },
+   "properties": {
+    "incident_id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29360584908021000",
+    "icon_category": 8,
+    "tipo_amenaza": "Corte de ruta total",
+    "descripcion_evento": "Cerrado",
+    "codigo_evento": 401,
+    "magnitud_retraso": 4,
+    "desde_via": "Calle Camino Otoñal",
+    "hasta_via": "Calle Las Tortolas",
+    "numeros_ruta": null,
+    "longitud_m": 150.09,
+    "retraso_seg": null,
+    "probabilidad": "probable",
+    "validez_temporal": "present",
+    "fecha_inicio": "2026-10-20T02:50:30Z",
+    "fecha_fin": null,
+    "en_maipu": false,
+    "bloqueo_total": true,
+    "centroide_lon": -70.520273,
+    "centroide_lat": -33.403374,
+    "fuente": "TomTom Traffic Incidents API v5"
+   }
+  },
+  {
+   "type": "Feature",
    "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29320188392013000",
    "geometry": {
     "type": "LineString",
@@ -5902,6 +6260,73 @@
     "bloqueo_total": true,
     "centroide_lon": -70.670681,
     "centroide_lat": -33.397024,
+    "fuente": "TomTom Traffic Incidents API v5"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29274018920006000",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.68853,
+      -33.517918
+     ],
+     [
+      -70.688418,
+      -33.517725
+     ],
+     [
+      -70.68837,
+      -33.517616
+     ],
+     [
+      -70.6883,
+      -33.517483
+     ],
+     [
+      -70.688237,
+      -33.517356
+     ],
+     [
+      -70.688202,
+      -33.517282
+     ],
+     [
+      -70.688154,
+      -33.517188
+     ],
+     [
+      -70.688117,
+      -33.5171
+     ],
+     [
+      -70.687894,
+      -33.516696
+     ]
+    ]
+   },
+   "properties": {
+    "incident_id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29274018920006000",
+    "icon_category": 8,
+    "tipo_amenaza": "Corte de ruta total",
+    "descripcion_evento": "Cerrado",
+    "codigo_evento": 401,
+    "magnitud_retraso": 4,
+    "desde_via": "Pasaje Veinte Sur",
+    "hasta_via": "Pasaje Diecisiete Sur",
+    "numeros_ruta": null,
+    "longitud_m": 148.16,
+    "retraso_seg": null,
+    "probabilidad": "probable",
+    "validez_temporal": "present",
+    "fecha_inicio": "2026-10-20T00:36:00Z",
+    "fecha_fin": null,
+    "en_maipu": false,
+    "bloqueo_total": true,
+    "centroide_lon": -70.688237,
+    "centroide_lat": -33.517356,
     "fuente": "TomTom Traffic Incidents API v5"
    }
   },
@@ -6563,6 +6988,88 @@
     "bloqueo_total": true,
     "centroide_lon": -70.745724,
     "centroide_lat": -33.406624,
+    "fuente": "TomTom Traffic Incidents API v5"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29302874708030000",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.660055,
+      -33.454273
+     ],
+     [
+      -70.659951,
+      -33.454875
+     ],
+     [
+      -70.659856,
+      -33.455426
+     ]
+    ]
+   },
+   "properties": {
+    "incident_id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29302874708030000",
+    "icon_category": 8,
+    "tipo_amenaza": "Corte de ruta total",
+    "descripcion_evento": "Cerrado",
+    "codigo_evento": 401,
+    "magnitud_retraso": 4,
+    "desde_via": "Calle Gay",
+    "hasta_via": "Calle Domeyko",
+    "numeros_ruta": null,
+    "longitud_m": 129.58,
+    "retraso_seg": null,
+    "probabilidad": "probable",
+    "validez_temporal": "present",
+    "fecha_inicio": "2026-10-16T01:04:30Z",
+    "fecha_fin": null,
+    "en_maipu": false,
+    "bloqueo_total": true,
+    "centroide_lon": -70.659951,
+    "centroide_lat": -33.454875,
+    "fuente": "TomTom Traffic Incidents API v5"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29302875076014000",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.701525,
+      -33.424994
+     ],
+     [
+      -70.70119,
+      -33.423874
+     ]
+    ]
+   },
+   "properties": {
+    "incident_id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29302875076014000",
+    "icon_category": 8,
+    "tipo_amenaza": "Corte de ruta total",
+    "descripcion_evento": "Cerrado",
+    "codigo_evento": 401,
+    "magnitud_retraso": 4,
+    "desde_via": "Calle Salvador Gutiérrez",
+    "hasta_via": "Calle Nueva Extremadura",
+    "numeros_ruta": null,
+    "longitud_m": 128.34,
+    "retraso_seg": null,
+    "probabilidad": "probable",
+    "validez_temporal": "present",
+    "fecha_inicio": "2026-10-20T01:53:00Z",
+    "fecha_fin": null,
+    "en_maipu": false,
+    "bloqueo_total": true,
+    "centroide_lon": -70.70119,
+    "centroide_lat": -33.423874,
     "fuente": "TomTom Traffic Incidents API v5"
    }
   },
@@ -7707,53 +8214,6 @@
   },
   {
    "type": "Feature",
-   "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29311531888014000",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -70.697516,
-      -33.403449
-     ],
-     [
-      -70.69768,
-      -33.403436
-     ],
-     [
-      -70.698069,
-      -33.4034
-     ],
-     [
-      -70.698489,
-      -33.40337
-     ]
-    ]
-   },
-   "properties": {
-    "incident_id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29311531888014000",
-    "icon_category": 8,
-    "tipo_amenaza": "Corte de ruta total",
-    "descripcion_evento": "Cerrado",
-    "codigo_evento": 401,
-    "magnitud_retraso": 4,
-    "desde_via": "Avenida Apostol Santiago",
-    "hasta_via": "Pasaje Loica",
-    "numeros_ruta": null,
-    "longitud_m": 90.69,
-    "retraso_seg": null,
-    "probabilidad": "probable",
-    "validez_temporal": "present",
-    "fecha_inicio": "2026-10-17T19:12:00Z",
-    "fecha_fin": null,
-    "en_maipu": false,
-    "bloqueo_total": true,
-    "centroide_lon": -70.698069,
-    "centroide_lat": -33.4034,
-    "fuente": "TomTom Traffic Incidents API v5"
-   }
-  },
-  {
-   "type": "Feature",
    "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29328843604014000",
    "geometry": {
     "type": "LineString",
@@ -8639,57 +9099,6 @@
   },
   {
    "type": "Feature",
-   "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29276905288014001",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -70.755413,
-      -33.456771
-     ],
-     [
-      -70.755232,
-      -33.456804
-     ],
-     [
-      -70.754944,
-      -33.456857
-     ],
-     [
-      -70.754814,
-      -33.456876
-     ],
-     [
-      -70.754728,
-      -33.456894
-     ]
-    ]
-   },
-   "properties": {
-    "incident_id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29276905288014001",
-    "icon_category": 8,
-    "tipo_amenaza": "Corte de ruta total",
-    "descripcion_evento": "Cerrado",
-    "codigo_evento": 401,
-    "magnitud_retraso": 4,
-    "desde_via": "Calle Oceanía",
-    "hasta_via": "Pasaje Los Cerezos",
-    "numeros_ruta": null,
-    "longitud_m": 65.02,
-    "retraso_seg": null,
-    "probabilidad": "probable",
-    "validez_temporal": "present",
-    "fecha_inicio": "2026-10-17T03:59:00Z",
-    "fecha_fin": null,
-    "en_maipu": false,
-    "bloqueo_total": true,
-    "centroide_lon": -70.754944,
-    "centroide_lat": -33.456857,
-    "fuente": "TomTom Traffic Incidents API v5"
-   }
-  },
-  {
-   "type": "Feature",
    "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29276905360014000",
    "geometry": {
     "type": "LineString",
@@ -8819,45 +9228,6 @@
   },
   {
    "type": "Feature",
-   "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29308645796014000",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -70.654966,
-      -33.441181
-     ],
-     [
-      -70.65481,
-      -33.441699
-     ]
-    ]
-   },
-   "properties": {
-    "incident_id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29308645796014000",
-    "icon_category": 8,
-    "tipo_amenaza": "Corte de ruta total",
-    "descripcion_evento": "Cerrado",
-    "codigo_evento": 401,
-    "magnitud_retraso": 4,
-    "desde_via": "Calle Agustinas",
-    "hasta_via": "Avenida Libertador Bernardo O'Higgins / Calle Plaza de La Ciudadanía",
-    "numeros_ruta": null,
-    "longitud_m": 59.35,
-    "retraso_seg": null,
-    "probabilidad": "probable",
-    "validez_temporal": "present",
-    "fecha_inicio": "2026-10-20T00:50:00Z",
-    "fecha_fin": null,
-    "en_maipu": false,
-    "bloqueo_total": true,
-    "centroide_lon": -70.65481,
-    "centroide_lat": -33.441699,
-    "fuente": "TomTom Traffic Incidents API v5"
-   }
-  },
-  {
-   "type": "Feature",
    "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29276903264014001",
    "geometry": {
     "type": "LineString",
@@ -8892,45 +9262,6 @@
     "bloqueo_total": true,
     "centroide_lon": -70.591524,
     "centroide_lat": -33.588729,
-    "fuente": "TomTom Traffic Incidents API v5"
-   }
-  },
-  {
-   "type": "Feature",
-   "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29274018920006000",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -70.688117,
-      -33.5171
-     ],
-     [
-      -70.687894,
-      -33.516696
-     ]
-    ]
-   },
-   "properties": {
-    "incident_id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29274018920006000",
-    "icon_category": 8,
-    "tipo_amenaza": "Corte de ruta total",
-    "descripcion_evento": "Cerrado",
-    "codigo_evento": 401,
-    "magnitud_retraso": 4,
-    "desde_via": "Pasaje Dieciocho Sur",
-    "hasta_via": "Pasaje Diecisiete Sur",
-    "numeros_ruta": null,
-    "longitud_m": 49.4,
-    "retraso_seg": null,
-    "probabilidad": "probable",
-    "validez_temporal": "present",
-    "fecha_inicio": "2026-10-20T00:36:00Z",
-    "fecha_fin": null,
-    "en_maipu": false,
-    "bloqueo_total": true,
-    "centroide_lon": -70.687894,
-    "centroide_lat": -33.516696,
     "fuente": "TomTom Traffic Incidents API v5"
    }
   },
@@ -8974,6 +9305,45 @@
     "bloqueo_total": true,
     "centroide_lon": -70.638429,
     "centroide_lat": -33.579052,
+    "fuente": "TomTom Traffic Incidents API v5"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29311531888014000",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.698069,
+      -33.4034
+     ],
+     [
+      -70.698489,
+      -33.40337
+     ]
+    ]
+   },
+   "properties": {
+    "incident_id": "TTI-84409f90-f8d2-4125-b7e7-0554dc7dd0bb-TTR29311531888014000",
+    "icon_category": 8,
+    "tipo_amenaza": "Corte de ruta total",
+    "descripcion_evento": "Cerrado",
+    "codigo_evento": 401,
+    "magnitud_retraso": 4,
+    "desde_via": "Pasaje Gorrión",
+    "hasta_via": "Pasaje Loica",
+    "numeros_ruta": null,
+    "longitud_m": 39.1,
+    "retraso_seg": null,
+    "probabilidad": "probable",
+    "validez_temporal": "present",
+    "fecha_inicio": "2026-10-17T19:12:00Z",
+    "fecha_fin": null,
+    "en_maipu": false,
+    "bloqueo_total": true,
+    "centroide_lon": -70.698489,
+    "centroide_lat": -33.40337,
     "fuente": "TomTom Traffic Incidents API v5"
    }
   },
