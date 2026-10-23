@@ -54,9 +54,15 @@ def poligono_rm():
         )
         r.raise_for_status()
         geom = r.json()["features"][0]["geometry"]
-        poligonos = [geom["coordinates"]] if geom["type"] == "Polygon" else geom["coordinates"]
+        if geom.get("type") == "Polygon":
+            poligonos = [geom["coordinates"]]
+        elif geom.get("type") == "MultiPolygon":
+            poligonos = geom["coordinates"]
+        else:
+            print(f"AVISO: geometría no soportada ({geom.get('type')}); no se recorta por región")
+            return []
         return [[tuple(p) for p in poligono[0]] for poligono in poligonos]
-    except (requests.RequestException, KeyError, IndexError, ValueError) as e:
+    except (requests.RequestException, KeyError, IndexError, ValueError, TypeError) as e:
         print(f"AVISO: sin polígono de la RM ({e}); no se recorta por región")
         return []
 
