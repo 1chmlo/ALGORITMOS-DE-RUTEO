@@ -40,7 +40,7 @@ class Consulta(BaseModel):
     # Capas que se consideran en el cálculo
     amenazas: list[str] = list(pf.AMENAZAS)
     metadatos: list[str] = list(datos.METADATOS)
-    restricciones_estaticas: bool = True
+    restricciones_estaticas: bool = False
     # Pesos del costo
     peso_riesgo: float = Field(2.0, ge=0, description="β: metros equivalentes (×1000) por unidad de -ln(1-p)")
     peso_metadatos: float = Field(0.3, ge=0, description="γ: recargo por volar sobre zonas de poco valor de vigilancia")

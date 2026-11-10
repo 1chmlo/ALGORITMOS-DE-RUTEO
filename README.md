@@ -32,7 +32,7 @@ Si una API externa no responde, los ETL nuevos conservan el último GeoJSON vers
 | Carpeta | Contenido |
 |---|---|
 | `00 - DB` | `init.sql` (esquema completo), `dijkstra.sql` (grafo aéreo base de la Fase 2), diagrama |
-| `01 - Infraestructura` | Comisarías, puntos críticos y **elevación del terreno** (Open-Meteo) |
+| `01 - Infraestructura` | Comisarías y puntos críticos |
 | `02 - Metadata` | STOP 90 días, luminarias Mapillary, formas viales Overpass, tráfico TomTom |
 | `03 - Amenazas` | Lluvia y viento (Open-Meteo), STOP 7 días y **`probabilidad_falla.py`** |
 | `04 - Web` | `index.html` (Leaflet, consume la API), `nginx.conf` (proxy `/api`), `escenario_demo.md` |
@@ -43,7 +43,7 @@ Si una API externa no responde, los ETL nuevos conservan el último GeoJSON vers
 | Punto | Dónde |
 |---|---|
 | 1. Ejecución replicable | `main.sh` + `docker-compose.yml` |
-| 2. Infraestructura realista | Grafo de visibilidad que rodea cerros sobre el techo de vuelo y zonas caídas (`05 - API/README.md` §1) |
+| 2. Infraestructura realista | Grafo de visibilidad que rodea zonas de amenaza caídas (`05 - API/README.md` §1) |
 | 3. Parámetros del usuario | Web, secciones 1–2: base, circuito o punto, destinos, autonomía, velocidad, altura, riesgo máximo, umbrales, pesos |
 | 4. Capas activables | Web, sección 3: un checkbox por amenaza y metadato (dibuja y considera en el cálculo); popups con el detalle |
 | 5. Probabilidad de falla | `03 - Amenazas/probabilidad_falla.py` y `.md`; tablas `probabilidad_falla_*` |

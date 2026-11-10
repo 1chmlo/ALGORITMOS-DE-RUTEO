@@ -19,8 +19,6 @@ import datos
 import grafo as gr
 import tecnicas as tc
 
-MARGEN_VERTICAL_M = 30.0  # el terreno debe quedar al menos 30 m bajo el dron
-
 
 def _zonas(cfg, fallas):
     """Zonas de amenaza activas (BD + simuladas) como objetos Zona en metros."""
@@ -38,18 +36,6 @@ def _zonas(cfg, fallas):
     return zonas
 
 
-def _obstaculos_estaticos(cfg, nodo_origen):
-    obst, info = [], {"hexagonos_terreno": 0, "techo_vuelo_msnm": None}
-    if cfg.get("restricciones_estaticas", True):
-        elev = nodo_origen.get("elevacion_m") or 0.0
-        techo = elev + cfg["altura_vuelo_m"]
-        terr = datos.terreno_sobre_techo(techo - MARGEN_VERTICAL_M)
-        obst += [t["geom"] for t in terr]
-        info.update(hexagonos_terreno=len(terr), techo_vuelo_msnm=round(techo, 1),
-                    elevacion_base_msnm=elev)
-    return obst, info
-
-
 def resolver(cfg, fallas=frozenset()):
     t0 = time.perf_counter()
     nodos = {n["id"]: n for n in datos.nodos()}
@@ -62,7 +48,6 @@ def resolver(cfg, fallas=frozenset()):
         raise ValueError("Debe elegir al menos un destino distinto del origen")
 
     area, _ = datos.area_ruteo()
-    estaticos, info_est = _obstaculos_estaticos(cfg, nodos[cfg["origen"]])
     zonas = _zonas(cfg, fallas)
     probabilistico = cfg["modelo"] == "probabilistico"
     umbral = cfg["umbral_falla"]
@@ -77,11 +62,11 @@ def resolver(cfg, fallas=frozenset()):
     evaluador = datos.evaluador_metadatos(cfg["metadatos"], cfg.get("pesos_metadatos"))
     pesos_amenaza = {k: float(v) for k, v in (cfg.get("pesos_amenazas") or {}).items()}
 
-    # Grafo A (técnica 1): solo obstáculos físicos (terreno sobre techo + fallas ya ocurridas)
+    # Grafo A (técnica 1): solo obstáculos por fallas ya ocurridas
     t1 = time.perf_counter()
-    grafo_a = gr.construir(mision, estaticos + falladas, zonas, [], area, evaluador, pesos_amenaza)
+    grafo_a = gr.construir(mision, falladas, zonas, [], area, evaluador, pesos_amenaza)
     # Grafo B (técnicas 2-4): además, zonas duras como obstáculo y waypoints de zonas blandas
-    grafo_b = gr.construir(mision, estaticos + [z.geom for z in duras], zonas, blandas, area, evaluador, pesos_amenaza)
+    grafo_b = gr.construir(mision, [z.geom for z in duras], zonas, blandas, area, evaluador, pesos_amenaza)
     t_grafos = (time.perf_counter() - t1) * 1000
 
     resultados = []
@@ -117,7 +102,7 @@ def resolver(cfg, fallas=frozenset()):
             "nodos_grafo_a": len(grafo_a.nodos), "aristas_grafo_a": len(grafo_a.aristas),
             "nodos_grafo_b": len(grafo_b.nodos), "aristas_grafo_b": len(grafo_b.aristas),
             "grafo_podado": grafo_b.podado, "tiempo_grafos_ms": round(t_grafos, 1),
-            "tiempo_total_ms": round((time.perf_counter() - t0) * 1000, 1), **info_est,
+            "tiempo_total_ms": round((time.perf_counter() - t0) * 1000, 1),
         },
         "_zonas": zonas,  # uso interno (simulación); se quita antes de responder
     }

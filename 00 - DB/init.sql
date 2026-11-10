@@ -280,21 +280,7 @@ CREATE INDEX IF NOT EXISTS aristas_aereas_target_idx ON aristas_aereas (target);
 -- ===== 05 - FASE 3: RESTRICCIONES ESTÁTICAS Y PROBABILIDAD DE FALLA =====
 
 DROP TABLE IF EXISTS zonas_restringidas CASCADE;
-
--- Elevación del terreno (Open-Meteo Elevation API, DEM Copernicus 90 m) por hexágono de 500 m.
--- La API de ruteo marca como obstáculo todo hexágono cuyo terreno supera el techo de vuelo
--- (elevación de la base de despegue + altura de vuelo elegida por el usuario).
-CREATE TABLE IF NOT EXISTS elevacion_terreno_hexagonos (
-    id                 SERIAL PRIMARY KEY,
-    hex_id             TEXT NOT NULL UNIQUE,
-    centro_lon         DOUBLE PRECISION NOT NULL,
-    centro_lat         DOUBLE PRECISION NOT NULL,
-    elevacion_m        DOUBLE PRECISION NOT NULL,
-    tamanio_hexagono_m INTEGER,
-    fuente             TEXT,
-    geom               geometry(Polygon, 4326) NOT NULL
-);
-CREATE INDEX IF NOT EXISTS elevacion_terreno_hexagonos_geom_idx ON elevacion_terreno_hexagonos USING GIST (geom);
+DROP TABLE IF EXISTS elevacion_terreno_hexagonos CASCADE;
 
 -- Probabilidad de falla por amenaza (03 - Amenazas/probabilidad_falla.py, parámetros por defecto).
 -- Cada zona de amenaza (hexágono de lluvia/viento/STOP 7d) tiene una p de falla

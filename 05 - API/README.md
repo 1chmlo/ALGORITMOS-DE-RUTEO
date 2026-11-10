@@ -16,7 +16,7 @@ El front de la Fase 2 tenía las rutas escritas a mano. La Fase 3 exige recalcul
 |---|---|---|
 | GET | `/api/salud` | Verifica conexión a la BD |
 | GET | `/api/config` | Amenazas, metadatos, parámetros y consulta por defecto |
-| GET | `/api/capas/{nombre}` | GeoJSON desde PostGIS: `nodos`, `lluvia`, `viento`, `robo_7d`, `stop_90d`, `luminarias`, `trafico`, `formas`, `terreno`, `metadatos_grilla` |
+| GET | `/api/capas/{nombre}` | GeoJSON desde PostGIS: `nodos`, `lluvia`, `viento`, `robo_7d`, `stop_90d`, `luminarias`, `trafico`, `formas`, `metadatos_grilla` |
 | POST | `/api/rutas` | Calcula las 4 rutas (cuerpo: ver abajo) |
 | POST | `/api/simular-fallas` | Sorteo 0–100 por zona y rutas recalculadas (punto 7) |
 | POST | `/api/recargar` | Vacía la caché después de volver a correr los ETL |
@@ -44,10 +44,7 @@ Cuerpo de `/api/rutas` y `/api/simular-fallas`. Todos los campos son opcionales:
 
 ## 1. Infraestructura: grafo de visibilidad (punto 2)
 
-El dron vuela en línea recta salvo que algo se lo impida. Hay dos tipos de obstáculo:
-
-1. **Altitud (terreno):** el dron vuela a altitud constante, a la elevación de su base más `altura_vuelo_m`. Todo hexágono de terreno (`elevacion_terreno_hexagonos`, 500 m) que quede a menos de 30 m bajo ese techo es obstáculo. Así quedan bloqueados los cerros del poniente de Maipú, que llegan a unos 1000 m s.n.m. mientras las bases están a unos 490 m.
-2. **Zonas de amenaza caídas:** en el modelo probabilístico, las zonas con p ≥ `umbral_falla`, y en la simulación, las zonas cuya falla ocurrió.
+El dron vuela en línea recta salvo que algo se lo impida. Los obstáculos corresponden a **zonas de amenaza caídas**: en el modelo probabilístico, las zonas con p ≥ `umbral_falla`, y en la simulación, las zonas cuya falla ocurrió.
 
 Los obstáculos se unen, se cierran (morfología de 100 m), se simplifican y se amplían 40 m de holgura. Los **vértices convexos** de esos polígonos, desplazados 15 m hacia afuera, son los únicos puntos donde la ruta más corta puede doblar. Esos son los waypoints.
 
@@ -60,7 +57,7 @@ Así ninguna arista atraviesa un obstáculo y las rutas los rodean pegadas a su 
 También se agregan los vértices de las **zonas blandas** (`umbral_blando ≤ p < umbral_falla`). Esas zonas sí se pueden cruzar, pero con sus vértices en el grafo el optimizador también puede elegir rodearlas.
 
 Se construyen dos grafos por consulta:
-- **Grafo A**, para Dijkstra solo distancia: solo obstáculos físicos (terreno sobre techo y fallas ya ocurridas).
+- **Grafo A**, para Dijkstra solo distancia: solo obstáculos por fallas ya ocurridas.
 - **Grafo B**, para las otras tres técnicas: además, las zonas de amenaza caídas y los waypoints blandos.
 
 Si el grafo B supera las 1.990 variables del MILP, se deja a cada nodo con sus k vecinos más cercanos. El límite viene de la licencia libre de Gurobi.

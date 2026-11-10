@@ -11,8 +11,7 @@ curl -X POST http://localhost:8080/api/rutas -H 'Content-Type: application/json'
 
 El dron de la **25ª Comisaría de Maipú (base 1)** debe patrullar los **6 puntos críticos de encerronas** (nodos 4 a 9) y volver a la base. Tiene que cumplir:
 - autonomía de **25 km**;
-- probabilidad de falla de la misión de **60 %** como máximo;
-- no cruzar cerros sobre su techo de vuelo (609 m s.n.m.).
+- probabilidad de falla de la misión de **60 %** como máximo.
 
 Las amenazas reales son las de la extracción: lluvia y viento de Open-Meteo, y robos STOP de 7 días.
 

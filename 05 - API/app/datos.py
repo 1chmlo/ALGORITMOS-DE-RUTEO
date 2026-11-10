@@ -55,14 +55,12 @@ def nodos():
     def cargar():
         with conectar() as con:
             filas = con.execute("""
-                SELECT n.id, n.tipo, n.nombre, n.descripcion, ST_X(n.geom), ST_Y(n.geom),
-                       (SELECT e.elevacion_m FROM elevacion_terreno_hexagonos e
-                        ORDER BY e.geom <-> n.geom LIMIT 1)
+                SELECT n.id, n.tipo, n.nombre, n.descripcion, ST_X(n.geom), ST_Y(n.geom)
                 FROM nodos_aereos n ORDER BY n.id""").fetchall()
         return [
             {"id": i, "tipo": t, "nombre": nom, "descripcion": d, "lon": lon, "lat": lat,
-             "elevacion_m": elev, "xy": a_metros(lon, lat)}
-            for i, t, nom, d, lon, lat, elev in filas
+             "xy": a_metros(lon, lat)}
+            for i, t, nom, d, lon, lat in filas
         ]
     return cache.obtener("nodos", 600, cargar)
 
@@ -76,30 +74,12 @@ def area_ruteo():
     return area, geom_a_grados(area).wkt
 
 
-# ------------------------------------------------------------------ obstáculos estáticos
-
-def terreno():
-    def cargar():
-        _, wkt = area_ruteo()
-        with conectar() as con:
-            filas = con.execute("""
-                SELECT hex_id, elevacion_m, ST_AsGeoJSON(geom, 6) FROM elevacion_terreno_hexagonos
-                WHERE ST_Intersects(geom, ST_GeomFromText(%s, 4326))""", (wkt,)).fetchall()
-        return [{"hex_id": h, "elevacion_m": e, "geojson": json.loads(g), "geom": geom_a_metros(shape(json.loads(g)))}
-                for h, e, g in filas]
-    return cache.obtener("terreno", 600, cargar)
-
-
-def terreno_sobre_techo(techo_m):
-    return [t for t in terreno() if t["elevacion_m"] >= techo_m]
-
-
 # ------------------------------------------------------------------ grilla de metadatos
 
 def grilla_metadatos():
-    """Valor de vigilancia de cada hexágono de 500 m (la grilla de elevación), por metadato.
+    """Valor de vigilancia de cada hexágono de 500 m, por metadato.
 
-    stop_90d   nivel/niveles_total del hexágono STOP de 90 días más alto que lo toca
+    stop_90d   nivel/niveles_total del hexágono STOP de 90 días
     oscuridad  1 - min(1, luminarias / P75): menos luminarias => más oscuro => más delito.
                Solo dentro de la zona relevada por Mapillary (fuera de ella vale 0: sin dato)
     trafico    factor_riesgo_trafico máximo de los tramos TomTom que lo cruzan (velocidad baja)
@@ -109,12 +89,11 @@ def grilla_metadatos():
         _, wkt = area_ruteo()
         with conectar() as con:
             filas = con.execute("""
-                WITH t AS (SELECT hex_id, geom FROM elevacion_terreno_hexagonos
+                WITH t AS (SELECT hex_id, nivel, niveles_total, geom FROM robo_con_violencia_hexagonos
                            WHERE ST_Intersects(geom, ST_GeomFromText(%s, 4326))),
                 cobertura AS (SELECT ST_ConvexHull(ST_Collect(geom)) AS g FROM luminarias_mapillary)
                 SELECT t.hex_id, ST_AsGeoJSON(t.geom, 6),
-                  coalesce((SELECT max(s.nivel::float / s.niveles_total) FROM robo_con_violencia_hexagonos s
-                            WHERE ST_Intersects(s.geom, t.geom)), 0),
+                  coalesce(t.nivel::float / nullif(t.niveles_total, 0), 0),
                   (SELECT count(*) FROM luminarias_mapillary l WHERE ST_Intersects(l.geom, t.geom)),
                   ST_Within(ST_Centroid(t.geom), (SELECT g FROM cobertura)),
                   coalesce((SELECT max(r.factor_riesgo_trafico) FROM tomtom_trafico r
@@ -215,7 +194,6 @@ def capa(nombre):
         "formas": (f"""SELECT nombre, ref_via, highway, forma_vial, es_enlace_salida, es_curva_pronunciada,
                           indice_sinuosidad, factor_riesgo_geom, geom
                       FROM overpass_formas_viales WHERE {f}""", (wkt,)),
-        "terreno": (f"""SELECT hex_id, elevacion_m, geom FROM elevacion_terreno_hexagonos WHERE {f}""", (wkt,)),
     }
     if nombre == "metadatos_grilla":
         return {"type": "FeatureCollection", "features": [

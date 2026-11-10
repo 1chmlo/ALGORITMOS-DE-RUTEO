@@ -313,11 +313,6 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
                     </select>
                 </div>
 
-                <label class="check">
-                    <input type="checkbox" id="restricciones_estaticas" checked>
-                    <span>Evitar cerros sobre la altura de vuelo</span>
-                </label>
-
                 <details>
                     <summary>Ajustes avanzados del modelo</summary>
                     <div class="sec">
@@ -362,8 +357,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
                     <summary>Capas técnicas y umbrales de amenaza</summary>
                     <div class="sec">
                         <label class="check"><input type="checkbox" id="ver-obstaculos" checked> <span class="chip" style="background:#475569"></span> Ver zonas bloqueadas (obstáculos)</label>
-                        <label class="check"><input type="checkbox" id="ver-terreno"> <span class="chip" style="background:#a16207"></span> Ver cerros sobre techo de vuelo</label>
-                        <label class="check"><input type="checkbox" id="ver-grafo"> <span class="chip" style="background:#cbd5e1"></span> Ver grafo de visibilidad</label>
+                        <label class="check"><input type="checkbox" id="ver-grafo"> <span class="chip" style="background:#475569"></span> Ver grafo de visibilidad</label>
                         <div class="caja" id="info-grafo" style="display:none"></div>
                         <div id="params-amenazas" style="margin-top:8px"></div>
                     </div>
@@ -459,12 +453,13 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&c
 
 map.createPane('zonas').style.zIndex = 380;
 map.createPane('obst').style.zIndex = 390;
+map.createPane('grafo').style.zIndex = 410;
 map.createPane('rutas').style.zIndex = 450;
 map.createPane('nodos').style.zIndex = 620;
 
 const capas = {
     metadatos: {}, grilla: L.layerGroup().addTo(map), zonas: L.layerGroup().addTo(map),
-    obstaculos: L.layerGroup().addTo(map), terreno: L.layerGroup().addTo(map),
+    obstaculos: L.layerGroup().addTo(map),
     grafo: L.layerGroup().addTo(map), rutas: L.layerGroup().addTo(map), nodos: L.layerGroup().addTo(map),
     simuladas: L.layerGroup().addTo(map),
 };
@@ -572,7 +567,6 @@ function consulta() {
         peso_metadatos: num('peso_metadatos'),
         amenazas: [...document.querySelectorAll('.chk-amenaza:checked')].map(i => i.value),
         metadatos: [...document.querySelectorAll('.chk-metadato:checked')].map(i => i.value),
-        restricciones_estaticas: $('restricciones_estaticas').checked,
         pesos_amenazas: {},
         params_amenazas: params,
         amenazas_simuladas: estado.simuladas,
@@ -655,18 +649,34 @@ function dibujarObstaculos(fc) {
     L.geoJSON(fc, {
         pane: 'obst',
         style: { color: '#334155', weight: 1.5, fillColor: '#475569', fillOpacity: 0.25, dashArray: '3 4' },
-        onEachFeature: (f, l) => l.bindPopup('<b>Obstáculo bloqueado</b><br>Terreno sobre la altura de vuelo y zonas críticas caídas (+40 m de seguridad).')
+        onEachFeature: (f, l) => l.bindPopup('<b>Obstáculo bloqueado</b><br>Zonas críticas caídas (+40 m de seguridad).')
     }).addTo(capas.obstaculos);
 }
 
 function dibujarGrafo(g) {
     capas.grafo.clearLayers();
     if (!$('ver-grafo').checked || !g) return;
-    L.geoJSON(g.aristas, { style: () => ({ color: '#64748b', weight: 0.6, opacity: 0.35 }) }).addTo(capas.grafo);
+    L.geoJSON(g.aristas, {
+        pane: 'grafo',
+        style: () => ({ color: '#475569', weight: 1.8, opacity: 0.75 }),
+        onEachFeature: (f, l) => {
+            const p = f.properties;
+            l.on({
+                mouseover: e => e.target.setStyle({ color: '#38bdf8', weight: 3, opacity: 1 }),
+                mouseout: e => e.target.setStyle({ color: '#475569', weight: 1.8, opacity: 0.75 }),
+            });
+            l.bindPopup(`<b>Arista del grafo de visibilidad</b><br>
+                Conexión: <b>Nodo ${p.u} ⟷ Nodo ${p.v}</b><br>
+                Longitud: <b>${km(p.largo_m)}</b><br>
+                Riesgo P(falla): <b>${pct(p.p)}</b><br>
+                Vigilancia: <b>${(p.vigilancia * 100).toFixed(1)}%</b>`);
+        }
+    }).addTo(capas.grafo);
     L.geoJSON(g.waypoints, {
+        pane: 'grafo',
         pointToLayer: (f, ll) => L.circleMarker(ll, {
-            radius: 3.5, color: f.properties.tipo === 'waypoint_duro' ? '#0f172a' : '#be185d',
-            weight: 1.5, fillColor: '#fff', fillOpacity: 1
+            radius: 4.5, color: f.properties.tipo === 'waypoint_duro' ? '#0f172a' : '#be185d',
+            weight: 2, fillColor: '#fff', fillOpacity: 1
         }),
         onEachFeature: (f, l) => l.bindPopup(`<b>Waypoint ${f.properties.id}</b><br>${f.properties.tipo === 'waypoint_duro' ? 'Rodeo de obstáculo' : 'Rodeo de zona de amenaza'}`),
     }).addTo(capas.grafo);
@@ -714,7 +724,6 @@ function dibujarNodos(res) {
             html: `<div class="marcador-nodo" style="width:${tam}px;height:${tam}px;background:${color};opacity:${enMision ? 1 : .55};${fallados.has(n.id) ? 'outline:3px solid #dc2626;' : ''}">${inalc ? '✕' : texto}${insignia}</div>`
         });
         L.marker([n.lat, n.lon], { icon: icono, pane: 'nodos' }).bindPopup(`<b>${n.id} · ${esc(n.nombre)}</b><br>${esc(n.descripcion || '')}<br>
-            Elevación: ${n.elevacion_m ?? '?'} m s.n.m.<br>
             ${pos >= 0 ? `Visita n.º ${pos + 1} en la mejor ruta (${esc(mejor.nombre)})<br>` : ''}
             ${inalc ? '<b style="color:#dc2626">Inalcanzable: queda dentro de un obstáculo</b>' : ''}
             ${fallados.has(n.id) ? '<b style="color:#dc2626">Nodo afectado por falla sorteada</b>' : ''}`).addTo(capas.nodos);
@@ -784,19 +793,7 @@ function infoGrafo(res) {
     $('info-grafo').style.display = 'block';
     $('info-grafo').innerHTML = `<b>Resumen del grafo</b><br>
         Nodos: ${e.nodos_grafo_b} · Aristas: ${e.aristas_grafo_b}<br>
-        Zonas de amenaza: ${e.zonas_activas} (${e.zonas_duras} bloqueadas)<br>
-        Cerros sobre el techo (${e.techo_vuelo_msnm ?? '—'} m s.n.m.): ${e.hexagonos_terreno} hexágonos`;
-}
-
-async function dibujarTerreno() {
-    capas.terreno.clearLayers();
-    if (!$('ver-terreno').checked || !estado.resultado) return;
-    const techo = estado.resultado.estadisticas.techo_vuelo_msnm;
-    const fc = await capaApi('terreno');
-    L.geoJSON({ type: 'FeatureCollection', features: fc.features.filter(f => techo && f.properties.elevacion_m >= techo - 30) }, {
-        style: { color: '#a16207', weight: 0.6, fillColor: '#ca8a04', fillOpacity: 0.35 },
-        onEachFeature: (f, l) => l.bindPopup(`<b>Cerro sobre el techo de vuelo</b><br>Elevación ${f.properties.elevacion_m} m s.n.m. ≥ techo ${techo} m − 30 m`),
-    }).addTo(capas.terreno);
+        Zonas de amenaza: ${e.zonas_activas} (${e.zonas_duras} bloqueadas)`;
 }
 
 async function dibujarMetadato(m, visible) {
@@ -991,7 +988,6 @@ function enlazarEventos() {
         if (t.id === 'ver-grilla-vigilancia') return dibujarGrillaVigilancia();
         if (t.id === 'ver-grafo') return dibujarGrafo(rutasMostradas()?.grafo);
         if (t.id === 'ver-obstaculos') return dibujarObstaculos(rutasMostradas()?.obstaculos);
-        if (t.id === 'ver-terreno') return dibujarTerreno();
         if (['semilla', 'sim-tipo', 'sim-radio', 'sim-p'].includes(t.id)) return;
         if (t.matches('.chk-metadato')) {
             const ver = document.querySelector(`.ver-metadato[value="${t.value}"]`);

@@ -17,13 +17,10 @@ docker compose exec -T db psql -U ruteo -d ruteo -c "SET client_min_messages = w
 echo "==> 01 - Infraestructura: extraccion y transformacion"
 $INFRA python etl_comisarias.py
 $INFRA python etl_puntos_criticos_fiscalia.py
-# Restricciones físicas del vuelo (si la API externa falla se conserva el GeoJSON versionado)
-$INFRA python etl_elevacion_terreno.py
 
 echo "==> 01 - Infraestructura: carga a la base de datos"
 $INFRA python carga_comisarias.py
 $INFRA python carga_puntos_criticos_fiscalia.py
-$INFRA python carga_elevacion_terreno.py
 
 echo "==> 01 - Infraestructura: generando grafo aéreo y aristas para Dijkstra"
 docker compose exec -T db psql -U ruteo -d ruteo < "00 - DB/dijkstra.sql"

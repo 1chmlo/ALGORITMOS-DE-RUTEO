@@ -14,10 +14,10 @@
   "ventana_dias": 7,
   "periodo_desde": "2026-11-03",
   "periodo_hasta": "2026-11-10",
-  "fecha_max_con_datos": "2026-11-07",
-  "eventos_en_periodo": 701,
-  "total_hexagonos": 333,
-  "total_eventos_rm": 643,
+  "fecha_max_con_datos": "2026-11-08",
+  "eventos_en_periodo": 869,
+  "total_hexagonos": 371,
+  "total_eventos_rm": 794,
   "leyenda": [
    {
     "color": "rgba(254,237,222,0.5)",
@@ -29,23 +29,23 @@
    {
     "color": "rgba(253,190,133,0.5)",
     "color_border": "rgba(253,190,133,0.5)",
-    "label": "4 - 7",
-    "max": 7,
+    "label": "4 - 8",
+    "max": 8,
     "min": 3
    },
    {
     "color": "rgba(253,141,60,0.5)",
     "color_border": "rgba(253,141,60,0.5)",
-    "label": "8 - 13",
-    "max": 13,
-    "min": 7
+    "label": "9 - 17",
+    "max": 17,
+    "min": 8
    },
    {
     "color": "rgba(217,71,1,0.5)",
     "color_border": "rgba(217,71,1,0.5)",
-    "label": "14 - 24",
-    "max": 24,
-    "min": 13
+    "label": "18 - 33",
+    "max": 33,
+    "min": 17
    }
   ]
  },
@@ -61,7 +61,7 @@
    },
    "properties": {
     "hex_id": "hex_rm_6b545caa9d24",
-    "cantidad": 24,
+    "cantidad": 33,
     "nivel": 4,
     "niveles_total": 4,
     "color": "rgba(217,71,1,0.5)"
@@ -78,7 +78,7 @@
    },
    "properties": {
     "hex_id": "hex_rm_8379e65ae694",
-    "cantidad": 23,
+    "cantidad": 24,
     "nivel": 4,
     "niveles_total": 4,
     "color": "rgba(217,71,1,0.5)"
@@ -95,6 +95,23 @@
    },
    "properties": {
     "hex_id": "hex_rm_6058a765521b",
+    "cantidad": 17,
+    "nivel": 3,
+    "niveles_total": 4,
+    "color": "rgba(253,141,60,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.639612,
+     -33.475776
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_0954bd5a58f9",
     "cantidad": 13,
     "nivel": 3,
     "niveles_total": 4,
@@ -112,24 +129,7 @@
    },
    "properties": {
     "hex_id": "hex_rm_3caa9dd66024",
-    "cantidad": 12,
-    "nivel": 3,
-    "niveles_total": 4,
-    "color": "rgba(253,141,60,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.639612,
-     -33.475776
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_0954bd5a58f9",
-    "cantidad": 11,
+    "cantidad": 13,
     "nivel": 3,
     "niveles_total": 4,
     "color": "rgba(253,141,60,0.5)"
@@ -146,7 +146,24 @@
    },
    "properties": {
     "hex_id": "hex_rm_bdd8ab073805",
-    "cantidad": 9,
+    "cantidad": 11,
+    "nivel": 3,
+    "niveles_total": 4,
+    "color": "rgba(253,141,60,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.640344,
+     -33.428921
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_39c3528821be",
+    "cantidad": 10,
     "nivel": 3,
     "niveles_total": 4,
     "color": "rgba(253,141,60,0.5)"
@@ -163,10 +180,78 @@
    },
    "properties": {
     "hex_id": "hex_rm_58337fb1d062",
-    "cantidad": 8,
+    "cantidad": 10,
     "nivel": 3,
     "niveles_total": 4,
     "color": "rgba(253,141,60,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.630591,
+     -33.4335
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_7c7e50641758",
+    "cantidad": 8,
+    "nivel": 2,
+    "niveles_total": 4,
+    "color": "rgba(253,190,133,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.640051,
+     -33.447663
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_62bf575a0380",
+    "cantidad": 7,
+    "nivel": 2,
+    "niveles_total": 4,
+    "color": "rgba(253,190,133,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.638585,
+     -33.541372
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_9d33385d612a",
+    "cantidad": 7,
+    "nivel": 2,
+    "niveles_total": 4,
+    "color": "rgba(253,190,133,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.659413,
+     -33.447874
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_af268bafce00",
+    "cantidad": 7,
+    "nivel": 2,
+    "niveles_total": 4,
+    "color": "rgba(253,190,133,0.5)"
    }
   },
   {
@@ -208,6 +293,40 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.639466,
+     -33.485147
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_15f0eee8a7f8",
+    "cantidad": 6,
+    "nivel": 2,
+    "niveles_total": 4,
+    "color": "rgba(253,190,133,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.630297,
+     -33.452242
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_6a7d00a4d292",
+    "cantidad": 6,
+    "nivel": 2,
+    "niveles_total": 4,
+    "color": "rgba(253,190,133,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.669022,
      -33.452664
     ]
@@ -225,12 +344,46 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.639466,
-     -33.485147
+     -70.649078,
+     -33.489938
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_15f0eee8a7f8",
+    "hex_id": "hex_rm_ba484acf0d54",
+    "cantidad": 6,
+    "nivel": 2,
+    "niveles_total": 4,
+    "color": "rgba(253,190,133,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.678917,
+     -33.438711
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_03668f083501",
+    "cantidad": 5,
+    "nivel": 2,
+    "niveles_total": 4,
+    "color": "rgba(253,190,133,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.659269,
+     -33.457245
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_0c1805780cc5",
     "cantidad": 5,
     "nivel": 2,
     "niveles_total": 4,
@@ -259,12 +412,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.640344,
-     -33.428921
+     -70.756358,
+     -33.439512
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_39c3528821be",
+    "hex_id": "hex_rm_3fbafd451c80",
     "cantidad": 5,
     "nivel": 2,
     "niveles_total": 4,
@@ -293,12 +446,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.630297,
-     -33.452242
+     -70.64966,
+     -33.452455
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_6a7d00a4d292",
+    "hex_id": "hex_rm_57e7f07a97fa",
     "cantidad": 5,
     "nivel": 2,
     "niveles_total": 4,
@@ -310,12 +463,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.630591,
-     -33.4335
+     -70.659701,
+     -33.429132
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_7c7e50641758",
+    "hex_id": "hex_rm_72c3e0bb2053",
     "cantidad": 5,
     "nivel": 2,
     "niveles_total": 4,
@@ -361,23 +514,6 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.649078,
-     -33.489938
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_ba484acf0d54",
-    "cantidad": 5,
-    "nivel": 2,
-    "niveles_total": 4,
-    "color": "rgba(253,190,133,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
      -70.667731,
      -33.537003
     ]
@@ -395,12 +531,97 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.678917,
-     -33.438711
+     -70.630444,
+     -33.442871
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_03668f083501",
+    "hex_id": "hex_rm_e6ecf63e6a69",
+    "cantidad": 5,
+    "nivel": 2,
+    "niveles_total": 4,
+    "color": "rgba(253,190,133,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.707888,
+     -33.443703
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_040951a1df0c",
+    "cantidad": 4,
+    "nivel": 2,
+    "niveles_total": 4,
+    "color": "rgba(253,190,133,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.794042,
+     -33.514866
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_05fef976ef14",
+    "cantidad": 4,
+    "nivel": 2,
+    "niveles_total": 4,
+    "color": "rgba(253,190,133,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.608234,
+     -33.620699
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_0a35d486cf93",
+    "cantidad": 4,
+    "nivel": 2,
+    "niveles_total": 4,
+    "color": "rgba(253,190,133,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.228622,
+     -33.682362
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_0e99c8afadd7",
+    "cantidad": 4,
+    "nivel": 2,
+    "niveles_total": 4,
+    "color": "rgba(253,190,133,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.672864,
+     -33.199641
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_15740f3fbd7f",
     "cantidad": 4,
     "nivel": 2,
     "niveles_total": 4,
@@ -418,40 +639,6 @@
    },
    "properties": {
     "hex_id": "hex_rm_35274a4ecc13",
-    "cantidad": 4,
-    "nivel": 2,
-    "niveles_total": 4,
-    "color": "rgba(253,190,133,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.64966,
-     -33.452455
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_57e7f07a97fa",
-    "cantidad": 4,
-    "nivel": 2,
-    "niveles_total": 4,
-    "color": "rgba(253,190,133,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.659701,
-     -33.429132
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_72c3e0bb2053",
     "cantidad": 4,
     "nivel": 2,
     "niveles_total": 4,
@@ -497,12 +684,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.638585,
-     -33.541372
+     -70.698557,
+     -33.420173
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_9d33385d612a",
+    "hex_id": "hex_rm_a5be1c2956b4",
     "cantidad": 4,
     "nivel": 2,
     "niveles_total": 4,
@@ -514,12 +701,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.659413,
-     -33.447874
+     -70.599216,
+     -33.578422
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_af268bafce00",
+    "hex_id": "hex_rm_a6112977b333",
     "cantidad": 4,
     "nivel": 2,
     "niveles_total": 4,
@@ -531,12 +718,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.630444,
-     -33.442871
+     -70.64995,
+     -33.433713
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_e6ecf63e6a69",
+    "hex_id": "hex_rm_f2f35dc85b87",
     "cantidad": 4,
     "nivel": 2,
     "niveles_total": 4,
@@ -565,12 +752,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.707888,
-     -33.443703
+     -70.927836,
+     -33.66606
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_040951a1df0c",
+    "hex_id": "hex_rm_0826d086df9f",
     "cantidad": 3,
     "nivel": 1,
     "niveles_total": 4,
@@ -582,12 +769,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.794042,
-     -33.514866
+     -70.676493,
+     -33.598017
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_05fef976ef14",
+    "hex_id": "hex_rm_0bb0131bc49d",
     "cantidad": 3,
     "nivel": 1,
     "niveles_total": 4,
@@ -599,63 +786,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.608234,
-     -33.620699
+     -70.736862,
+     -33.448687
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_0a35d486cf93",
-    "cantidad": 3,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.659269,
-     -33.457245
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_0c1805780cc5",
-    "cantidad": 3,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -71.228622,
-     -33.682362
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_0e99c8afadd7",
-    "cantidad": 3,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.672864,
-     -33.199641
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_15740f3fbd7f",
+    "hex_id": "hex_rm_0da5882684a9",
     "cantidad": 3,
     "nivel": 1,
     "niveles_total": 4,
@@ -718,12 +854,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.756358,
-     -33.439512
+     -70.667443,
+     -33.555745
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_3fbafd451c80",
+    "hex_id": "hex_rm_41fdd58e2c1b",
     "cantidad": 3,
     "nivel": 1,
     "niveles_total": 4,
@@ -769,6 +905,23 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.676779,
+     -33.579276
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_572d671d717a",
+    "cantidad": 3,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.737133,
      -33.429945
     ]
@@ -786,12 +939,114 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.640051,
-     -33.447663
+     -70.669452,
+     -33.424551
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_62bf575a0380",
+    "hex_id": "hex_rm_5ff6162515ca",
+    "cantidad": 3,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.708027,
+     -33.434331
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_610f6b022b3c",
+    "cantidad": 3,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.579672,
+     -33.587571
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_618be5383816",
+    "cantidad": 3,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.698277,
+     -33.438916
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_623d5ac11ed1",
+    "cantidad": 3,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.745665,
+     -33.509699
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_73a194b6bc61",
+    "cantidad": 3,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.640782,
+     -33.400809
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_74ba213f74d7",
+    "cantidad": 3,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.550819,
+     -33.573179
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_75016409e33d",
     "cantidad": 3,
     "nivel": 1,
     "niveles_total": 4,
@@ -809,6 +1064,57 @@
    },
    "properties": {
     "hex_id": "hex_rm_78116c5037c9",
+    "cantidad": 3,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.756492,
+     -33.430141
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_87e329cc7f70",
+    "cantidad": 3,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.727249,
+     -33.443903
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_8a8cf5e7aff2",
+    "cantidad": 3,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.679201,
+     -33.419969
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_97862d0c0314",
     "cantidad": 3,
     "nivel": 1,
     "niveles_total": 4,
@@ -854,12 +1160,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.698557,
-     -33.420173
+     -70.718738,
+     -33.364147
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_a5be1c2956b4",
+    "hex_id": "hex_rm_abcd9cb3eaff",
     "cantidad": 3,
     "nivel": 1,
     "niveles_total": 4,
@@ -877,6 +1183,23 @@
    },
    "properties": {
     "hex_id": "hex_rm_ac70b775bcd5",
+    "cantidad": 3,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.571903,
+     -33.470328
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_b579c5d095e6",
     "cantidad": 3,
     "nivel": 1,
     "niveles_total": 4,
@@ -922,6 +1245,23 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.660277,
+     -33.391648
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_bd46a13fcbaa",
+    "cantidad": 3,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.63118,
      -33.396017
     ]
@@ -956,6 +1296,23 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.628672,
+     -33.555321
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_d13810a5bd51",
+    "cantidad": 3,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.639905,
      -33.457034
     ]
@@ -973,12 +1330,80 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.668593,
+     -33.480777
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_d51062538bd4",
+    "cantidad": 3,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.650095,
      -33.424342
     ]
    },
    "properties": {
     "hex_id": "hex_rm_dfcf157b961a",
+    "cantidad": 3,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.628968,
+     -33.53658
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_e50dbfce17d4",
+    "cantidad": 3,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.659845,
+     -33.419761
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_e54caeb8d3b0",
+    "cantidad": 3,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.590206,
+     -33.536144
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_e784769d506e",
     "cantidad": 3,
     "nivel": 1,
     "niveles_total": 4,
@@ -1024,64 +1449,13 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.64995,
-     -33.433713
+     -70.679768,
+     -33.382484
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_f2f35dc85b87",
+    "hex_id": "hex_rm_fe4a0ab8a9b7",
     "cantidad": 3,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.927836,
-     -33.66606
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_0826d086df9f",
-    "cantidad": 2,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.676493,
-     -33.598017
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_0bb0131bc49d",
-    "cantidad": 2,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.736862,
-     -33.448687
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_0da5882684a9",
-    "cantidad": 2,
     "nivel": 1,
     "niveles_total": 4,
     "color": "rgba(254,237,222,0.5)"
@@ -1143,6 +1517,23 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.638732,
+     -33.532001
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_181882d79a2f",
+    "cantidad": 2,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.736454,
      -33.476801
     ]
@@ -1160,12 +1551,46 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.736182,
+     -33.495544
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_2378e5f41bb7",
+    "cantidad": 2,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.609136,
      -33.564475
     ]
    },
    "properties": {
     "hex_id": "hex_rm_25c31512f1b1",
+    "cantidad": 2,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.669309,
+     -33.433922
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_2a16aa6007fa",
     "cantidad": 2,
     "nivel": 1,
     "niveles_total": 4,
@@ -1211,12 +1636,46 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.765441,
+     -33.48178
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_33c281e87eaf",
+    "cantidad": 2,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.663424,
      -33.18548
     ]
    },
    "properties": {
     "hex_id": "hex_rm_33e2a002c4d6",
+    "cantidad": 2,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.716532,
+     -33.514087
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_35cfdac0d1cd",
     "cantidad": 2,
     "nivel": 1,
     "niveles_total": 4,
@@ -1313,12 +1772,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.667443,
-     -33.555745
+     -70.609887,
+     -33.517622
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_41fdd58e2c1b",
+    "hex_id": "hex_rm_420699d8270d",
     "cantidad": 2,
     "nivel": 1,
     "niveles_total": 4,
@@ -1330,12 +1789,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.609887,
-     -33.517622
+     -70.680051,
+     -33.363742
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_420699d8270d",
+    "hex_id": "hex_rm_4610ca6475d7",
     "cantidad": 2,
     "nivel": 1,
     "niveles_total": 4,
@@ -1398,6 +1857,23 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.552693,
+     -33.460733
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_4e3242c6b391",
+    "cantidad": 2,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.600726,
      -33.484716
     ]
@@ -1432,12 +1908,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.600274,
-     -33.512828
+     -70.737269,
+     -33.420574
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_54d6fdda49f3",
+    "hex_id": "hex_rm_53c354599b0a",
     "cantidad": 2,
     "nivel": 1,
     "niveles_total": 4,
@@ -1449,12 +1925,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.676779,
-     -33.579276
+     -70.600274,
+     -33.512828
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_572d671d717a",
+    "hex_id": "hex_rm_54d6fdda49f3",
     "cantidad": 2,
     "nivel": 1,
     "niveles_total": 4,
@@ -1483,6 +1959,40 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.590662,
+     -33.508032
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_5d064fbf163c",
+    "cantidad": 2,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.610037,
+     -33.508251
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_5d35a35e8ad3",
+    "cantidad": 2,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.659989,
      -33.41039
     ]
@@ -1500,12 +2010,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.669452,
-     -33.424551
+     -70.728206,
+     -33.378304
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_5ff6162515ca",
+    "hex_id": "hex_rm_5fd41da26d51",
     "cantidad": 2,
     "nivel": 1,
     "niveles_total": 4,
@@ -1523,40 +2033,6 @@
    },
    "properties": {
     "hex_id": "hex_rm_60ee722aae76",
-    "cantidad": 2,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.708027,
-     -33.434331
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_610f6b022b3c",
-    "cantidad": 2,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.579672,
-     -33.587571
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_618be5383816",
     "cantidad": 2,
     "nivel": 1,
     "niveles_total": 4,
@@ -1670,46 +2146,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.745665,
-     -33.509699
+     -70.687962,
+     -33.480984
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_73a194b6bc61",
-    "cantidad": 2,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.640782,
-     -33.400809
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_74ba213f74d7",
-    "cantidad": 2,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.550819,
-     -33.573179
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_75016409e33d",
+    "hex_id": "hex_rm_71fe19856814",
     "cantidad": 2,
     "nivel": 1,
     "niveles_total": 4,
@@ -1755,6 +2197,23 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.639173,
+     -33.503889
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_7a202d2f0166",
+    "cantidad": 2,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.581662,
      -33.465754
     ]
@@ -1772,12 +2231,80 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.708443,
+     -33.406218
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_7d2a511b74bf",
+    "cantidad": 2,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.728342,
      -33.368932
     ]
    },
    "properties": {
     "hex_id": "hex_rm_7f4003bb4937",
+    "cantidad": 2,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.638879,
+     -33.52263
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_80267bd17329",
+    "cantidad": 2,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.649223,
+     -33.480567
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_80af3081a4d9",
+    "cantidad": 2,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.785465,
+     -33.435114
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_8170c5a4a9d4",
     "cantidad": 2,
     "nivel": 1,
     "niveles_total": 4,
@@ -1857,12 +2384,63 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.679201,
-     -33.419969
+     -70.581051,
+     -33.503237
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_97862d0c0314",
+    "hex_id": "hex_rm_8e0a67f0e649",
+    "cantidad": 2,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.745801,
+     -33.500328
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_916a0a69c39b",
+    "cantidad": 2,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.706634,
+     -33.528043
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_93294bbe68a9",
+    "cantidad": 2,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.670308,
+     -33.368324
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_93f7e59b85c8",
     "cantidad": 2,
     "nivel": 1,
     "niveles_total": 4,
@@ -1959,46 +2537,29 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.599216,
-     -33.578422
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_a6112977b333",
-    "cantidad": 2,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.718738,
-     -33.364147
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_abcd9cb3eaff",
-    "cantidad": 2,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
      -70.669737,
      -33.405809
     ]
    },
    "properties": {
     "hex_id": "hex_rm_afc143a14e82",
+    "cantidad": 2,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.620541,
+     -33.45682
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_b08c3b9965eb",
     "cantidad": 2,
     "nivel": 1,
     "niveles_total": 4,
@@ -2027,12 +2588,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.571903,
-     -33.470328
+     -70.747687,
+     -33.369129
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_b579c5d095e6",
+    "hex_id": "hex_rm_ba3abcb61ab7",
     "cantidad": 2,
     "nivel": 1,
     "niveles_total": 4,
@@ -2050,23 +2611,6 @@
    },
    "properties": {
     "hex_id": "hex_rm_bb88552cca7e",
-    "cantidad": 2,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.660277,
-     -33.391648
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_bd46a13fcbaa",
     "cantidad": 2,
     "nivel": 1,
     "niveles_total": 4,
@@ -2163,29 +2707,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.628672,
-     -33.555321
+     -70.667587,
+     -33.546374
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_d13810a5bd51",
-    "cantidad": 2,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.628968,
-     -33.53658
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_e50dbfce17d4",
+    "hex_id": "hex_rm_dc86b3153fd5",
     "cantidad": 2,
     "nivel": 1,
     "niveles_total": 4,
@@ -2299,13 +2826,30 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.679768,
-     -33.382484
+     -70.580592,
+     -33.531348
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_fe4a0ab8a9b7",
-    "cantidad": 2,
+    "hex_id": "hex_rm_000968c92adf",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.664844,
+     -33.091766
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_002ed21b8fa5",
+    "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
     "color": "rgba(254,237,222,0.5)"
@@ -2503,6 +3047,40 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.667011,
+     -33.583857
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_064d4276abea",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.610186,
+     -33.498881
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_06a43234b65a",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.705236,
      -33.621753
     ]
@@ -2577,6 +3155,23 @@
    },
    "properties": {
     "hex_id": "hex_rm_0b419eba1f64",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -71.044107,
+     -33.685759
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_0b68a4f2274c",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -2690,6 +3285,23 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.653844,
+     -33.180691
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_130fbdd9546f",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.620838,
      -33.438079
     ]
@@ -2730,23 +3342,6 @@
    },
    "properties": {
     "hex_id": "hex_rm_16d0b60df48f",
-    "cantidad": 1,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.638732,
-     -33.532001
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_181882d79a2f",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -2843,12 +3438,46 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.767692,
+     -33.322465
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_1a8ede2f91aa",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.66988,
      -33.396438
     ]
    },
    "properties": {
     "hex_id": "hex_rm_1be41d625c00",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.71915,
+     -33.336033
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_1d8926d06efb",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -2917,6 +3546,23 @@
    },
    "properties": {
     "hex_id": "hex_rm_22e5f8d15bc8",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.67991,
+     -33.373113
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_22fe6f6cb6eb",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -3013,23 +3659,6 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.669309,
-     -33.433922
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_2a16aa6007fa",
-    "cantidad": 1,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
      -70.747955,
      -33.350386
     ]
@@ -3053,6 +3682,23 @@
    },
    "properties": {
     "hex_id": "hex_rm_2d95c718c94c",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.657678,
+     -33.560325
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_2f25970087c2",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -3132,23 +3778,6 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.716532,
-     -33.514087
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_35cfdac0d1cd",
-    "cantidad": 1,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
      -70.589749,
      -33.564256
     ]
@@ -3172,6 +3801,23 @@
    },
    "properties": {
     "hex_id": "hex_rm_3a7796742d40",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.750414,
+     -33.851838
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_3ba7cd26b284",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -3285,6 +3931,23 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.776245,
+     -33.402219
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_453e60593eb5",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.755421,
      -33.505111
     ]
@@ -3302,12 +3965,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.680051,
-     -33.363742
+     -70.543559,
+     -33.427823
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_4610ca6475d7",
+    "hex_id": "hex_rm_45d2702615b1",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -3438,46 +4101,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.552693,
-     -33.460733
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_4e3242c6b391",
-    "cantidad": 1,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
      -70.688949,
      -33.415386
     ]
    },
    "properties": {
     "hex_id": "hex_rm_4feb06d5dbe4",
-    "cantidad": 1,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.737269,
-     -33.420574
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_53c354599b0a",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -3608,40 +4237,6 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.590662,
-     -33.508032
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_5d064fbf163c",
-    "cantidad": 1,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.610037,
-     -33.508251
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_5d35a35e8ad3",
-    "cantidad": 1,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
      -70.589292,
      -33.592368
     ]
@@ -3693,12 +4288,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.728206,
-     -33.378304
+     -70.581815,
+     -33.456383
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_5fd41da26d51",
+    "hex_id": "hex_rm_5f8bb12f0792",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -3795,23 +4390,6 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.698277,
-     -33.438916
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_623d5ac11ed1",
-    "cantidad": 1,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
      -70.581357,
      -33.484495
     ]
@@ -3897,6 +4475,23 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.62069,
+     -33.447449
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_6df91e4e61d4",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.697857,
      -33.467029
     ]
@@ -3948,12 +4543,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.687962,
-     -33.480984
+     -70.58151,
+     -33.475125
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_71fe19856814",
+    "hex_id": "hex_rm_7192a88cc0e6",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -3982,12 +4577,46 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.608685,
+     -33.592587
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_75ff2766b48c",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.673006,
      -33.190269
     ]
    },
    "properties": {
     "hex_id": "hex_rm_760d747ff8c1",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.608836,
+     -33.583217
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_794f4eecdf58",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -4022,40 +4651,6 @@
    },
    "properties": {
     "hex_id": "hex_rm_79d14d52105c",
-    "cantidad": 1,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.639173,
-     -33.503889
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_7a202d2f0166",
-    "cantidad": 1,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.708443,
-     -33.406218
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_7d2a511b74bf",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -4135,46 +4730,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.638879,
-     -33.52263
+     -70.708304,
+     -33.415589
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_80267bd17329",
-    "cantidad": 1,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.649223,
-     -33.480567
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_80af3081a4d9",
-    "cantidad": 1,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.785465,
-     -33.435114
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_8170c5a4a9d4",
+    "hex_id": "hex_rm_811702a9d0d6",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -4254,23 +4815,6 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.756492,
-     -33.430141
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_87e329cc7f70",
-    "cantidad": 1,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
      -70.802891,
      -33.575874
     ]
@@ -4339,23 +4883,6 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.727249,
-     -33.443903
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_8a8cf5e7aff2",
-    "cantidad": 1,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
      -70.618457,
      -33.588011
     ]
@@ -4407,6 +4934,40 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.807637,
+     -33.229124
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_8cd90e1b20d7",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.678206,
+     -33.485566
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_8d033b822fd1",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.753671,
      -33.626936
     ]
@@ -4424,29 +4985,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.581051,
-     -33.503237
+     -70.64412,
+     -33.185272
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_8e0a67f0e649",
-    "cantidad": 1,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.745801,
-     -33.500328
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_916a0a69c39b",
+    "hex_id": "hex_rm_8e4f980e249a",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -4464,40 +5008,6 @@
    },
    "properties": {
     "hex_id": "hex_rm_92130b68d7cf",
-    "cantidad": 1,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.706634,
-     -33.528043
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_93294bbe68a9",
-    "cantidad": 1,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
-     -70.670308,
-     -33.368324
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_93f7e59b85c8",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -4628,6 +5138,23 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.668018,
+     -33.518261
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_9c21bd68274f",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.728615,
      -33.350189
     ]
@@ -4679,6 +5206,23 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.880095,
+     -33.604714
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_9fa26b3e9dfa",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.696029,
      -33.588852
     ]
@@ -4702,6 +5246,23 @@
    },
    "properties": {
     "hex_id": "hex_rm_a014309f94e8",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.684123,
+     -33.733997
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_a035bdc5fd95",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -4815,12 +5376,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.629116,
-     -33.527209
+     -70.747149,
+     -33.406615
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_af5021222ee1",
+    "hex_id": "hex_rm_ae227570f420",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -4832,12 +5393,29 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.620541,
-     -33.45682
+     -70.628079,
+     -33.592804
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_b08c3b9965eb",
+    "hex_id": "hex_rm_aebc9c1dac6d",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.629116,
+     -33.527209
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_af5021222ee1",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -4951,6 +5529,23 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.648349,
+     -33.536793
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_b981d4e651f1",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.619352,
      -33.531787
     ]
@@ -4968,12 +5563,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.747687,
-     -33.369129
+     -70.637997,
+     -33.578855
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_ba3abcb61ab7",
+    "hex_id": "hex_rm_bb5919c85fa3",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -4985,12 +5580,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.637997,
-     -33.578855
+     -70.727796,
+     -33.406418
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_bb5919c85fa3",
+    "hex_id": "hex_rm_bbb3e8c8dea5",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -5359,23 +5954,6 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.668593,
-     -33.480777
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_d51062538bd4",
-    "cantidad": 1,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
      -70.677779,
      -33.513679
     ]
@@ -5410,12 +5988,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.667587,
-     -33.546374
+     -70.793651,
+     -33.54298
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_dc86b3153fd5",
+    "hex_id": "hex_rm_dd447b3bc55c",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -5427,12 +6005,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.793651,
-     -33.54298
+     -70.855007,
+     -33.299868
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_dd447b3bc55c",
+    "hex_id": "hex_rm_df7774c60dd7",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -5478,23 +6056,6 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.659845,
-     -33.419761
-    ]
-   },
-   "properties": {
-    "hex_id": "hex_rm_e54caeb8d3b0",
-    "cantidad": 1,
-    "nivel": 1,
-    "niveles_total": 4,
-    "color": "rgba(254,237,222,0.5)"
-   }
-  },
-  {
-   "type": "Feature",
-   "geometry": {
-    "type": "Point",
-    "coordinates": [
      -70.628227,
      -33.583433
     ]
@@ -5529,12 +6090,12 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
-     -70.590206,
-     -33.536144
+     -70.688526,
+     -33.443499
     ]
    },
    "properties": {
-    "hex_id": "hex_rm_e784769d506e",
+    "hex_id": "hex_rm_e808090c9702",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -5614,12 +6175,80 @@
    "geometry": {
     "type": "Point",
     "coordinates": [
+     -70.550192,
+     -33.61066
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_ee07ab0a1c32",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
      -70.629855,
      -33.480355
     ]
    },
    "properties": {
     "hex_id": "hex_rm_eea166134b18",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.550662,
+     -33.582549
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_ef2276f5f45c",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.668162,
+     -33.50889
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_f2158237b218",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.755152,
+     -33.523854
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_f2825a020d12",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
@@ -5671,6 +6300,23 @@
    },
    "properties": {
     "hex_id": "hex_rm_f818e72776d4",
+    "cantidad": 1,
+    "nivel": 1,
+    "niveles_total": 4,
+    "color": "rgba(254,237,222,0.5)"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.619501,
+     -33.522416
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_rm_f9e1c58d80c8",
     "cantidad": 1,
     "nivel": 1,
     "niveles_total": 4,
