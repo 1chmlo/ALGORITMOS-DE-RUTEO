@@ -1,0 +1,6 @@
+# Solo afecta a las imágenes que se construyen con la raíz como contexto (05 - API)
+*
+!05 - API/requirements.txt
+!05 - API/app/
+!03 - Amenazas/probabilidad_falla.py
+**/__pycache__

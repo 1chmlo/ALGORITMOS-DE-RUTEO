@@ -222,6 +222,63 @@ CREATE TABLE IF NOT EXISTS robo_con_violencia_semanal_centroides (
 );
 CREATE INDEX IF NOT EXISTS robo_con_violencia_semanal_centroides_geom_idx ON robo_con_violencia_semanal_centroides USING GIST (geom);
 
+-- Lluvia por zonas para el vuelo de drones (Open-Meteo): grilla de hexágonos sobre Maipú.
+-- no_volable = TRUE bloquea las aristas aéreas que la cruzan (vista aristas_aereas_volables).
+-- Se reemplaza completa en cada carga. Horas en hora local de Santiago.
+CREATE TABLE IF NOT EXISTS lluvia_open_meteo_hexagonos (
+    id                        SERIAL PRIMARY KEY,
+    hex_id                    TEXT NOT NULL UNIQUE,
+    centro_lon                DOUBLE PRECISION,
+    centro_lat                DOUBLE PRECISION,
+    celda_modelo_lon          DOUBLE PRECISION,
+    celda_modelo_lat          DOUBLE PRECISION,
+    precipitacion_actual_mm_h DOUBLE PRECISION,
+    precipitacion_max_mm_h    DOUBLE PRECISION,
+    probabilidad_max_pct      DOUBLE PRECISION,
+    hora_desde                TIMESTAMP,
+    hora_hasta                TIMESTAMP,
+    ventana_horas             SMALLINT,
+    umbral_mm_h               DOUBLE PRECISION,
+    umbral_prob_pct           DOUBLE PRECISION,
+    simulado                  BOOLEAN NOT NULL DEFAULT FALSE,
+    no_volable                BOOLEAN NOT NULL,
+    motivo                    TEXT,
+    tamanio_hexagono_m        INTEGER,
+    fecha_extraccion_utc      TIMESTAMPTZ,
+    fuente                    TEXT,
+    geom                      geometry(Polygon, 4326) NOT NULL
+);
+CREATE INDEX IF NOT EXISTS lluvia_open_meteo_hexagonos_geom_idx ON lluvia_open_meteo_hexagonos USING GIST (geom);
+
+-- Viento por zonas para el vuelo de drones (Open-Meteo): misma grilla y hex_id que la lluvia.
+-- Viento sostenido = máximo entre 80 m y 120 m; ráfagas a 10 m (única altura disponible).
+-- no_volable = TRUE bloquea las aristas aéreas que la cruzan (vista aristas_aereas_volables).
+CREATE TABLE IF NOT EXISTS viento_open_meteo_hexagonos (
+    id                   SERIAL PRIMARY KEY,
+    hex_id               TEXT NOT NULL UNIQUE,
+    centro_lon           DOUBLE PRECISION,
+    centro_lat           DOUBLE PRECISION,
+    celda_modelo_lon     DOUBLE PRECISION,
+    celda_modelo_lat     DOUBLE PRECISION,
+    viento_actual_kmh    DOUBLE PRECISION,
+    viento_max_kmh       DOUBLE PRECISION,
+    rafaga_max_kmh       DOUBLE PRECISION,
+    direccion_grados     DOUBLE PRECISION,
+    hora_desde           TIMESTAMP,
+    hora_hasta           TIMESTAMP,
+    ventana_horas        SMALLINT,
+    umbral_kmh           DOUBLE PRECISION,
+    umbral_rafaga_kmh    DOUBLE PRECISION,
+    simulado             BOOLEAN NOT NULL DEFAULT FALSE,
+    no_volable           BOOLEAN NOT NULL,
+    motivo               TEXT,
+    tamanio_hexagono_m   INTEGER,
+    fecha_extraccion_utc TIMESTAMPTZ,
+    fuente               TEXT,
+    geom                 geometry(Polygon, 4326) NOT NULL
+);
+CREATE INDEX IF NOT EXISTS viento_open_meteo_hexagonos_geom_idx ON viento_open_meteo_hexagonos USING GIST (geom);
+
 -- ===== 04 - RED VIAL Y GRAFO AÉREO (pgRouting) =====
 
 CREATE TABLE IF NOT EXISTS nodos_aereos (
@@ -244,3 +301,66 @@ CREATE TABLE IF NOT EXISTS aristas_aereas (
 CREATE INDEX IF NOT EXISTS aristas_aereas_geom_idx ON aristas_aereas USING GIST (geom);
 CREATE INDEX IF NOT EXISTS aristas_aereas_source_idx ON aristas_aereas (source);
 CREATE INDEX IF NOT EXISTS aristas_aereas_target_idx ON aristas_aereas (target);
+
+-- ===== 05 - FASE 3: RESTRICCIONES ESTÁTICAS Y PROBABILIDAD DE FALLA =====
+
+-- Zonas de exclusión aérea permanentes (OpenStreetMap vía Overpass): aeródromos, helipuertos,
+-- recintos militares y cárceles. geom es la zona ya ampliada con radio_exclusion_m; el ruteo la
+-- trata como obstáculo duro (ninguna arista del grafo de visibilidad puede cruzarla).
+CREATE TABLE IF NOT EXISTS zonas_restringidas (
+    id                SERIAL PRIMARY KEY,
+    osm_ref           TEXT NOT NULL UNIQUE,          -- "way/123", "node/456", "relation/789"
+    tipo              TEXT NOT NULL,                 -- aerodromo | helipuerto | militar | carcel
+    nombre            TEXT,
+    motivo            TEXT,
+    radio_exclusion_m DOUBLE PRECISION NOT NULL,
+    fuente            TEXT,
+    geom_original     geometry(Geometry, 4326) NOT NULL,
+    geom              geometry(MultiPolygon, 4326) NOT NULL
+);
+CREATE INDEX IF NOT EXISTS zonas_restringidas_geom_idx ON zonas_restringidas USING GIST (geom);
+
+-- Elevación del terreno (Open-Meteo Elevation API, DEM Copernicus 90 m) por hexágono de 500 m.
+-- La API de ruteo marca como obstáculo todo hexágono cuyo terreno supera el techo de vuelo
+-- (elevación de la base de despegue + altura de vuelo elegida por el usuario).
+CREATE TABLE IF NOT EXISTS elevacion_terreno_hexagonos (
+    id                 SERIAL PRIMARY KEY,
+    hex_id             TEXT NOT NULL UNIQUE,
+    centro_lon         DOUBLE PRECISION NOT NULL,
+    centro_lat         DOUBLE PRECISION NOT NULL,
+    elevacion_m        DOUBLE PRECISION NOT NULL,
+    tamanio_hexagono_m INTEGER,
+    fuente             TEXT,
+    geom               geometry(Polygon, 4326) NOT NULL
+);
+CREATE INDEX IF NOT EXISTS elevacion_terreno_hexagonos_geom_idx ON elevacion_terreno_hexagonos USING GIST (geom);
+
+-- Probabilidad de falla por amenaza (03 - Amenazas/probabilidad_falla.py, parámetros por defecto).
+-- Cada zona de amenaza (hexágono de lluvia/viento/STOP 7d o tramo con corte) tiene una p de falla
+-- para el dron que la cruza. Las aristas y nodos del grafo aéreo heredan p de las zonas que tocan.
+CREATE TABLE IF NOT EXISTS probabilidad_falla_zonas (
+    id        SERIAL PRIMARY KEY,
+    zona_id   TEXT NOT NULL UNIQUE,                  -- "<amenaza>:<id de origen>"
+    amenaza   TEXT NOT NULL,                         -- lluvia | viento | robo_7d | cortes
+    origen_id TEXT NOT NULL,
+    p_falla   DOUBLE PRECISION NOT NULL CHECK (p_falla BETWEEN 0 AND 1),
+    detalle   TEXT,
+    geom      geometry(MultiPolygon, 4326) NOT NULL
+);
+CREATE INDEX IF NOT EXISTS probabilidad_falla_zonas_geom_idx ON probabilidad_falla_zonas USING GIST (geom);
+
+CREATE TABLE IF NOT EXISTS probabilidad_falla_aristas (
+    arista_id INTEGER NOT NULL,
+    amenaza   TEXT NOT NULL,                         -- una fila por amenaza + 'total'
+    p_falla   DOUBLE PRECISION NOT NULL,
+    zonas     INTEGER NOT NULL,                      -- zonas de esa amenaza que cruza
+    PRIMARY KEY (arista_id, amenaza)
+);
+
+CREATE TABLE IF NOT EXISTS probabilidad_falla_nodos (
+    nodo_id INTEGER NOT NULL,
+    amenaza TEXT NOT NULL,
+    p_falla DOUBLE PRECISION NOT NULL,
+    zonas   INTEGER NOT NULL,
+    PRIMARY KEY (nodo_id, amenaza)
+);

@@ -47,8 +47,33 @@ services:
     environment:
       - PGHOST=db
       - TOMTOM_API_KEY
+      - LLUVIA_UMBRAL_MM_H # opcionales: ver 03 - Amenazas/lluvia_open_meteo_hexagonos.md
+      - LLUVIA_UMBRAL_PROB
+      - LLUVIA_VENTANA_HORAS
+      - LLUVIA_SIMULADA
+      - VIENTO_UMBRAL_KMH # opcionales: ver 03 - Amenazas/viento_open_meteo_hexagonos.md
+      - VIENTO_UMBRAL_RAFAGA_KMH
+      - VIENTO_VENTANA_HORAS
+      - VIENTO_SIMULADO
     volumes:
       - "./03 - Amenazas/salidas:/app/salidas"
+
+  # API de ruteo (FastAPI): grafo de visibilidad, probabilidad de falla, 4 técnicas, resiliencia.
+  # Documentación interactiva en http://localhost:8080/api/docs (vía nginx) o :8000/api/docs.
+  api:
+    build:
+      context: .
+      dockerfile: "05 - API/Dockerfile"
+    ports:
+      - "8000:8000"
+    environment:
+      - PGHOST=db
+      - GRB_WLSACCESSID # opcionales: licencia académica WLS de Gurobi (ver 05 - API/README.md)
+      - GRB_WLSSECRET
+      - GRB_LICENSEID
+    depends_on:
+      db:
+        condition: service_healthy
 
   web:
     build: "./04 - Web"
@@ -56,9 +81,9 @@ services:
       - "8080:80"
     volumes:
       - "./04 - Web:/usr/share/nginx/html:ro"
+      - "./04 - Web/nginx.conf:/etc/nginx/conf.d/default.conf:ro"
     depends_on:
-      db:
-        condition: service_healthy
+      - api
 
   # Explorador de la base de datos: http://localhost:5050 (sin login, servidor ya registrado).
   # Para ver geometrías sobre un mapa: ejecutar una consulta con una columna geom y abrir el

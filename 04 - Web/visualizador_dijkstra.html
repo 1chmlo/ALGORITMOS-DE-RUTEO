@@ -624,6 +624,18 @@
                         </span>
                         <input type="checkbox" id="chk-layer-trafico" onchange="toggleCapa('trafico', this.checked)">
                     </label>
+                    <label class="toggle-item">
+                        <span style="font-size: 11px; display: flex; align-items: center; gap: 6px;">
+                            <span style="color: #3b82f6;">🌧️</span> Zonas sin vuelo por lluvia (Open-Meteo)
+                        </span>
+                        <input type="checkbox" id="chk-layer-lluvia" onchange="toggleCapa('lluvia', this.checked)">
+                    </label>
+                    <label class="toggle-item">
+                        <span style="font-size: 11px; display: flex; align-items: center; gap: 6px;">
+                            <span style="color: #a855f7;">💨</span> Zonas sin vuelo por viento (Open-Meteo)
+                        </span>
+                        <input type="checkbox" id="chk-layer-viento" onchange="toggleCapa('viento', this.checked)">
+                    </label>
                 </div>
             </div>
 
@@ -822,6 +834,8 @@
         const stopLayer = L.layerGroup().addTo(map);
         const cortesLayer = L.layerGroup().addTo(map);
         const traficoLayer = L.layerGroup().addTo(map);
+        const lluviaLayer = L.layerGroup().addTo(map);
+        const vientoLayer = L.layerGroup().addTo(map);
 
         // Dibujar nodos diferenciados
         function dibujarNodos() {
@@ -1105,8 +1119,99 @@
             }
         }
 
+        // Capa de lluvia: la genera 03 - Amenazas/etl_lluvia_open_meteo.py y main.sh la copia aquí.
+        // Se pinta cada hexágono no volable; los volables no se dibujan para no tapar el mapa.
+        async function dibujarLluvia() {
+            lluviaLayer.clearLayers();
+            let datos;
+            try {
+                const r = await fetch('lluvia_open_meteo_hexagonos.geojson', { cache: 'no-store' });
+                if (!r.ok) throw new Error(`HTTP ${r.status}`);
+                datos = await r.json();
+            } catch (e) {
+                alert('No se encontró la capa de lluvia. Ejecuta main.sh (03 - Amenazas) para generarla.');
+                document.getElementById('chk-layer-lluvia').checked = false;
+                return;
+            }
+            if (!document.getElementById('chk-layer-lluvia').checked) return;
+            const m = datos.metadata || {};
+            const bloqueados = datos.features.filter(f => f.properties.no_volable);
+            L.geoJSON(bloqueados, {
+                style: { color: '#1d4ed8', weight: 1, fillColor: '#3b82f6', fillOpacity: 0.35 },
+                onEachFeature: (f, capa) => {
+                    const p = f.properties;
+                    capa.bindPopup(`
+                        <div style="font-family: inherit; font-size:11px;">
+                            <b style="color:#1d4ed8;">🌧️ Zona sin vuelo por lluvia</b><br>
+                            Hexágono: ${p.hex_id}<br>
+                            Precipitación máx.: <b>${p.precipitacion_max_mm_h} mm/h</b><br>
+                            Probabilidad máx.: ${p.probabilidad_max_pct ?? 'N/A'}%<br>
+                            Ventana: ${p.hora_desde || '?'} a ${p.hora_hasta || '?'}<br>
+                            Motivo: ${p.motivo}${p.simulado ? '<br><b>(lluvia simulada)</b>' : ''}
+                        </div>
+                    `);
+                }
+            }).addTo(lluviaLayer);
+            if (!bloqueados.length) {
+                L.popup().setLatLng(map.getCenter()).setContent(`
+                    <div style="font-size:11px;">🌤️ Sin zonas bloqueadas por lluvia<br>
+                    (extracción ${m.fecha_extraccion_utc || 'desconocida'}, ventana ${m.ventana_horas || '?'} h)</div>
+                `).openOn(map);
+            }
+        }
+
+        // Capa de viento: la genera 03 - Amenazas/etl_viento_open_meteo.py (proceso aparte de la lluvia)
+        // y main.sh la copia aquí. Se pinta cada hexágono no volable por viento.
+        async function dibujarViento() {
+            vientoLayer.clearLayers();
+            let datos;
+            try {
+                const r = await fetch('viento_open_meteo_hexagonos.geojson', { cache: 'no-store' });
+                if (!r.ok) throw new Error(`HTTP ${r.status}`);
+                datos = await r.json();
+            } catch (e) {
+                alert('No se encontró la capa de viento. Ejecuta main.sh (03 - Amenazas) para generarla.');
+                document.getElementById('chk-layer-viento').checked = false;
+                return;
+            }
+            if (!document.getElementById('chk-layer-viento').checked) return;
+            const m = datos.metadata || {};
+            const bloqueados = datos.features.filter(f => f.properties.no_volable);
+            L.geoJSON(bloqueados, {
+                style: { color: '#7e22ce', weight: 1, fillColor: '#a855f7', fillOpacity: 0.3, dashArray: '3, 3' },
+                onEachFeature: (f, capa) => {
+                    const p = f.properties;
+                    capa.bindPopup(`
+                        <div style="font-family: inherit; font-size:11px;">
+                            <b style="color:#7e22ce;">💨 Zona sin vuelo por viento</b><br>
+                            Hexágono: ${p.hex_id}<br>
+                            Viento máx. (80-120 m): <b>${p.viento_max_kmh ?? 'N/A'} km/h</b><br>
+                            Ráfaga máx. (10 m): ${p.rafaga_max_kmh ?? 'N/A'} km/h<br>
+                            Dirección: ${p.direccion_grados ?? 'N/A'}°<br>
+                            Ventana: ${p.hora_desde || '?'} a ${p.hora_hasta || '?'}<br>
+                            Motivo: ${p.motivo}${p.simulado ? '<br><b>(viento simulado)</b>' : ''}
+                        </div>
+                    `);
+                }
+            }).addTo(vientoLayer);
+            if (!bloqueados.length) {
+                L.popup().setLatLng(map.getCenter()).setContent(`
+                    <div style="font-size:11px;">🍃 Sin zonas bloqueadas por viento<br>
+                    (extracción ${m.fecha_extraccion_utc || 'desconocida'}, ventana ${m.ventana_horas || '?'} h)</div>
+                `).openOn(map);
+            }
+        }
+
         // Toggles de capas espaciales adicionales
         function toggleCapa(tipo, activo) {
+            if (tipo === 'lluvia') {
+                if (activo) dibujarLluvia(); else lluviaLayer.clearLayers();
+                return;
+            }
+            if (tipo === 'viento') {
+                if (activo) dibujarViento(); else vientoLayer.clearLayers();
+                return;
+            }
             if (typeof METADATA_COMPLETA === 'undefined') return;
 
             if (tipo === 'stop') {

@@ -10,15 +10,15 @@
    -70.705
   ],
   "crs": "EPSG:4326 (WGS84)",
-  "total_tramos": 1640,
+  "total_tramos": 1650,
   "resumen_formas_viales": {
    "salida_curva": 93,
    "salida_recta": 181,
    "rotonda": 5,
-   "curva_pronunciada": 43,
-   "recta": 1318
+   "curva_pronunciada": 42,
+   "recta": 1329
   },
-  "fecha_extraccion_utc": "2026-10-20T03:02:33.118398+00:00"
+  "fecha_extraccion_utc": "2026-11-10T01:22:31.668046+00:00"
  },
  "features": [
   {
@@ -23165,6 +23165,105 @@
   },
   {
    "type": "Feature",
+   "id": "98834396",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.757009,
+      -33.527915
+     ],
+     [
+      -70.757047,
+      -33.52736
+     ],
+     [
+      -70.757051,
+      -33.527261
+     ],
+     [
+      -70.757046,
+      -33.527162
+     ],
+     [
+      -70.757033,
+      -33.527064
+     ],
+     [
+      -70.757015,
+      -33.526977
+     ],
+     [
+      -70.756989,
+      -33.526892
+     ],
+     [
+      -70.756957,
+      -33.526808
+     ],
+     [
+      -70.756919,
+      -33.526726
+     ],
+     [
+      -70.756863,
+      -33.526628
+     ],
+     [
+      -70.756798,
+      -33.526535
+     ],
+     [
+      -70.756723,
+      -33.526447
+     ],
+     [
+      -70.756636,
+      -33.526359
+     ],
+     [
+      -70.75659,
+      -33.526316
+     ],
+     [
+      -70.756542,
+      -33.526275
+     ],
+     [
+      -70.756457,
+      -33.52621
+     ],
+     [
+      -70.75637,
+      -33.526149
+     ]
+    ]
+   },
+   "properties": {
+    "osm_id": 98834396,
+    "nombre": "Alberto Llona",
+    "ref_via": null,
+    "highway": "primary",
+    "junction": null,
+    "comuna": "Maipú",
+    "oneway": true,
+    "lanes": 2,
+    "maxspeed_kmh": 50,
+    "es_enlace_salida": false,
+    "es_curva_pronunciada": true,
+    "forma_vial": "curva_pronunciada",
+    "longitud_m": 216.68,
+    "distancia_recta_m": 205.11,
+    "indice_sinuosidad": 1.0564,
+    "angulo_giro_max_grados": 5.17,
+    "angulo_giro_total_grados": 53.2,
+    "factor_riesgo_geom": 0.4614,
+    "centroide_lon": -70.756919,
+    "centroide_lat": -33.526726
+   }
+  },
+  {
+   "type": "Feature",
    "id": "22700558",
    "geometry": {
     "type": "LineString",
@@ -23416,26 +23515,6 @@
      [
       -70.799066,
       -33.52114
-     ],
-     [
-      -70.799117,
-      -33.518945
-     ],
-     [
-      -70.79916,
-      -33.517381
-     ],
-     [
-      -70.799194,
-      -33.514756
-     ],
-     [
-      -70.79919,
-      -33.513669
-     ],
-     [
-      -70.799188,
-      -33.513353
      ]
     ]
    },
@@ -23452,95 +23531,83 @@
     "es_enlace_salida": false,
     "es_curva_pronunciada": true,
     "forma_vial": "curva_pronunciada",
-    "longitud_m": 5995.07,
-    "distancia_recta_m": 5514.27,
-    "indice_sinuosidad": 1.0872,
+    "longitud_m": 5129.09,
+    "distancia_recta_m": 4755.38,
+    "indice_sinuosidad": 1.0786,
     "angulo_giro_max_grados": 2.38,
-    "angulo_giro_total_grados": 66.55,
-    "factor_riesgo_geom": 0.4614,
-    "centroide_lon": -70.804731,
-    "centroide_lat": -33.54389
+    "angulo_giro_total_grados": 64.63,
+    "factor_riesgo_geom": 0.4605,
+    "centroide_lon": -70.805064,
+    "centroide_lat": -33.544393
    }
   },
   {
    "type": "Feature",
-   "id": "98834396",
+   "id": "979982338",
    "geometry": {
     "type": "LineString",
     "coordinates": [
      [
-      -70.757009,
-      -33.527915
+      -70.751666,
+      -33.486655
      ],
      [
-      -70.757047,
-      -33.52736
+      -70.751664,
+      -33.486735
      ],
      [
-      -70.757051,
-      -33.527261
+      -70.751667,
+      -33.486793
      ],
      [
-      -70.757046,
-      -33.527162
+      -70.751678,
+      -33.486876
      ],
      [
-      -70.757033,
-      -33.527064
+      -70.75183,
+      -33.487646
      ],
      [
-      -70.757015,
-      -33.526977
+      -70.751842,
+      -33.487725
      ],
      [
-      -70.756989,
-      -33.526892
+      -70.751843,
+      -33.487805
      ],
      [
-      -70.756957,
-      -33.526808
+      -70.751834,
+      -33.487885
      ],
      [
-      -70.756919,
-      -33.526726
+      -70.751814,
+      -33.487964
      ],
      [
-      -70.756863,
-      -33.526628
+      -70.75179,
+      -33.488026
      ],
      [
-      -70.756798,
-      -33.526535
+      -70.751759,
+      -33.488087
      ],
      [
-      -70.756723,
-      -33.526447
+      -70.751735,
+      -33.488124
      ],
      [
-      -70.756636,
-      -33.526359
+      -70.751708,
+      -33.488158
      ],
      [
-      -70.75659,
-      -33.526316
-     ],
-     [
-      -70.756542,
-      -33.526275
-     ],
-     [
-      -70.756457,
-      -33.52621
-     ],
-     [
-      -70.75637,
-      -33.526149
+      -70.751665,
+      -33.488208
      ]
     ]
    },
    "properties": {
-    "osm_id": 98834396,
-    "nombre": "Alberto Llona",
+    "osm_id": 979982338,
+    "nombre": "Avenida Américo Vespucio",
     "ref_via": null,
     "highway": "primary",
     "junction": null,
@@ -23551,14 +23618,14 @@
     "es_enlace_salida": false,
     "es_curva_pronunciada": true,
     "forma_vial": "curva_pronunciada",
-    "longitud_m": 216.68,
-    "distancia_recta_m": 205.11,
-    "indice_sinuosidad": 1.0564,
-    "angulo_giro_max_grados": 5.17,
-    "angulo_giro_total_grados": 53.2,
-    "factor_riesgo_geom": 0.4614,
-    "centroide_lon": -70.756919,
-    "centroide_lat": -33.526726
+    "longitud_m": 177.74,
+    "distancia_recta_m": 172.69,
+    "indice_sinuosidad": 1.0293,
+    "angulo_giro_max_grados": 6.62,
+    "angulo_giro_total_grados": 55.54,
+    "factor_riesgo_geom": 0.4603,
+    "centroide_lon": -70.751834,
+    "centroide_lat": -33.487885
    }
   },
   {
@@ -23567,18 +23634,6 @@
    "geometry": {
     "type": "LineString",
     "coordinates": [
-     [
-      -70.799328,
-      -33.514765
-     ],
-     [
-      -70.799297,
-      -33.51739
-     ],
-     [
-      -70.799263,
-      -33.518946
-     ],
      [
       -70.799216,
       -33.521147
@@ -23858,101 +23913,14 @@
     "es_enlace_salida": false,
     "es_curva_pronunciada": true,
     "forma_vial": "curva_pronunciada",
-    "longitud_m": 5836.93,
-    "distancia_recta_m": 5370.34,
-    "indice_sinuosidad": 1.0869,
+    "longitud_m": 5127.21,
+    "distancia_recta_m": 4751.75,
+    "indice_sinuosidad": 1.079,
     "angulo_giro_max_grados": 2.01,
-    "angulo_giro_total_grados": 65.12,
-    "factor_riesgo_geom": 0.4609,
-    "centroide_lon": -70.804766,
-    "centroide_lat": -33.543702
-   }
-  },
-  {
-   "type": "Feature",
-   "id": "979982338",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -70.751666,
-      -33.486655
-     ],
-     [
-      -70.751664,
-      -33.486735
-     ],
-     [
-      -70.751667,
-      -33.486793
-     ],
-     [
-      -70.751678,
-      -33.486876
-     ],
-     [
-      -70.75183,
-      -33.487646
-     ],
-     [
-      -70.751842,
-      -33.487725
-     ],
-     [
-      -70.751843,
-      -33.487805
-     ],
-     [
-      -70.751834,
-      -33.487885
-     ],
-     [
-      -70.751814,
-      -33.487964
-     ],
-     [
-      -70.75179,
-      -33.488026
-     ],
-     [
-      -70.751759,
-      -33.488087
-     ],
-     [
-      -70.751735,
-      -33.488124
-     ],
-     [
-      -70.751708,
-      -33.488158
-     ],
-     [
-      -70.751665,
-      -33.488208
-     ]
-    ]
-   },
-   "properties": {
-    "osm_id": 979982338,
-    "nombre": "Avenida Américo Vespucio",
-    "ref_via": null,
-    "highway": "primary",
-    "junction": null,
-    "comuna": "Maipú",
-    "oneway": true,
-    "lanes": 2,
-    "maxspeed_kmh": 50,
-    "es_enlace_salida": false,
-    "es_curva_pronunciada": true,
-    "forma_vial": "curva_pronunciada",
-    "longitud_m": 177.74,
-    "distancia_recta_m": 172.69,
-    "indice_sinuosidad": 1.0293,
-    "angulo_giro_max_grados": 6.62,
-    "angulo_giro_total_grados": 55.54,
-    "factor_riesgo_geom": 0.4603,
-    "centroide_lon": -70.751834,
-    "centroide_lat": -33.487885
+    "angulo_giro_total_grados": 64.3,
+    "factor_riesgo_geom": 0.4601,
+    "centroide_lon": -70.804955,
+    "centroide_lat": -33.544009
    }
   },
   {
@@ -24787,173 +24755,6 @@
   },
   {
    "type": "Feature",
-   "id": "22700356",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -70.788011,
-      -33.497894
-     ],
-     [
-      -70.791077,
-      -33.498553
-     ],
-     [
-      -70.793026,
-      -33.498975
-     ],
-     [
-      -70.793447,
-      -33.499072
-     ],
-     [
-      -70.793681,
-      -33.499129
-     ],
-     [
-      -70.793913,
-      -33.49919
-     ],
-     [
-      -70.794113,
-      -33.499246
-     ],
-     [
-      -70.794311,
-      -33.499307
-     ],
-     [
-      -70.794507,
-      -33.499371
-     ],
-     [
-      -70.794789,
-      -33.499473
-     ],
-     [
-      -70.795024,
-      -33.499565
-     ],
-     [
-      -70.795254,
-      -33.499663
-     ],
-     [
-      -70.795475,
-      -33.499767
-     ],
-     [
-      -70.795644,
-      -33.499853
-     ],
-     [
-      -70.795812,
-      -33.499941
-     ],
-     [
-      -70.796053,
-      -33.500078
-     ],
-     [
-      -70.796285,
-      -33.500223
-     ],
-     [
-      -70.796424,
-      -33.500315
-     ],
-     [
-      -70.79656,
-      -33.500408
-     ],
-     [
-      -70.79671,
-      -33.500519
-     ],
-     [
-      -70.796857,
-      -33.500632
-     ],
-     [
-      -70.796993,
-      -33.500741
-     ],
-     [
-      -70.797126,
-      -33.500853
-     ],
-     [
-      -70.797265,
-      -33.500976
-     ],
-     [
-      -70.7974,
-      -33.501102
-     ],
-     [
-      -70.797542,
-      -33.501242
-     ],
-     [
-      -70.797678,
-      -33.501386
-     ],
-     [
-      -70.797809,
-      -33.501534
-     ],
-     [
-      -70.797935,
-      -33.501684
-     ],
-     [
-      -70.798082,
-      -33.501869
-     ],
-     [
-      -70.798222,
-      -33.502058
-     ],
-     [
-      -70.798324,
-      -33.502207
-     ],
-     [
-      -70.798422,
-      -33.502358
-     ],
-     [
-      -70.798514,
-      -33.502511
-     ]
-    ]
-   },
-   "properties": {
-    "osm_id": 22700356,
-    "nombre": "Ruta 78",
-    "ref_via": "78",
-    "highway": "motorway",
-    "junction": null,
-    "comuna": "Maipú",
-    "oneway": true,
-    "lanes": 3,
-    "maxspeed_kmh": 120,
-    "es_enlace_salida": false,
-    "es_curva_pronunciada": true,
-    "forma_vial": "curva_pronunciada",
-    "longitud_m": 1146.01,
-    "distancia_recta_m": 1100.91,
-    "indice_sinuosidad": 1.041,
-    "angulo_giro_max_grados": 2.57,
-    "angulo_giro_total_grados": 48.92,
-    "factor_riesgo_geom": 0.457,
-    "centroide_lon": -70.796424,
-    "centroide_lat": -33.500315
-   }
-  },
-  {
-   "type": "Feature",
    "id": "1244800797",
    "geometry": {
     "type": "LineString",
@@ -25474,182 +25275,138 @@
   },
   {
    "type": "Feature",
-   "id": "729407952",
+   "id": "22700356",
    "geometry": {
     "type": "LineString",
     "coordinates": [
      [
-      -70.702472,
-      -33.480443
+      -70.793447,
+      -33.499072
      ],
      [
-      -70.702647,
-      -33.48048
+      -70.793681,
+      -33.499129
      ],
      [
-      -70.705169,
-      -33.481057
+      -70.793913,
+      -33.49919
      ],
      [
-      -70.70788,
-      -33.481673
+      -70.794113,
+      -33.499246
      ],
      [
-      -70.711798,
-      -33.48256
+      -70.794311,
+      -33.499307
      ],
      [
-      -70.712367,
-      -33.482686
+      -70.794507,
+      -33.499371
      ],
      [
-      -70.712818,
-      -33.482778
+      -70.794789,
+      -33.499473
      ],
      [
-      -70.713531,
-      -33.482913
+      -70.795024,
+      -33.499565
      ],
      [
-      -70.714052,
-      -33.483002
+      -70.795254,
+      -33.499663
      ],
      [
-      -70.71457,
-      -33.483081
+      -70.795475,
+      -33.499767
      ],
      [
-      -70.715078,
-      -33.483153
+      -70.795644,
+      -33.499853
      ],
      [
-      -70.715619,
-      -33.483222
+      -70.795812,
+      -33.499941
      ],
      [
-      -70.716072,
-      -33.483276
+      -70.796053,
+      -33.500078
      ],
      [
-      -70.716596,
-      -33.483328
+      -70.796285,
+      -33.500223
      ],
      [
-      -70.717183,
-      -33.483379
+      -70.796424,
+      -33.500315
      ],
      [
-      -70.718014,
-      -33.483435
+      -70.79656,
+      -33.500408
      ],
      [
-      -70.718302,
-      -33.483449
+      -70.79671,
+      -33.500519
      ],
      [
-      -70.720558,
-      -33.483549
+      -70.796857,
+      -33.500632
      ],
      [
-      -70.723749,
-      -33.483683
+      -70.796993,
+      -33.500741
      ],
      [
-      -70.728043,
-      -33.483871
+      -70.797126,
+      -33.500853
      ],
      [
-      -70.732219,
-      -33.484052
+      -70.797265,
+      -33.500976
      ],
      [
-      -70.734529,
-      -33.484158
+      -70.7974,
+      -33.501102
      ],
      [
-      -70.737985,
-      -33.484304
+      -70.797542,
+      -33.501242
      ],
      [
-      -70.738473,
-      -33.484326
+      -70.797678,
+      -33.501386
      ],
      [
-      -70.73884,
-      -33.484348
+      -70.797809,
+      -33.501534
      ],
      [
-      -70.739073,
-      -33.484368
+      -70.797935,
+      -33.501684
      ],
      [
-      -70.739375,
-      -33.484399
+      -70.798082,
+      -33.501869
      ],
      [
-      -70.739675,
-      -33.484438
+      -70.798222,
+      -33.502058
      ],
      [
-      -70.739974,
-      -33.484485
+      -70.798324,
+      -33.502207
      ],
      [
-      -70.740271,
-      -33.484539
+      -70.798422,
+      -33.502358
      ],
      [
-      -70.740543,
-      -33.484597
-     ],
-     [
-      -70.740811,
-      -33.484664
-     ],
-     [
-      -70.740957,
-      -33.484705
-     ],
-     [
-      -70.741127,
-      -33.484758
-     ],
-     [
-      -70.741328,
-      -33.484819
-     ],
-     [
-      -70.74155,
-      -33.484894
-     ],
-     [
-      -70.741782,
-      -33.484981
-     ],
-     [
-      -70.742012,
-      -33.485074
-     ],
-     [
-      -70.742266,
-      -33.485187
-     ],
-     [
-      -70.742515,
-      -33.485307
-     ],
-     [
-      -70.74268,
-      -33.485392
-     ],
-     [
-      -70.742842,
-      -33.48548
+      -70.798514,
+      -33.502511
      ]
     ]
    },
    "properties": {
-    "osm_id": 729407952,
+    "osm_id": 22700356,
     "nombre": "Ruta 78",
     "ref_via": "78",
     "highway": "motorway",
@@ -25661,14 +25418,14 @@
     "es_enlace_salida": false,
     "es_curva_pronunciada": true,
     "forma_vial": "curva_pronunciada",
-    "longitud_m": 3812.33,
-    "distancia_recta_m": 3785.66,
-    "indice_sinuosidad": 1.007,
-    "angulo_giro_max_grados": 2.34,
-    "angulo_giro_total_grados": 45.33,
-    "factor_riesgo_geom": 0.4533,
-    "centroide_lon": -70.734529,
-    "centroide_lat": -33.484158
+    "longitud_m": 625.21,
+    "distancia_recta_m": 605.78,
+    "indice_sinuosidad": 1.0321,
+    "angulo_giro_max_grados": 2.57,
+    "angulo_giro_total_grados": 47.09,
+    "factor_riesgo_geom": 0.4561,
+    "centroide_lon": -70.79656,
+    "centroide_lat": -33.500408
    }
   },
   {
@@ -25850,7 +25607,7 @@
    },
    "properties": {
     "osm_id": 971807171,
-    "nombre": "Avenida José Luis Caro",
+    "nombre": "Avenida José Ángel Ortúzar",
     "ref_via": "G-68",
     "highway": "primary",
     "junction": null,
@@ -27918,7 +27675,7 @@
    },
    "properties": {
     "osm_id": 576988030,
-    "nombre": "Avenida José Luis Caro",
+    "nombre": "Avenida José Ángel Ortúzar",
     "ref_via": "G-68",
     "highway": "primary",
     "junction": null,
@@ -43244,6 +43001,129 @@
   },
   {
    "type": "Feature",
+   "id": "1576542432",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.728043,
+      -33.483871
+     ],
+     [
+      -70.732219,
+      -33.484052
+     ],
+     [
+      -70.734529,
+      -33.484158
+     ],
+     [
+      -70.737985,
+      -33.484304
+     ],
+     [
+      -70.738473,
+      -33.484326
+     ],
+     [
+      -70.73884,
+      -33.484348
+     ],
+     [
+      -70.739073,
+      -33.484368
+     ],
+     [
+      -70.739375,
+      -33.484399
+     ],
+     [
+      -70.739675,
+      -33.484438
+     ],
+     [
+      -70.739974,
+      -33.484485
+     ],
+     [
+      -70.740271,
+      -33.484539
+     ],
+     [
+      -70.740543,
+      -33.484597
+     ],
+     [
+      -70.740811,
+      -33.484664
+     ],
+     [
+      -70.740957,
+      -33.484705
+     ],
+     [
+      -70.741127,
+      -33.484758
+     ],
+     [
+      -70.741328,
+      -33.484819
+     ],
+     [
+      -70.74155,
+      -33.484894
+     ],
+     [
+      -70.741782,
+      -33.484981
+     ],
+     [
+      -70.742012,
+      -33.485074
+     ],
+     [
+      -70.742266,
+      -33.485187
+     ],
+     [
+      -70.742515,
+      -33.485307
+     ],
+     [
+      -70.74268,
+      -33.485392
+     ],
+     [
+      -70.742842,
+      -33.48548
+     ]
+    ]
+   },
+   "properties": {
+    "osm_id": 1576542432,
+    "nombre": "Ruta 78",
+    "ref_via": "78",
+    "highway": "motorway",
+    "junction": null,
+    "comuna": "Maipú",
+    "oneway": true,
+    "lanes": 3,
+    "maxspeed_kmh": 120,
+    "es_enlace_salida": false,
+    "es_curva_pronunciada": false,
+    "forma_vial": "recta",
+    "longitud_m": 1398.97,
+    "distancia_recta_m": 1384.08,
+    "indice_sinuosidad": 1.0108,
+    "angulo_giro_max_grados": 2.34,
+    "angulo_giro_total_grados": 31.6,
+    "factor_riesgo_geom": 0.1037,
+    "centroide_lon": -70.740543,
+    "centroide_lat": -33.484597
+   }
+  },
+  {
+   "type": "Feature",
    "id": "398196647",
    "geometry": {
     "type": "LineString",
@@ -45804,6 +45684,93 @@
   },
   {
    "type": "Feature",
+   "id": "1576135282",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.796192,
+      -33.500317
+     ],
+     [
+      -70.795967,
+      -33.500177
+     ],
+     [
+      -70.795736,
+      -33.500045
+     ],
+     [
+      -70.795512,
+      -33.499926
+     ],
+     [
+      -70.795282,
+      -33.499814
+     ],
+     [
+      -70.795096,
+      -33.49973
+     ],
+     [
+      -70.794907,
+      -33.499651
+     ],
+     [
+      -70.794715,
+      -33.499576
+     ],
+     [
+      -70.794496,
+      -33.499497
+     ],
+     [
+      -70.794288,
+      -33.499429
+     ],
+     [
+      -70.794079,
+      -33.499366
+     ],
+     [
+      -70.79387,
+      -33.499307
+     ],
+     [
+      -70.79366,
+      -33.499254
+     ],
+     [
+      -70.793448,
+      -33.499205
+     ]
+    ]
+   },
+   "properties": {
+    "osm_id": 1576135282,
+    "nombre": "Ruta 78",
+    "ref_via": "78",
+    "highway": "motorway",
+    "junction": null,
+    "comuna": "Maipú",
+    "oneway": true,
+    "lanes": 3,
+    "maxspeed_kmh": 120,
+    "es_enlace_salida": false,
+    "es_curva_pronunciada": false,
+    "forma_vial": "recta",
+    "longitud_m": 284.85,
+    "distancia_recta_m": 282.89,
+    "indice_sinuosidad": 1.0069,
+    "angulo_giro_max_grados": 2.31,
+    "angulo_giro_total_grados": 21.24,
+    "factor_riesgo_geom": 0.1033,
+    "centroide_lon": -70.794715,
+    "centroide_lat": -33.499576
+   }
+  },
+  {
+   "type": "Feature",
    "id": "39453474",
    "geometry": {
     "type": "LineString",
@@ -46356,201 +46323,6 @@
   },
   {
    "type": "Feature",
-   "id": "729407954",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -70.742363,
-      -33.485377
-     ],
-     [
-      -70.742157,
-      -33.485282
-     ],
-     [
-      -70.741948,
-      -33.485192
-     ],
-     [
-      -70.741722,
-      -33.485101
-     ],
-     [
-      -70.741496,
-      -33.485019
-     ],
-     [
-      -70.741296,
-      -33.484951
-     ],
-     [
-      -70.741021,
-      -33.484865
-     ],
-     [
-      -70.740763,
-      -33.484794
-     ],
-     [
-      -70.740523,
-      -33.484737
-     ],
-     [
-      -70.740276,
-      -33.484684
-     ],
-     [
-      -70.740027,
-      -33.484636
-     ],
-     [
-      -70.73973,
-      -33.484589
-     ],
-     [
-      -70.739438,
-      -33.484547
-     ],
-     [
-      -70.739135,
-      -33.484513
-     ],
-     [
-      -70.738842,
-      -33.484488
-     ],
-     [
-      -70.738373,
-      -33.484457
-     ],
-     [
-      -70.73795,
-      -33.484429
-     ],
-     [
-      -70.734523,
-      -33.484275
-     ],
-     [
-      -70.732209,
-      -33.484181
-     ],
-     [
-      -70.728039,
-      -33.483991
-     ],
-     [
-      -70.723744,
-      -33.483807
-     ],
-     [
-      -70.720552,
-      -33.483663
-     ],
-     [
-      -70.7183,
-      -33.48356
-     ],
-     [
-      -70.71764,
-      -33.483522
-     ],
-     [
-      -70.717026,
-      -33.483476
-     ],
-     [
-      -70.71652,
-      -33.483433
-     ],
-     [
-      -70.716122,
-      -33.483395
-     ],
-     [
-      -70.715656,
-      -33.48334
-     ],
-     [
-      -70.715179,
-      -33.48328
-     ],
-     [
-      -70.714586,
-      -33.483197
-     ],
-     [
-      -70.713832,
-      -33.48308
-     ],
-     [
-      -70.713331,
-      -33.48299
-     ],
-     [
-      -70.712767,
-      -33.482883
-     ],
-     [
-      -70.712175,
-      -33.48276
-     ],
-     [
-      -70.711444,
-      -33.482596
-     ],
-     [
-      -70.707901,
-      -33.481794
-     ],
-     [
-      -70.70513,
-      -33.481168
-     ],
-     [
-      -70.703791,
-      -33.480873
-     ],
-     [
-      -70.70317,
-      -33.48073
-     ],
-     [
-      -70.702546,
-      -33.480595
-     ],
-     [
-      -70.702361,
-      -33.480558
-     ]
-    ]
-   },
-   "properties": {
-    "osm_id": 729407954,
-    "nombre": "Ruta 78",
-    "ref_via": "78",
-    "highway": "motorway",
-    "junction": null,
-    "comuna": "Maipú",
-    "oneway": true,
-    "lanes": 3,
-    "maxspeed_kmh": 120,
-    "es_enlace_salida": false,
-    "es_curva_pronunciada": false,
-    "forma_vial": "recta",
-    "longitud_m": 3770.27,
-    "distancia_recta_m": 3748.37,
-    "indice_sinuosidad": 1.0058,
-    "angulo_giro_max_grados": 2.37,
-    "angulo_giro_total_grados": 41.91,
-    "factor_riesgo_geom": 0.1032,
-    "centroide_lon": -70.723744,
-    "centroide_lat": -33.483807
-   }
-  },
-  {
-   "type": "Feature",
    "id": "856671609",
    "geometry": {
     "type": "LineString",
@@ -46830,101 +46602,6 @@
   },
   {
    "type": "Feature",
-   "id": "1127409959",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -70.796192,
-      -33.500317
-     ],
-     [
-      -70.795967,
-      -33.500177
-     ],
-     [
-      -70.795736,
-      -33.500045
-     ],
-     [
-      -70.795512,
-      -33.499926
-     ],
-     [
-      -70.795282,
-      -33.499814
-     ],
-     [
-      -70.795096,
-      -33.49973
-     ],
-     [
-      -70.794907,
-      -33.499651
-     ],
-     [
-      -70.794715,
-      -33.499576
-     ],
-     [
-      -70.794496,
-      -33.499497
-     ],
-     [
-      -70.794288,
-      -33.499429
-     ],
-     [
-      -70.794079,
-      -33.499366
-     ],
-     [
-      -70.79387,
-      -33.499307
-     ],
-     [
-      -70.79366,
-      -33.499254
-     ],
-     [
-      -70.793448,
-      -33.499205
-     ],
-     [
-      -70.791032,
-      -33.498669
-     ],
-     [
-      -70.787911,
-      -33.497986
-     ]
-    ]
-   },
-   "properties": {
-    "osm_id": 1127409959,
-    "nombre": "Ruta 78",
-    "ref_via": "78",
-    "highway": "motorway",
-    "junction": null,
-    "comuna": "Maipú",
-    "oneway": true,
-    "lanes": 3,
-    "maxspeed_kmh": 120,
-    "es_enlace_salida": false,
-    "es_curva_pronunciada": false,
-    "forma_vial": "recta",
-    "longitud_m": 815.86,
-    "distancia_recta_m": 810.42,
-    "indice_sinuosidad": 1.0067,
-    "angulo_giro_max_grados": 2.31,
-    "angulo_giro_total_grados": 22.03,
-    "factor_riesgo_geom": 0.1032,
-    "centroide_lon": -70.794496,
-    "centroide_lat": -33.499497
-   }
-  },
-  {
-   "type": "Feature",
    "id": "1304545962",
    "geometry": {
     "type": "LineString",
@@ -46968,6 +46645,121 @@
     "factor_riesgo_geom": 0.1032,
     "centroide_lon": -70.758197,
     "centroide_lat": -33.510525
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "1576542433",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.742363,
+      -33.485377
+     ],
+     [
+      -70.742157,
+      -33.485282
+     ],
+     [
+      -70.741948,
+      -33.485192
+     ],
+     [
+      -70.741722,
+      -33.485101
+     ],
+     [
+      -70.741496,
+      -33.485019
+     ],
+     [
+      -70.741296,
+      -33.484951
+     ],
+     [
+      -70.741021,
+      -33.484865
+     ],
+     [
+      -70.740763,
+      -33.484794
+     ],
+     [
+      -70.740523,
+      -33.484737
+     ],
+     [
+      -70.740276,
+      -33.484684
+     ],
+     [
+      -70.740027,
+      -33.484636
+     ],
+     [
+      -70.73973,
+      -33.484589
+     ],
+     [
+      -70.739438,
+      -33.484547
+     ],
+     [
+      -70.739135,
+      -33.484513
+     ],
+     [
+      -70.738842,
+      -33.484488
+     ],
+     [
+      -70.738373,
+      -33.484457
+     ],
+     [
+      -70.73795,
+      -33.484429
+     ],
+     [
+      -70.734523,
+      -33.484275
+     ],
+     [
+      -70.732209,
+      -33.484181
+     ],
+     [
+      -70.728039,
+      -33.483991
+     ],
+     [
+      -70.723744,
+      -33.483807
+     ]
+    ]
+   },
+   "properties": {
+    "osm_id": 1576542433,
+    "nombre": "Ruta 78",
+    "ref_via": "78",
+    "highway": "motorway",
+    "junction": null,
+    "comuna": "Maipú",
+    "oneway": true,
+    "lanes": 3,
+    "maxspeed_kmh": 120,
+    "es_enlace_salida": false,
+    "es_curva_pronunciada": false,
+    "forma_vial": "recta",
+    "longitud_m": 1746.2,
+    "distancia_recta_m": 1735.54,
+    "indice_sinuosidad": 1.0061,
+    "angulo_giro_max_grados": 2.37,
+    "angulo_giro_total_grados": 26.69,
+    "factor_riesgo_geom": 0.1032,
+    "centroide_lon": -70.740027,
+    "centroide_lat": -33.484636
    }
   },
   {
@@ -54046,6 +53838,121 @@
   },
   {
    "type": "Feature",
+   "id": "729407954",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.723744,
+      -33.483807
+     ],
+     [
+      -70.720552,
+      -33.483663
+     ],
+     [
+      -70.7183,
+      -33.48356
+     ],
+     [
+      -70.71764,
+      -33.483522
+     ],
+     [
+      -70.717026,
+      -33.483476
+     ],
+     [
+      -70.71652,
+      -33.483433
+     ],
+     [
+      -70.716122,
+      -33.483395
+     ],
+     [
+      -70.715656,
+      -33.48334
+     ],
+     [
+      -70.715179,
+      -33.48328
+     ],
+     [
+      -70.714586,
+      -33.483197
+     ],
+     [
+      -70.713832,
+      -33.48308
+     ],
+     [
+      -70.713331,
+      -33.48299
+     ],
+     [
+      -70.712767,
+      -33.482883
+     ],
+     [
+      -70.712175,
+      -33.48276
+     ],
+     [
+      -70.711444,
+      -33.482596
+     ],
+     [
+      -70.707901,
+      -33.481794
+     ],
+     [
+      -70.70513,
+      -33.481168
+     ],
+     [
+      -70.703791,
+      -33.480873
+     ],
+     [
+      -70.70317,
+      -33.48073
+     ],
+     [
+      -70.702546,
+      -33.480595
+     ],
+     [
+      -70.702361,
+      -33.480558
+     ]
+    ]
+   },
+   "properties": {
+    "osm_id": 729407954,
+    "nombre": "Ruta 78",
+    "ref_via": "78",
+    "highway": "motorway",
+    "junction": null,
+    "comuna": "Maipú",
+    "oneway": true,
+    "lanes": 3,
+    "maxspeed_kmh": 120,
+    "es_enlace_salida": false,
+    "es_curva_pronunciada": false,
+    "forma_vial": "recta",
+    "longitud_m": 2024.07,
+    "distancia_recta_m": 2015.76,
+    "indice_sinuosidad": 1.0041,
+    "angulo_giro_max_grados": 1.62,
+    "angulo_giro_total_grados": 15.06,
+    "factor_riesgo_geom": 0.1022,
+    "centroide_lon": -70.713832,
+    "centroide_lat": -33.48308
+   }
+  },
+  {
+   "type": "Feature",
    "id": "971807172",
    "geometry": {
     "type": "LineString",
@@ -54066,7 +53973,7 @@
    },
    "properties": {
     "osm_id": 971807172,
-    "nombre": "Avenida José Luis Caro",
+    "nombre": "Avenida José Ángel Ortúzar",
     "ref_via": "G-68",
     "highway": "primary",
     "junction": null,
@@ -55267,6 +55174,117 @@
     "factor_riesgo_geom": 0.102,
     "centroide_lon": -70.705198,
     "centroide_lat": -33.523514
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "729407952",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.702472,
+      -33.480443
+     ],
+     [
+      -70.702647,
+      -33.48048
+     ],
+     [
+      -70.705169,
+      -33.481057
+     ],
+     [
+      -70.70788,
+      -33.481673
+     ],
+     [
+      -70.711798,
+      -33.48256
+     ],
+     [
+      -70.712367,
+      -33.482686
+     ],
+     [
+      -70.712818,
+      -33.482778
+     ],
+     [
+      -70.713531,
+      -33.482913
+     ],
+     [
+      -70.714052,
+      -33.483002
+     ],
+     [
+      -70.71457,
+      -33.483081
+     ],
+     [
+      -70.715078,
+      -33.483153
+     ],
+     [
+      -70.715619,
+      -33.483222
+     ],
+     [
+      -70.716072,
+      -33.483276
+     ],
+     [
+      -70.716596,
+      -33.483328
+     ],
+     [
+      -70.717183,
+      -33.483379
+     ],
+     [
+      -70.718014,
+      -33.483435
+     ],
+     [
+      -70.718302,
+      -33.483449
+     ],
+     [
+      -70.720558,
+      -33.483549
+     ],
+     [
+      -70.723749,
+      -33.483683
+     ],
+     [
+      -70.728043,
+      -33.483871
+     ]
+    ]
+   },
+   "properties": {
+    "osm_id": 729407952,
+    "nombre": "Ruta 78",
+    "ref_via": "78",
+    "highway": "motorway",
+    "junction": null,
+    "comuna": "Maipú",
+    "oneway": true,
+    "lanes": 3,
+    "maxspeed_kmh": 120,
+    "es_enlace_salida": false,
+    "es_curva_pronunciada": false,
+    "forma_vial": "recta",
+    "longitud_m": 2413.36,
+    "distancia_recta_m": 2401.97,
+    "indice_sinuosidad": 1.0047,
+    "angulo_giro_max_grados": 1.35,
+    "angulo_giro_total_grados": 13.69,
+    "factor_riesgo_geom": 0.102,
+    "centroide_lon": -70.715078,
+    "centroide_lat": -33.483153
    }
   },
   {
@@ -62326,6 +62344,53 @@
   },
   {
    "type": "Feature",
+   "id": "929502560",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.763644,
+      -33.463436
+     ],
+     [
+      -70.763612,
+      -33.463541
+     ],
+     [
+      -70.763213,
+      -33.464751
+     ],
+     [
+      -70.762737,
+      -33.466207
+     ]
+    ]
+   },
+   "properties": {
+    "osm_id": 929502560,
+    "nombre": "Avenida Américo Vespucio",
+    "ref_via": null,
+    "highway": "secondary",
+    "junction": null,
+    "comuna": "Maipú",
+    "oneway": true,
+    "lanes": 2,
+    "maxspeed_kmh": 50,
+    "es_enlace_salida": false,
+    "es_curva_pronunciada": false,
+    "forma_vial": "recta",
+    "longitud_m": 319.4,
+    "distancia_recta_m": 319.4,
+    "indice_sinuosidad": 1.0,
+    "angulo_giro_max_grados": 1.12,
+    "angulo_giro_total_grados": 1.24,
+    "factor_riesgo_geom": 0.1012,
+    "centroide_lon": -70.763213,
+    "centroide_lat": -33.464751
+   }
+  },
+  {
+   "type": "Feature",
    "id": "930739927",
    "geometry": {
     "type": "LineString",
@@ -62347,16 +62412,16 @@
       -33.465172
      ],
      [
-      -70.763072,
+      -70.763066,
       -33.463634
      ],
      [
-      -70.763083,
-      -33.463598
+      -70.763078,
+      -33.463597
      ],
      [
-      -70.763107,
-      -33.463525
+      -70.763099,
+      -33.463527
      ]
     ]
    },
@@ -62373,11 +62438,11 @@
     "es_enlace_salida": false,
     "es_curva_pronunciada": false,
     "forma_vial": "recta",
-    "longitud_m": 411.75,
-    "distancia_recta_m": 411.75,
+    "longitud_m": 411.35,
+    "distancia_recta_m": 411.35,
     "indice_sinuosidad": 1.0,
-    "angulo_giro_max_grados": 1.04,
-    "angulo_giro_total_grados": 2.22,
+    "angulo_giro_max_grados": 1.09,
+    "angulo_giro_total_grados": 2.41,
     "factor_riesgo_geom": 0.1012,
     "centroide_lon": -70.762584,
     "centroide_lat": -33.465172
@@ -66620,6 +66685,57 @@
     "factor_riesgo_geom": 0.1009,
     "centroide_lon": -70.757441,
     "centroide_lat": -33.512808
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "1576052060",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.799117,
+      -33.518945
+     ],
+     [
+      -70.79916,
+      -33.517381
+     ],
+     [
+      -70.799194,
+      -33.514756
+     ],
+     [
+      -70.79919,
+      -33.513669
+     ],
+     [
+      -70.799188,
+      -33.513353
+     ]
+    ]
+   },
+   "properties": {
+    "osm_id": 1576052060,
+    "nombre": "Ruta 78",
+    "ref_via": "78",
+    "highway": "motorway",
+    "junction": null,
+    "comuna": "Maipú",
+    "oneway": true,
+    "lanes": 3,
+    "maxspeed_kmh": 120,
+    "es_enlace_salida": false,
+    "es_curva_pronunciada": false,
+    "forma_vial": "recta",
+    "longitud_m": 621.87,
+    "distancia_recta_m": 621.84,
+    "indice_sinuosidad": 1.0,
+    "angulo_giro_max_grados": 0.79,
+    "angulo_giro_total_grados": 1.62,
+    "factor_riesgo_geom": 0.1009,
+    "centroide_lon": -70.799194,
+    "centroide_lat": -33.514756
    }
   },
   {
@@ -72021,6 +72137,49 @@
   },
   {
    "type": "Feature",
+   "id": "1576052062",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.799328,
+      -33.514765
+     ],
+     [
+      -70.799297,
+      -33.51739
+     ],
+     [
+      -70.799263,
+      -33.518946
+     ]
+    ]
+   },
+   "properties": {
+    "osm_id": 1576052062,
+    "nombre": "Ruta 78",
+    "ref_via": "78",
+    "highway": "motorway",
+    "junction": null,
+    "comuna": "Maipú",
+    "oneway": true,
+    "lanes": 3,
+    "maxspeed_kmh": 120,
+    "es_enlace_salida": false,
+    "es_curva_pronunciada": false,
+    "forma_vial": "recta",
+    "longitud_m": 464.95,
+    "distancia_recta_m": 464.95,
+    "indice_sinuosidad": 1.0,
+    "angulo_giro_max_grados": 0.48,
+    "angulo_giro_total_grados": 0.48,
+    "factor_riesgo_geom": 0.1005,
+    "centroide_lon": -70.799297,
+    "centroide_lat": -33.51739
+   }
+  },
+  {
+   "type": "Feature",
    "id": "213285822",
    "geometry": {
     "type": "LineString",
@@ -73168,53 +73327,6 @@
     "factor_riesgo_geom": 0.1004,
     "centroide_lon": -70.757791,
     "centroide_lat": -33.475883
-   }
-  },
-  {
-   "type": "Feature",
-   "id": "929502560",
-   "geometry": {
-    "type": "LineString",
-    "coordinates": [
-     [
-      -70.763632,
-      -33.463479
-     ],
-     [
-      -70.763612,
-      -33.463541
-     ],
-     [
-      -70.763213,
-      -33.464751
-     ],
-     [
-      -70.762737,
-      -33.466207
-     ]
-    ]
-   },
-   "properties": {
-    "osm_id": 929502560,
-    "nombre": "Avenida Américo Vespucio",
-    "ref_via": null,
-    "highway": "secondary",
-    "junction": null,
-    "comuna": "Maipú",
-    "oneway": true,
-    "lanes": 2,
-    "maxspeed_kmh": 50,
-    "es_enlace_salida": false,
-    "es_curva_pronunciada": false,
-    "forma_vial": "recta",
-    "longitud_m": 314.5,
-    "distancia_recta_m": 314.5,
-    "indice_sinuosidad": 1.0,
-    "angulo_giro_max_grados": 0.32,
-    "angulo_giro_total_grados": 0.44,
-    "factor_riesgo_geom": 0.1004,
-    "centroide_lon": -70.763213,
-    "centroide_lat": -33.464751
    }
   },
   {
@@ -78817,6 +78929,49 @@
     "factor_riesgo_geom": 0.1001,
     "centroide_lon": -70.777912,
     "centroide_lat": -33.516627
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "1576135284",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.788011,
+      -33.497894
+     ],
+     [
+      -70.791077,
+      -33.498553
+     ],
+     [
+      -70.793026,
+      -33.498975
+     ]
+    ]
+   },
+   "properties": {
+    "osm_id": 1576135284,
+    "nombre": "Ruta 78",
+    "ref_via": "78",
+    "highway": "motorway",
+    "junction": null,
+    "comuna": "Maipú",
+    "oneway": true,
+    "lanes": 3,
+    "maxspeed_kmh": 120,
+    "es_enlace_salida": false,
+    "es_curva_pronunciada": false,
+    "forma_vial": "recta",
+    "longitud_m": 480.3,
+    "distancia_recta_m": 480.3,
+    "indice_sinuosidad": 1.0,
+    "angulo_giro_max_grados": 0.1,
+    "angulo_giro_total_grados": 0.1,
+    "factor_riesgo_geom": 0.1001,
+    "centroide_lon": -70.791077,
+    "centroide_lat": -33.498553
    }
   },
   {
@@ -89793,6 +89948,45 @@
   },
   {
    "type": "Feature",
+   "id": "1127409959",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.791032,
+      -33.498669
+     ],
+     [
+      -70.787911,
+      -33.497986
+     ]
+    ]
+   },
+   "properties": {
+    "osm_id": 1127409959,
+    "nombre": "Ruta 78",
+    "ref_via": "78",
+    "highway": "motorway",
+    "junction": null,
+    "comuna": "Maipú",
+    "oneway": true,
+    "lanes": 3,
+    "maxspeed_kmh": 120,
+    "es_enlace_salida": false,
+    "es_curva_pronunciada": false,
+    "forma_vial": "recta",
+    "longitud_m": 299.2,
+    "distancia_recta_m": 299.2,
+    "indice_sinuosidad": 1.0,
+    "angulo_giro_max_grados": 0.0,
+    "angulo_giro_total_grados": 0.0,
+    "factor_riesgo_geom": 0.1,
+    "centroide_lon": -70.787911,
+    "centroide_lat": -33.497986
+   }
+  },
+  {
+   "type": "Feature",
    "id": "1127409976",
    "geometry": {
     "type": "LineString",
@@ -95959,6 +96153,162 @@
     "factor_riesgo_geom": 0.1,
     "centroide_lon": -70.71849,
     "centroide_lat": -33.514201
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "1576052061",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.799066,
+      -33.52114
+     ],
+     [
+      -70.799117,
+      -33.518945
+     ]
+    ]
+   },
+   "properties": {
+    "osm_id": 1576052061,
+    "nombre": "Ruta 78",
+    "ref_via": "78",
+    "highway": "motorway",
+    "junction": null,
+    "comuna": "Maipú",
+    "oneway": true,
+    "lanes": 3,
+    "maxspeed_kmh": 120,
+    "es_enlace_salida": false,
+    "es_curva_pronunciada": false,
+    "forma_vial": "recta",
+    "longitud_m": 244.12,
+    "distancia_recta_m": 244.12,
+    "indice_sinuosidad": 1.0,
+    "angulo_giro_max_grados": 0.0,
+    "angulo_giro_total_grados": 0.0,
+    "factor_riesgo_geom": 0.1,
+    "centroide_lon": -70.799117,
+    "centroide_lat": -33.518945
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "1576052063",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.799263,
+      -33.518946
+     ],
+     [
+      -70.799216,
+      -33.521147
+     ]
+    ]
+   },
+   "properties": {
+    "osm_id": 1576052063,
+    "nombre": "Ruta 78",
+    "ref_via": "78",
+    "highway": "motorway",
+    "junction": null,
+    "comuna": "Maipú",
+    "oneway": true,
+    "lanes": 3,
+    "maxspeed_kmh": 120,
+    "es_enlace_salida": false,
+    "es_curva_pronunciada": false,
+    "forma_vial": "recta",
+    "longitud_m": 244.78,
+    "distancia_recta_m": 244.78,
+    "indice_sinuosidad": 1.0,
+    "angulo_giro_max_grados": 0.0,
+    "angulo_giro_total_grados": 0.0,
+    "factor_riesgo_geom": 0.1,
+    "centroide_lon": -70.799216,
+    "centroide_lat": -33.521147
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "1576135283",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.793448,
+      -33.499205
+     ],
+     [
+      -70.791032,
+      -33.498669
+     ]
+    ]
+   },
+   "properties": {
+    "osm_id": 1576135283,
+    "nombre": "Ruta 78",
+    "ref_via": "78",
+    "highway": "motorway",
+    "junction": null,
+    "comuna": "Maipú",
+    "oneway": true,
+    "lanes": 3,
+    "maxspeed_kmh": 120,
+    "es_enlace_salida": false,
+    "es_curva_pronunciada": false,
+    "forma_vial": "recta",
+    "longitud_m": 231.82,
+    "distancia_recta_m": 231.82,
+    "indice_sinuosidad": 1.0,
+    "angulo_giro_max_grados": 0.0,
+    "angulo_giro_total_grados": 0.0,
+    "factor_riesgo_geom": 0.1,
+    "centroide_lon": -70.791032,
+    "centroide_lat": -33.498669
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "1576135285",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.793026,
+      -33.498975
+     ],
+     [
+      -70.793447,
+      -33.499072
+     ]
+    ]
+   },
+   "properties": {
+    "osm_id": 1576135285,
+    "nombre": "Ruta 78",
+    "ref_via": "78",
+    "highway": "motorway",
+    "junction": null,
+    "comuna": "Maipú",
+    "oneway": true,
+    "lanes": 3,
+    "maxspeed_kmh": 120,
+    "es_enlace_salida": false,
+    "es_curva_pronunciada": false,
+    "forma_vial": "recta",
+    "longitud_m": 40.5,
+    "distancia_recta_m": 40.5,
+    "indice_sinuosidad": 1.0,
+    "angulo_giro_max_grados": 0.0,
+    "angulo_giro_total_grados": 0.0,
+    "factor_riesgo_geom": 0.1,
+    "centroide_lon": -70.793447,
+    "centroide_lat": -33.499072
    }
   }
  ]

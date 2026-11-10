@@ -72,6 +72,26 @@ CREATE INDEX IF NOT EXISTS aristas_aereas_geom_idx ON aristas_aereas USING GIST 
 CREATE INDEX IF NOT EXISTS aristas_aereas_source_idx ON aristas_aereas (source);
 CREATE INDEX IF NOT EXISTS aristas_aereas_target_idx ON aristas_aereas (target);
 
+-- Aristas por las que el dron puede volar ahora: se excluyen las que cruzan un hexágono
+-- con lluvia o viento fuerte (no_volable en lluvia_open_meteo_hexagonos y
+-- viento_open_meteo_hexagonos, cargadas por 03 - Amenazas como procesos separados).
+-- Es una vista, así que una nueva carga de clima cambia el ruteo sin reconstruir el grafo.
+-- Dijkstra busca entonces un desvío por otros nodos; si un nodo queda dentro de una zona
+-- bloqueada, sus tramos no tienen ruta y se informan en 'tramos_sin_ruta'.
+CREATE OR REPLACE VIEW aristas_aereas_volables AS
+SELECT a.*
+FROM aristas_aereas a
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM lluvia_open_meteo_hexagonos h
+    WHERE h.no_volable AND ST_Intersects(h.geom, a.geom)
+)
+AND NOT EXISTS (
+    SELECT 1
+    FROM viento_open_meteo_hexagonos h
+    WHERE h.no_volable AND ST_Intersects(h.geom, a.geom)
+);
+
 -- 3. Funciones de Dijkstra
 
 -- A) Ruta directa entre dos nodos cualesquiera:
@@ -102,7 +122,7 @@ BEGIN
         )
     ) INTO v_result
     FROM pgr_dijkstra(
-        'SELECT id, source, target, cost, reverse_cost FROM aristas_aereas',
+        'SELECT id, source, target, cost, reverse_cost FROM aristas_aereas_volables',
         p_origen,
         p_destino,
         directed := false
@@ -149,7 +169,7 @@ BEGIN
             a.geom
         FROM pares p
         CROSS JOIN LATERAL pgr_dijkstra(
-            'SELECT id, source, target, cost, reverse_cost FROM aristas_aereas',
+            'SELECT id, source, target, cost, reverse_cost FROM aristas_aereas_volables',
             p.origen,
             p.destino,
             directed := false
@@ -161,6 +181,14 @@ BEGIN
         'properties', json_build_object(
             'comisaria_id', p_comisaria_id,
             'nombre_base', (SELECT nombre FROM nodos_aereos WHERE id = p_comisaria_id),
+            -- Tramos sin ruta porque el clima aísla su origen o destino (0 = circuito completo)
+            'tramos_sin_ruta', (SELECT count(*) FROM pares p
+                                WHERE NOT EXISTS (SELECT 1 FROM rutas r WHERE r.orden_tramo = p.orden_tramo)),
+            -- Aristas bloqueadas por cada amenaza (una arista puede estar en ambas)
+            'aristas_bloqueadas_lluvia', (SELECT count(*) FROM aristas_aereas a WHERE EXISTS (
+                SELECT 1 FROM lluvia_open_meteo_hexagonos h WHERE h.no_volable AND ST_Intersects(h.geom, a.geom))),
+            'aristas_bloqueadas_viento', (SELECT count(*) FROM aristas_aereas a WHERE EXISTS (
+                SELECT 1 FROM viento_open_meteo_hexagonos h WHERE h.no_volable AND ST_Intersects(h.geom, a.geom))),
             'distancia_total_m', (SELECT sum(cost_m) FROM rutas),
             'distancia_total_km', round(((SELECT sum(cost_m) FROM rutas) / 1000.0)::numeric, 2),
             'tiempo_estimado_min', round((((SELECT sum(cost_m) FROM rutas) / 1000.0) / (60.0 / 60.0))::numeric, 0)

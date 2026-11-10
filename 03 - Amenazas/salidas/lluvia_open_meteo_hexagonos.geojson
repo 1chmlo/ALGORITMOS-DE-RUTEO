@@ -1,0 +1,7696 @@
+{
+ "type": "FeatureCollection",
+ "metadata": {
+  "fuente": "Open-Meteo Forecast API (modelo best_match)",
+  "endpoint": "https://api.open-meteo.com/v1/forecast",
+  "descripcion": "Zonas donde el dron no debe volar por lluvia en la ventana de vuelo",
+  "crs": "EPSG:4326 (WGS84)",
+  "bbox_consulta": [
+   -70.93,
+   -33.57,
+   -70.71,
+   -33.46
+  ],
+  "tamanio_hexagono_m": 1000,
+  "ventana_horas": 2,
+  "umbral_mm_h": 0.5,
+  "umbral_prob_pct": 70.0,
+  "simulacion": null,
+  "celdas_modelo_distintas": 9,
+  "total_hexagonos": 130,
+  "total_no_volables": 32,
+  "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00"
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.920669,
+       -33.565508
+      ],
+      [
+       -70.93,
+       -33.561017
+      ],
+      [
+       -70.939331,
+       -33.565508
+      ],
+      [
+       -70.939331,
+       -33.574492
+      ],
+      [
+       -70.93,
+       -33.578983
+      ],
+      [
+       -70.920669,
+       -33.574492
+      ],
+      [
+       -70.920669,
+       -33.565508
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_00_00",
+    "centro_lon": -70.93,
+    "centro_lat": -33.57,
+    "celda_modelo_lon": -70.92935,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.6,
+    "precipitacion_max_mm_h": 1.1,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 1.1 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.902007,
+       -33.565508
+      ],
+      [
+       -70.911338,
+       -33.561017
+      ],
+      [
+       -70.920669,
+       -33.565508
+      ],
+      [
+       -70.920669,
+       -33.574492
+      ],
+      [
+       -70.911338,
+       -33.578983
+      ],
+      [
+       -70.902007,
+       -33.574492
+      ],
+      [
+       -70.902007,
+       -33.565508
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_00_01",
+    "centro_lon": -70.911338,
+    "centro_lat": -33.57,
+    "celda_modelo_lon": -70.92935,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.6,
+    "precipitacion_max_mm_h": 1.1,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 1.1 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.883345,
+       -33.565508
+      ],
+      [
+       -70.892676,
+       -33.561017
+      ],
+      [
+       -70.902007,
+       -33.565508
+      ],
+      [
+       -70.902007,
+       -33.574492
+      ],
+      [
+       -70.892676,
+       -33.578983
+      ],
+      [
+       -70.883345,
+       -33.574492
+      ],
+      [
+       -70.883345,
+       -33.565508
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_00_02",
+    "centro_lon": -70.892676,
+    "centro_lat": -33.57,
+    "celda_modelo_lon": -70.92935,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.6,
+    "precipitacion_max_mm_h": 1.1,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 1.1 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.864683,
+       -33.565508
+      ],
+      [
+       -70.874014,
+       -33.561017
+      ],
+      [
+       -70.883345,
+       -33.565508
+      ],
+      [
+       -70.883345,
+       -33.574492
+      ],
+      [
+       -70.874014,
+       -33.578983
+      ],
+      [
+       -70.864683,
+       -33.574492
+      ],
+      [
+       -70.864683,
+       -33.565508
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_00_03",
+    "centro_lon": -70.874014,
+    "centro_lat": -33.57,
+    "celda_modelo_lon": -70.92935,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.6,
+    "precipitacion_max_mm_h": 1.1,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 1.1 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.846021,
+       -33.565508
+      ],
+      [
+       -70.855352,
+       -33.561017
+      ],
+      [
+       -70.864683,
+       -33.565508
+      ],
+      [
+       -70.864683,
+       -33.574492
+      ],
+      [
+       -70.855352,
+       -33.578983
+      ],
+      [
+       -70.846021,
+       -33.574492
+      ],
+      [
+       -70.846021,
+       -33.565508
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_00_04",
+    "centro_lon": -70.855352,
+    "centro_lat": -33.57,
+    "celda_modelo_lon": -70.81784,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.827359,
+       -33.565508
+      ],
+      [
+       -70.83669,
+       -33.561017
+      ],
+      [
+       -70.846021,
+       -33.565508
+      ],
+      [
+       -70.846021,
+       -33.574492
+      ],
+      [
+       -70.83669,
+       -33.578983
+      ],
+      [
+       -70.827359,
+       -33.574492
+      ],
+      [
+       -70.827359,
+       -33.565508
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_00_05",
+    "centro_lon": -70.83669,
+    "centro_lat": -33.57,
+    "celda_modelo_lon": -70.81784,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.808698,
+       -33.565508
+      ],
+      [
+       -70.818029,
+       -33.561017
+      ],
+      [
+       -70.827359,
+       -33.565508
+      ],
+      [
+       -70.827359,
+       -33.574492
+      ],
+      [
+       -70.818029,
+       -33.578983
+      ],
+      [
+       -70.808698,
+       -33.574492
+      ],
+      [
+       -70.808698,
+       -33.565508
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_00_06",
+    "centro_lon": -70.818029,
+    "centro_lat": -33.57,
+    "celda_modelo_lon": -70.81784,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.790036,
+       -33.565508
+      ],
+      [
+       -70.799367,
+       -33.561017
+      ],
+      [
+       -70.808698,
+       -33.565508
+      ],
+      [
+       -70.808698,
+       -33.574492
+      ],
+      [
+       -70.799367,
+       -33.578983
+      ],
+      [
+       -70.790036,
+       -33.574492
+      ],
+      [
+       -70.790036,
+       -33.565508
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_00_07",
+    "centro_lon": -70.799367,
+    "centro_lat": -33.57,
+    "celda_modelo_lon": -70.81784,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.771374,
+       -33.565508
+      ],
+      [
+       -70.780705,
+       -33.561017
+      ],
+      [
+       -70.790036,
+       -33.565508
+      ],
+      [
+       -70.790036,
+       -33.574492
+      ],
+      [
+       -70.780705,
+       -33.578983
+      ],
+      [
+       -70.771374,
+       -33.574492
+      ],
+      [
+       -70.771374,
+       -33.565508
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_00_08",
+    "centro_lon": -70.780705,
+    "centro_lat": -33.57,
+    "celda_modelo_lon": -70.81784,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.752712,
+       -33.565508
+      ],
+      [
+       -70.762043,
+       -33.561017
+      ],
+      [
+       -70.771374,
+       -33.565508
+      ],
+      [
+       -70.771374,
+       -33.574492
+      ],
+      [
+       -70.762043,
+       -33.578983
+      ],
+      [
+       -70.752712,
+       -33.574492
+      ],
+      [
+       -70.752712,
+       -33.565508
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_00_09",
+    "centro_lon": -70.762043,
+    "centro_lat": -33.57,
+    "celda_modelo_lon": -70.70633,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.73405,
+       -33.565508
+      ],
+      [
+       -70.743381,
+       -33.561017
+      ],
+      [
+       -70.752712,
+       -33.565508
+      ],
+      [
+       -70.752712,
+       -33.574492
+      ],
+      [
+       -70.743381,
+       -33.578983
+      ],
+      [
+       -70.73405,
+       -33.574492
+      ],
+      [
+       -70.73405,
+       -33.565508
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_00_10",
+    "centro_lon": -70.743381,
+    "centro_lat": -33.57,
+    "celda_modelo_lon": -70.70633,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.715388,
+       -33.565508
+      ],
+      [
+       -70.724719,
+       -33.561017
+      ],
+      [
+       -70.73405,
+       -33.565508
+      ],
+      [
+       -70.73405,
+       -33.574492
+      ],
+      [
+       -70.724719,
+       -33.578983
+      ],
+      [
+       -70.715388,
+       -33.574492
+      ],
+      [
+       -70.715388,
+       -33.565508
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_00_11",
+    "centro_lon": -70.724719,
+    "centro_lat": -33.57,
+    "celda_modelo_lon": -70.70633,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.696726,
+       -33.565508
+      ],
+      [
+       -70.706057,
+       -33.561017
+      ],
+      [
+       -70.715388,
+       -33.565508
+      ],
+      [
+       -70.715388,
+       -33.574492
+      ],
+      [
+       -70.706057,
+       -33.578983
+      ],
+      [
+       -70.696726,
+       -33.574492
+      ],
+      [
+       -70.696726,
+       -33.565508
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_00_12",
+    "centro_lon": -70.706057,
+    "centro_lat": -33.57,
+    "celda_modelo_lon": -70.70633,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.911338,
+       -33.552034
+      ],
+      [
+       -70.920669,
+       -33.547542
+      ],
+      [
+       -70.93,
+       -33.552034
+      ],
+      [
+       -70.93,
+       -33.561017
+      ],
+      [
+       -70.920669,
+       -33.565508
+      ],
+      [
+       -70.911338,
+       -33.561017
+      ],
+      [
+       -70.911338,
+       -33.552034
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_01_00",
+    "centro_lon": -70.920669,
+    "centro_lat": -33.556525,
+    "celda_modelo_lon": -70.92935,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.6,
+    "precipitacion_max_mm_h": 1.1,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 1.1 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.892676,
+       -33.552034
+      ],
+      [
+       -70.902007,
+       -33.547542
+      ],
+      [
+       -70.911338,
+       -33.552034
+      ],
+      [
+       -70.911338,
+       -33.561017
+      ],
+      [
+       -70.902007,
+       -33.565508
+      ],
+      [
+       -70.892676,
+       -33.561017
+      ],
+      [
+       -70.892676,
+       -33.552034
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_01_01",
+    "centro_lon": -70.902007,
+    "centro_lat": -33.556525,
+    "celda_modelo_lon": -70.92935,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.6,
+    "precipitacion_max_mm_h": 1.1,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 1.1 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.874014,
+       -33.552034
+      ],
+      [
+       -70.883345,
+       -33.547542
+      ],
+      [
+       -70.892676,
+       -33.552034
+      ],
+      [
+       -70.892676,
+       -33.561017
+      ],
+      [
+       -70.883345,
+       -33.565508
+      ],
+      [
+       -70.874014,
+       -33.561017
+      ],
+      [
+       -70.874014,
+       -33.552034
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_01_02",
+    "centro_lon": -70.883345,
+    "centro_lat": -33.556525,
+    "celda_modelo_lon": -70.92935,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.6,
+    "precipitacion_max_mm_h": 1.1,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 1.1 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.855352,
+       -33.552034
+      ],
+      [
+       -70.864683,
+       -33.547542
+      ],
+      [
+       -70.874014,
+       -33.552034
+      ],
+      [
+       -70.874014,
+       -33.561017
+      ],
+      [
+       -70.864683,
+       -33.565508
+      ],
+      [
+       -70.855352,
+       -33.561017
+      ],
+      [
+       -70.855352,
+       -33.552034
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_01_03",
+    "centro_lon": -70.864683,
+    "centro_lat": -33.556525,
+    "celda_modelo_lon": -70.81784,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.83669,
+       -33.552034
+      ],
+      [
+       -70.846021,
+       -33.547542
+      ],
+      [
+       -70.855352,
+       -33.552034
+      ],
+      [
+       -70.855352,
+       -33.561017
+      ],
+      [
+       -70.846021,
+       -33.565508
+      ],
+      [
+       -70.83669,
+       -33.561017
+      ],
+      [
+       -70.83669,
+       -33.552034
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_01_04",
+    "centro_lon": -70.846021,
+    "centro_lat": -33.556525,
+    "celda_modelo_lon": -70.81784,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.818029,
+       -33.552034
+      ],
+      [
+       -70.827359,
+       -33.547542
+      ],
+      [
+       -70.83669,
+       -33.552034
+      ],
+      [
+       -70.83669,
+       -33.561017
+      ],
+      [
+       -70.827359,
+       -33.565508
+      ],
+      [
+       -70.818029,
+       -33.561017
+      ],
+      [
+       -70.818029,
+       -33.552034
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_01_05",
+    "centro_lon": -70.827359,
+    "centro_lat": -33.556525,
+    "celda_modelo_lon": -70.81784,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.799367,
+       -33.552034
+      ],
+      [
+       -70.808698,
+       -33.547542
+      ],
+      [
+       -70.818029,
+       -33.552034
+      ],
+      [
+       -70.818029,
+       -33.561017
+      ],
+      [
+       -70.808698,
+       -33.565508
+      ],
+      [
+       -70.799367,
+       -33.561017
+      ],
+      [
+       -70.799367,
+       -33.552034
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_01_06",
+    "centro_lon": -70.808698,
+    "centro_lat": -33.556525,
+    "celda_modelo_lon": -70.81784,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.780705,
+       -33.552034
+      ],
+      [
+       -70.790036,
+       -33.547542
+      ],
+      [
+       -70.799367,
+       -33.552034
+      ],
+      [
+       -70.799367,
+       -33.561017
+      ],
+      [
+       -70.790036,
+       -33.565508
+      ],
+      [
+       -70.780705,
+       -33.561017
+      ],
+      [
+       -70.780705,
+       -33.552034
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_01_07",
+    "centro_lon": -70.790036,
+    "centro_lat": -33.556525,
+    "celda_modelo_lon": -70.81784,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.762043,
+       -33.552034
+      ],
+      [
+       -70.771374,
+       -33.547542
+      ],
+      [
+       -70.780705,
+       -33.552034
+      ],
+      [
+       -70.780705,
+       -33.561017
+      ],
+      [
+       -70.771374,
+       -33.565508
+      ],
+      [
+       -70.762043,
+       -33.561017
+      ],
+      [
+       -70.762043,
+       -33.552034
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_01_08",
+    "centro_lon": -70.771374,
+    "centro_lat": -33.556525,
+    "celda_modelo_lon": -70.81784,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.743381,
+       -33.552034
+      ],
+      [
+       -70.752712,
+       -33.547542
+      ],
+      [
+       -70.762043,
+       -33.552034
+      ],
+      [
+       -70.762043,
+       -33.561017
+      ],
+      [
+       -70.752712,
+       -33.565508
+      ],
+      [
+       -70.743381,
+       -33.561017
+      ],
+      [
+       -70.743381,
+       -33.552034
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_01_09",
+    "centro_lon": -70.752712,
+    "centro_lat": -33.556525,
+    "celda_modelo_lon": -70.70633,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.724719,
+       -33.552034
+      ],
+      [
+       -70.73405,
+       -33.547542
+      ],
+      [
+       -70.743381,
+       -33.552034
+      ],
+      [
+       -70.743381,
+       -33.561017
+      ],
+      [
+       -70.73405,
+       -33.565508
+      ],
+      [
+       -70.724719,
+       -33.561017
+      ],
+      [
+       -70.724719,
+       -33.552034
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_01_10",
+    "centro_lon": -70.73405,
+    "centro_lat": -33.556525,
+    "celda_modelo_lon": -70.70633,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.706057,
+       -33.552034
+      ],
+      [
+       -70.715388,
+       -33.547542
+      ],
+      [
+       -70.724719,
+       -33.552034
+      ],
+      [
+       -70.724719,
+       -33.561017
+      ],
+      [
+       -70.715388,
+       -33.565508
+      ],
+      [
+       -70.706057,
+       -33.561017
+      ],
+      [
+       -70.706057,
+       -33.552034
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_01_11",
+    "centro_lon": -70.715388,
+    "centro_lat": -33.556525,
+    "celda_modelo_lon": -70.70633,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.687395,
+       -33.552034
+      ],
+      [
+       -70.696726,
+       -33.547542
+      ],
+      [
+       -70.706057,
+       -33.552034
+      ],
+      [
+       -70.706057,
+       -33.561017
+      ],
+      [
+       -70.696726,
+       -33.565508
+      ],
+      [
+       -70.687395,
+       -33.561017
+      ],
+      [
+       -70.687395,
+       -33.552034
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_01_12",
+    "centro_lon": -70.696726,
+    "centro_lat": -33.556525,
+    "celda_modelo_lon": -70.70633,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.920669,
+       -33.538559
+      ],
+      [
+       -70.93,
+       -33.534068
+      ],
+      [
+       -70.939331,
+       -33.538559
+      ],
+      [
+       -70.939331,
+       -33.547542
+      ],
+      [
+       -70.93,
+       -33.552034
+      ],
+      [
+       -70.920669,
+       -33.547542
+      ],
+      [
+       -70.920669,
+       -33.538559
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_02_00",
+    "centro_lon": -70.93,
+    "centro_lat": -33.543051,
+    "celda_modelo_lon": -70.92935,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.6,
+    "precipitacion_max_mm_h": 1.1,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 1.1 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.902007,
+       -33.538559
+      ],
+      [
+       -70.911338,
+       -33.534068
+      ],
+      [
+       -70.920669,
+       -33.538559
+      ],
+      [
+       -70.920669,
+       -33.547542
+      ],
+      [
+       -70.911338,
+       -33.552034
+      ],
+      [
+       -70.902007,
+       -33.547542
+      ],
+      [
+       -70.902007,
+       -33.538559
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_02_01",
+    "centro_lon": -70.911338,
+    "centro_lat": -33.543051,
+    "celda_modelo_lon": -70.92935,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.6,
+    "precipitacion_max_mm_h": 1.1,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 1.1 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.883345,
+       -33.538559
+      ],
+      [
+       -70.892676,
+       -33.534068
+      ],
+      [
+       -70.902007,
+       -33.538559
+      ],
+      [
+       -70.902007,
+       -33.547542
+      ],
+      [
+       -70.892676,
+       -33.552034
+      ],
+      [
+       -70.883345,
+       -33.547542
+      ],
+      [
+       -70.883345,
+       -33.538559
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_02_02",
+    "centro_lon": -70.892676,
+    "centro_lat": -33.543051,
+    "celda_modelo_lon": -70.92935,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.6,
+    "precipitacion_max_mm_h": 1.1,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 1.1 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.864683,
+       -33.538559
+      ],
+      [
+       -70.874014,
+       -33.534068
+      ],
+      [
+       -70.883345,
+       -33.538559
+      ],
+      [
+       -70.883345,
+       -33.547542
+      ],
+      [
+       -70.874014,
+       -33.552034
+      ],
+      [
+       -70.864683,
+       -33.547542
+      ],
+      [
+       -70.864683,
+       -33.538559
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_02_03",
+    "centro_lon": -70.874014,
+    "centro_lat": -33.543051,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.846021,
+       -33.538559
+      ],
+      [
+       -70.855352,
+       -33.534068
+      ],
+      [
+       -70.864683,
+       -33.538559
+      ],
+      [
+       -70.864683,
+       -33.547542
+      ],
+      [
+       -70.855352,
+       -33.552034
+      ],
+      [
+       -70.846021,
+       -33.547542
+      ],
+      [
+       -70.846021,
+       -33.538559
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_02_04",
+    "centro_lon": -70.855352,
+    "centro_lat": -33.543051,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.827359,
+       -33.538559
+      ],
+      [
+       -70.83669,
+       -33.534068
+      ],
+      [
+       -70.846021,
+       -33.538559
+      ],
+      [
+       -70.846021,
+       -33.547542
+      ],
+      [
+       -70.83669,
+       -33.552034
+      ],
+      [
+       -70.827359,
+       -33.547542
+      ],
+      [
+       -70.827359,
+       -33.538559
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_02_05",
+    "centro_lon": -70.83669,
+    "centro_lat": -33.543051,
+    "celda_modelo_lon": -70.81784,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.808698,
+       -33.538559
+      ],
+      [
+       -70.818029,
+       -33.534068
+      ],
+      [
+       -70.827359,
+       -33.538559
+      ],
+      [
+       -70.827359,
+       -33.547542
+      ],
+      [
+       -70.818029,
+       -33.552034
+      ],
+      [
+       -70.808698,
+       -33.547542
+      ],
+      [
+       -70.808698,
+       -33.538559
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_02_06",
+    "centro_lon": -70.818029,
+    "centro_lat": -33.543051,
+    "celda_modelo_lon": -70.81784,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.790036,
+       -33.538559
+      ],
+      [
+       -70.799367,
+       -33.534068
+      ],
+      [
+       -70.808698,
+       -33.538559
+      ],
+      [
+       -70.808698,
+       -33.547542
+      ],
+      [
+       -70.799367,
+       -33.552034
+      ],
+      [
+       -70.790036,
+       -33.547542
+      ],
+      [
+       -70.790036,
+       -33.538559
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_02_07",
+    "centro_lon": -70.799367,
+    "centro_lat": -33.543051,
+    "celda_modelo_lon": -70.81784,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.771374,
+       -33.538559
+      ],
+      [
+       -70.780705,
+       -33.534068
+      ],
+      [
+       -70.790036,
+       -33.538559
+      ],
+      [
+       -70.790036,
+       -33.547542
+      ],
+      [
+       -70.780705,
+       -33.552034
+      ],
+      [
+       -70.771374,
+       -33.547542
+      ],
+      [
+       -70.771374,
+       -33.538559
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_02_08",
+    "centro_lon": -70.780705,
+    "centro_lat": -33.543051,
+    "celda_modelo_lon": -70.81784,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.752712,
+       -33.538559
+      ],
+      [
+       -70.762043,
+       -33.534068
+      ],
+      [
+       -70.771374,
+       -33.538559
+      ],
+      [
+       -70.771374,
+       -33.547542
+      ],
+      [
+       -70.762043,
+       -33.552034
+      ],
+      [
+       -70.752712,
+       -33.547542
+      ],
+      [
+       -70.752712,
+       -33.538559
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_02_09",
+    "centro_lon": -70.762043,
+    "centro_lat": -33.543051,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.73405,
+       -33.538559
+      ],
+      [
+       -70.743381,
+       -33.534068
+      ],
+      [
+       -70.752712,
+       -33.538559
+      ],
+      [
+       -70.752712,
+       -33.547542
+      ],
+      [
+       -70.743381,
+       -33.552034
+      ],
+      [
+       -70.73405,
+       -33.547542
+      ],
+      [
+       -70.73405,
+       -33.538559
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_02_10",
+    "centro_lon": -70.743381,
+    "centro_lat": -33.543051,
+    "celda_modelo_lon": -70.70633,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.715388,
+       -33.538559
+      ],
+      [
+       -70.724719,
+       -33.534068
+      ],
+      [
+       -70.73405,
+       -33.538559
+      ],
+      [
+       -70.73405,
+       -33.547542
+      ],
+      [
+       -70.724719,
+       -33.552034
+      ],
+      [
+       -70.715388,
+       -33.547542
+      ],
+      [
+       -70.715388,
+       -33.538559
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_02_11",
+    "centro_lon": -70.724719,
+    "centro_lat": -33.543051,
+    "celda_modelo_lon": -70.70633,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.696726,
+       -33.538559
+      ],
+      [
+       -70.706057,
+       -33.534068
+      ],
+      [
+       -70.715388,
+       -33.538559
+      ],
+      [
+       -70.715388,
+       -33.547542
+      ],
+      [
+       -70.706057,
+       -33.552034
+      ],
+      [
+       -70.696726,
+       -33.547542
+      ],
+      [
+       -70.696726,
+       -33.538559
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_02_12",
+    "centro_lon": -70.706057,
+    "centro_lat": -33.543051,
+    "celda_modelo_lon": -70.70633,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.911338,
+       -33.525084
+      ],
+      [
+       -70.920669,
+       -33.520593
+      ],
+      [
+       -70.93,
+       -33.525084
+      ],
+      [
+       -70.93,
+       -33.534068
+      ],
+      [
+       -70.920669,
+       -33.538559
+      ],
+      [
+       -70.911338,
+       -33.534068
+      ],
+      [
+       -70.911338,
+       -33.525084
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_03_00",
+    "centro_lon": -70.920669,
+    "centro_lat": -33.529576,
+    "celda_modelo_lon": -70.92935,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.6,
+    "precipitacion_max_mm_h": 1.1,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 1.1 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.892676,
+       -33.525084
+      ],
+      [
+       -70.902007,
+       -33.520593
+      ],
+      [
+       -70.911338,
+       -33.525084
+      ],
+      [
+       -70.911338,
+       -33.534068
+      ],
+      [
+       -70.902007,
+       -33.538559
+      ],
+      [
+       -70.892676,
+       -33.534068
+      ],
+      [
+       -70.892676,
+       -33.525084
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_03_01",
+    "centro_lon": -70.902007,
+    "centro_lat": -33.529576,
+    "celda_modelo_lon": -70.92935,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.6,
+    "precipitacion_max_mm_h": 1.1,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 1.1 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.874014,
+       -33.525084
+      ],
+      [
+       -70.883345,
+       -33.520593
+      ],
+      [
+       -70.892676,
+       -33.525084
+      ],
+      [
+       -70.892676,
+       -33.534068
+      ],
+      [
+       -70.883345,
+       -33.538559
+      ],
+      [
+       -70.874014,
+       -33.534068
+      ],
+      [
+       -70.874014,
+       -33.525084
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_03_02",
+    "centro_lon": -70.883345,
+    "centro_lat": -33.529576,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.855352,
+       -33.525084
+      ],
+      [
+       -70.864683,
+       -33.520593
+      ],
+      [
+       -70.874014,
+       -33.525084
+      ],
+      [
+       -70.874014,
+       -33.534068
+      ],
+      [
+       -70.864683,
+       -33.538559
+      ],
+      [
+       -70.855352,
+       -33.534068
+      ],
+      [
+       -70.855352,
+       -33.525084
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_03_03",
+    "centro_lon": -70.864683,
+    "centro_lat": -33.529576,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.83669,
+       -33.525084
+      ],
+      [
+       -70.846021,
+       -33.520593
+      ],
+      [
+       -70.855352,
+       -33.525084
+      ],
+      [
+       -70.855352,
+       -33.534068
+      ],
+      [
+       -70.846021,
+       -33.538559
+      ],
+      [
+       -70.83669,
+       -33.534068
+      ],
+      [
+       -70.83669,
+       -33.525084
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_03_04",
+    "centro_lon": -70.846021,
+    "centro_lat": -33.529576,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.818029,
+       -33.525084
+      ],
+      [
+       -70.827359,
+       -33.520593
+      ],
+      [
+       -70.83669,
+       -33.525084
+      ],
+      [
+       -70.83669,
+       -33.534068
+      ],
+      [
+       -70.827359,
+       -33.538559
+      ],
+      [
+       -70.818029,
+       -33.534068
+      ],
+      [
+       -70.818029,
+       -33.525084
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_03_05",
+    "centro_lon": -70.827359,
+    "centro_lat": -33.529576,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.799367,
+       -33.525084
+      ],
+      [
+       -70.808698,
+       -33.520593
+      ],
+      [
+       -70.818029,
+       -33.525084
+      ],
+      [
+       -70.818029,
+       -33.534068
+      ],
+      [
+       -70.808698,
+       -33.538559
+      ],
+      [
+       -70.799367,
+       -33.534068
+      ],
+      [
+       -70.799367,
+       -33.525084
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_03_06",
+    "centro_lon": -70.808698,
+    "centro_lat": -33.529576,
+    "celda_modelo_lon": -70.81784,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.780705,
+       -33.525084
+      ],
+      [
+       -70.790036,
+       -33.520593
+      ],
+      [
+       -70.799367,
+       -33.525084
+      ],
+      [
+       -70.799367,
+       -33.534068
+      ],
+      [
+       -70.790036,
+       -33.538559
+      ],
+      [
+       -70.780705,
+       -33.534068
+      ],
+      [
+       -70.780705,
+       -33.525084
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_03_07",
+    "centro_lon": -70.790036,
+    "centro_lat": -33.529576,
+    "celda_modelo_lon": -70.81784,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.762043,
+       -33.525084
+      ],
+      [
+       -70.771374,
+       -33.520593
+      ],
+      [
+       -70.780705,
+       -33.525084
+      ],
+      [
+       -70.780705,
+       -33.534068
+      ],
+      [
+       -70.771374,
+       -33.538559
+      ],
+      [
+       -70.762043,
+       -33.534068
+      ],
+      [
+       -70.762043,
+       -33.525084
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_03_08",
+    "centro_lon": -70.771374,
+    "centro_lat": -33.529576,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.743381,
+       -33.525084
+      ],
+      [
+       -70.752712,
+       -33.520593
+      ],
+      [
+       -70.762043,
+       -33.525084
+      ],
+      [
+       -70.762043,
+       -33.534068
+      ],
+      [
+       -70.752712,
+       -33.538559
+      ],
+      [
+       -70.743381,
+       -33.534068
+      ],
+      [
+       -70.743381,
+       -33.525084
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_03_09",
+    "centro_lon": -70.752712,
+    "centro_lat": -33.529576,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.724719,
+       -33.525084
+      ],
+      [
+       -70.73405,
+       -33.520593
+      ],
+      [
+       -70.743381,
+       -33.525084
+      ],
+      [
+       -70.743381,
+       -33.534068
+      ],
+      [
+       -70.73405,
+       -33.538559
+      ],
+      [
+       -70.724719,
+       -33.534068
+      ],
+      [
+       -70.724719,
+       -33.525084
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_03_10",
+    "centro_lon": -70.73405,
+    "centro_lat": -33.529576,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.706057,
+       -33.525084
+      ],
+      [
+       -70.715388,
+       -33.520593
+      ],
+      [
+       -70.724719,
+       -33.525084
+      ],
+      [
+       -70.724719,
+       -33.534068
+      ],
+      [
+       -70.715388,
+       -33.538559
+      ],
+      [
+       -70.706057,
+       -33.534068
+      ],
+      [
+       -70.706057,
+       -33.525084
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_03_11",
+    "centro_lon": -70.715388,
+    "centro_lat": -33.529576,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.687395,
+       -33.525084
+      ],
+      [
+       -70.696726,
+       -33.520593
+      ],
+      [
+       -70.706057,
+       -33.525084
+      ],
+      [
+       -70.706057,
+       -33.534068
+      ],
+      [
+       -70.696726,
+       -33.538559
+      ],
+      [
+       -70.687395,
+       -33.534068
+      ],
+      [
+       -70.687395,
+       -33.525084
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_03_12",
+    "centro_lon": -70.696726,
+    "centro_lat": -33.529576,
+    "celda_modelo_lon": -70.70633,
+    "celda_modelo_lat": -33.56766,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.920669,
+       -33.51161
+      ],
+      [
+       -70.93,
+       -33.507118
+      ],
+      [
+       -70.939331,
+       -33.51161
+      ],
+      [
+       -70.939331,
+       -33.520593
+      ],
+      [
+       -70.93,
+       -33.525084
+      ],
+      [
+       -70.920669,
+       -33.520593
+      ],
+      [
+       -70.920669,
+       -33.51161
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_04_00",
+    "centro_lon": -70.93,
+    "centro_lat": -33.516101,
+    "celda_modelo_lon": -70.95297,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.7,
+    "precipitacion_max_mm_h": 0.7,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.7 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.902007,
+       -33.51161
+      ],
+      [
+       -70.911338,
+       -33.507118
+      ],
+      [
+       -70.920669,
+       -33.51161
+      ],
+      [
+       -70.920669,
+       -33.520593
+      ],
+      [
+       -70.911338,
+       -33.525084
+      ],
+      [
+       -70.902007,
+       -33.520593
+      ],
+      [
+       -70.902007,
+       -33.51161
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_04_01",
+    "centro_lon": -70.911338,
+    "centro_lat": -33.516101,
+    "celda_modelo_lon": -70.95297,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.7,
+    "precipitacion_max_mm_h": 0.7,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.7 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.883345,
+       -33.51161
+      ],
+      [
+       -70.892676,
+       -33.507118
+      ],
+      [
+       -70.902007,
+       -33.51161
+      ],
+      [
+       -70.902007,
+       -33.520593
+      ],
+      [
+       -70.892676,
+       -33.525084
+      ],
+      [
+       -70.883345,
+       -33.520593
+      ],
+      [
+       -70.883345,
+       -33.51161
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_04_02",
+    "centro_lon": -70.892676,
+    "centro_lat": -33.516101,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.864683,
+       -33.51161
+      ],
+      [
+       -70.874014,
+       -33.507118
+      ],
+      [
+       -70.883345,
+       -33.51161
+      ],
+      [
+       -70.883345,
+       -33.520593
+      ],
+      [
+       -70.874014,
+       -33.525084
+      ],
+      [
+       -70.864683,
+       -33.520593
+      ],
+      [
+       -70.864683,
+       -33.51161
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_04_03",
+    "centro_lon": -70.874014,
+    "centro_lat": -33.516101,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.846021,
+       -33.51161
+      ],
+      [
+       -70.855352,
+       -33.507118
+      ],
+      [
+       -70.864683,
+       -33.51161
+      ],
+      [
+       -70.864683,
+       -33.520593
+      ],
+      [
+       -70.855352,
+       -33.525084
+      ],
+      [
+       -70.846021,
+       -33.520593
+      ],
+      [
+       -70.846021,
+       -33.51161
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_04_04",
+    "centro_lon": -70.855352,
+    "centro_lat": -33.516101,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.827359,
+       -33.51161
+      ],
+      [
+       -70.83669,
+       -33.507118
+      ],
+      [
+       -70.846021,
+       -33.51161
+      ],
+      [
+       -70.846021,
+       -33.520593
+      ],
+      [
+       -70.83669,
+       -33.525084
+      ],
+      [
+       -70.827359,
+       -33.520593
+      ],
+      [
+       -70.827359,
+       -33.51161
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_04_05",
+    "centro_lon": -70.83669,
+    "centro_lat": -33.516101,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.808698,
+       -33.51161
+      ],
+      [
+       -70.818029,
+       -33.507118
+      ],
+      [
+       -70.827359,
+       -33.51161
+      ],
+      [
+       -70.827359,
+       -33.520593
+      ],
+      [
+       -70.818029,
+       -33.525084
+      ],
+      [
+       -70.808698,
+       -33.520593
+      ],
+      [
+       -70.808698,
+       -33.51161
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_04_06",
+    "centro_lon": -70.818029,
+    "centro_lat": -33.516101,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.790036,
+       -33.51161
+      ],
+      [
+       -70.799367,
+       -33.507118
+      ],
+      [
+       -70.808698,
+       -33.51161
+      ],
+      [
+       -70.808698,
+       -33.520593
+      ],
+      [
+       -70.799367,
+       -33.525084
+      ],
+      [
+       -70.790036,
+       -33.520593
+      ],
+      [
+       -70.790036,
+       -33.51161
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_04_07",
+    "centro_lon": -70.799367,
+    "centro_lat": -33.516101,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.771374,
+       -33.51161
+      ],
+      [
+       -70.780705,
+       -33.507118
+      ],
+      [
+       -70.790036,
+       -33.51161
+      ],
+      [
+       -70.790036,
+       -33.520593
+      ],
+      [
+       -70.780705,
+       -33.525084
+      ],
+      [
+       -70.771374,
+       -33.520593
+      ],
+      [
+       -70.771374,
+       -33.51161
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_04_08",
+    "centro_lon": -70.780705,
+    "centro_lat": -33.516101,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.752712,
+       -33.51161
+      ],
+      [
+       -70.762043,
+       -33.507118
+      ],
+      [
+       -70.771374,
+       -33.51161
+      ],
+      [
+       -70.771374,
+       -33.520593
+      ],
+      [
+       -70.762043,
+       -33.525084
+      ],
+      [
+       -70.752712,
+       -33.520593
+      ],
+      [
+       -70.752712,
+       -33.51161
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_04_09",
+    "centro_lon": -70.762043,
+    "centro_lat": -33.516101,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.73405,
+       -33.51161
+      ],
+      [
+       -70.743381,
+       -33.507118
+      ],
+      [
+       -70.752712,
+       -33.51161
+      ],
+      [
+       -70.752712,
+       -33.520593
+      ],
+      [
+       -70.743381,
+       -33.525084
+      ],
+      [
+       -70.73405,
+       -33.520593
+      ],
+      [
+       -70.73405,
+       -33.51161
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_04_10",
+    "centro_lon": -70.743381,
+    "centro_lat": -33.516101,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.715388,
+       -33.51161
+      ],
+      [
+       -70.724719,
+       -33.507118
+      ],
+      [
+       -70.73405,
+       -33.51161
+      ],
+      [
+       -70.73405,
+       -33.520593
+      ],
+      [
+       -70.724719,
+       -33.525084
+      ],
+      [
+       -70.715388,
+       -33.520593
+      ],
+      [
+       -70.715388,
+       -33.51161
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_04_11",
+    "centro_lon": -70.724719,
+    "centro_lat": -33.516101,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.696726,
+       -33.51161
+      ],
+      [
+       -70.706057,
+       -33.507118
+      ],
+      [
+       -70.715388,
+       -33.51161
+      ],
+      [
+       -70.715388,
+       -33.520593
+      ],
+      [
+       -70.706057,
+       -33.525084
+      ],
+      [
+       -70.696726,
+       -33.520593
+      ],
+      [
+       -70.696726,
+       -33.51161
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_04_12",
+    "centro_lon": -70.706057,
+    "centro_lat": -33.516101,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.911338,
+       -33.498135
+      ],
+      [
+       -70.920669,
+       -33.493644
+      ],
+      [
+       -70.93,
+       -33.498135
+      ],
+      [
+       -70.93,
+       -33.507118
+      ],
+      [
+       -70.920669,
+       -33.51161
+      ],
+      [
+       -70.911338,
+       -33.507118
+      ],
+      [
+       -70.911338,
+       -33.498135
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_05_00",
+    "centro_lon": -70.920669,
+    "centro_lat": -33.502627,
+    "celda_modelo_lon": -70.95297,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.7,
+    "precipitacion_max_mm_h": 0.7,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.7 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.892676,
+       -33.498135
+      ],
+      [
+       -70.902007,
+       -33.493644
+      ],
+      [
+       -70.911338,
+       -33.498135
+      ],
+      [
+       -70.911338,
+       -33.507118
+      ],
+      [
+       -70.902007,
+       -33.51161
+      ],
+      [
+       -70.892676,
+       -33.507118
+      ],
+      [
+       -70.892676,
+       -33.498135
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_05_01",
+    "centro_lon": -70.902007,
+    "centro_lat": -33.502627,
+    "celda_modelo_lon": -70.95297,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.7,
+    "precipitacion_max_mm_h": 0.7,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.7 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.874014,
+       -33.498135
+      ],
+      [
+       -70.883345,
+       -33.493644
+      ],
+      [
+       -70.892676,
+       -33.498135
+      ],
+      [
+       -70.892676,
+       -33.507118
+      ],
+      [
+       -70.883345,
+       -33.51161
+      ],
+      [
+       -70.874014,
+       -33.507118
+      ],
+      [
+       -70.874014,
+       -33.498135
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_05_02",
+    "centro_lon": -70.883345,
+    "centro_lat": -33.502627,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.855352,
+       -33.498135
+      ],
+      [
+       -70.864683,
+       -33.493644
+      ],
+      [
+       -70.874014,
+       -33.498135
+      ],
+      [
+       -70.874014,
+       -33.507118
+      ],
+      [
+       -70.864683,
+       -33.51161
+      ],
+      [
+       -70.855352,
+       -33.507118
+      ],
+      [
+       -70.855352,
+       -33.498135
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_05_03",
+    "centro_lon": -70.864683,
+    "centro_lat": -33.502627,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.83669,
+       -33.498135
+      ],
+      [
+       -70.846021,
+       -33.493644
+      ],
+      [
+       -70.855352,
+       -33.498135
+      ],
+      [
+       -70.855352,
+       -33.507118
+      ],
+      [
+       -70.846021,
+       -33.51161
+      ],
+      [
+       -70.83669,
+       -33.507118
+      ],
+      [
+       -70.83669,
+       -33.498135
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_05_04",
+    "centro_lon": -70.846021,
+    "centro_lat": -33.502627,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.818029,
+       -33.498135
+      ],
+      [
+       -70.827359,
+       -33.493644
+      ],
+      [
+       -70.83669,
+       -33.498135
+      ],
+      [
+       -70.83669,
+       -33.507118
+      ],
+      [
+       -70.827359,
+       -33.51161
+      ],
+      [
+       -70.818029,
+       -33.507118
+      ],
+      [
+       -70.818029,
+       -33.498135
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_05_05",
+    "centro_lon": -70.827359,
+    "centro_lat": -33.502627,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.799367,
+       -33.498135
+      ],
+      [
+       -70.808698,
+       -33.493644
+      ],
+      [
+       -70.818029,
+       -33.498135
+      ],
+      [
+       -70.818029,
+       -33.507118
+      ],
+      [
+       -70.808698,
+       -33.51161
+      ],
+      [
+       -70.799367,
+       -33.507118
+      ],
+      [
+       -70.799367,
+       -33.498135
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_05_06",
+    "centro_lon": -70.808698,
+    "centro_lat": -33.502627,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.780705,
+       -33.498135
+      ],
+      [
+       -70.790036,
+       -33.493644
+      ],
+      [
+       -70.799367,
+       -33.498135
+      ],
+      [
+       -70.799367,
+       -33.507118
+      ],
+      [
+       -70.790036,
+       -33.51161
+      ],
+      [
+       -70.780705,
+       -33.507118
+      ],
+      [
+       -70.780705,
+       -33.498135
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_05_07",
+    "centro_lon": -70.790036,
+    "centro_lat": -33.502627,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.762043,
+       -33.498135
+      ],
+      [
+       -70.771374,
+       -33.493644
+      ],
+      [
+       -70.780705,
+       -33.498135
+      ],
+      [
+       -70.780705,
+       -33.507118
+      ],
+      [
+       -70.771374,
+       -33.51161
+      ],
+      [
+       -70.762043,
+       -33.507118
+      ],
+      [
+       -70.762043,
+       -33.498135
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_05_08",
+    "centro_lon": -70.771374,
+    "centro_lat": -33.502627,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.743381,
+       -33.498135
+      ],
+      [
+       -70.752712,
+       -33.493644
+      ],
+      [
+       -70.762043,
+       -33.498135
+      ],
+      [
+       -70.762043,
+       -33.507118
+      ],
+      [
+       -70.752712,
+       -33.51161
+      ],
+      [
+       -70.743381,
+       -33.507118
+      ],
+      [
+       -70.743381,
+       -33.498135
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_05_09",
+    "centro_lon": -70.752712,
+    "centro_lat": -33.502627,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.724719,
+       -33.498135
+      ],
+      [
+       -70.73405,
+       -33.493644
+      ],
+      [
+       -70.743381,
+       -33.498135
+      ],
+      [
+       -70.743381,
+       -33.507118
+      ],
+      [
+       -70.73405,
+       -33.51161
+      ],
+      [
+       -70.724719,
+       -33.507118
+      ],
+      [
+       -70.724719,
+       -33.498135
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_05_10",
+    "centro_lon": -70.73405,
+    "centro_lat": -33.502627,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.706057,
+       -33.498135
+      ],
+      [
+       -70.715388,
+       -33.493644
+      ],
+      [
+       -70.724719,
+       -33.498135
+      ],
+      [
+       -70.724719,
+       -33.507118
+      ],
+      [
+       -70.715388,
+       -33.51161
+      ],
+      [
+       -70.706057,
+       -33.507118
+      ],
+      [
+       -70.706057,
+       -33.498135
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_05_11",
+    "centro_lon": -70.715388,
+    "centro_lat": -33.502627,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.687395,
+       -33.498135
+      ],
+      [
+       -70.696726,
+       -33.493644
+      ],
+      [
+       -70.706057,
+       -33.498135
+      ],
+      [
+       -70.706057,
+       -33.507118
+      ],
+      [
+       -70.696726,
+       -33.51161
+      ],
+      [
+       -70.687395,
+       -33.507118
+      ],
+      [
+       -70.687395,
+       -33.498135
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_05_12",
+    "centro_lon": -70.696726,
+    "centro_lat": -33.502627,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.920669,
+       -33.48466
+      ],
+      [
+       -70.93,
+       -33.480169
+      ],
+      [
+       -70.939331,
+       -33.48466
+      ],
+      [
+       -70.939331,
+       -33.493644
+      ],
+      [
+       -70.93,
+       -33.498135
+      ],
+      [
+       -70.920669,
+       -33.493644
+      ],
+      [
+       -70.920669,
+       -33.48466
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_06_00",
+    "centro_lon": -70.93,
+    "centro_lat": -33.489152,
+    "celda_modelo_lon": -70.95297,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.7,
+    "precipitacion_max_mm_h": 0.7,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.7 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.902007,
+       -33.48466
+      ],
+      [
+       -70.911338,
+       -33.480169
+      ],
+      [
+       -70.920669,
+       -33.48466
+      ],
+      [
+       -70.920669,
+       -33.493644
+      ],
+      [
+       -70.911338,
+       -33.498135
+      ],
+      [
+       -70.902007,
+       -33.493644
+      ],
+      [
+       -70.902007,
+       -33.48466
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_06_01",
+    "centro_lon": -70.911338,
+    "centro_lat": -33.489152,
+    "celda_modelo_lon": -70.95297,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.7,
+    "precipitacion_max_mm_h": 0.7,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.7 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.883345,
+       -33.48466
+      ],
+      [
+       -70.892676,
+       -33.480169
+      ],
+      [
+       -70.902007,
+       -33.48466
+      ],
+      [
+       -70.902007,
+       -33.493644
+      ],
+      [
+       -70.892676,
+       -33.498135
+      ],
+      [
+       -70.883345,
+       -33.493644
+      ],
+      [
+       -70.883345,
+       -33.48466
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_06_02",
+    "centro_lon": -70.892676,
+    "centro_lat": -33.489152,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.864683,
+       -33.48466
+      ],
+      [
+       -70.874014,
+       -33.480169
+      ],
+      [
+       -70.883345,
+       -33.48466
+      ],
+      [
+       -70.883345,
+       -33.493644
+      ],
+      [
+       -70.874014,
+       -33.498135
+      ],
+      [
+       -70.864683,
+       -33.493644
+      ],
+      [
+       -70.864683,
+       -33.48466
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_06_03",
+    "centro_lon": -70.874014,
+    "centro_lat": -33.489152,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.846021,
+       -33.48466
+      ],
+      [
+       -70.855352,
+       -33.480169
+      ],
+      [
+       -70.864683,
+       -33.48466
+      ],
+      [
+       -70.864683,
+       -33.493644
+      ],
+      [
+       -70.855352,
+       -33.498135
+      ],
+      [
+       -70.846021,
+       -33.493644
+      ],
+      [
+       -70.846021,
+       -33.48466
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_06_04",
+    "centro_lon": -70.855352,
+    "centro_lat": -33.489152,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.827359,
+       -33.48466
+      ],
+      [
+       -70.83669,
+       -33.480169
+      ],
+      [
+       -70.846021,
+       -33.48466
+      ],
+      [
+       -70.846021,
+       -33.493644
+      ],
+      [
+       -70.83669,
+       -33.498135
+      ],
+      [
+       -70.827359,
+       -33.493644
+      ],
+      [
+       -70.827359,
+       -33.48466
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_06_05",
+    "centro_lon": -70.83669,
+    "centro_lat": -33.489152,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.808698,
+       -33.48466
+      ],
+      [
+       -70.818029,
+       -33.480169
+      ],
+      [
+       -70.827359,
+       -33.48466
+      ],
+      [
+       -70.827359,
+       -33.493644
+      ],
+      [
+       -70.818029,
+       -33.498135
+      ],
+      [
+       -70.808698,
+       -33.493644
+      ],
+      [
+       -70.808698,
+       -33.48466
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_06_06",
+    "centro_lon": -70.818029,
+    "centro_lat": -33.489152,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.790036,
+       -33.48466
+      ],
+      [
+       -70.799367,
+       -33.480169
+      ],
+      [
+       -70.808698,
+       -33.48466
+      ],
+      [
+       -70.808698,
+       -33.493644
+      ],
+      [
+       -70.799367,
+       -33.498135
+      ],
+      [
+       -70.790036,
+       -33.493644
+      ],
+      [
+       -70.790036,
+       -33.48466
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_06_07",
+    "centro_lon": -70.799367,
+    "centro_lat": -33.489152,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.771374,
+       -33.48466
+      ],
+      [
+       -70.780705,
+       -33.480169
+      ],
+      [
+       -70.790036,
+       -33.48466
+      ],
+      [
+       -70.790036,
+       -33.493644
+      ],
+      [
+       -70.780705,
+       -33.498135
+      ],
+      [
+       -70.771374,
+       -33.493644
+      ],
+      [
+       -70.771374,
+       -33.48466
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_06_08",
+    "centro_lon": -70.780705,
+    "centro_lat": -33.489152,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.752712,
+       -33.48466
+      ],
+      [
+       -70.762043,
+       -33.480169
+      ],
+      [
+       -70.771374,
+       -33.48466
+      ],
+      [
+       -70.771374,
+       -33.493644
+      ],
+      [
+       -70.762043,
+       -33.498135
+      ],
+      [
+       -70.752712,
+       -33.493644
+      ],
+      [
+       -70.752712,
+       -33.48466
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_06_09",
+    "centro_lon": -70.762043,
+    "centro_lat": -33.489152,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.73405,
+       -33.48466
+      ],
+      [
+       -70.743381,
+       -33.480169
+      ],
+      [
+       -70.752712,
+       -33.48466
+      ],
+      [
+       -70.752712,
+       -33.493644
+      ],
+      [
+       -70.743381,
+       -33.498135
+      ],
+      [
+       -70.73405,
+       -33.493644
+      ],
+      [
+       -70.73405,
+       -33.48466
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_06_10",
+    "centro_lon": -70.743381,
+    "centro_lat": -33.489152,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.715388,
+       -33.48466
+      ],
+      [
+       -70.724719,
+       -33.480169
+      ],
+      [
+       -70.73405,
+       -33.48466
+      ],
+      [
+       -70.73405,
+       -33.493644
+      ],
+      [
+       -70.724719,
+       -33.498135
+      ],
+      [
+       -70.715388,
+       -33.493644
+      ],
+      [
+       -70.715388,
+       -33.48466
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_06_11",
+    "centro_lon": -70.724719,
+    "centro_lat": -33.489152,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.696726,
+       -33.48466
+      ],
+      [
+       -70.706057,
+       -33.480169
+      ],
+      [
+       -70.715388,
+       -33.48466
+      ],
+      [
+       -70.715388,
+       -33.493644
+      ],
+      [
+       -70.706057,
+       -33.498135
+      ],
+      [
+       -70.696726,
+       -33.493644
+      ],
+      [
+       -70.696726,
+       -33.48466
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_06_12",
+    "centro_lon": -70.706057,
+    "centro_lat": -33.489152,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.911338,
+       -33.471186
+      ],
+      [
+       -70.920669,
+       -33.466694
+      ],
+      [
+       -70.93,
+       -33.471186
+      ],
+      [
+       -70.93,
+       -33.480169
+      ],
+      [
+       -70.920669,
+       -33.48466
+      ],
+      [
+       -70.911338,
+       -33.480169
+      ],
+      [
+       -70.911338,
+       -33.471186
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_07_00",
+    "centro_lon": -70.920669,
+    "centro_lat": -33.475677,
+    "celda_modelo_lon": -70.95297,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.7,
+    "precipitacion_max_mm_h": 0.7,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.7 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.892676,
+       -33.471186
+      ],
+      [
+       -70.902007,
+       -33.466694
+      ],
+      [
+       -70.911338,
+       -33.471186
+      ],
+      [
+       -70.911338,
+       -33.480169
+      ],
+      [
+       -70.902007,
+       -33.48466
+      ],
+      [
+       -70.892676,
+       -33.480169
+      ],
+      [
+       -70.892676,
+       -33.471186
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_07_01",
+    "centro_lon": -70.902007,
+    "centro_lat": -33.475677,
+    "celda_modelo_lon": -70.865265,
+    "celda_modelo_lat": -33.427067,
+    "precipitacion_actual_mm_h": 0.3,
+    "precipitacion_max_mm_h": 0.9,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.9 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.874014,
+       -33.471186
+      ],
+      [
+       -70.883345,
+       -33.466694
+      ],
+      [
+       -70.892676,
+       -33.471186
+      ],
+      [
+       -70.892676,
+       -33.480169
+      ],
+      [
+       -70.883345,
+       -33.48466
+      ],
+      [
+       -70.874014,
+       -33.480169
+      ],
+      [
+       -70.874014,
+       -33.471186
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_07_02",
+    "centro_lon": -70.883345,
+    "centro_lat": -33.475677,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.855352,
+       -33.471186
+      ],
+      [
+       -70.864683,
+       -33.466694
+      ],
+      [
+       -70.874014,
+       -33.471186
+      ],
+      [
+       -70.874014,
+       -33.480169
+      ],
+      [
+       -70.864683,
+       -33.48466
+      ],
+      [
+       -70.855352,
+       -33.480169
+      ],
+      [
+       -70.855352,
+       -33.471186
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_07_03",
+    "centro_lon": -70.864683,
+    "centro_lat": -33.475677,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.83669,
+       -33.471186
+      ],
+      [
+       -70.846021,
+       -33.466694
+      ],
+      [
+       -70.855352,
+       -33.471186
+      ],
+      [
+       -70.855352,
+       -33.480169
+      ],
+      [
+       -70.846021,
+       -33.48466
+      ],
+      [
+       -70.83669,
+       -33.480169
+      ],
+      [
+       -70.83669,
+       -33.471186
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_07_04",
+    "centro_lon": -70.846021,
+    "centro_lat": -33.475677,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.818029,
+       -33.471186
+      ],
+      [
+       -70.827359,
+       -33.466694
+      ],
+      [
+       -70.83669,
+       -33.471186
+      ],
+      [
+       -70.83669,
+       -33.480169
+      ],
+      [
+       -70.827359,
+       -33.48466
+      ],
+      [
+       -70.818029,
+       -33.480169
+      ],
+      [
+       -70.818029,
+       -33.471186
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_07_05",
+    "centro_lon": -70.827359,
+    "centro_lat": -33.475677,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.799367,
+       -33.471186
+      ],
+      [
+       -70.808698,
+       -33.466694
+      ],
+      [
+       -70.818029,
+       -33.471186
+      ],
+      [
+       -70.818029,
+       -33.480169
+      ],
+      [
+       -70.808698,
+       -33.48466
+      ],
+      [
+       -70.799367,
+       -33.480169
+      ],
+      [
+       -70.799367,
+       -33.471186
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_07_06",
+    "centro_lon": -70.808698,
+    "centro_lat": -33.475677,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.780705,
+       -33.471186
+      ],
+      [
+       -70.790036,
+       -33.466694
+      ],
+      [
+       -70.799367,
+       -33.471186
+      ],
+      [
+       -70.799367,
+       -33.480169
+      ],
+      [
+       -70.790036,
+       -33.48466
+      ],
+      [
+       -70.780705,
+       -33.480169
+      ],
+      [
+       -70.780705,
+       -33.471186
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_07_07",
+    "centro_lon": -70.790036,
+    "centro_lat": -33.475677,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.762043,
+       -33.471186
+      ],
+      [
+       -70.771374,
+       -33.466694
+      ],
+      [
+       -70.780705,
+       -33.471186
+      ],
+      [
+       -70.780705,
+       -33.480169
+      ],
+      [
+       -70.771374,
+       -33.48466
+      ],
+      [
+       -70.762043,
+       -33.480169
+      ],
+      [
+       -70.762043,
+       -33.471186
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_07_08",
+    "centro_lon": -70.771374,
+    "centro_lat": -33.475677,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.743381,
+       -33.471186
+      ],
+      [
+       -70.752712,
+       -33.466694
+      ],
+      [
+       -70.762043,
+       -33.471186
+      ],
+      [
+       -70.762043,
+       -33.480169
+      ],
+      [
+       -70.752712,
+       -33.48466
+      ],
+      [
+       -70.743381,
+       -33.480169
+      ],
+      [
+       -70.743381,
+       -33.471186
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_07_09",
+    "centro_lon": -70.752712,
+    "centro_lat": -33.475677,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.724719,
+       -33.471186
+      ],
+      [
+       -70.73405,
+       -33.466694
+      ],
+      [
+       -70.743381,
+       -33.471186
+      ],
+      [
+       -70.743381,
+       -33.480169
+      ],
+      [
+       -70.73405,
+       -33.48466
+      ],
+      [
+       -70.724719,
+       -33.480169
+      ],
+      [
+       -70.724719,
+       -33.471186
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_07_10",
+    "centro_lon": -70.73405,
+    "centro_lat": -33.475677,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.706057,
+       -33.471186
+      ],
+      [
+       -70.715388,
+       -33.466694
+      ],
+      [
+       -70.724719,
+       -33.471186
+      ],
+      [
+       -70.724719,
+       -33.480169
+      ],
+      [
+       -70.715388,
+       -33.48466
+      ],
+      [
+       -70.706057,
+       -33.480169
+      ],
+      [
+       -70.706057,
+       -33.471186
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_07_11",
+    "centro_lon": -70.715388,
+    "centro_lat": -33.475677,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.687395,
+       -33.471186
+      ],
+      [
+       -70.696726,
+       -33.466694
+      ],
+      [
+       -70.706057,
+       -33.471186
+      ],
+      [
+       -70.706057,
+       -33.480169
+      ],
+      [
+       -70.696726,
+       -33.48466
+      ],
+      [
+       -70.687395,
+       -33.480169
+      ],
+      [
+       -70.687395,
+       -33.471186
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_07_12",
+    "centro_lon": -70.696726,
+    "centro_lat": -33.475677,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.920669,
+       -33.457711
+      ],
+      [
+       -70.93,
+       -33.45322
+      ],
+      [
+       -70.939331,
+       -33.457711
+      ],
+      [
+       -70.939331,
+       -33.466694
+      ],
+      [
+       -70.93,
+       -33.471186
+      ],
+      [
+       -70.920669,
+       -33.466694
+      ],
+      [
+       -70.920669,
+       -33.457711
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_08_00",
+    "centro_lon": -70.93,
+    "centro_lat": -33.462203,
+    "celda_modelo_lon": -70.95297,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.7,
+    "precipitacion_max_mm_h": 0.7,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.7 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.902007,
+       -33.457711
+      ],
+      [
+       -70.911338,
+       -33.45322
+      ],
+      [
+       -70.920669,
+       -33.457711
+      ],
+      [
+       -70.920669,
+       -33.466694
+      ],
+      [
+       -70.911338,
+       -33.471186
+      ],
+      [
+       -70.902007,
+       -33.466694
+      ],
+      [
+       -70.902007,
+       -33.457711
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_08_01",
+    "centro_lon": -70.911338,
+    "centro_lat": -33.462203,
+    "celda_modelo_lon": -70.95297,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.7,
+    "precipitacion_max_mm_h": 0.7,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.7 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.883345,
+       -33.457711
+      ],
+      [
+       -70.892676,
+       -33.45322
+      ],
+      [
+       -70.902007,
+       -33.457711
+      ],
+      [
+       -70.902007,
+       -33.466694
+      ],
+      [
+       -70.892676,
+       -33.471186
+      ],
+      [
+       -70.883345,
+       -33.466694
+      ],
+      [
+       -70.883345,
+       -33.457711
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_08_02",
+    "centro_lon": -70.892676,
+    "centro_lat": -33.462203,
+    "celda_modelo_lon": -70.865265,
+    "celda_modelo_lat": -33.427067,
+    "precipitacion_actual_mm_h": 0.3,
+    "precipitacion_max_mm_h": 0.9,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.9 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.864683,
+       -33.457711
+      ],
+      [
+       -70.874014,
+       -33.45322
+      ],
+      [
+       -70.883345,
+       -33.457711
+      ],
+      [
+       -70.883345,
+       -33.466694
+      ],
+      [
+       -70.874014,
+       -33.471186
+      ],
+      [
+       -70.864683,
+       -33.466694
+      ],
+      [
+       -70.864683,
+       -33.457711
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_08_03",
+    "centro_lon": -70.874014,
+    "centro_lat": -33.462203,
+    "celda_modelo_lon": -70.865265,
+    "celda_modelo_lat": -33.427067,
+    "precipitacion_actual_mm_h": 0.3,
+    "precipitacion_max_mm_h": 0.9,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.9 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.846021,
+       -33.457711
+      ],
+      [
+       -70.855352,
+       -33.45322
+      ],
+      [
+       -70.864683,
+       -33.457711
+      ],
+      [
+       -70.864683,
+       -33.466694
+      ],
+      [
+       -70.855352,
+       -33.471186
+      ],
+      [
+       -70.846021,
+       -33.466694
+      ],
+      [
+       -70.846021,
+       -33.457711
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_08_04",
+    "centro_lon": -70.855352,
+    "centro_lat": -33.462203,
+    "celda_modelo_lon": -70.865265,
+    "celda_modelo_lat": -33.427067,
+    "precipitacion_actual_mm_h": 0.3,
+    "precipitacion_max_mm_h": 0.9,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.9 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.827359,
+       -33.457711
+      ],
+      [
+       -70.83669,
+       -33.45322
+      ],
+      [
+       -70.846021,
+       -33.457711
+      ],
+      [
+       -70.846021,
+       -33.466694
+      ],
+      [
+       -70.83669,
+       -33.471186
+      ],
+      [
+       -70.827359,
+       -33.466694
+      ],
+      [
+       -70.827359,
+       -33.457711
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_08_05",
+    "centro_lon": -70.83669,
+    "centro_lat": -33.462203,
+    "celda_modelo_lon": -70.865265,
+    "celda_modelo_lat": -33.427067,
+    "precipitacion_actual_mm_h": 0.3,
+    "precipitacion_max_mm_h": 0.9,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.9 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.808698,
+       -33.457711
+      ],
+      [
+       -70.818029,
+       -33.45322
+      ],
+      [
+       -70.827359,
+       -33.457711
+      ],
+      [
+       -70.827359,
+       -33.466694
+      ],
+      [
+       -70.818029,
+       -33.471186
+      ],
+      [
+       -70.808698,
+       -33.466694
+      ],
+      [
+       -70.808698,
+       -33.457711
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_08_06",
+    "centro_lon": -70.818029,
+    "centro_lat": -33.462203,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.790036,
+       -33.457711
+      ],
+      [
+       -70.799367,
+       -33.45322
+      ],
+      [
+       -70.808698,
+       -33.457711
+      ],
+      [
+       -70.808698,
+       -33.466694
+      ],
+      [
+       -70.799367,
+       -33.471186
+      ],
+      [
+       -70.790036,
+       -33.466694
+      ],
+      [
+       -70.790036,
+       -33.457711
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_08_07",
+    "centro_lon": -70.799367,
+    "centro_lat": -33.462203,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.771374,
+       -33.457711
+      ],
+      [
+       -70.780705,
+       -33.45322
+      ],
+      [
+       -70.790036,
+       -33.457711
+      ],
+      [
+       -70.790036,
+       -33.466694
+      ],
+      [
+       -70.780705,
+       -33.471186
+      ],
+      [
+       -70.771374,
+       -33.466694
+      ],
+      [
+       -70.771374,
+       -33.457711
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_08_08",
+    "centro_lon": -70.780705,
+    "centro_lat": -33.462203,
+    "celda_modelo_lon": -70.75403,
+    "celda_modelo_lat": -33.427067,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.1,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.752712,
+       -33.457711
+      ],
+      [
+       -70.762043,
+       -33.45322
+      ],
+      [
+       -70.771374,
+       -33.457711
+      ],
+      [
+       -70.771374,
+       -33.466694
+      ],
+      [
+       -70.762043,
+       -33.471186
+      ],
+      [
+       -70.752712,
+       -33.466694
+      ],
+      [
+       -70.752712,
+       -33.457711
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_08_09",
+    "centro_lon": -70.762043,
+    "centro_lat": -33.462203,
+    "celda_modelo_lon": -70.75403,
+    "celda_modelo_lat": -33.427067,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.1,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.73405,
+       -33.457711
+      ],
+      [
+       -70.743381,
+       -33.45322
+      ],
+      [
+       -70.752712,
+       -33.457711
+      ],
+      [
+       -70.752712,
+       -33.466694
+      ],
+      [
+       -70.743381,
+       -33.471186
+      ],
+      [
+       -70.73405,
+       -33.466694
+      ],
+      [
+       -70.73405,
+       -33.457711
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_08_10",
+    "centro_lon": -70.743381,
+    "centro_lat": -33.462203,
+    "celda_modelo_lon": -70.75403,
+    "celda_modelo_lat": -33.427067,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.1,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.715388,
+       -33.457711
+      ],
+      [
+       -70.724719,
+       -33.45322
+      ],
+      [
+       -70.73405,
+       -33.457711
+      ],
+      [
+       -70.73405,
+       -33.466694
+      ],
+      [
+       -70.724719,
+       -33.471186
+      ],
+      [
+       -70.715388,
+       -33.466694
+      ],
+      [
+       -70.715388,
+       -33.457711
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_08_11",
+    "centro_lon": -70.724719,
+    "centro_lat": -33.462203,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.696726,
+       -33.457711
+      ],
+      [
+       -70.706057,
+       -33.45322
+      ],
+      [
+       -70.715388,
+       -33.457711
+      ],
+      [
+       -70.715388,
+       -33.466694
+      ],
+      [
+       -70.706057,
+       -33.471186
+      ],
+      [
+       -70.696726,
+       -33.466694
+      ],
+      [
+       -70.696726,
+       -33.457711
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_08_12",
+    "centro_lon": -70.706057,
+    "centro_lat": -33.462203,
+    "celda_modelo_lon": -70.730194,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.911338,
+       -33.444236
+      ],
+      [
+       -70.920669,
+       -33.439745
+      ],
+      [
+       -70.93,
+       -33.444236
+      ],
+      [
+       -70.93,
+       -33.45322
+      ],
+      [
+       -70.920669,
+       -33.457711
+      ],
+      [
+       -70.911338,
+       -33.45322
+      ],
+      [
+       -70.911338,
+       -33.444236
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_09_00",
+    "centro_lon": -70.920669,
+    "centro_lat": -33.448728,
+    "celda_modelo_lon": -70.95297,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.7,
+    "precipitacion_max_mm_h": 0.7,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.7 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.892676,
+       -33.444236
+      ],
+      [
+       -70.902007,
+       -33.439745
+      ],
+      [
+       -70.911338,
+       -33.444236
+      ],
+      [
+       -70.911338,
+       -33.45322
+      ],
+      [
+       -70.902007,
+       -33.457711
+      ],
+      [
+       -70.892676,
+       -33.45322
+      ],
+      [
+       -70.892676,
+       -33.444236
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_09_01",
+    "centro_lon": -70.902007,
+    "centro_lat": -33.448728,
+    "celda_modelo_lon": -70.865265,
+    "celda_modelo_lat": -33.427067,
+    "precipitacion_actual_mm_h": 0.3,
+    "precipitacion_max_mm_h": 0.9,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.9 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.874014,
+       -33.444236
+      ],
+      [
+       -70.883345,
+       -33.439745
+      ],
+      [
+       -70.892676,
+       -33.444236
+      ],
+      [
+       -70.892676,
+       -33.45322
+      ],
+      [
+       -70.883345,
+       -33.457711
+      ],
+      [
+       -70.874014,
+       -33.45322
+      ],
+      [
+       -70.874014,
+       -33.444236
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_09_02",
+    "centro_lon": -70.883345,
+    "centro_lat": -33.448728,
+    "celda_modelo_lon": -70.865265,
+    "celda_modelo_lat": -33.427067,
+    "precipitacion_actual_mm_h": 0.3,
+    "precipitacion_max_mm_h": 0.9,
+    "probabilidad_max_pct": 51,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.9 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.855352,
+       -33.444236
+      ],
+      [
+       -70.864683,
+       -33.439745
+      ],
+      [
+       -70.874014,
+       -33.444236
+      ],
+      [
+       -70.874014,
+       -33.45322
+      ],
+      [
+       -70.864683,
+       -33.457711
+      ],
+      [
+       -70.855352,
+       -33.45322
+      ],
+      [
+       -70.855352,
+       -33.444236
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_09_03",
+    "centro_lon": -70.864683,
+    "centro_lat": -33.448728,
+    "celda_modelo_lon": -70.865265,
+    "celda_modelo_lat": -33.427067,
+    "precipitacion_actual_mm_h": 0.3,
+    "precipitacion_max_mm_h": 0.9,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.9 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.83669,
+       -33.444236
+      ],
+      [
+       -70.846021,
+       -33.439745
+      ],
+      [
+       -70.855352,
+       -33.444236
+      ],
+      [
+       -70.855352,
+       -33.45322
+      ],
+      [
+       -70.846021,
+       -33.457711
+      ],
+      [
+       -70.83669,
+       -33.45322
+      ],
+      [
+       -70.83669,
+       -33.444236
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_09_04",
+    "centro_lon": -70.846021,
+    "centro_lat": -33.448728,
+    "celda_modelo_lon": -70.865265,
+    "celda_modelo_lat": -33.427067,
+    "precipitacion_actual_mm_h": 0.3,
+    "precipitacion_max_mm_h": 0.9,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.9 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.818029,
+       -33.444236
+      ],
+      [
+       -70.827359,
+       -33.439745
+      ],
+      [
+       -70.83669,
+       -33.444236
+      ],
+      [
+       -70.83669,
+       -33.45322
+      ],
+      [
+       -70.827359,
+       -33.457711
+      ],
+      [
+       -70.818029,
+       -33.45322
+      ],
+      [
+       -70.818029,
+       -33.444236
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_09_05",
+    "centro_lon": -70.827359,
+    "centro_lat": -33.448728,
+    "celda_modelo_lon": -70.865265,
+    "celda_modelo_lat": -33.427067,
+    "precipitacion_actual_mm_h": 0.3,
+    "precipitacion_max_mm_h": 0.9,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": true,
+    "motivo": "precipitación 0.9 mm/h >= 0.5",
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.799367,
+       -33.444236
+      ],
+      [
+       -70.808698,
+       -33.439745
+      ],
+      [
+       -70.818029,
+       -33.444236
+      ],
+      [
+       -70.818029,
+       -33.45322
+      ],
+      [
+       -70.808698,
+       -33.457711
+      ],
+      [
+       -70.799367,
+       -33.45322
+      ],
+      [
+       -70.799367,
+       -33.444236
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_09_06",
+    "centro_lon": -70.808698,
+    "centro_lat": -33.448728,
+    "celda_modelo_lon": -70.84158,
+    "celda_modelo_lat": -33.497364,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.780705,
+       -33.444236
+      ],
+      [
+       -70.790036,
+       -33.439745
+      ],
+      [
+       -70.799367,
+       -33.444236
+      ],
+      [
+       -70.799367,
+       -33.45322
+      ],
+      [
+       -70.790036,
+       -33.457711
+      ],
+      [
+       -70.780705,
+       -33.45322
+      ],
+      [
+       -70.780705,
+       -33.444236
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_09_07",
+    "centro_lon": -70.790036,
+    "centro_lat": -33.448728,
+    "celda_modelo_lon": -70.75403,
+    "celda_modelo_lat": -33.427067,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.1,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.762043,
+       -33.444236
+      ],
+      [
+       -70.771374,
+       -33.439745
+      ],
+      [
+       -70.780705,
+       -33.444236
+      ],
+      [
+       -70.780705,
+       -33.45322
+      ],
+      [
+       -70.771374,
+       -33.457711
+      ],
+      [
+       -70.762043,
+       -33.45322
+      ],
+      [
+       -70.762043,
+       -33.444236
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_09_08",
+    "centro_lon": -70.771374,
+    "centro_lat": -33.448728,
+    "celda_modelo_lon": -70.75403,
+    "celda_modelo_lat": -33.427067,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.1,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.743381,
+       -33.444236
+      ],
+      [
+       -70.752712,
+       -33.439745
+      ],
+      [
+       -70.762043,
+       -33.444236
+      ],
+      [
+       -70.762043,
+       -33.45322
+      ],
+      [
+       -70.752712,
+       -33.457711
+      ],
+      [
+       -70.743381,
+       -33.45322
+      ],
+      [
+       -70.743381,
+       -33.444236
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_09_09",
+    "centro_lon": -70.752712,
+    "centro_lat": -33.448728,
+    "celda_modelo_lon": -70.75403,
+    "celda_modelo_lat": -33.427067,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.1,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.724719,
+       -33.444236
+      ],
+      [
+       -70.73405,
+       -33.439745
+      ],
+      [
+       -70.743381,
+       -33.444236
+      ],
+      [
+       -70.743381,
+       -33.45322
+      ],
+      [
+       -70.73405,
+       -33.457711
+      ],
+      [
+       -70.724719,
+       -33.45322
+      ],
+      [
+       -70.724719,
+       -33.444236
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_09_10",
+    "centro_lon": -70.73405,
+    "centro_lat": -33.448728,
+    "celda_modelo_lon": -70.75403,
+    "celda_modelo_lat": -33.427067,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.1,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.706057,
+       -33.444236
+      ],
+      [
+       -70.715388,
+       -33.439745
+      ],
+      [
+       -70.724719,
+       -33.444236
+      ],
+      [
+       -70.724719,
+       -33.45322
+      ],
+      [
+       -70.715388,
+       -33.457711
+      ],
+      [
+       -70.706057,
+       -33.45322
+      ],
+      [
+       -70.706057,
+       -33.444236
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_09_11",
+    "centro_lon": -70.715388,
+    "centro_lat": -33.448728,
+    "celda_modelo_lon": -70.75403,
+    "celda_modelo_lat": -33.427067,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.1,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -70.687395,
+       -33.444236
+      ],
+      [
+       -70.696726,
+       -33.439745
+      ],
+      [
+       -70.706057,
+       -33.444236
+      ],
+      [
+       -70.706057,
+       -33.45322
+      ],
+      [
+       -70.696726,
+       -33.457711
+      ],
+      [
+       -70.687395,
+       -33.45322
+      ],
+      [
+       -70.687395,
+       -33.444236
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "hex_id": "hex_clima_09_12",
+    "centro_lon": -70.696726,
+    "centro_lat": -33.448728,
+    "celda_modelo_lon": -70.64276,
+    "celda_modelo_lat": -33.427067,
+    "precipitacion_actual_mm_h": 0.0,
+    "precipitacion_max_mm_h": 0.0,
+    "probabilidad_max_pct": 41,
+    "hora_desde": "2026-11-09T22:00",
+    "hora_hasta": "2026-11-09T23:00",
+    "ventana_horas": 2,
+    "umbral_mm_h": 0.5,
+    "umbral_prob_pct": 70.0,
+    "simulado": false,
+    "no_volable": false,
+    "motivo": null,
+    "tamanio_hexagono_m": 1000,
+    "fecha_extraccion_utc": "2026-11-10T01:23:06+00:00",
+    "fuente": "Open-Meteo Forecast API"
+   }
+  }
+ ]
+}

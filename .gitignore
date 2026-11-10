@@ -1,2 +1,9 @@
 __pycache__/
 *.pyc
+
+# Copias de las capas de clima que main.sh deja para la web (los originales están en 03 - Amenazas/salidas)
+04 - Web/lluvia_open_meteo_hexagonos.geojson
+04 - Web/viento_open_meteo_hexagonos.geojson
+
+# Credenciales locales
+.env

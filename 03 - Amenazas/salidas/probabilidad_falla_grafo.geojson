@@ -1,0 +1,1154 @@
+{
+ "type": "FeatureCollection",
+ "metadata": {
+  "descripcion": "Probabilidad de falla por amenaza ('total' = combinada) de cada arista y nodo del grafo aéreo base",
+  "parametros": {
+   "lluvia": {
+    "umbral_mm_h": 0.5,
+    "peso_probabilidad": 0.25
+   },
+   "viento": {
+    "umbral_kmh": 36.0,
+    "umbral_rafaga_kmh": 43.0,
+    "inicio_riesgo": 0.7
+   },
+   "robo_7d": {
+    "p_max": 0.3
+   },
+   "cortes": {
+    "p_base": 0.15,
+    "p_por_magnitud": 0.1,
+    "radio_m": 150.0
+   }
+  },
+  "crs": "EPSG:4326"
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.754619,
+      -33.507197
+     ],
+     [
+      -70.74915,
+      -33.490599
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 1,
+    "source": 1,
+    "target": 4,
+    "largo_m": 1909.8,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.075,
+     "total": 0.1698
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.754619,
+      -33.507197
+     ],
+     [
+      -70.7508,
+      -33.4877
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 2,
+    "source": 1,
+    "target": 5,
+    "largo_m": 2191.4,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.1444,
+     "total": 0.2321
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.754619,
+      -33.507197
+     ],
+     [
+      -70.757457,
+      -33.510502
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 3,
+    "source": 1,
+    "target": 6,
+    "largo_m": 451.6,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.1444,
+     "total": 0.2321
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.754619,
+      -33.507197
+     ],
+     [
+      -70.7992,
+      -33.50762
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 4,
+    "source": 1,
+    "target": 7,
+    "largo_m": 4142.5,
+    "p_falla": {
+     "lluvia": 0.1945,
+     "robo_7d": 0.2679,
+     "total": 0.4103
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.754619,
+      -33.507197
+     ],
+     [
+      -70.769815,
+      -33.5361
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 5,
+    "source": 1,
+    "target": 8,
+    "largo_m": 3502.8,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.2085,
+     "total": 0.2897
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.754619,
+      -33.507197
+     ],
+     [
+      -70.745594,
+      -33.496924
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 6,
+    "source": 1,
+    "target": 9,
+    "largo_m": 1414.8,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.1444,
+     "total": 0.2321
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.790934,
+      -33.511141
+     ],
+     [
+      -70.74915,
+      -33.490599
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 7,
+    "source": 2,
+    "target": 4,
+    "largo_m": 4501.8,
+    "p_falla": {
+     "lluvia": 0.1945,
+     "robo_7d": 0.2085,
+     "total": 0.3625
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.790934,
+      -33.511141
+     ],
+     [
+      -70.7508,
+      -33.4877
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 8,
+    "source": 2,
+    "target": 5,
+    "largo_m": 4546.2,
+    "p_falla": {
+     "lluvia": 0.1945,
+     "robo_7d": 0.2679,
+     "total": 0.4103
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.790934,
+      -33.511141
+     ],
+     [
+      -70.757457,
+      -33.510502
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 9,
+    "source": 2,
+    "target": 6,
+    "largo_m": 3111.2,
+    "p_falla": {
+     "lluvia": 0.1945,
+     "robo_7d": 0.2085,
+     "total": 0.3625
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.790934,
+      -33.511141
+     ],
+     [
+      -70.7992,
+      -33.50762
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 10,
+    "source": 2,
+    "target": 7,
+    "largo_m": 861.6,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.1444,
+     "total": 0.2321
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.790934,
+      -33.511141
+     ],
+     [
+      -70.769815,
+      -33.5361
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 11,
+    "source": 2,
+    "target": 8,
+    "largo_m": 3393.0,
+    "p_falla": {
+     "lluvia": 0.1945,
+     "robo_7d": 0.1444,
+     "total": 0.3108
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.790934,
+      -33.511141
+     ],
+     [
+      -70.745594,
+      -33.496924
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 12,
+    "source": 2,
+    "target": 9,
+    "largo_m": 4498.3,
+    "p_falla": {
+     "lluvia": 0.1945,
+     "robo_7d": 0.3228,
+     "total": 0.4545
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.789735,
+      -33.558223
+     ],
+     [
+      -70.74915,
+      -33.490599
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 13,
+    "source": 3,
+    "target": 4,
+    "largo_m": 8394.7,
+    "p_falla": {
+     "lluvia": 0.1945,
+     "robo_7d": 0.4206,
+     "viento": 0.124,
+     "total": 0.5911
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.789735,
+      -33.558223
+     ],
+     [
+      -70.7508,
+      -33.4877
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 14,
+    "source": 3,
+    "target": 5,
+    "largo_m": 8617.8,
+    "p_falla": {
+     "lluvia": 0.1945,
+     "robo_7d": 0.4206,
+     "viento": 0.124,
+     "total": 0.5911
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.789735,
+      -33.558223
+     ],
+     [
+      -70.757457,
+      -33.510502
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 15,
+    "source": 3,
+    "target": 6,
+    "largo_m": 6083.1,
+    "p_falla": {
+     "lluvia": 0.1945,
+     "robo_7d": 0.2679,
+     "viento": 0.124,
+     "total": 0.4834
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.789735,
+      -33.558223
+     ],
+     [
+      -70.7992,
+      -33.50762
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 16,
+    "source": 3,
+    "target": 7,
+    "largo_m": 5681.0,
+    "p_falla": {
+     "lluvia": 0.1945,
+     "robo_7d": 0.2085,
+     "viento": 0.124,
+     "total": 0.4415
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.789735,
+      -33.558223
+     ],
+     [
+      -70.769815,
+      -33.5361
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 17,
+    "source": 3,
+    "target": 8,
+    "largo_m": 3073.0,
+    "p_falla": {
+     "lluvia": 0.1945,
+     "robo_7d": 0.1444,
+     "viento": 0.124,
+     "total": 0.3963
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.789735,
+      -33.558223
+     ],
+     [
+      -70.745594,
+      -33.496924
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 18,
+    "source": 3,
+    "target": 9,
+    "largo_m": 7939.7,
+    "p_falla": {
+     "lluvia": 0.1945,
+     "robo_7d": 0.3736,
+     "viento": 0.124,
+     "total": 0.558
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.74915,
+      -33.490599
+     ],
+     [
+      -70.7508,
+      -33.4877
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 19,
+    "source": 4,
+    "target": 5,
+    "largo_m": 356.2,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.075,
+     "total": 0.1698
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.74915,
+      -33.490599
+     ],
+     [
+      -70.757457,
+      -33.510502
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 20,
+    "source": 4,
+    "target": 6,
+    "largo_m": 2338.6,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.1444,
+     "total": 0.2321
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.74915,
+      -33.490599
+     ],
+     [
+      -70.7992,
+      -33.50762
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 21,
+    "source": 4,
+    "target": 7,
+    "largo_m": 5019.4,
+    "p_falla": {
+     "lluvia": 0.1945,
+     "robo_7d": 0.1444,
+     "total": 0.3108
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.74915,
+      -33.490599
+     ],
+     [
+      -70.769815,
+      -33.5361
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 22,
+    "source": 4,
+    "target": 8,
+    "largo_m": 5399.6,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.2085,
+     "total": 0.2897
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.74915,
+      -33.490599
+     ],
+     [
+      -70.745594,
+      -33.496924
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 23,
+    "source": 4,
+    "target": 9,
+    "largo_m": 775.5,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.075,
+     "total": 0.1698
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.7508,
+      -33.4877
+     ],
+     [
+      -70.757457,
+      -33.510502
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 24,
+    "source": 5,
+    "target": 6,
+    "largo_m": 2603.6,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.2085,
+     "total": 0.2897
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.7508,
+      -33.4877
+     ],
+     [
+      -70.7992,
+      -33.50762
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 25,
+    "source": 5,
+    "target": 7,
+    "largo_m": 5010.9,
+    "p_falla": {
+     "lluvia": 0.1945,
+     "robo_7d": 0.1444,
+     "total": 0.3108
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.7508,
+      -33.4877
+     ],
+     [
+      -70.769815,
+      -33.5361
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 26,
+    "source": 5,
+    "target": 8,
+    "largo_m": 5651.5,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.3228,
+     "total": 0.3922
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.7508,
+      -33.4877
+     ],
+     [
+      -70.745594,
+      -33.496924
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 27,
+    "source": 5,
+    "target": 9,
+    "largo_m": 1131.7,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.1444,
+     "total": 0.2321
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.757457,
+      -33.510502
+     ],
+     [
+      -70.7992,
+      -33.50762
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 28,
+    "source": 6,
+    "target": 7,
+    "largo_m": 3891.6,
+    "p_falla": {
+     "lluvia": 0.1945,
+     "robo_7d": 0.2679,
+     "total": 0.4103
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.757457,
+      -33.510502
+     ],
+     [
+      -70.769815,
+      -33.5361
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 29,
+    "source": 6,
+    "target": 8,
+    "largo_m": 3062.5,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.1444,
+     "total": 0.2321
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.757457,
+      -33.510502
+     ],
+     [
+      -70.745594,
+      -33.496924
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 30,
+    "source": 6,
+    "target": 9,
+    "largo_m": 1866.3,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.2085,
+     "total": 0.2897
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.7992,
+      -33.50762
+     ],
+     [
+      -70.769815,
+      -33.5361
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 31,
+    "source": 7,
+    "target": 8,
+    "largo_m": 4175.0,
+    "p_falla": {
+     "lluvia": 0.2771,
+     "robo_7d": 0.2085,
+     "viento": 0.124,
+     "total": 0.4988
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.7992,
+      -33.50762
+     ],
+     [
+      -70.745594,
+      -33.496924
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 32,
+    "source": 7,
+    "target": 9,
+    "largo_m": 5120.4,
+    "p_falla": {
+     "lluvia": 0.1945,
+     "robo_7d": 0.2679,
+     "total": 0.4103
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      -70.769815,
+      -33.5361
+     ],
+     [
+      -70.745594,
+      -33.496924
+     ]
+    ]
+   },
+   "properties": {
+    "elemento": "arista",
+    "id": 33,
+    "source": 8,
+    "target": 9,
+    "largo_m": 4893.3,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.2679,
+     "total": 0.3429
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.754619,
+     -33.507197
+    ]
+   },
+   "properties": {
+    "elemento": "nodo",
+    "id": 1,
+    "source": null,
+    "target": null,
+    "largo_m": null,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.075,
+     "total": 0.1698
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.790934,
+     -33.511141
+    ]
+   },
+   "properties": {
+    "elemento": "nodo",
+    "id": 2,
+    "source": null,
+    "target": null,
+    "largo_m": null,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.075,
+     "total": 0.1698
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.789735,
+     -33.558223
+    ]
+   },
+   "properties": {
+    "elemento": "nodo",
+    "id": 3,
+    "source": null,
+    "target": null,
+    "largo_m": null,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "viento": 0.124,
+     "total": 0.2138
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.74915,
+     -33.490599
+    ]
+   },
+   "properties": {
+    "elemento": "nodo",
+    "id": 4,
+    "source": null,
+    "target": null,
+    "largo_m": null,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "total": 0.1025
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.7508,
+     -33.4877
+    ]
+   },
+   "properties": {
+    "elemento": "nodo",
+    "id": 5,
+    "source": null,
+    "target": null,
+    "largo_m": null,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.075,
+     "total": 0.1698
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.757457,
+     -33.510502
+    ]
+   },
+   "properties": {
+    "elemento": "nodo",
+    "id": 6,
+    "source": null,
+    "target": null,
+    "largo_m": null,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.075,
+     "total": 0.1698
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.7992,
+     -33.50762
+    ]
+   },
+   "properties": {
+    "elemento": "nodo",
+    "id": 7,
+    "source": null,
+    "target": null,
+    "largo_m": null,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "total": 0.1025
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.769815,
+     -33.5361
+    ]
+   },
+   "properties": {
+    "elemento": "nodo",
+    "id": 8,
+    "source": null,
+    "target": null,
+    "largo_m": null,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "total": 0.1025
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -70.745594,
+     -33.496924
+    ]
+   },
+   "properties": {
+    "elemento": "nodo",
+    "id": 9,
+    "source": null,
+    "target": null,
+    "largo_m": null,
+    "p_falla": {
+     "lluvia": 0.1025,
+     "robo_7d": 0.075,
+     "total": 0.1698
+    }
+   }
+  }
+ ]
+}

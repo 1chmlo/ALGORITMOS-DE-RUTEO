@@ -1,1456 +1,780 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualizador de Grafo y Ruteo Dijkstra - Comuna de Maipú</title>
-    <!-- Leaflet CSS desde CDNJS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html, body {
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: #0f172a;
-            color: #f8fafc;
-        }
-
-        /* Mapa en pantalla completa */
-        #map {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 1;
-            background: #e2e8f0;
-            transition: background 0.3s;
-        }
-
-        /* Modo Oscuro del Mapa (Transformación nativa de alta fidelidad) */
-        #map.dark-mode-map {
-            background: #0b0f19 !important;
-        }
-
-        #map.dark-mode-map .leaflet-tile-pane {
-            filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(115%);
-        }
-
-        /* Panel flotante lateral */
-        .panel {
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            width: 410px;
-            max-height: calc(100vh - 32px);
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(148, 163, 184, 0.25);
-            border-radius: 14px;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-        }
-
-        .panel-header {
-            padding: 16px 18px 12px 18px;
-            background: rgba(30, 41, 59, 0.7);
-            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(34, 197, 94, 0.15);
-            border: 1px solid rgba(34, 197, 94, 0.4);
-            color: #4ade80;
-            padding: 3px 10px;
-            border-radius: 999px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 6px;
-        }
-
-        .badge::before {
-            content: "";
-            width: 6px;
-            height: 6px;
-            background: #22c55e;
-            border-radius: 50%;
-            box-shadow: 0 0 6px #22c55e;
-        }
-
-        .panel-title {
-            font-size: 17px;
-            font-weight: 700;
-            color: #f8fafc;
-        }
-
-        .panel-desc {
-            font-size: 12px;
-            color: #94a3b8;
-            margin-top: 4px;
-            line-height: 1.35;
-        }
-
-        /* Selector de Modos de Vista */
-        .mode-tabs {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 4px;
-            background: rgba(15, 23, 42, 0.8);
-            padding: 4px;
-            border-radius: 10px;
-            margin-top: 12px;
-            border: 1px solid rgba(148, 163, 184, 0.2);
-        }
-
-        .mode-tab {
-            background: transparent;
-            border: none;
-            color: #94a3b8;
-            padding: 8px 3px;
-            border-radius: 8px;
-            font-size: 10px;
-            font-weight: 700;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.2s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-        }
-
-        .mode-tab:hover {
-            color: #f8fafc;
-            background: rgba(51, 65, 85, 0.5);
-        }
-
-        .mode-tab.active {
-            background: #0284c7;
-            color: #ffffff;
-            box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
-        }
-
-        /* Tarjeta de detalle de metadata */
-        .meta-detail-box {
-            background: rgba(30, 41, 59, 0.85);
-            border: 1px solid rgba(148, 163, 184, 0.25);
-            border-radius: 10px;
-            padding: 12px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-        }
-
-        .meta-header {
-            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
-            padding-bottom: 8px;
-        }
-
-        .meta-title {
-            font-size: 13px;
-            font-weight: 800;
-            color: #f8fafc;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .meta-stat-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-        }
-
-        .meta-stat-card {
-            background: rgba(15, 23, 42, 0.75);
-            border: 1px solid rgba(148, 163, 184, 0.15);
-            border-radius: 8px;
-            padding: 8px 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .meta-stat-card .label {
-            font-size: 9px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #94a3b8;
-            letter-spacing: 0.03em;
-        }
-
-        .meta-stat-card .value {
-            font-size: 13px;
-            font-weight: 800;
-            color: #f8fafc;
-        }
-
-        .meta-stat-card .desc {
-            font-size: 9px;
-            color: #64748b;
-            line-height: 1.25;
-        }
-
-        .panel-body {
-            padding: 16px 18px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .section-label {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: #94a3b8;
-        }
-
-        /* Botones de Drones */
-        .drone-selector {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-        }
-
-        .btn-drone {
-            background: rgba(30, 41, 59, 0.8);
-            border: 1px solid rgba(148, 163, 184, 0.25);
-            color: #f8fafc;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            text-align: left;
-            transition: all 0.2s;
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .btn-drone:hover {
-            border-color: #38bdf8;
-            background: rgba(51, 65, 85, 0.9);
-        }
-
-        .btn-drone.active {
-            border-color: #22c55e;
-            background: rgba(34, 197, 94, 0.15);
-            box-shadow: 0 0 12px rgba(34, 197, 94, 0.3);
-        }
-
-        .btn-drone.dron-all.active {
-            border-color: #38bdf8;
-            background: rgba(56, 189, 248, 0.15);
-            box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
-        }
-
-        .drone-badge {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .drone-name {
-            font-size: 11px;
-            color: #cbd5e1;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        /* Tarjeta de Métricas */
-        .metrics {
-            background: rgba(30, 41, 59, 0.7);
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            border-radius: 10px;
-            padding: 12px 14px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        .metric-title {
-            font-size: 10px;
-            text-transform: uppercase;
-            font-weight: 700;
-            color: #94a3b8;
-        }
-
-        .metric-value {
-            font-size: 18px;
-            font-weight: 800;
-            color: #22c55e;
-        }
-
-        .metric-note {
-            font-size: 10px;
-            color: #64748b;
-        }
-
-        /* Itinerario */
-        .itinerary {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            max-height: 200px;
-            overflow-y: auto;
-            padding-right: 4px;
-        }
-
-        .itinerary-step {
-            background: rgba(15, 23, 42, 0.6);
-            border-left: 3px solid #22c55e;
-            border-radius: 4px;
-            padding: 7px 10px;
-            font-size: 11px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .itinerary-step.retorno {
-            border-left-color: #38bdf8;
-        }
-
-        /* Lista de Puntos (Modo Solo Puntos) */
-        .points-list {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            max-height: 320px;
-            overflow-y: auto;
-            padding-right: 4px;
-        }
-
-        .point-item {
-            background: rgba(30, 41, 59, 0.7);
-            border-left: 4px solid #ef4444;
-            border-radius: 6px;
-            padding: 8px 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            font-size: 11px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .point-item:hover {
-            background: rgba(51, 65, 85, 0.9);
-            transform: translateX(2px);
-        }
-
-        .point-item.comisaria {
-            border-left-color: #22c55e;
-        }
-
-        .point-header {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 700;
-            color: #f8fafc;
-        }
-
-        .point-desc {
-            color: #94a3b8;
-            font-size: 10px;
-        }
-
-        /* Toggles */
-        .toggles {
-            border-top: 1px solid rgba(148, 163, 184, 0.2);
-            padding-top: 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .toggle-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 12px;
-            color: #94a3b8;
-            cursor: pointer;
-        }
-
-        .toggle-item input {
-            cursor: pointer;
-            accent-color: #22c55e;
-        }
-
-        /* Leyenda inferior derecha */
-        .legend {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(15, 23, 42, 0.92);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(148, 163, 184, 0.25);
-            border-radius: 12px;
-            padding: 12px 16px;
-            z-index: 1000;
-            font-size: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .legend-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .dot-green {
-            width: 14px;
-            height: 14px;
-            background: #22c55e;
-            border: 2px solid #ffffff;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #22c55e;
-        }
-
-        .dot-red {
-            width: 12px;
-            height: 12px;
-            background: #ef4444;
-            border: 2px solid #ffffff;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #ef4444;
-        }
-
-        .line-route {
-            width: 18px;
-            height: 4px;
-            background: #22c55e;
-            border-radius: 2px;
-            box-shadow: 0 0 6px #22c55e;
-        }
-
-        /* Flechas direccionales */
-        .arrow-badge-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .arrow-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background: #0f172a;
-            border: 2px solid #22c55e;
-            border-radius: 20px;
-            padding: 3px 8px;
-            color: #ffffff;
-            font-size: 11px;
-            font-weight: 800;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-            cursor: pointer;
-            white-space: nowrap;
-            transition: transform 0.15s ease-in-out;
-        }
-
-        .arrow-badge:hover {
-            transform: scale(1.18);
-            z-index: 9999;
-        }
-
-        .arrow-svg {
-            display: inline-block;
-            width: 13px;
-            height: 13px;
-            fill: currentColor;
-        }
-
-        /* Etiqueta Comisaría Activada y Paradas */
-        .node-step-badge {
-            background: #0f172a;
-            border: 1.5px solid #ffffff;
-            border-radius: 6px;
-            padding: 2px 7px;
-            font-size: 10px;
-            font-weight: 800;
-            color: #ffffff;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.5);
-            white-space: nowrap;
-            text-align: center;
-            margin-top: -38px;
-            pointer-events: none;
-        }
-
-        /* Etiqueta de Costo sobre cada arista (Modo Grafo Completo) */
-        .cost-label {
-            background: rgba(15, 23, 42, 0.95);
-            border: 1px solid rgba(56, 189, 248, 0.6);
-            color: #38bdf8;
-            font-weight: 800;
-            font-size: 10px;
-            padding: 2px 5px;
-            border-radius: 4px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-            white-space: nowrap;
-            pointer-events: auto;
-            cursor: pointer;
-            transition: all 0.15s;
-        }
-
-        .cost-label:hover {
-            transform: scale(1.25);
-            border-color: #22c55e;
-            color: #22c55e;
-            z-index: 9999;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ruteo de drones · Maipú</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root {
+    --bg: #0f172a; --panel: rgba(15, 23, 42, 0.96); --panel2: rgba(30, 41, 59, 0.75);
+    --borde: rgba(148, 163, 184, 0.22); --texto: #f1f5f9; --suave: #94a3b8; --acento: #38bdf8;
+    --ok: #22c55e; --mal: #ef4444; --warn: #f59e0b;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(--texto);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 12px; }
+#map { position: absolute; inset: 0; z-index: 1; background: #e2e8f0; }
+#map .leaflet-tile-pane { filter: saturate(0.35) brightness(1.04); }
+#map.oscuro { background: #0b0f19; }
+#map.oscuro .leaflet-tile-pane { filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(115%); }
+.panel { position: absolute; top: 12px; left: 12px; bottom: 12px; width: 410px; z-index: 1000; display: flex;
+    flex-direction: column; background: var(--panel); border: 1px solid var(--borde); border-radius: 14px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.5); overflow: hidden; }
+.cabecera { padding: 12px 16px; background: var(--panel2); border-bottom: 1px solid var(--borde); }
+.cabecera h1 { font-size: 15px; font-weight: 800; }
+.cabecera .sub { color: var(--suave); font-size: 11px; margin-top: 2px; }
+.estado { display: flex; align-items: center; gap: 8px; margin-top: 8px; font-size: 11px; color: var(--suave); }
+.punto { width: 8px; height: 8px; border-radius: 50%; background: var(--suave); }
+.punto.ok { background: var(--ok); } .punto.mal { background: var(--mal); }
+.punto.cargando { background: var(--acento); animation: pulso 0.8s infinite alternate; }
+@keyframes pulso { from { opacity: .3 } to { opacity: 1 } }
+.cuerpo { overflow-y: auto; padding: 8px 12px 16px; flex: 1; }
+.cuerpo::-webkit-scrollbar { width: 6px; } .cuerpo::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+details { border: 1px solid var(--borde); border-radius: 10px; margin-top: 8px; background: rgba(30,41,59,.35); }
+summary { cursor: pointer; padding: 9px 12px; font-weight: 700; font-size: 12px; list-style: none; display: flex;
+    justify-content: space-between; align-items: center; }
+summary::after { content: "▸"; color: var(--suave); transition: transform .15s; }
+details[open] > summary::after { transform: rotate(90deg); }
+summary .n { color: var(--suave); font-weight: 500; font-size: 11px; margin-left: auto; margin-right: 8px; }
+.sec { padding: 4px 12px 12px; }
+.fila { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 5px 0; }
+.fila label { color: #cbd5e1; }
+.fila input[type=number], .fila select { width: 92px; background: #0b1220; color: var(--texto); border: 1px solid #334155;
+    border-radius: 6px; padding: 4px 6px; font-size: 12px; }
+.fila select.ancho { width: 200px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 12px; }
+.check { display: flex; align-items: center; gap: 7px; margin: 4px 0; cursor: pointer; color: #e2e8f0; }
+.check input { accent-color: var(--acento); }
+.chip { display: inline-block; width: 11px; height: 11px; border-radius: 3px; flex: none; }
+.ayuda { color: var(--suave); font-size: 10.5px; line-height: 1.45; margin: 4px 0 6px; }
+.seg { display: flex; gap: 4px; background: #0b1220; border-radius: 8px; padding: 3px; margin: 6px 0; }
+.seg button { flex: 1; border: none; background: transparent; color: var(--suave); padding: 6px; border-radius: 6px;
+    cursor: pointer; font-weight: 600; font-size: 11.5px; }
+.seg button.activo { background: #1e3a5f; color: var(--texto); }
+.btn { width: 100%; border: 1px solid #1d4ed8; background: #1e40af; color: white; padding: 8px; border-radius: 8px;
+    cursor: pointer; font-weight: 700; font-size: 12px; margin-top: 6px; }
+.btn.sec2 { background: #1e293b; border-color: #334155; }
+.btn.rosa { background: #9d174d; border-color: #db2777; }
+.btn:disabled { opacity: .5; cursor: wait; }
+table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 6px; }
+th { text-align: left; color: var(--suave); font-weight: 600; padding: 4px 3px; border-bottom: 1px solid var(--borde); }
+td { padding: 5px 3px; border-bottom: 1px solid rgba(148,163,184,.1); vertical-align: top; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.tag { display: inline-block; padding: 1px 6px; border-radius: 999px; font-size: 10px; font-weight: 700; }
+.tag.ok { background: rgba(34,197,94,.15); color: #4ade80; } .tag.mal { background: rgba(239,68,68,.15); color: #f87171; }
+.tag.warn { background: rgba(245,158,11,.15); color: #fbbf24; }
+.motivo { color: #fca5a5; font-size: 10px; margin-top: 2px; }
+.caja { background: #0b1220; border: 1px solid #334155; border-radius: 8px; padding: 8px 10px; margin-top: 8px; line-height: 1.5; }
+.caja b { color: #e2e8f0; }
+.lista-sim { margin-top: 4px; }
+.lista-sim div { display: flex; justify-content: space-between; align-items: center; padding: 3px 0; color: #cbd5e1; }
+.lista-sim button { background: none; border: none; color: #f87171; cursor: pointer; font-size: 13px; }
+.leyenda { position: absolute; right: 12px; bottom: 24px; z-index: 1000; background: var(--panel); border: 1px solid var(--borde);
+    border-radius: 12px; padding: 10px 12px; min-width: 300px; box-shadow: 0 10px 25px rgba(0,0,0,.4); }
+.leyenda h3 { font-size: 11.5px; margin-bottom: 6px; }
+.ley-ruta { display: grid; grid-template-columns: 26px 1fr auto; gap: 6px; align-items: center; margin: 4px 0; }
+.ley-ruta .linea { height: 4px; border-radius: 2px; }
+.ley-ruta .met { color: var(--suave); font-size: 10.5px; text-align: right; font-variant-numeric: tabular-nums; }
+.ley-ruta.apagada { opacity: .35; }
+.clic-activo #map { cursor: crosshair; }
+.aviso-clic { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 1000; background: #9d174d;
+    padding: 6px 14px; border-radius: 999px; font-weight: 700; display: none; }
+.clic-activo .aviso-clic { display: block; }
+.marcador-nodo { border-radius: 50%; border: 2px solid white; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 10px; color: white; box-shadow: 0 2px 6px rgba(0,0,0,.4); }
+.marcador-nodo { position: relative; }
+.orden-visita { position: absolute; top: -9px; right: -12px; background: #0f172a; color: #fbbf24; border: 1px solid #fbbf24;
+    border-radius: 999px; font-size: 9px; padding: 0 4px; line-height: 14px; }
+.leaflet-popup-content { font-size: 11.5px; line-height: 1.45; }
+.leaflet-popup-content b { color: #0f172a; }
+@media (max-width: 700px) {
+    .panel { width: auto; right: 12px; bottom: 45%; }
+    .leyenda { left: 12px; right: 12px; min-width: 0; bottom: 12px; }
+}
+</style>
 </head>
 <body>
+<div class="panel">
+    <div class="cabecera">
+        <h1>🚁 Ruteo de drones policiales · Maipú</h1>
+        <div class="sub">Patrullaje de puntos críticos de encerronas · Fase 3 (grafo de visibilidad)</div>
+        <div class="estado"><span class="punto" id="punto-estado"></span><span id="texto-estado">Conectando con la API…</span></div>
+    </div>
+    <div class="cuerpo">
 
-    <!-- Panel de control -->
-    <div class="panel">
-        <div class="panel-header">
-            <div class="badge">100% Comuna de Maipú</div>
-            <div class="panel-title">🌐 Visualizador Espacial y Ruteo</div>
-            <div class="panel-desc">
-                Selecciona la vista para explorar la infraestructura, el grafo de costos o las rutas óptimas con Dijkstra.
-            </div>
-
-            <!-- Selector de Modos de Vista -->
-            <div class="mode-tabs">
-                <button class="mode-tab" id="tab-puntos" onclick="cambiarModo('puntos')">
-                    <span>📍 Puntos</span>
-                    <span style="font-size: 8.5px; opacity: 0.8;">Nodos</span>
-                </button>
-                <button class="mode-tab" id="tab-grafo" onclick="cambiarModo('grafo')">
-                    <span>🕸️ Grafo</span>
-                    <span style="font-size: 8.5px; opacity: 0.8;">Costos</span>
-                </button>
-                <button class="mode-tab" id="tab-metadata" onclick="cambiarModo('metadata')">
-                    <span>📊 Metadata</span>
-                    <span style="font-size: 8.5px; opacity: 0.8;">Inspección</span>
-                </button>
-                <button class="mode-tab active" id="tab-dijkstra" onclick="cambiarModo('dijkstra')">
-                    <span>🚁 Dijkstra</span>
-                    <span style="font-size: 8.5px; opacity: 0.8;">Rutas</span>
-                </button>
-            </div>
-        </div>
-
-        <div class="panel-body">
-            <!-- CONTENIDO MODO 1: SOLO PUNTOS -->
-            <div id="content-puntos" style="display: none;">
-                <span class="section-label">Puntos en la Comuna de Maipú (9 Nodos)</span>
-                <div style="font-size: 11px; color: #94a3b8; margin: 4px 0 8px 0;">
-                    3 Comisarías (Bases policiales) y 6 Puntos Críticos de autopistas y focos STOP de encerronas.
+        <!-- 1. Misión -->
+        <details open>
+            <summary>1 · Misión del usuario</summary>
+            <div class="sec">
+                <div class="seg" id="seg-modo">
+                    <button data-modo="circuito" class="activo">Circuito de patrullaje</button>
+                    <button data-modo="punto">Ir a un punto</button>
                 </div>
-                <div class="points-list" id="points-list-container"></div>
-            </div>
-
-            <!-- CONTENIDO MODO 2: GRAFO COMPLETO CON COSTOS -->
-            <div id="content-grafo" style="display: none;">
-                <div class="metrics" style="grid-template-columns: 1fr 1fr; margin-bottom: 6px;">
-                    <div>
-                        <div class="metric-title">Total Aristas</div>
-                        <div class="metric-value" style="color: #38bdf8;">33 Vuelos</div>
-                        <div class="metric-note">Conexiones directas</div>
-                    </div>
-                    <div>
-                        <div class="metric-title">Regla de Topología</div>
-                        <div style="font-size: 11px; font-weight: 700; color: #f8fafc; margin-top: 4px;">
-                            Sin enlace base ⟷ base
-                        </div>
-                        <div class="metric-note">Comisarías aisladas</div>
-                    </div>
+                <div class="fila"><label>Base de despegue</label><select id="origen" class="ancho"></select></div>
+                <div id="bloque-destinos">
+                    <div class="ayuda">Puntos críticos a visitar (el dron vuelve a la base):</div>
+                    <div id="destinos"></div>
                 </div>
-                <span class="section-label">Topología del Grafo Aéreo</span>
-                <div style="font-size: 11px; color: #94a3b8; line-height: 1.4;">
-                    Cada arista muestra su <b>costo euclidiano exacto en kilómetros</b> sobre la línea. Haz clic en cualquier arista para ver el detalle del tramo y sus nodos extremos.
+                <div id="bloque-punto" style="display:none">
+                    <div class="fila"><label>Destino</label><select id="destino-punto" class="ancho"></select></div>
                 </div>
             </div>
+        </details>
 
-            <!-- CONTENIDO MODO 3: GRAFO CON METADATA -->
-            <div id="content-metadata" style="display: none;">
-                <span class="section-label">Inspección de Metadata y Amenazas</span>
-                <div style="font-size: 11px; color: #94a3b8; margin: 4px 0 8px 0; line-height: 1.35;">
-                    Haz clic en cualquier <b>nodo</b> o <b>arista</b> del mapa para inspeccionar sus fuentes de datos: STOP, Mapillary, TomTom y Overpass.
+        <!-- 2. Restricciones -->
+        <details open>
+            <summary>2 · Restricciones y modelo</summary>
+            <div class="sec">
+                <div class="grid2">
+                    <div class="fila"><label>Autonomía (km)</label><input type="number" id="bateria_km" min="1" step="0.5"></div>
+                    <div class="fila"><label>Velocidad (km/h)</label><input type="number" id="velocidad_kmh" min="5" step="5"></div>
+                    <div class="fila"><label>Altura vuelo (m)</label><input type="number" id="altura_vuelo_m" min="20" max="500" step="10"></div>
+                    <div class="fila"><label>Riesgo máx. (%)</label><input type="number" id="riesgo_max" min="0" max="100" step="5"></div>
                 </div>
-
-                <!-- Tarjeta interactiva de detalle -->
-                <div id="metadata-detail-card" class="meta-detail-box">
-                    <div style="text-align: center; color: #94a3b8; font-size: 11px; padding: 16px 8px; line-height: 1.4;">
-                        👆 <b>Selecciona un nodo o arista en el mapa</b> para ver sus métricas de delitos, iluminación, tráfico y morfología vial.
-                    </div>
+                <div class="fila"><label>Modelo de amenaza</label>
+                    <select id="modelo" class="ancho">
+                        <option value="probabilistico">Probabilístico (zona cae si p ≥ umbral)</option>
+                        <option value="ponderado">Ponderado (solo costo, nada se bloquea)</option>
+                    </select></div>
+                <div class="grid2">
+                    <div class="fila"><label>Umbral falla (%)</label><input type="number" id="umbral_falla" min="0" max="100" step="5"></div>
+                    <div class="fila"><label>Umbral rodeo (%)</label><input type="number" id="umbral_blando" min="0" max="100" step="5"></div>
+                    <div class="fila"><label>β riesgo</label><input type="number" id="peso_riesgo" min="0" step="0.5"></div>
+                    <div class="fila"><label>γ vigilancia</label><input type="number" id="peso_metadatos" min="0" step="0.1"></div>
                 </div>
-
-                <!-- Toggles de Capas Espaciales -->
-                <span class="section-label" style="margin-top: 6px;">Capas de Amenazas y Metadata</span>
-                <div class="toggles" style="display: flex; flex-direction: column; gap: 6px; margin-top: 4px;">
-                    <label class="toggle-item">
-                        <span style="font-size: 11px; display: flex; align-items: center; gap: 6px;">
-                            <span style="color: #ef4444;">🔴</span> Focos Delitos STOP (Carabineros)
-                        </span>
-                        <input type="checkbox" id="chk-layer-stop" onchange="toggleCapa('stop', this.checked)">
-                    </label>
-                    <label class="toggle-item">
-                        <span style="font-size: 11px; display: flex; align-items: center; gap: 6px;">
-                            <span style="color: #f43f5e;">🚧</span> Cortes de Ruta Activos (TomTom)
-                        </span>
-                        <input type="checkbox" id="chk-layer-cortes" onchange="toggleCapa('cortes', this.checked)">
-                    </label>
-                    <label class="toggle-item">
-                        <span style="font-size: 11px; display: flex; align-items: center; gap: 6px;">
-                            <span style="color: #38bdf8;">🚗</span> Corredores de Tráfico (TomTom)
-                        </span>
-                        <input type="checkbox" id="chk-layer-trafico" onchange="toggleCapa('trafico', this.checked)">
-                    </label>
+                <div class="ayuda">
+                    <b>Umbral falla</b>: en el modelo probabilístico, una zona con p ≥ umbral se considera caída y nadie puede cruzarla.
+                    <b>Umbral rodeo</b>: desde esta p se agregan waypoints para poder rodear la zona.
+                    <b>β</b>: cuánto pesa el riesgo frente a la distancia. <b>γ</b>: recargo por volar sobre zonas sin valor de vigilancia.
                 </div>
             </div>
+        </details>
 
-            <!-- CONTENIDO MODO 3: RUTAS DIJKSTRA (Lo que ya estaba) -->
-            <div id="content-dijkstra">
-                <span class="section-label">Seleccionar Dron de Patrullaje</span>
-                <div class="drone-selector">
-                    <button class="btn-drone active" id="btn-dron-1" onclick="seleccionarDron(1)">
-                        <span class="drone-badge" style="color: #22c55e;">Dron 1 (Base 1)</span>
-                        <span class="drone-name">25A. Com. Maipú</span>
-                    </button>
-                    <button class="btn-drone" id="btn-dron-2" onclick="seleccionarDron(2)">
-                        <span class="drone-badge" style="color: #06b6d4;">Dron 2 (Base 2)</span>
-                        <span class="drone-name">52A. Rinconada</span>
-                    </button>
-                    <button class="btn-drone" id="btn-dron-3" onclick="seleccionarDron(3)">
-                        <span class="drone-badge" style="color: #f59e0b;">Dron 3 (Base 3)</span>
-                        <span class="drone-name">SCom. Oriente</span>
-                    </button>
-                    <button class="btn-drone dron-all" id="btn-dron-all" onclick="seleccionarDron('all')">
-                        <span class="drone-badge" style="color: #38bdf8;">Flota Completa</span>
-                        <span class="drone-name">Ver los 3 simultáneos</span>
-                    </button>
-                </div>
-
-                <!-- Métricas (Solo Distancia) -->
-                <div class="metrics" style="grid-template-columns: 1fr;">
-                    <div>
-                        <div class="metric-title">Distancia Total del Circuito</div>
-                        <div class="metric-value" id="val-distancia">15.61 km</div>
-                        <div class="metric-note">Distancia euclidiana total calculada con Dijkstra</div>
-                    </div>
-                </div>
-
-                <!-- Itinerario de sobrevuelo -->
-                <span class="section-label" id="itinerary-title">Secuencia Completa (Visita Todos los Puntos)</span>
-                <div class="itinerary" id="itinerary-steps"></div>
+        <!-- 3. Amenazas -->
+        <details open>
+            <summary>3 · Amenazas <span class="n" id="n-amenazas"></span></summary>
+            <div class="sec">
+                <div class="ayuda">Activar = se dibuja <i>y</i> se considera en el cálculo. Cada zona tiene su probabilidad de falla p (03 - Amenazas/probabilidad_falla.py).</div>
+                <div id="lista-amenazas"></div>
+                <details style="margin-top:6px">
+                    <summary>Parámetros de probabilidad</summary>
+                    <div class="sec" id="params-amenazas"></div>
+                </details>
             </div>
+        </details>
 
-            <!-- Toggles de Capas Generales -->
-            <div class="toggles">
-                <label class="toggle-item">
-                    <span>Modo oscuro</span>
-                    <input type="checkbox" id="chk-dark">
-                </label>
+        <!-- 4. Metadatos -->
+        <details>
+            <summary>4 · Metadatos (valor de vigilancia) <span class="n" id="n-metadatos"></span></summary>
+            <div class="sec">
+                <div class="ayuda">Volar sobre focos de delito, calles oscuras, tráfico lento y enlaces/curvas aporta vigilancia; el costo baja según γ.</div>
+                <div id="lista-metadatos"></div>
+                <label class="check"><input type="checkbox" id="ver-grilla-vigilancia"> Ver grilla de vigilancia combinada (500 m)</label>
             </div>
+        </details>
+
+        <!-- 5. Infraestructura -->
+        <details>
+            <summary>5 · Infraestructura y grafo</summary>
+            <div class="sec">
+                <label class="check"><input type="checkbox" id="restricciones_estaticas" checked>
+                    <span class="chip" style="background:#64748b"></span> Restricciones estáticas (calcular)</label>
+                <div class="ayuda">Zonas de exclusión DGAC (aeródromos, helipuertos, recintos militares, cárceles) y cerros sobre el techo de vuelo (base + altura). Nunca se cruzan.</div>
+                <label class="check"><input type="checkbox" id="ver-obstaculos" checked> <span class="chip" style="background:#475569"></span> Ver obstáculos del grafo</label>
+                <label class="check"><input type="checkbox" id="ver-restringidas"> <span class="chip" style="background:#f97316"></span> Ver zonas restringidas (OSM)</label>
+                <label class="check"><input type="checkbox" id="ver-terreno"> <span class="chip" style="background:#a16207"></span> Ver terreno sobre el techo de vuelo</label>
+                <label class="check"><input type="checkbox" id="ver-grafo"> <span class="chip" style="background:#cbd5e1"></span> Ver grafo de visibilidad</label>
+                <div class="caja" id="info-grafo" style="display:none"></div>
+            </div>
+        </details>
+
+        <!-- 6. Rutas -->
+        <details open>
+            <summary>6 · Rutas calculadas</summary>
+            <div class="sec">
+                <div id="lista-rutas"></div>
+                <div id="tabla-rutas"></div>
+            </div>
+        </details>
+
+        <!-- 7. Simulación -->
+        <details>
+            <summary>7 · Simulación de fallas (0–100)</summary>
+            <div class="sec">
+                <div class="ayuda">Para cada zona activa se sortea un número entre 0 y 100. Si es menor que 100·p, la falla ocurre: la zona se bloquea y las rutas se recalculan.</div>
+                <div class="fila"><label>Semilla</label><input type="number" id="semilla" step="1">
+                    <button class="btn sec2" style="width:auto;margin:0;padding:4px 10px" id="btn-semilla">🎲</button></div>
+                <button class="btn" id="btn-simular">Sortear fallas</button>
+                <div id="resultado-sim"></div>
+            </div>
+        </details>
+
+        <!-- 8. Amenazas simuladas / escenario -->
+        <details>
+            <summary>8 · Escenario de ejemplo y amenazas simuladas</summary>
+            <div class="sec">
+                <button class="btn rosa" id="btn-demo">▶ Cargar escenario: tormenta sobre el corredor 6 → 8</button>
+                <div class="caja" id="texto-demo" style="display:none"></div>
+                <div class="ayuda" style="margin-top:10px">O agregue amenazas haciendo clic en el mapa:</div>
+                <div class="grid2">
+                    <div class="fila"><label>Tipo</label><select id="sim-tipo"><option>lluvia</option><option>viento</option><option>robo_7d</option><option>cortes</option></select></div>
+                    <div class="fila"><label>Radio (m)</label><input type="number" id="sim-radio" value="1200" min="100" step="100"></div>
+                    <div class="fila"><label>p de falla</label><input type="number" id="sim-p" value="0.95" min="0" max="1" step="0.05"></div>
+                    <div class="fila"><button class="btn sec2" id="btn-clic" style="margin:0">📍 Clic en mapa</button></div>
+                </div>
+                <div class="lista-sim" id="lista-sim"></div>
+            </div>
+        </details>
+
+        <div class="ayuda" style="margin-top:12px">
+            API: <a href="/api/docs" target="_blank" style="color:var(--acento)">/api/docs</a> ·
+            Fase 2 (estática): <a href="visualizador_dijkstra.html" style="color:var(--acento)">visualizador_dijkstra.html</a> ·
+            <label style="cursor:pointer"><input type="checkbox" id="mapa-oscuro"> mapa oscuro</label>
         </div>
     </div>
+</div>
 
-    <!-- Leyenda dinámicamente actualizada según el modo -->
-    <div class="legend" id="legend-box">
-        <div style="font-weight: 700; margin-bottom: 2px;">Referencias de Maipú</div>
-        <div class="legend-row">
-            <div class="dot-green"></div>
-            <span><b>Comisaría (Verde)</b> - Base de despegue</span>
-        </div>
-        <div class="legend-row">
-            <div class="dot-red"></div>
-            <span><b>Punto Crítico (Rojo)</b> - Autopistas / STOP</span>
-        </div>
-        <div class="legend-row" id="legend-route-row">
-            <div class="line-route" id="legend-line"></div>
-            <span id="legend-route-label">Ruta óptima del Dron</span>
-        </div>
-        <div class="legend-row" id="legend-arrow-row">
-            <span style="background:#0f172a; border:1px solid #22c55e; border-radius:12px; padding:2px 6px; font-weight:800; font-size:10px; color:#22c55e;">
-                Tramo 1 ➔
-            </span>
-            <span style="font-size: 11px; color:#cbd5e1;">Flecha orientada y número de tramo</span>
-        </div>
-    </div>
+<div class="leyenda" id="leyenda"><h3>Rutas · algoritmo · tiempo de cómputo · resiliencia</h3><div id="ley-rutas" class="ayuda">Calculando…</div></div>
+<div class="aviso-clic">Haga clic en el mapa para ubicar la amenaza simulada (Esc para cancelar)</div>
+<div id="map"></div>
 
-    <!-- Contenedor del Mapa -->
-    <div id="map"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+// ------------------------------------------------------------------------------------------
+// Configuración
+// ------------------------------------------------------------------------------------------
+const API = (location.protocol === 'file:' || !['8080', '80', ''].includes(location.port)) ? 'http://localhost:8000/api' : '/api';
+const AMENAZAS = {
+    lluvia:  { nombre: 'Lluvia (Open-Meteo)', color: '#3b82f6' },
+    viento:  { nombre: 'Viento (Open-Meteo)', color: '#a855f7' },
+    robo_7d: { nombre: 'Robos últimos 7 días (STOP)', color: '#ef4444' },
+    cortes:  { nombre: 'Cortes de ruta (TomTom)', color: '#eab308' },
+    simulada:{ nombre: 'Simulada', color: '#ec4899' },
+};
+const METADATOS = {
+    stop_90d:  { nombre: 'Robos 90 días (STOP)', color: '#dc2626', capa: 'stop_90d' },
+    oscuridad: { nombre: 'Oscuridad (luminarias Mapillary)', color: '#facc15', capa: 'luminarias' },
+    trafico:   { nombre: 'Tráfico lento (TomTom)', color: '#fb923c', capa: 'trafico' },
+    formas:    { nombre: 'Curvas y enlaces (Overpass)', color: '#14b8a6', capa: 'formas' },
+};
+const ETIQUETAS_PARAM = {
+    umbral_mm_h: 'Umbral lluvia (mm/h)', peso_probabilidad: 'Peso prob. de lluvia', umbral_kmh: 'Umbral viento (km/h)',
+    umbral_rafaga_kmh: 'Umbral ráfaga (km/h)', inicio_riesgo: 'Inicio de riesgo (× umbral)', p_max: 'p máxima (nivel 4/4)',
+    p_base: 'p base', p_por_magnitud: 'p por magnitud', radio_m: 'Radio afectado (m)',
+};
+const ESTILO_RUTA = {   // dibujo en capas: la más ancha abajo para que se vean superpuestas
+    dijkstra_distancia: { weight: 9, opacity: 0.75, dashArray: null },
+    dijkstra_parametros:{ weight: 7, opacity: 0.85, dashArray: null },
+    genetico:           { weight: 4.5, opacity: 0.95, dashArray: '10 7' },
+    gurobi:             { weight: 3, opacity: 1, dashArray: null },
+};
+const ORDEN_DIBUJO = ['dijkstra_distancia', 'dijkstra_parametros', 'genetico', 'gurobi'];
 
-    <!-- Leaflet JS desde CDNJS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-    <!-- Metadata consolidada (STOP, Mapillary, TomTom, Overpass) -->
-    <script src="metadata.js"></script>
-    <script>
-        // Nodos 100% dentro de Maipú (3 comisarías verdes, 6 puntos críticos rojos)
-        const NODOS = [
-            { id: 1, tipo: "comisaria", nombre: "25A. COM. MAIPU", desc: "Base policial central (Pajaritos / 5 de Abril)", lat: -33.507197, lon: -70.754619 },
-            { id: 2, tipo: "comisaria", nombre: "52A. COM. RINCONADA DE MAIPU", desc: "Base policial poniente", lat: -33.511141, lon: -70.790934 },
-            { id: 3, tipo: "comisaria", nombre: "SCOM. MAIPU ORIENTE", desc: "Base policial sur (Melipilla / 3 Poniente)", lat: -33.558223, lon: -70.789735 },
-            { id: 4, tipo: "interes", nombre: "Vespucio Sur con Ruta 78 (Autopista del Sol)", desc: "Enlace autopistas - Punto crítico Fiscalía", lat: -33.490599, lon: -70.749150 },
-            { id: 5, tipo: "interes", nombre: "Vespucio Norte con Av. Pajaritos (Mall Arauco)", desc: "Enlace autopista y centro comercial - Foco STOP", lat: -33.487700, lon: -70.750800 },
-            { id: 6, tipo: "interes", nombre: "Plaza de Maipú / Pajaritos con 5 de Abril", desc: "Centro neurálgico comunal - Foco STOP", lat: -33.510502, lon: -70.757457 },
-            { id: 7, tipo: "interes", nombre: "Autopista del Sol con Camino a Rinconada", desc: "Enlace autopista poniente - Foco STOP", lat: -33.507620, lon: -70.799200 },
-            { id: 8, tipo: "interes", nombre: "Camino a Melipilla con 3 Poniente", desc: "Acceso sur a autopista y zona industrial", lat: -33.536100, lon: -70.769815 },
-            { id: 9, tipo: "interes", nombre: "Vespucio Sur con Segunda Transversal", desc: "Enlace autopista y paso sobre nivel - Foco STOP", lat: -33.496924, lon: -70.745594 }
-        ];
+const estado = {
+    defecto: null, nodos: [], modo: 'circuito', simuladas: [], resultado: null, sim: null, verDespues: true,
+    rutasVisibles: { dijkstra_distancia: true, gurobi: true, dijkstra_parametros: true, genetico: true },
+    capasCache: {}, nombresTecnicas: {}, peticion: null,
+};
 
-        // 33 Aristas con sus costos exactos en km calculados en PostGIS
-        const ARISTAS_DETALLE = [
-            { id: 1, u: 1, v: 4, cost_km: 1.91, cost_m: 1910 },
-            { id: 2, u: 1, v: 5, cost_km: 2.19, cost_m: 2191 },
-            { id: 3, u: 1, v: 6, cost_km: 0.45, cost_m: 452 },
-            { id: 4, u: 1, v: 7, cost_km: 4.14, cost_m: 4142 },
-            { id: 5, u: 1, v: 8, cost_km: 3.50, cost_m: 3503 },
-            { id: 6, u: 1, v: 9, cost_km: 1.41, cost_m: 1415 },
-            { id: 7, u: 2, v: 4, cost_km: 4.50, cost_m: 4502 },
-            { id: 8, u: 2, v: 5, cost_km: 4.55, cost_m: 4546 },
-            { id: 9, u: 2, v: 6, cost_km: 3.11, cost_m: 3111 },
-            { id: 10, u: 2, v: 7, cost_km: 0.86, cost_m: 862 },
-            { id: 11, u: 2, v: 8, cost_km: 3.39, cost_m: 3393 },
-            { id: 12, u: 2, v: 9, cost_km: 4.50, cost_m: 4498 },
-            { id: 13, u: 3, v: 4, cost_km: 8.39, cost_m: 8395 },
-            { id: 14, u: 3, v: 5, cost_km: 8.62, cost_m: 8618 },
-            { id: 15, u: 3, v: 6, cost_km: 6.08, cost_m: 6083 },
-            { id: 16, u: 3, v: 7, cost_km: 5.68, cost_m: 5681 },
-            { id: 17, u: 3, v: 8, cost_km: 3.07, cost_m: 3073 },
-            { id: 18, u: 3, v: 9, cost_km: 7.94, cost_m: 7940 },
-            { id: 19, u: 4, v: 5, cost_km: 0.36, cost_m: 356 },
-            { id: 20, u: 4, v: 6, cost_km: 2.34, cost_m: 2339 },
-            { id: 21, u: 4, v: 7, cost_km: 5.02, cost_m: 5019 },
-            { id: 22, u: 4, v: 8, cost_km: 5.40, cost_m: 5400 },
-            { id: 23, u: 4, v: 9, cost_km: 0.78, cost_m: 775 },
-            { id: 24, u: 5, v: 6, cost_km: 2.60, cost_m: 2604 },
-            { id: 25, u: 5, v: 7, cost_km: 5.01, cost_m: 5011 },
-            { id: 26, u: 5, v: 8, cost_km: 5.65, cost_m: 5651 },
-            { id: 27, u: 5, v: 9, cost_km: 1.13, cost_m: 1132 },
-            { id: 28, u: 6, v: 7, cost_km: 3.89, cost_m: 3892 },
-            { id: 29, u: 6, v: 8, cost_km: 3.06, cost_m: 3062 },
-            { id: 30, u: 6, v: 9, cost_km: 1.87, cost_m: 1866 },
-            { id: 31, u: 7, v: 8, cost_km: 4.17, cost_m: 4175 },
-            { id: 32, u: 7, v: 9, cost_km: 5.12, cost_m: 5120 },
-            { id: 33, u: 8, v: 9, cost_km: 4.89, cost_m: 4893 }
-        ];
+// ------------------------------------------------------------------------------------------
+// Mapa
+// ------------------------------------------------------------------------------------------
+const map = L.map('map', { zoomControl: false, preferCanvas: true }).setView([-33.515, -70.77], 13);
+L.control.zoom({ position: 'topright' }).addTo(map);
+L.control.scale({ position: 'bottomleft', imperial: false }).addTo(map);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap', maxZoom: 19 }).addTo(map);
 
-        // Rutas óptimas calculadas con pgr_dijkstra en PostgreSQL:
-        const RUTAS_DRONES = {
-            1: {
-                nombre: "Dron 1 - 25A. Comisaría Maipú",
-                color: "#22c55e",
-                secuencia: [1, 6, 8, 7, 4, 5, 9, 1],
-                distancia_km: 15.61,
-                tiempo_min: 16
-            },
-            2: {
-                nombre: "Dron 2 - 52A. Comisaría Rinconada",
-                color: "#06b6d4",
-                secuencia: [2, 4, 5, 9, 6, 8, 7, 2],
-                distancia_km: 15.96,
-                tiempo_min: 16
-            },
-            3: {
-                nombre: "Dron 3 - SCom. Maipú Oriente",
-                color: "#f59e0b",
-                secuencia: [3, 7, 4, 5, 9, 6, 8, 3],
-                distancia_km: 20.19,
-                tiempo_min: 20
-            }
-        };
+map.createPane('zonas').style.zIndex = 380;
+map.createPane('obst').style.zIndex = 390;
+map.createPane('rutas').style.zIndex = 450;
+map.createPane('nodos').style.zIndex = 620;
 
-        // Estado actual de vista
-        let modoActual = 'dijkstra'; // 'puntos', 'grafo', 'dijkstra'
+const capas = {
+    metadatos: {}, grilla: L.layerGroup().addTo(map), zonas: L.layerGroup().addTo(map),
+    obstaculos: L.layerGroup().addTo(map), restringidas: L.layerGroup().addTo(map), terreno: L.layerGroup().addTo(map),
+    grafo: L.layerGroup().addTo(map), rutas: L.layerGroup().addTo(map), nodos: L.layerGroup().addTo(map),
+    simuladas: L.layerGroup().addTo(map),
+};
 
-        function calcularRumbo(lat1, lon1, lat2, lon2) {
-            const p1 = lat1 * Math.PI / 180;
-            const p2 = lat2 * Math.PI / 180;
-            const dl = (lon2 - lon1) * Math.PI / 180;
-            const y = Math.sin(dl) * Math.cos(p2);
-            const x = Math.cos(p1) * Math.sin(p2) - Math.sin(p1) * Math.cos(p2) * Math.cos(dl);
-            const b = Math.atan2(y, x) * 180 / Math.PI;
-            return (b + 360) % 360;
+// ------------------------------------------------------------------------------------------
+// Utilidades
+// ------------------------------------------------------------------------------------------
+const $ = id => document.getElementById(id);
+const pct = x => (x == null ? '—' : (100 * x).toFixed(1) + '%');
+const km = m => (m == null ? '—' : (m / 1000).toFixed(2) + ' km');
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+function popupTabla(titulo, props, omitir = []) {
+    const filas = Object.entries(props).filter(([k, v]) => !omitir.includes(k) && v !== null && v !== '')
+        .map(([k, v]) => `<tr><td style="color:#64748b;padding:1px 8px 1px 0">${esc(k)}</td><td>${esc(typeof v === 'number' ? +v.toFixed(4) : v)}</td></tr>`).join('');
+    return `<b>${titulo}</b><table style="margin-top:4px">${filas}</table>`;
+}
+function setEstado(tipo, texto) { $('punto-estado').className = 'punto ' + tipo; $('texto-estado').textContent = texto; }
+async function api(ruta, cuerpo, signal) {
+    const r = await fetch(API + ruta, cuerpo ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(cuerpo), signal } : { signal });
+    if (!r.ok) throw new Error((await r.json().catch(() => ({}))).detail || `HTTP ${r.status}`);
+    return r.json();
+}
+async function capaApi(nombre) {
+    if (!estado.capasCache[nombre]) estado.capasCache[nombre] = await api('/capas/' + nombre);
+    return estado.capasCache[nombre];
+}
+
+// ------------------------------------------------------------------------------------------
+// Construcción del panel
+// ------------------------------------------------------------------------------------------
+function construirPanel(cfg) {
+    const d = cfg.defecto;
+    estado.defecto = d;
+    estado.nombresTecnicas = cfg.tecnicas;
+    for (const k of ['bateria_km', 'velocidad_kmh', 'altura_vuelo_m', 'peso_riesgo', 'peso_metadatos']) $(k).value = d[k];
+    for (const k of ['riesgo_max', 'umbral_falla', 'umbral_blando']) $(k).value = Math.round(d[k] * 100);
+    $('modelo').value = d.modelo;
+    $('semilla').value = d.semilla;
+
+    const comisarias = estado.nodos.filter(n => n.tipo === 'comisaria');
+    const interes = estado.nodos.filter(n => n.tipo === 'interes');
+    $('origen').innerHTML = comisarias.map(n => `<option value="${n.id}">${n.id} · ${esc(n.nombre)}</option>`).join('');
+    $('origen').value = d.origen;
+    $('destinos').innerHTML = interes.map(n => `<label class="check"><input type="checkbox" class="chk-destino" value="${n.id}" ${d.destinos.includes(n.id) ? 'checked' : ''}>
+        <span class="chip" style="background:#ef4444;border-radius:50%"></span>${n.id} · ${esc(n.nombre)}</label>`).join('');
+    $('destino-punto').innerHTML = interes.map(n => `<option value="${n.id}">${n.id} · ${esc(n.nombre)}</option>`).join('');
+
+    $('lista-amenazas').innerHTML = cfg.amenazas.map(a => `<label class="check"><input type="checkbox" class="chk-amenaza" value="${a}" checked>
+        <span class="chip" style="background:${AMENAZAS[a].color}"></span>${AMENAZAS[a].nombre}
+        <span style="margin-left:auto;color:#64748b">peso <input type="number" class="peso-amenaza" data-a="${a}" value="1" min="0" step="0.5" style="width:46px;background:#0b1220;color:#e2e8f0;border:1px solid #334155;border-radius:5px;padding:2px 4px"></span></label>`).join('');
+    $('params-amenazas').innerHTML = Object.entries(cfg.params_amenazas).map(([a, ps]) =>
+        `<div style="margin-top:6px;color:${AMENAZAS[a].color};font-weight:700">${AMENAZAS[a].nombre}</div>` +
+        Object.entries(ps).map(([k, v]) => `<div class="fila"><label>${ETIQUETAS_PARAM[k] || k}</label>
+            <input type="number" class="param-amenaza" data-a="${a}" data-k="${k}" value="${v}" step="any"></div>`).join('')).join('');
+
+    $('lista-metadatos').innerHTML = cfg.metadatos.map(m => `<label class="check"><input type="checkbox" class="chk-metadato" value="${m}" checked>
+        <span class="chip" style="background:${METADATOS[m].color}"></span>${METADATOS[m].nombre}
+        <label style="margin-left:auto;color:#64748b;display:flex;gap:4px;align-items:center"><input type="checkbox" class="ver-metadato" value="${m}">ver</label></label>`).join('');
+
+    $('lista-rutas').innerHTML = Object.entries(cfg.tecnicas).map(([t, info]) => `<label class="check"><input type="checkbox" class="chk-ruta" value="${t}" checked>
+        <span class="chip" style="background:${info.color}"></span>${info.nombre}</label>`).join('');
+    actualizarContadores();
+}
+
+function actualizarContadores() {
+    $('n-amenazas').textContent = `${document.querySelectorAll('.chk-amenaza:checked').length}/4 activas`;
+    $('n-metadatos').textContent = `${document.querySelectorAll('.chk-metadato:checked').length}/4 activos`;
+}
+
+function consulta() {
+    const num = id => parseFloat($(id).value);
+    const params = {};
+    document.querySelectorAll('.param-amenaza').forEach(i => {
+        (params[i.dataset.a] ??= {})[i.dataset.k] = parseFloat(i.value);
+    });
+    const pesos = {};
+    document.querySelectorAll('.peso-amenaza').forEach(i => pesos[i.dataset.a] = parseFloat(i.value));
+    return {
+        modo: estado.modo,
+        origen: +$('origen').value,
+        destinos: estado.modo === 'punto' ? [+$('destino-punto').value]
+            : [...document.querySelectorAll('.chk-destino:checked')].map(i => +i.value),
+        bateria_km: num('bateria_km'), velocidad_kmh: num('velocidad_kmh'), altura_vuelo_m: num('altura_vuelo_m'),
+        riesgo_max: num('riesgo_max') / 100, umbral_falla: num('umbral_falla') / 100, umbral_blando: num('umbral_blando') / 100,
+        modelo: $('modelo').value, peso_riesgo: num('peso_riesgo'), peso_metadatos: num('peso_metadatos'),
+        amenazas: [...document.querySelectorAll('.chk-amenaza:checked')].map(i => i.value),
+        metadatos: [...document.querySelectorAll('.chk-metadato:checked')].map(i => i.value),
+        restricciones_estaticas: $('restricciones_estaticas').checked,
+        pesos_amenazas: pesos, params_amenazas: params,
+        amenazas_simuladas: estado.simuladas,
+        semilla: parseInt($('semilla').value) || 42,
+        incluir_grafo: true,
+    };
+}
+
+// ------------------------------------------------------------------------------------------
+// Cálculo
+// ------------------------------------------------------------------------------------------
+let temporizador = null;
+function recalcular(retardo = 450) {
+    clearTimeout(temporizador);
+    temporizador = setTimeout(calcular, retardo);
+}
+
+async function calcular() {
+    const c = consulta();
+    if (!c.destinos.length) { setEstado('mal', 'Elija al menos un destino'); return; }
+    estado.peticion?.abort();
+    const ctrl = new AbortController();
+    estado.peticion = ctrl;
+    setEstado('cargando', 'Calculando las 4 rutas…');
+    try {
+        const t0 = performance.now();
+        const res = await api('/rutas', c, ctrl.signal);
+        estado.resultado = res;
+        estado.sim = null;
+        $('resultado-sim').innerHTML = '';
+        dibujarResultado(res);
+        const e = res.estadisticas;
+        setEstado('ok', `Listo en ${((performance.now() - t0) / 1000).toFixed(1)} s · grafo ${e.nodos_grafo_b} nodos / ${e.aristas_grafo_b} aristas`);
+        if ($('texto-demo').dataset.activo) explicarDemo(res);
+    } catch (err) {
+        if (err.name === 'AbortError') return;
+        setEstado('mal', 'Error: ' + err.message);
+    }
+}
+
+// ------------------------------------------------------------------------------------------
+// Dibujo
+// ------------------------------------------------------------------------------------------
+function dibujarResultado(res) {
+    dibujarZonas(res.zonas);
+    dibujarObstaculos(res.obstaculos);
+    dibujarGrafo(res.grafo);
+    dibujarRutas(res);
+    dibujarNodos(res);
+    tablaRutas(res);
+    leyenda(res);
+    infoGrafo(res);
+    dibujarTerreno();
+}
+
+function dibujarZonas(fc) {
+    capas.zonas.clearLayers();
+    L.geoJSON(fc, {
+        pane: 'zonas',
+        style: f => {
+            const p = f.properties, col = p.fallada ? '#dc2626' : AMENAZAS[p.amenaza]?.color || '#64748b';
+            return { color: col, weight: p.dura || p.fallada ? 2.2 : 0.8, dashArray: p.dura && !p.fallada ? '5 4' : null,
+                fillColor: col, fillOpacity: p.fallada ? 0.55 : 0.08 + 0.45 * p.p };
+        },
+        onEachFeature: (f, l) => {
+            const p = f.properties;
+            l.bindPopup(`<b style="color:${AMENAZAS[p.amenaza]?.color}">${AMENAZAS[p.amenaza]?.nombre || p.amenaza}</b><br>
+                ${esc(p.detalle)}<br>Probabilidad de falla: <b>${pct(p.p)}</b>
+                ${p.dura ? '<br><b style="color:#dc2626">Zona caída: bloquea el paso</b>' : ''}
+                ${p.fallada ? '<br><b style="color:#dc2626">FALLA OCURRIDA en el sorteo</b>' : ''}
+                <br><span style="color:#64748b">${esc(p.zona_id)}</span>`);
+        },
+    }).addTo(capas.zonas);
+}
+
+function dibujarObstaculos(fc) {
+    capas.obstaculos.clearLayers();
+    if (!$('ver-obstaculos').checked) return;
+    L.geoJSON(fc, { pane: 'obst', style: { color: '#334155', weight: 1.5, fillColor: '#475569', fillOpacity: 0.25, dashArray: '2 4' },
+        onEachFeature: (f, l) => l.bindPopup('<b>Obstáculo del grafo</b><br>Unión de zonas restringidas, terreno sobre el techo y zonas caídas, con 40 m de holgura. Ninguna ruta (salvo pgr_dijkstra solo distancia frente a amenazas) lo cruza.') }).addTo(capas.obstaculos);
+}
+
+function dibujarGrafo(g) {
+    capas.grafo.clearLayers();
+    if (!$('ver-grafo').checked || !g) return;
+    L.geoJSON(g.aristas, { style: f => ({ color: '#64748b', weight: 0.6, opacity: 0.35 }) }).addTo(capas.grafo);
+    L.geoJSON(g.waypoints, {
+        pointToLayer: (f, ll) => L.circleMarker(ll, { radius: 3.5, color: f.properties.tipo === 'waypoint_duro' ? '#0f172a' : '#be185d', weight: 1.5, fillColor: '#fff', fillOpacity: 1 }),
+        onEachFeature: (f, l) => l.bindPopup(`<b>Waypoint ${f.properties.id}</b><br>${f.properties.tipo === 'waypoint_duro' ? 'Vértice de un obstáculo (rodeo obligatorio)' : 'Vértice de una zona de riesgo (rodeo opcional)'}`),
+    }).addTo(capas.grafo);
+}
+
+function rutasMostradas() {
+    const base = estado.sim ? (estado.verDespues ? estado.sim.despues : estado.sim.antes) : estado.resultado;
+    return base;
+}
+
+function dibujarRutas(res) {
+    capas.rutas.clearLayers();
+    for (const t of ORDEN_DIBUJO) {
+        const r = res.rutas.find(x => x.tecnica === t);
+        if (!r || !r.ok || !estado.rutasVisibles[t]) continue;
+        const est = ESTILO_RUTA[t];
+        L.geoJSON(r.geometria, {
+            pane: 'rutas',
+            style: { color: r.color, weight: est.weight, opacity: est.opacity, dashArray: est.dashArray, lineCap: 'round', lineJoin: 'round' },
+            onEachFeature: (f, l) => l.bindPopup(`<b style="color:${r.color}">${esc(r.nombre)}</b><br>
+                Distancia: <b>${km(r.distancia_m)}</b> · vuelo ${r.tiempo_vuelo_min} min<br>
+                Resiliencia R: <b>${pct(r.resiliencia)}</b> (Monte Carlo ${pct(r.resiliencia_mc)})<br>
+                Costo J: ${r.costo?.toLocaleString('es-CL')} · cómputo ${r.tiempo_computo_ms} ms<br>
+                Orden de visita: ${r.orden_visita.join(' → ')}<br>
+                Zonas de amenaza tocadas: ${r.zonas_cruzadas.length} · waypoints: ${r.waypoints}
+                ${r.motivos.map(m => `<div style="color:#b91c1c">• ${esc(m)}</div>`).join('')}`),
+        }).addTo(capas.rutas);
+    }
+}
+
+function dibujarNodos(res) {
+    capas.nodos.clearLayers();
+    const mejor = res.rutas.find(r => r.tecnica === res.mejor) || res.rutas.find(r => r.ok);
+    const orden = mejor?.orden_visita || [];
+    const c = consulta();
+    const fallados = new Set(estado.sim?.nodos_fallados || []);
+    for (const n of res.nodos) {
+        const enMision = n.id === c.origen || c.destinos.includes(n.id);
+        const inalc = res.inalcanzables.includes(n.id);
+        const color = inalc || fallados.has(n.id) ? '#6b7280' : n.tipo === 'comisaria' ? '#16a34a' : '#dc2626';
+        const tam = n.id === c.origen ? 30 : enMision ? 24 : 18;
+        const pos = orden.indexOf(n.id);
+        const texto = n.id === c.origen ? 'B' + n.id : n.id;
+        const insignia = pos >= 0 ? `<span class="orden-visita">${pos + 1}º</span>` : '';
+        const icono = L.divIcon({ className: '', iconSize: [tam, tam], iconAnchor: [tam / 2, tam / 2],
+            html: `<div class="marcador-nodo" style="width:${tam}px;height:${tam}px;background:${color};opacity:${enMision ? 1 : .55};${fallados.has(n.id) ? 'outline:3px solid #dc2626;' : ''}">${inalc ? '✕' : texto}${insignia}</div>` });
+        L.marker([n.lat, n.lon], { icon: icono, pane: 'nodos' }).bindPopup(`<b>${n.id} · ${esc(n.nombre)}</b><br>${esc(n.descripcion || '')}<br>
+            Tipo: ${n.tipo} · elevación ${n.elevacion_m ?? '?'} m s.n.m.<br>
+            ${pos >= 0 ? `Visita n.º ${pos + 1} en la mejor ruta (${esc(mejor.nombre)})<br>` : ''}
+            ${inalc ? '<b style="color:#dc2626">Inalcanzable: queda dentro de un obstáculo</b>' : ''}
+            ${fallados.has(n.id) ? '<b style="color:#dc2626">Nodo afectado por una falla sorteada</b>' : ''}`).addTo(capas.nodos);
+    }
+}
+
+function tablaRutas(res) {
+    const filas = res.rutas.map(r => {
+        const est = !r.ok ? '<span class="tag mal">sin ruta</span>' : r.factible ? '<span class="tag ok">factible</span>' : '<span class="tag warn">infactible</span>';
+        const marcas = (r.mejor ? ' ★' : '') + (r.mas_resiliente ? ' 🛡' : '');
+        return `<tr><td><span class="chip" style="background:${r.color}"></span> ${esc(r.nombre)}${marcas}<br>${est}
+                ${r.motivos.map(m => `<div class="motivo">${esc(m)}</div>`).join('')}</td>
+            <td class="num">${r.ok ? km(r.distancia_m) : '—'}<br><span style="color:#64748b">${r.ok ? r.tiempo_vuelo_min + ' min' : ''}</span></td>
+            <td class="num"><b>${r.ok ? pct(r.resiliencia) : '—'}</b><br><span style="color:#64748b">MC ${r.ok ? pct(r.resiliencia_mc) : '—'}</span></td>
+            <td class="num">${r.tiempo_computo_ms} ms<br><span style="color:#64748b">J ${r.costo != null ? Math.round(r.costo).toLocaleString('es-CL') : '—'}</span></td></tr>`;
+    }).join('');
+    const mejor = res.rutas.find(r => r.mejor);
+    $('tabla-rutas').innerHTML = `<table><tr><th>Técnica</th><th class="num">Distancia</th><th class="num">Resiliencia</th><th class="num">Cómputo</th></tr>${filas}</table>
+        <div class="caja">${mejor ? `★ <b>Mejor ruta:</b> ${esc(mejor.nombre)} (menor costo J entre las factibles).` : '★ Ninguna ruta cumple todas las restricciones: relaje la autonomía o el riesgo máximo.'}<br>
+        🛡 <b>Más resiliente:</b> ${esc(res.rutas.find(r => r.mas_resiliente)?.nombre || '—')}.<br>
+        <span style="color:#94a3b8">R = Π(1 − p) de las zonas que toca la ruta = probabilidad de completar la misión sin fallas. J = distancia ponderada por vigilancia + β·1000·Σ −ln(1 − p).</span></div>`;
+}
+
+function leyenda(res) {
+    $('ley-rutas').innerHTML = ORDEN_DIBUJO.slice().reverse().map(t => {
+        const r = res.rutas.find(x => x.tecnica === t);
+        if (!r) return '';
+        const est = ESTILO_RUTA[t];
+        const linea = est.dashArray ? `background: repeating-linear-gradient(90deg, ${r.color} 0 6px, transparent 6px 10px)` : `background:${r.color}`;
+        return `<div class="ley-ruta ${estado.rutasVisibles[t] ? '' : 'apagada'}"><div class="linea" style="${linea}"></div>
+            <div><b>${esc(r.nombre)}</b>${r.mejor ? ' ★' : ''}${r.mas_resiliente ? ' 🛡' : ''}</div>
+            <div class="met">${r.ok ? `${r.tiempo_computo_ms} ms · R ${pct(r.resiliencia)}` : 'sin ruta'}</div></div>`;
+    }).join('') + `<div class="ayuda" style="margin-top:6px">★ mejor (menor costo, factible) · 🛡 más resiliente · R = P(misión sin fallas)</div>`;
+}
+
+function infoGrafo(res) {
+    const e = res.estadisticas;
+    $('info-grafo').style.display = 'block';
+    $('info-grafo').innerHTML = `<b>Grafo de visibilidad</b><br>
+        Solo distancia: ${e.nodos_grafo_a} nodos, ${e.aristas_grafo_a} aristas<br>
+        Con amenazas: ${e.nodos_grafo_b} nodos, ${e.aristas_grafo_b} aristas${e.grafo_podado ? ' (podado para el MILP)' : ''}<br>
+        Zonas de amenaza: ${e.zonas_activas} (${e.zonas_duras} caídas, ${e.zonas_blandas} con rodeo)<br>
+        Zonas restringidas: ${e.zonas_restringidas} · hexágonos de cerro: ${e.hexagonos_terreno}<br>
+        Techo de vuelo: ${e.techo_vuelo_msnm ?? '—'} m s.n.m. (base a ${e.elevacion_base_msnm ?? '—'} m)<br>
+        Tiempo grafos: ${e.tiempo_grafos_ms} ms · total: ${e.tiempo_total_ms} ms`;
+}
+
+async function dibujarTerreno() {
+    capas.terreno.clearLayers();
+    if (!$('ver-terreno').checked || !estado.resultado) return;
+    const techo = estado.resultado.estadisticas.techo_vuelo_msnm;
+    const fc = await capaApi('terreno');
+    L.geoJSON({ type: 'FeatureCollection', features: fc.features.filter(f => techo && f.properties.elevacion_m >= techo - 30) }, {
+        style: { color: '#a16207', weight: 0.6, fillColor: '#ca8a04', fillOpacity: 0.35 },
+        onEachFeature: (f, l) => l.bindPopup(`<b>Cerro sobre el techo de vuelo</b><br>Elevación ${f.properties.elevacion_m} m s.n.m. ≥ techo ${techo} m − 30 m de margen`),
+    }).addTo(capas.terreno);
+}
+
+async function dibujarRestringidas() {
+    capas.restringidas.clearLayers();
+    if (!$('ver-restringidas').checked) return;
+    L.geoJSON(await capaApi('zonas_restringidas'), {
+        pane: 'obst', style: { color: '#ea580c', weight: 1.5, fillColor: '#f97316', fillOpacity: 0.3 },
+        onEachFeature: (f, l) => l.bindPopup(popupTabla('Zona restringida (' + f.properties.tipo + ')', f.properties)),
+    }).addTo(capas.restringidas);
+}
+
+async function dibujarMetadato(m, visible) {
+    capas.metadatos[m]?.remove();
+    if (!visible) return;
+    const fc = await capaApi(METADATOS[m].capa);
+    const col = METADATOS[m].color;
+    let capa;
+    if (m === 'stop_90d') {
+        capa = L.geoJSON(fc, { pane: 'zonas', style: f => ({ color: f.properties.color || col, weight: 0.6, fillColor: f.properties.color || col, fillOpacity: 0.12 + 0.12 * f.properties.nivel }),
+            onEachFeature: (f, l) => l.bindPopup(popupTabla('Robos con violencia 90 días (STOP)', f.properties, ['color'])) });
+    } else if (m === 'oscuridad') {
+        capa = L.geoJSON(fc, { pointToLayer: (f, ll) => L.circleMarker(ll, { radius: 2, stroke: false, fillColor: col, fillOpacity: 0.8 }),
+            onEachFeature: (f, l) => l.bindPopup(popupTabla('Luminaria (Mapillary)', f.properties)) });
+    } else {
+        capa = L.geoJSON(fc, { style: f => ({ color: col, weight: m === 'trafico' ? 2 + 6 * (f.properties.factor_riesgo_trafico || 0) : 1 + 5 * (f.properties.factor_riesgo_geom || 0), opacity: 0.8 }),
+            onEachFeature: (f, l) => l.bindPopup(popupTabla(METADATOS[m].nombre, f.properties)) });
+    }
+    capas.metadatos[m] = capa.addTo(map);
+}
+
+async function dibujarGrillaVigilancia() {
+    capas.grilla.clearLayers();
+    if (!$('ver-grilla-vigilancia').checked) return;
+    const activos = consulta().metadatos;
+    const fc = await capaApi('metadatos_grilla');
+    L.geoJSON(fc, {
+        pane: 'zonas',
+        style: f => {
+            const v = activos.length ? activos.reduce((s, m) => s + f.properties[m], 0) / activos.length : 0;
+            return { color: '#0d9488', weight: 0.3, fillColor: '#14b8a6', fillOpacity: 0.65 * v };
+        },
+        onEachFeature: (f, l) => l.bindPopup(popupTabla('Valor de vigilancia (0 a 1)', f.properties)),
+    }).addTo(capas.grilla);
+}
+
+// ------------------------------------------------------------------------------------------
+// Simulación de fallas (punto 7)
+// ------------------------------------------------------------------------------------------
+async function simular() {
+    $('btn-simular').disabled = true;
+    setEstado('cargando', 'Sorteando fallas y recalculando…');
+    try {
+        const s = await api('/simular-fallas', consulta());
+        estado.sim = s;
+        estado.verDespues = true;
+        mostrarSimulacion();
+        setEstado('ok', `${s.zonas_falladas.length} fallas ocurridas de ${s.sorteos.length} zonas sorteadas`);
+    } catch (err) {
+        setEstado('mal', 'Error: ' + err.message);
+    } finally {
+        $('btn-simular').disabled = false;
+    }
+}
+
+function mostrarSimulacion() {
+    const s = estado.sim;
+    const res = estado.verDespues ? s.despues : s.antes;
+    dibujarResultado(res);
+    const nombre = t => estado.nombresTecnicas[t]?.nombre || t;
+    const impacto = s.impacto.map(i => `<tr><td>${esc(nombre(i.tecnica))}</td><td>${i.sobrevive ? '<span class="tag ok">sobrevive</span>' : '<span class="tag mal">cae</span>'}</td>
+        <td style="color:#94a3b8">${i.sobrevive ? '' : (i.zonas_falladas || []).length + ' zona(s)' + (i.nodos_fallados?.length ? ', nodos ' + i.nodos_fallados.join(', ') : '')}</td></tr>`).join('');
+    const sorteos = s.sorteos.slice(0, 14).map(x => `<tr><td><span class="chip" style="background:${AMENAZAS[x.amenaza]?.color}"></span> ${esc(x.zona_id.split(':')[0])}</td>
+        <td class="num">${x.umbral.toFixed(1)}</td><td class="num">${x.numero.toFixed(1)}</td><td>${x.falla ? '<span class="tag mal">falla</span>' : '<span class="tag ok">no</span>'}</td></tr>`).join('');
+    $('resultado-sim').innerHTML = `
+        <div class="seg"><button id="sim-antes" class="${estado.verDespues ? '' : 'activo'}">Rutas antes del sorteo</button>
+            <button id="sim-despues" class="${estado.verDespues ? 'activo' : ''}">Rutas recalculadas</button></div>
+        <div class="caja"><b>${s.zonas_falladas.length}</b> de ${s.sorteos.length} zonas fallaron (semilla ${s.semilla}).
+            ${s.nodos_fallados.length ? `<br>Nodos afectados: <b>${s.nodos_fallados.join(', ')}</b>` : ''}</div>
+        <table><tr><th>Ruta original</th><th>Resultado</th><th></th></tr>${impacto}</table>
+        <table><tr><th>Zona</th><th class="num">100·p</th><th class="num">Sorteo</th><th></th></tr>${sorteos}</table>
+        <div class="ayuda">Falla si sorteo &lt; 100·p. Se muestran las fallas primero (${s.sorteos.length} zonas en total).</div>`;
+    $('sim-antes').onclick = () => { estado.verDespues = false; mostrarSimulacion(); };
+    $('sim-despues').onclick = () => { estado.verDespues = true; mostrarSimulacion(); };
+}
+
+// ------------------------------------------------------------------------------------------
+// Amenazas simuladas y escenario de ejemplo (punto 9)
+// ------------------------------------------------------------------------------------------
+function dibujarSimuladas() {
+    capas.simuladas.clearLayers();
+    $('lista-sim').innerHTML = estado.simuladas.map((s, i) => `<div><span><span class="chip" style="background:${AMENAZAS.simulada.color}"></span>
+        ${s.tipo} · r ${s.radio_m} m · p ${s.p}</span><button data-i="${i}" title="Quitar">✕</button></div>`).join('');
+    document.querySelectorAll('#lista-sim button').forEach(b => b.onclick = () => {
+        estado.simuladas.splice(+b.dataset.i, 1); dibujarSimuladas(); recalcular(50);
+    });
+}
+
+function modoClic(activo) {
+    document.body.classList.toggle('clic-activo', activo);
+    $('btn-clic').textContent = activo ? 'Cancelar' : '📍 Clic en mapa';
+}
+
+map.on('click', e => {
+    if (!document.body.classList.contains('clic-activo')) return;
+    estado.simuladas.push({ tipo: $('sim-tipo').value, lon: +e.latlng.lng.toFixed(6), lat: +e.latlng.lat.toFixed(6),
+        radio_m: parseFloat($('sim-radio').value), p: parseFloat($('sim-p').value) });
+    modoClic(false);
+    dibujarSimuladas();
+    recalcular(50);
+});
+
+function cargarDemo() {
+    const d = estado.defecto;
+    estado.modo = 'circuito';
+    document.querySelectorAll('#seg-modo button').forEach(b => b.classList.toggle('activo', b.dataset.modo === 'circuito'));
+    $('bloque-destinos').style.display = ''; $('bloque-punto').style.display = 'none';
+    $('origen').value = 1;
+    document.querySelectorAll('.chk-destino').forEach(i => i.checked = true);
+    document.querySelectorAll('.chk-amenaza').forEach(i => i.checked = true);
+    document.querySelectorAll('.chk-metadato').forEach(i => i.checked = true);
+    for (const k of ['bateria_km', 'velocidad_kmh', 'altura_vuelo_m', 'peso_riesgo', 'peso_metadatos']) $(k).value = d[k];
+    for (const k of ['riesgo_max', 'umbral_falla', 'umbral_blando']) $(k).value = Math.round(d[k] * 100);
+    $('modelo').value = 'probabilistico';
+    estado.simuladas = [{ tipo: 'lluvia', lon: -70.763, lat: -33.523, radio_m: 1300, p: 0.95 }];
+    dibujarSimuladas();
+    $('texto-demo').dataset.activo = '1';
+    $('texto-demo').style.display = 'block';
+    $('texto-demo').innerHTML = 'Calculando el escenario…';
+    actualizarContadores();
+    map.setView([-33.515, -70.77], 13);
+    recalcular(10);
+}
+
+function explicarDemo(res) {
+    const r = t => res.rutas.find(x => x.tecnica === t);
+    const base = r('dijkstra_distancia'), best = res.rutas.find(x => x.mejor) || r('gurobi');
+    if (!base?.ok || !best?.ok) { $('texto-demo').innerHTML = 'No se pudo calcular el escenario.'; return; }
+    const extra = (best.distancia_m - base.distancia_m) / 1000;
+    $('texto-demo').innerHTML = `<b>Escenario (punto 9):</b> la base 1 patrulla los 6 puntos críticos. Se simula una tormenta (p = 0.95, radio 1,3 km)
+        sobre el corredor entre la Plaza de Maipú (6) y Camino a Melipilla (8), por donde pasa la ruta más corta.<br><br>
+        • <b>pgr_dijkstra solo distancia</b> la atraviesa: ${km(base.distancia_m)}, R = <b style="color:#f87171">${pct(base.resiliencia)}</b>
+        ${base.factible ? '' : '(infactible: ' + esc(base.motivos[0]) + ')'}.<br>
+        • <b>${esc(best.nombre)}</b> la rodea por los waypoints del borde: ${km(best.distancia_m)} (${extra >= 0 ? '+' : ''}${extra.toFixed(2)} km),
+        R = <b style="color:#4ade80">${pct(best.resiliencia)}</b>, y sigue visitando los ${best.orden_visita.length} puntos dentro de la autonomía.<br><br>
+        Pruebe a cambiar el modelo a <i>ponderado</i>, mover la tormenta o sortear fallas en la sección 7.`;
+}
+
+// ------------------------------------------------------------------------------------------
+// Eventos
+// ------------------------------------------------------------------------------------------
+function enlazarEventos() {
+    document.querySelectorAll('#seg-modo button').forEach(b => b.onclick = () => {
+        estado.modo = b.dataset.modo;
+        document.querySelectorAll('#seg-modo button').forEach(x => x.classList.toggle('activo', x === b));
+        $('bloque-destinos').style.display = estado.modo === 'circuito' ? '' : 'none';
+        $('bloque-punto').style.display = estado.modo === 'punto' ? '' : 'none';
+        recalcular(50);
+    });
+    // Cualquier cambio de parámetros recalcula (con retardo para no saturar la API)
+    document.querySelector('.cuerpo').addEventListener('change', e => {
+        const t = e.target;
+        if (t.matches('.chk-ruta')) {
+            estado.rutasVisibles[t.value] = t.checked;
+            const res = rutasMostradas();
+            if (res) { dibujarRutas(res); leyenda(res); }
+            return;
         }
-
-        // Inicializar mapa centrado en Maipú
-        const map = L.map('map', {
-            zoomControl: false
-        }).setView([-33.515, -70.760], 13);
-
-        L.control.zoom({ position: 'topright' }).addTo(map);
-
-        // Capas base
-        const osmLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors',
-            maxZoom: 19
-        }).addTo(map);
-
-        const darkLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; OpenStreetMap &copy; CARTO',
-            maxZoom: 19
-        });
-
-        // Capas de dibujo
-        const graphEdgesLayer = L.layerGroup().addTo(map);
-        const graphCostsLayer = L.layerGroup().addTo(map);
-        const routeLayer = L.layerGroup().addTo(map);
-        const arrowsLayer = L.layerGroup().addTo(map);
-        const nodesLayer = L.layerGroup().addTo(map);
-        const orderBadgesLayer = L.layerGroup().addTo(map);
-
-        // Capas espaciales de metadata y amenazas
-        const stopLayer = L.layerGroup().addTo(map);
-        const cortesLayer = L.layerGroup().addTo(map);
-        const traficoLayer = L.layerGroup().addTo(map);
-
-        // Dibujar nodos diferenciados
-        function dibujarNodos() {
-            nodesLayer.clearLayers();
-            NODOS.forEach(n => {
-                const isComisaria = n.tipo === 'comisaria';
-                const color = isComisaria ? '#22c55e' : '#ef4444';
-                const fillColor = isComisaria ? '#4ade80' : '#f87171';
-                const radio = isComisaria ? 13 : 9.5;
-
-                const marker = L.circleMarker([n.lat, n.lon], {
-                    radius: radio,
-                    fillColor: fillColor,
-                    color: '#ffffff',
-                    weight: 2.5,
-                    opacity: 1,
-                    fillOpacity: 0.95
-                });
-
-                let metaSummary = '';
-                if (typeof METADATA_COMPLETA !== 'undefined' && METADATA_COMPLETA.nodos) {
-                    const m = METADATA_COMPLETA.nodos.find(x => x.id === n.id);
-                    if (m) {
-                        metaSummary = `
-                            <div style="margin-top:6px; padding-top:6px; border-top:1px solid #e2e8f0; font-size:10px; color:#334155; line-height:1.4;">
-                                🚔 <b>Delitos STOP:</b> ${m.stop_90d} (90d) · ${m.stop_7d} (7d)<br>
-                                💡 <b>Luminarias:</b> ${m.luminarias} postes en 500m<br>
-                                🚗 <b>Tráfico TomTom:</b> ${m.vel_actual} km/h (Flujo: ${m.vel_libre})<br>
-                                🛣️ <b>Overpass:</b> ${m.es_enlace ? 'Enlace/Rampa' : 'Trazado continuo'} ${m.es_curva ? '· Curvas' : ''}
-                            </div>
-                        `;
-                    }
-                }
-
-                marker.bindPopup(`
-                    <div style="font-family: inherit; min-width: 230px;">
-                        <span style="font-size: 11px; font-weight: 800; text-transform: uppercase; color: ${color};">
-                            ${isComisaria ? 'BASE POLICIAL (COMISARÍA)' : 'PUNTO CRÍTICO DE MAIPÚ'} [ID ${n.id}]
-                        </span>
-                        <div style="font-size: 13px; font-weight: 700; margin-top: 4px; color: #1e293b;">
-                            ${n.nombre}
-                        </div>
-                        <div style="font-size: 11px; color: #475569; margin-top: 3px;">
-                            ${n.desc}
-                        </div>
-                        ${metaSummary}
-                        <button onclick="cambiarModo('metadata'); mostrarDetalleNodoMetadata(${n.id});" style="margin-top:8px; width:100%; padding:5px; background:#0284c7; color:#fff; border:none; border-radius:6px; font-weight:700; font-size:11px; cursor:pointer;">
-                            📊 Ver en Panel de Metadata
-                        </button>
-                    </div>
-                `);
-
-                marker.bindTooltip(`<b>${n.nombre.split(' (')[0]}</b>`, {
-                    permanent: false,
-                    direction: 'top'
-                });
-
-                marker.on('click', () => {
-                    if (modoActual === 'metadata') {
-                        mostrarDetalleNodoMetadata(n.id);
-                    }
-                });
-
-                nodesLayer.addLayer(marker);
-            });
+        if (t.matches('.ver-metadato')) return dibujarMetadato(t.value, t.checked);
+        if (t.id === 'ver-grilla-vigilancia') return dibujarGrillaVigilancia();
+        if (t.id === 'ver-grafo') return dibujarGrafo(rutasMostradas()?.grafo);
+        if (t.id === 'ver-obstaculos') return dibujarObstaculos(rutasMostradas()?.obstaculos);
+        if (t.id === 'ver-terreno') return dibujarTerreno();
+        if (t.id === 'ver-restringidas') return dibujarRestringidas();
+        if (t.id === 'mapa-oscuro') { $('map').classList.toggle('oscuro', t.checked); return; }
+        if (['semilla', 'sim-tipo', 'sim-radio', 'sim-p'].includes(t.id)) return;
+        if (t.matches('.chk-metadato')) {
+            const ver = document.querySelector(`.ver-metadato[value="${t.value}"]`);
+            if (ver) { ver.checked = t.checked; dibujarMetadato(t.value, t.checked && ver.checked); }
+            dibujarGrillaVigilancia();
         }
+        actualizarContadores();
+        recalcular();
+    });
+    $('btn-simular').onclick = simular;
+    $('btn-semilla').onclick = () => { $('semilla').value = Math.floor(Math.random() * 100000); };
+    $('btn-demo').onclick = cargarDemo;
+    $('btn-clic').onclick = () => modoClic(!document.body.classList.contains('clic-activo'));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') modoClic(false); });
+}
 
-        // Llenar lista del panel para el Modo "Solo Puntos"
-        function llenarListaPuntos() {
-            const container = document.getElementById('points-list-container');
-            container.innerHTML = '';
-            NODOS.forEach(n => {
-                const isCom = n.tipo === 'comisaria';
-                const el = document.createElement('div');
-                el.className = `point-item ${isCom ? 'comisaria' : ''}`;
-                el.innerHTML = `
-                    <div class="point-header">
-                        <span>${isCom ? '🟢' : '🔴'} ID ${n.id}: ${n.nombre.split(' (')[0]}</span>
-                        <span style="font-size: 9px; opacity:0.8; text-transform:uppercase;">${isCom ? 'Base' : 'Punto Crítico'}</span>
-                    </div>
-                    <div class="point-desc">${n.desc}</div>
-                `;
-                el.addEventListener('click', () => {
-                    map.setView([n.lat, n.lon], 15);
-                });
-                container.appendChild(el);
-            });
-        }
-
-        // Dibujar el Grafo Completo con todas las Aristas y Costos en km
-        function dibujarGrafoCompletoConCostos() {
-            graphEdgesLayer.clearLayers();
-            graphCostsLayer.clearLayers();
-
-            ARISTAS_DETALLE.forEach(arista => {
-                const u = NODOS.find(n => n.id === arista.u);
-                const v = NODOS.find(n => n.id === arista.v);
-                if (!u || !v) return;
-
-                // Línea de conexión
-                const line = L.polyline([[u.lat, u.lon], [v.lat, v.lon]], {
-                    color: '#38bdf8',
-                    weight: 2,
-                    opacity: 0.55,
-                    dashArray: '4, 4'
-                });
-
-                const tiempoMin = Math.max(1, Math.round((arista.cost_km / (60 / 60))));
-
-                line.bindPopup(`
-                    <div style="font-family: inherit; min-width: 220px;">
-                        <span style="font-size:10px; font-weight:800; color:#38bdf8; text-transform:uppercase;">
-                            Arista #${arista.id} del Grafo
-                        </span>
-                        <div style="font-size:12px; font-weight:700; margin-top:2px;">
-                            ${u.nombre.split(' (')[0]} ⟷ ${v.nombre.split(' (')[0]}
-                        </div>
-                        <div style="font-size:13px; font-weight:800; color:#22c55e; margin-top:4px;">
-                            Costo: ${arista.cost_km} km (${arista.cost_m} m)
-                        </div>
-                        <div style="font-size:11px; color:#64748b; margin-top:2px;">
-                            Tiempo estimado dron: ~${tiempoMin} min (60 km/h)
-                        </div>
-                        <button onclick="cambiarModo('metadata'); mostrarDetalleAristaMetadata(${arista.id});" style="margin-top:6px; width:100%; padding:4px; background:#0284c7; color:#fff; border:none; border-radius:4px; font-weight:700; font-size:10px; cursor:pointer;">
-                            📏 Ver en Panel de Metadata
-                        </button>
-                    </div>
-                `);
-
-                line.on('click', () => {
-                    if (modoActual === 'metadata') {
-                        mostrarDetalleAristaMetadata(arista.id);
-                    }
-                });
-
-                graphEdgesLayer.addLayer(line);
-
-                // Etiqueta flotante con el costo numérico en km sobre la arista
-                const midLat = (u.lat + v.lat) / 2;
-                const midLon = (u.lon + v.lon) / 2;
-
-                const costMarker = L.marker([midLat, midLon], {
-                    icon: L.divIcon({
-                        html: `<div class="cost-label" title="${u.nombre} ⟷ ${v.nombre}">${arista.cost_km} km</div>`,
-                        className: '',
-                        iconSize: [52, 20],
-                        iconAnchor: [26, 10]
-                    })
-                });
-
-                costMarker.bindPopup(`
-                    <div style="font-family: inherit; font-size:11px;">
-                        <b>Arista #${arista.id}</b><br>
-                        ${u.nombre} ⟷ ${v.nombre}<br>
-                        <b>Distancia euclidiana:</b> ${arista.cost_km} km (${arista.cost_m} m)<br>
-                        <b>Tiempo de vuelo:</b> ~${tiempoMin} min
-                    </div>
-                `);
-
-                costMarker.on('click', () => {
-                    if (modoActual === 'metadata') {
-                        mostrarDetalleAristaMetadata(arista.id);
-                    }
-                });
-
-                graphCostsLayer.addLayer(costMarker);
-            });
-        }
-
-        // Inspección detallada de un Nodo
-        function mostrarDetalleNodoMetadata(nodoId) {
-            if (typeof METADATA_COMPLETA === 'undefined' || !METADATA_COMPLETA.nodos) return;
-            const meta = METADATA_COMPLETA.nodos.find(n => n.id === nodoId);
-            if (!meta) return;
-
-            const isCom = meta.tipo === 'comisaria';
-            const colorTipo = isCom ? '#22c55e' : '#ef4444';
-            const badgeTipo = isCom ? 'Base Policial' : 'Punto Crítico';
-
-            const stopNivelTxt = meta.stop_90d >= 30 ? '🔴 Muy Alto Foco' : (meta.stop_90d > 0 ? '🟠 Foco Activo' : '🟢 Sin Delitos 90d');
-            const stopSemanalTxt = meta.stop_7d > 0 ? `⚠️ ${meta.stop_7d} delitos última sem.` : '✅ Estable (0 delitos 7d)';
-            const luzTxt = meta.luminarias > 200 ? '💡 Muy Iluminado (>200)' : (meta.luminarias > 50 ? '🟡 Luz Moderada' : '🌑 Zona Oscura (<50)');
-            const traficoTxt = (meta.vel_actual < meta.vel_libre * 0.75) ? '🔴 Congestión Frecuente' : '🟢 Flujo Normal';
-            const viasTxt = (meta.es_enlace ? 'Enlace/Salida Autopista' : 'Vía Urbana Regular') + (meta.es_curva ? ' · Curvas Pronunciadas' : '');
-            const cortesTxt = meta.cortes_ruta > 0 ? `🚧 ${meta.cortes_ruta} corte(s) vial(es) activo(s)` : '✅ Sin cortes de ruta cercanos';
-
-            const card = document.getElementById('metadata-detail-card');
-            if (card) {
-                card.innerHTML = `
-                    <div class="meta-header">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-                            <span class="meta-badge-tipo" style="background:${colorTipo}22; color:${colorTipo}; border:1px solid ${colorTipo};">
-                                ${badgeTipo} · ID ${meta.id}
-                            </span>
-                            <span style="font-size:10px; color:#94a3b8;">Radio buffer: 500m</span>
-                        </div>
-                        <div class="meta-title">${meta.nombre}</div>
-                        <div style="font-size:10px; color:#94a3b8; margin-top:2px;">${meta.descripcion || ''}</div>
-                    </div>
-
-                    <div class="meta-stat-grid">
-                        <div class="meta-stat-card">
-                            <span class="label">🚔 Delitos STOP (90d)</span>
-                            <span class="value" style="color:#f87171;">${meta.stop_90d} delitos</span>
-                            <span class="desc">${stopNivelTxt}</span>
-                        </div>
-                        <div class="meta-stat-card">
-                            <span class="label">⚠️ STOP Semanal (7d)</span>
-                            <span class="value" style="color:#fbbf24;">${meta.stop_7d} del/sem</span>
-                            <span class="desc">${stopSemanalTxt}</span>
-                        </div>
-                        <div class="meta-stat-card">
-                            <span class="label">💡 Mapillary (Luz)</span>
-                            <span class="value" style="color:#38bdf8;">${meta.luminarias} postes</span>
-                            <span class="desc">${luzTxt}</span>
-                        </div>
-                        <div class="meta-stat-card">
-                            <span class="label">🚗 TomTom Tráfico</span>
-                            <span class="value" style="color:#a78bfa;">${meta.vel_actual} km/h</span>
-                            <span class="desc">${traficoTxt} (Flujo libre ${meta.vel_libre})</span>
-                        </div>
-                    </div>
-
-                    <div style="background:rgba(15,23,42,0.6); border:1px solid rgba(148,163,184,0.15); border-radius:8px; padding:8px 10px; font-size:11px;">
-                        <div style="color:#94a3b8; font-size:9.5px; font-weight:700; text-transform:uppercase;">🛣️ Morfología Vial (Overpass)</div>
-                        <div style="color:#f8fafc; font-weight:600; margin-top:2px;">${viasTxt}</div>
-                    </div>
-
-                    <div style="background:rgba(15,23,42,0.6); border:1px solid rgba(148,163,184,0.15); border-radius:8px; padding:8px 10px; font-size:11px;">
-                        <div style="color:#94a3b8; font-size:9.5px; font-weight:700; text-transform:uppercase;">🚧 Amenaza Cortes de Ruta (TomTom)</div>
-                        <div style="color:#f8fafc; font-weight:600; margin-top:2px;">${cortesTxt}</div>
-                    </div>
-                `;
-            }
-        }
-
-        // Inspección detallada de una Arista
-        function mostrarDetalleAristaMetadata(aristaId) {
-            const arista = ARISTAS_DETALLE.find(a => a.id === aristaId);
-            if (!arista) return;
-            const u = NODOS.find(n => n.id === arista.u);
-            const v = NODOS.find(n => n.id === arista.v);
-            if (!u || !v) return;
-
-            const tiempoMin = Math.max(1, Math.round((arista.cost_km / (60 / 60))));
-
-            const card = document.getElementById('metadata-detail-card');
-            if (card) {
-                card.innerHTML = `
-                    <div class="meta-header">
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-                            <span class="meta-badge-tipo" style="background:#38bdf822; color:#38bdf8; border:1px solid #38bdf8;">
-                                Tramo / Arista #${arista.id}
-                            </span>
-                            <span style="font-size:10px; color:#22c55e; font-weight:700;">Vuelo Bidireccional</span>
-                        </div>
-                        <div class="meta-title" style="font-size:12px;">
-                            ${u.nombre.split(' (')[0]} ⟷ ${v.nombre.split(' (')[0]}
-                        </div>
-                    </div>
-
-                    <div class="meta-stat-grid" style="grid-template-columns:1fr 1fr;">
-                        <div class="meta-stat-card">
-                            <span class="label">📏 Distancia Euclidiana</span>
-                            <span class="value" style="color:#22c55e;">${arista.cost_km} km</span>
-                            <span class="desc">${arista.cost_m} metros exactos</span>
-                        </div>
-                        <div class="meta-stat-card">
-                            <span class="label">⏱️ Tiempo Estimado Dron</span>
-                            <span class="value" style="color:#38bdf8;">~${tiempoMin} min</span>
-                            <span class="desc">A velocidad crucero 60 km/h</span>
-                        </div>
-                    </div>
-
-                    <div style="background:rgba(15,23,42,0.6); border:1px solid rgba(148,163,184,0.15); border-radius:8px; padding:8px 10px; font-size:11px;">
-                        <div style="color:#94a3b8; font-size:9.5px; font-weight:700; text-transform:uppercase;">Extremos del Enlace Aéreo</div>
-                        <div style="margin-top:3px; color:#cbd5e1;"><b>Origen (ID ${u.id}):</b> ${u.nombre}</div>
-                        <div style="margin-top:2px; color:#cbd5e1;"><b>Destino (ID ${v.id}):</b> ${v.nombre}</div>
-                    </div>
-                `;
-            }
-        }
-
-        // Toggles de capas espaciales adicionales
-        function toggleCapa(tipo, activo) {
-            if (typeof METADATA_COMPLETA === 'undefined') return;
-
-            if (tipo === 'stop') {
-                stopLayer.clearLayers();
-                if (activo && METADATA_COMPLETA.stop_puntos) {
-                    METADATA_COMPLETA.stop_puntos.forEach(p => {
-                        const marker = L.circleMarker([p.lat, p.lon], {
-                            radius: p.nivel >= 3 ? 6.5 : (p.nivel === 2 ? 5 : 3.5),
-                            fillColor: p.nivel >= 3 ? '#ef4444' : (p.nivel === 2 ? '#f97316' : '#eab308'),
-                            color: '#ffffff',
-                            weight: 1,
-                            opacity: 0.9,
-                            fillOpacity: 0.75
-                        });
-                        marker.bindPopup(`
-                            <div style="font-family: inherit; font-size:11px;">
-                                <b style="color:#ef4444;">Foco Delictual STOP (Carabineros)</b><br>
-                                Cantidad: <b>${p.cantidad}</b> robos violentos<br>
-                                Nivel de gravedad: Nivel ${p.nivel}
-                            </div>
-                        `);
-                        stopLayer.addLayer(marker);
-                    });
-                }
-            } else if (tipo === 'cortes') {
-                cortesLayer.clearLayers();
-                if (activo && METADATA_COMPLETA.cortes_tomtom) {
-                    METADATA_COMPLETA.cortes_tomtom.forEach(c => {
-                        if (!c.coords || c.coords.length < 2) return;
-                        const latlngs = c.coords.map(pt => [pt[1], pt[0]]);
-                        const line = L.polyline(latlngs, {
-                            color: '#f43f5e',
-                            weight: 6,
-                            opacity: 0.9,
-                            dashArray: '6, 6'
-                        });
-                        line.bindPopup(`
-                            <div style="font-family: inherit; font-size:11px;">
-                                <b style="color:#f43f5e;">🚧 Corte de Ruta Total (TomTom)</b><br>
-                                Evento: <b>${c.evento || 'Cerrado'}</b><br>
-                                Desde: ${c.desde || 'N/A'}<br>
-                                Hasta: ${c.hasta || 'N/A'}<br>
-                                Extensión: ${c.longitud_m} m
-                            </div>
-                        `);
-                        cortesLayer.addLayer(line);
-                    });
-                }
-            } else if (tipo === 'trafico') {
-                traficoLayer.clearLayers();
-                if (activo && METADATA_COMPLETA.trafico_tomtom) {
-                    METADATA_COMPLETA.trafico_tomtom.forEach(t => {
-                        if (!t.coords || t.coords.length < 2) return;
-                        const latlngs = t.coords.map(pt => [pt[1], pt[0]]);
-                        const esCongestion = t.vel_actual < t.vel_libre * 0.75;
-                        const color = esCongestion ? '#ef4444' : '#06b6d4';
-                        const line = L.polyline(latlngs, {
-                            color: color,
-                            weight: 4.5,
-                            opacity: 0.8
-                        });
-                        line.bindPopup(`
-                            <div style="font-family: inherit; font-size:11px;">
-                                <b style="color:${color};">🚗 Corredor Vial TomTom</b><br>
-                                Vía: <b>${t.corredor}</b><br>
-                                Velocidad actual: <b>${t.vel_actual} km/h</b><br>
-                                Flujo libre: ${t.vel_libre} km/h<br>
-                                Estado: ${esCongestion ? '🔴 Congestión' : '🟢 Fluido'}
-                            </div>
-                        `);
-                        traficoLayer.addLayer(line);
-                    });
-                }
-            }
-        }
-
-        // Cambiar entre los 4 Modos de Visualización
-        function cambiarModo(nuevoModo) {
-            modoActual = nuevoModo;
-
-            // Actualizar pestañas
-            document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
-            document.getElementById(`tab-${nuevoModo}`).classList.add('active');
-
-            // Ocultar todos los paneles de contenido
-            document.getElementById('content-puntos').style.display = 'none';
-            document.getElementById('content-grafo').style.display = 'none';
-            document.getElementById('content-metadata').style.display = 'none';
-            document.getElementById('content-dijkstra').style.display = 'none';
-
-            // Limpiar capas transitorias
-            graphEdgesLayer.clearLayers();
-            graphCostsLayer.clearLayers();
-            routeLayer.clearLayers();
-            arrowsLayer.clearLayers();
-            orderBadgesLayer.clearLayers();
-
-            if (nuevoModo === 'puntos') {
-                document.getElementById('content-puntos').style.display = 'block';
-                document.getElementById('legend-route-row').style.display = 'none';
-                document.getElementById('legend-arrow-row').style.display = 'none';
-                map.setView([-33.515, -70.760], 13);
-            } else if (nuevoModo === 'grafo') {
-                document.getElementById('content-grafo').style.display = 'block';
-                document.getElementById('legend-route-row').style.display = 'none';
-                document.getElementById('legend-arrow-row').style.display = 'none';
-                dibujarGrafoCompletoConCostos();
-                map.setView([-33.515, -70.760], 13);
-            } else if (nuevoModo === 'metadata') {
-                document.getElementById('content-metadata').style.display = 'block';
-                document.getElementById('legend-route-row').style.display = 'none';
-                document.getElementById('legend-arrow-row').style.display = 'none';
-                dibujarGrafoCompletoConCostos();
-                map.setView([-33.515, -70.760], 13);
-                mostrarDetalleNodoMetadata(4); // Mostrar punto crítico de la fiscalía por defecto
-            } else if (nuevoModo === 'dijkstra') {
-                document.getElementById('content-dijkstra').style.display = 'block';
-                document.getElementById('legend-route-row').style.display = 'flex';
-                document.getElementById('legend-arrow-row').style.display = 'flex';
-                seleccionarDron(1);
-            }
-        }
-
-        // Modo Dijkstra: selección de drones con flechas y COMISARÍA ACTIVADA
-        function seleccionarDron(dronId) {
-            document.querySelectorAll('.btn-drone').forEach(b => b.classList.remove('active'));
-            if (dronId === 'all') {
-                document.getElementById('btn-dron-all').classList.add('active');
-            } else {
-                document.getElementById(`btn-dron-${dronId}`).classList.add('active');
-            }
-
-            routeLayer.clearLayers();
-            arrowsLayer.clearLayers();
-            orderBadgesLayer.clearLayers();
-
-            const itineraryEl = document.getElementById('itinerary-steps');
-            itineraryEl.innerHTML = '';
-
-            if (dronId === 'all') {
-                document.getElementById('val-distancia').textContent = "60.06 km";
-                document.getElementById('val-tiempo').textContent = "Flota 3 Drones";
-                document.getElementById('itinerary-title').textContent = "Patrullaje Simultáneo de 3 Drones en Maipú";
-
-                [1, 2, 3].forEach(id => {
-                    const r = RUTAS_DRONES[id];
-                    const latlngs = r.secuencia.map(nid => {
-                        const n = NODOS.find(nodo => nodo.id === nid);
-                        return [n.lat, n.lon];
-                    });
-
-                    L.polyline(latlngs, {
-                        color: r.color,
-                        weight: 4.5,
-                        opacity: 0.9,
-                        dashArray: id === 2 ? '7, 5' : (id === 3 ? '4, 4' : null)
-                    }).addTo(routeLayer);
-
-                    // Flechas con número para cada dron
-                    for (let i = 0; i < r.secuencia.length - 1; i++) {
-                        const u = NODOS.find(n => n.id === r.secuencia[i]);
-                        const v = NODOS.find(n => n.id === r.secuencia[i+1]);
-                        const midLat = (u.lat + v.lat) / 2;
-                        const midLon = (u.lon + v.lon) / 2;
-                        const rumbo = calcularRumbo(u.lat, u.lon, v.lat, v.lon);
-
-                        const arrowHtml = `
-                            <div class="arrow-badge" style="border-color:${r.color}; color:${r.color}; padding:2px 6px; font-size:10px;">
-                                <span>D${id}·${i+1}</span>
-                                <svg class="arrow-svg" style="transform: rotate(${rumbo}deg); fill:${r.color};" viewBox="0 0 24 24">
-                                    <path d="M12 2L19 21L12 17L5 21L12 2Z" />
-                                </svg>
-                            </div>
-                        `;
-                        const marker = L.marker([midLat, midLon], {
-                            icon: L.divIcon({
-                                html: arrowHtml,
-                                className: 'arrow-badge-container',
-                                iconSize: [54, 22],
-                                iconAnchor: [27, 11]
-                            })
-                        });
-                        arrowsLayer.addLayer(marker);
-                    }
-
-                    const step = document.createElement('div');
-                    step.className = 'itinerary-step';
-                    step.style.borderLeftColor = r.color;
-                    step.innerHTML = `
-                        <div><b>Dron ${id}:</b> ${r.nombre.split(' - ')[1]}</div>
-                        <div style="font-weight:700; color:${r.color};">${r.distancia_km} km</div>
-                    `;
-                    itineraryEl.appendChild(step);
-                });
-
-                document.getElementById('legend-line').style.background = '#38bdf8';
-                document.getElementById('legend-route-label').textContent = 'Flota Completa (3 Drones)';
-            } else {
-                const r = RUTAS_DRONES[dronId];
-                document.getElementById('val-distancia').textContent = `${r.distancia_km} km`;
-                document.getElementById('itinerary-title').textContent = `Itinerario Dron ${dronId} (Visita 100% de los puntos)`;
-                document.getElementById('legend-line').style.background = r.color;
-                document.getElementById('legend-route-label').textContent = `Ruta Óptima Dron ${dronId}`;
-
-                const latlngs = r.secuencia.map(nid => {
-                    const n = NODOS.find(nodo => nodo.id === nid);
-                    return [n.lat, n.lon];
-                });
-
-                // Polilínea de ruta
-                const poly = L.polyline(latlngs, {
-                    color: r.color,
-                    weight: 5.5,
-                    opacity: 0.95,
-                    lineJoin: 'round'
-                }).addTo(routeLayer);
-
-                // Halo suave
-                L.polyline(latlngs, {
-                    color: r.color,
-                    weight: 12,
-                    opacity: 0.25
-                }).addTo(routeLayer);
-
-                // Flechas numeradas en cada tramo
-                for (let i = 0; i < r.secuencia.length - 1; i++) {
-                    const u = NODOS.find(n => n.id === r.secuencia[i]);
-                    const v = NODOS.find(n => n.id === r.secuencia[i+1]);
-                    const esRetorno = i === r.secuencia.length - 2;
-
-                    const midLat = (u.lat + v.lat) / 2;
-                    const midLon = (u.lon + v.lon) / 2;
-                    const rumbo = calcularRumbo(u.lat, u.lon, v.lat, v.lon);
-                    const colorPaso = esRetorno ? '#38bdf8' : r.color;
-
-                    const arrowHtml = `
-                        <div class="arrow-badge" style="border-color: ${colorPaso};" title="Tramo ${i+1}: ${u.nombre.split(' (')[0]} ➔ ${v.nombre.split(' (')[0]}">
-                            <span style="color: ${colorPaso};">Tramo ${i + 1}</span>
-                            <svg class="arrow-svg" style="transform: rotate(${rumbo}deg); fill: ${colorPaso};" viewBox="0 0 24 24">
-                                <path d="M12 2L19 21L12 17L5 21L12 2Z" />
-                            </svg>
-                        </div>
-                    `;
-
-                    const arrowMarker = L.marker([midLat, midLon], {
-                        icon: L.divIcon({
-                            html: arrowHtml,
-                            className: 'arrow-badge-container',
-                            iconSize: [68, 24],
-                            iconAnchor: [34, 12]
-                        })
-                    });
-
-                    arrowMarker.bindPopup(`
-                        <div style="font-family: inherit;">
-                            <div style="font-size: 11px; font-weight: 800; color: ${colorPaso};">
-                                ${esRetorno ? 'TRAMO DE RETORNO A BASE' : `TRAMO ${i + 1} DE PATRULLAJE`}
-                            </div>
-                            <div style="font-size: 12px; font-weight: 700; margin-top: 3px;">
-                                ${u.nombre.split(' (')[0]} ➔ ${v.nombre.split(' (')[0]}
-                            </div>
-                        </div>
-                    `);
-
-                    arrowsLayer.addLayer(arrowMarker);
-
-                    // ==============================================================
-                    // ETIQUETA SOLO "COMISARÍA ACTIVADA" Y PARADAS NUMERADAS
-                    // ==============================================================
-                    if (i === 0) {
-                        const baseBadge = L.marker([u.lat, u.lon], {
-                            icon: L.divIcon({
-                                html: `<div class="node-step-badge" style="border-color: #22c55e; color: #4ade80; background: rgba(15,23,42,0.95); font-size: 11px; padding: 3px 8px; border-width: 2px;">🟢 COMISARIA ACTIVADA</div>`,
-                                className: '',
-                                iconSize: [150, 24],
-                                iconAnchor: [75, 12]
-                            })
-                        });
-                        orderBadgesLayer.addLayer(baseBadge);
-                    }
-
-                    if (!esRetorno) {
-                        const stepBadge = L.marker([v.lat, v.lon], {
-                            icon: L.divIcon({
-                                html: `<div class="node-step-badge" style="border-color: #ef4444; color: #fca5a5;">🔴 Parada #${i + 1}</div>`,
-                                className: '',
-                                iconSize: [85, 20],
-                                iconAnchor: [42, 10]
-                            })
-                        });
-                        orderBadgesLayer.addLayer(stepBadge);
-                    }
-
-                    // Buscar distancia exacta del tramo
-                    const edgeObj = ARISTAS_DETALLE.find(a => (a.u === u.id && a.v === v.id) || (a.u === v.id && a.v === u.id));
-                    const tramoKm = edgeObj ? edgeObj.cost_km : 0;
-
-                    // Paso en el itinerario lateral
-                    const item = document.createElement('div');
-                    item.className = `itinerary-step ${esRetorno ? 'retorno' : ''}`;
-                    item.style.borderLeftColor = esRetorno ? '#38bdf8' : r.color;
-                    item.innerHTML = `
-                        <div style="flex: 1;">
-                            <b>Tramo ${i + 1}:</b> ${u.nombre.split(' (')[0]} <span style="color:#38bdf8;">➔</span> ${v.nombre.split(' (')[0]}
-                            <div style="font-size: 10px; color: #94a3b8; margin-top: 2px;">
-                                ${esRetorno ? 'Retorno a Base' : `Parada #${i + 1}`}
-                            </div>
-                        </div>
-                        <div style="font-weight: 800; color: #38bdf8; font-size: 12px; margin-left: 8px; white-space: nowrap;">
-                            ${tramoKm.toFixed(2)} km
-                        </div>
-                    `;
-                    itineraryEl.appendChild(item);
-                }
-
-                map.fitBounds(poly.getBounds(), { padding: [55, 55] });
-            }
-        }
-
-        // Toggle Modo Oscuro de Alta Confiabilidad (Filtro nativo sin fallas de red)
-        const chkDark = document.getElementById('chk-dark');
-        const mapEl = document.getElementById('map');
-
-        function aplicarModoOscuro(activar) {
-            if (activar) {
-                mapEl.classList.add('dark-mode-map');
-            } else {
-                mapEl.classList.remove('dark-mode-map');
-            }
-        }
-
-        chkDark.addEventListener('change', (e) => {
-            aplicarModoOscuro(e.target.checked);
-        });
-
-        // Inicializar
-        window.addEventListener('load', () => {
-            chkDark.checked = true;
-            aplicarModoOscuro(true);
-            dibujarNodos();
-            llenarListaPuntos();
-            cambiarModo('dijkstra');
-            setTimeout(() => map.invalidateSize(), 300);
-        });
-    </script>
+// ------------------------------------------------------------------------------------------
+// Inicio
+// ------------------------------------------------------------------------------------------
+(async function iniciar() {
+    try {
+        const [cfg, nodos] = await Promise.all([api('/config'), capaApi('nodos')]);
+        estado.nodos = nodos.features.map(f => ({ ...f.properties, lon: f.geometry.coordinates[0], lat: f.geometry.coordinates[1] }));
+        construirPanel(cfg);
+        enlazarEventos();
+        if (location.hash === '#demo') cargarDemo(); else calcular();
+    } catch (err) {
+        setEstado('mal', 'No se pudo conectar con la API (' + err.message + '). ¿Está corriendo el servicio api? (docker compose up -d api web)');
+    }
+})();
+</script>
 </body>
 </html>
