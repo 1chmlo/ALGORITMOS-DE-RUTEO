@@ -17,10 +17,6 @@ p ∈ [0, 1]: la probabilidad de que el dron no complete la misión si cruza esa
            Riesgo de ataque o de inhibidores de señal (usados en encerronas) sobre focos
            recientes de robo con violencia.
 
-  cortes   cortes TomTom + radio  p = min(0.95, p_base + p_por_magnitud · magnitud_retraso)
-           Un corte total implica operación de emergencia en la vía (policía, ambulancias,
-           helicópteros); la DAN 151 prohíbe sobrevolar operaciones de emergencia y multitudes.
-
 Lluvia y viento: los hexágonos que caen en la misma celda del modelo meteorológico reciben el
 mismo pronóstico; se agrupan en una sola zona porque son un único evento (no independientes).
 
@@ -38,13 +34,12 @@ import copy
 import json
 import math
 
-AMENAZAS = ("lluvia", "viento", "robo_7d", "cortes")
+AMENAZAS = ("lluvia", "viento", "robo_7d")
 
 PARAMS_DEFECTO = {
     "lluvia": {"umbral_mm_h": 0.5, "peso_probabilidad": 0.25},
     "viento": {"umbral_kmh": 36.0, "umbral_rafaga_kmh": 43.0, "inicio_riesgo": 0.7},
     "robo_7d": {"p_max": 0.3},
-    "cortes": {"p_base": 0.15, "p_por_magnitud": 0.1, "radio_m": 150.0},
 }
 
 P_MAX = 0.999  # tope para no tener log(0) en los modelos que usan -ln(1 - p)
@@ -77,10 +72,6 @@ def p_viento(viento_max_kmh, rafaga_max_kmh, prm):
 
 def p_robo(nivel, niveles_total, prm):
     return _clamp(prm["p_max"] * (nivel or 0) / (niveles_total or 1))
-
-
-def p_corte(magnitud_retraso, prm):
-    return min(0.95, _clamp(prm["p_base"] + prm["p_por_magnitud"] * (magnitud_retraso or 0)))
 
 
 def combinar(probabilidades):
@@ -122,10 +113,6 @@ SQL_ZONAS = {
         SELECT hex_id AS origen_id, cantidad, nivel, niveles_total, periodo_desde, periodo_hasta,
                ST_AsGeoJSON(geom, 6) AS geojson
         FROM robo_con_violencia_semanal_hexagonos WHERE {_FILTRO}""",
-    "cortes": f"""
-        SELECT incident_id AS origen_id, descripcion_evento, desde_via, hasta_via, magnitud_retraso,
-               ST_AsGeoJSON(ST_Buffer(geom::geography, %(radio_cortes)s)::geometry, 6) AS geojson
-        FROM cortes_ruta_tomtom WHERE {_FILTRO}""",
 }
 
 
@@ -139,13 +126,10 @@ def _probabilidad_y_detalle(amenaza, f, prm):
         p = p_viento(f["viento_max_kmh"], f["rafaga_max_kmh"], prm)
         det = (f"Viento máx. {f['viento_max_kmh']} km/h (80-120 m), ráfaga máx. {f['rafaga_max_kmh']} km/h "
                f"({f['hexagonos']} hexágonos de la misma celda del modelo)" + (" (simulado)" if f["simulado"] else ""))
-    elif amenaza == "robo_7d":
+    else:
         p = p_robo(f["nivel"], f["niveles_total"], prm)
         det = (f"{f['cantidad']} robos con violencia en 7 días (nivel {f['nivel']}/{f['niveles_total']}, "
                f"{f['periodo_desde']} a {f['periodo_hasta']})")
-    else:
-        p = p_corte(f["magnitud_retraso"], prm)
-        det = f"Corte total: {f['descripcion_evento'] or 'sin descripción'} ({f['desde_via'] or '?'} → {f['hasta_via'] or '?'})"
     return p, det
 
 
@@ -161,7 +145,7 @@ def zonas(con, amenazas=AMENAZAS, params=None, bbox_wkt=None):
     for amenaza in amenazas:
         if amenaza not in SQL_ZONAS:
             continue
-        cur = con.execute(SQL_ZONAS[amenaza], {"bbox": bbox_wkt, "radio_cortes": prm["cortes"]["radio_m"]})
+        cur = con.execute(SQL_ZONAS[amenaza], {"bbox": bbox_wkt})
         nombres = [d.name for d in cur.description]
         for fila in cur.fetchall():
             f = dict(zip(nombres, fila))

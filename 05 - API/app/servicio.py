@@ -13,7 +13,7 @@ import random
 import time
 
 import numpy as np
-from shapely.geometry import LineString, Point, mapping
+from shapely.geometry import LineString, Point
 
 import datos
 import grafo as gr
@@ -39,11 +39,8 @@ def _zonas(cfg, fallas):
 
 
 def _obstaculos_estaticos(cfg, nodo_origen):
-    obst, info = [], {"zonas_restringidas": 0, "hexagonos_terreno": 0, "techo_vuelo_msnm": None}
+    obst, info = [], {"hexagonos_terreno": 0, "techo_vuelo_msnm": None}
     if cfg.get("restricciones_estaticas", True):
-        restr = datos.zonas_restringidas()
-        obst += [r["geom"] for r in restr]
-        info["zonas_restringidas"] = len(restr)
         elev = nodo_origen.get("elevacion_m") or 0.0
         techo = elev + cfg["altura_vuelo_m"]
         terr = datos.terreno_sobre_techo(techo - MARGEN_VERTICAL_M)
@@ -80,7 +77,7 @@ def resolver(cfg, fallas=frozenset()):
     evaluador = datos.evaluador_metadatos(cfg["metadatos"], cfg.get("pesos_metadatos"))
     pesos_amenaza = {k: float(v) for k, v in (cfg.get("pesos_amenazas") or {}).items()}
 
-    # Grafo A (técnica 1): solo obstáculos físicos (estáticos + fallas ya ocurridas)
+    # Grafo A (técnica 1): solo obstáculos físicos (terreno sobre techo + fallas ya ocurridas)
     t1 = time.perf_counter()
     grafo_a = gr.construir(mision, estaticos + falladas, zonas, [], area, evaluador, pesos_amenaza)
     # Grafo B (técnicas 2-4): además, zonas duras como obstáculo y waypoints de zonas blandas

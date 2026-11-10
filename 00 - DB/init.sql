@@ -158,32 +158,7 @@ CREATE INDEX IF NOT EXISTS tomtom_trafico_geom_idx ON tomtom_trafico USING GIST 
 
 -- ===== 03 - AMENAZAS =====
 
--- Cortes de ruta totales activos (TomTom Traffic Incidents API v5, iconCategory = 8).
-CREATE TABLE IF NOT EXISTS cortes_ruta_tomtom (
-    id                 SERIAL PRIMARY KEY,
-    incident_id        TEXT NOT NULL UNIQUE,
-    icon_category      SMALLINT NOT NULL,
-    tipo_amenaza       TEXT NOT NULL,
-    descripcion_evento TEXT,
-    codigo_evento      INTEGER,
-    magnitud_retraso   SMALLINT,
-    desde_via          TEXT,
-    hasta_via          TEXT,
-    numeros_ruta       TEXT,
-    longitud_m         DOUBLE PRECISION,
-    retraso_seg        INTEGER,
-    probabilidad       TEXT,
-    validez_temporal   TEXT,
-    fecha_inicio       TIMESTAMPTZ,
-    fecha_fin          TIMESTAMPTZ,
-    en_maipu           BOOLEAN,
-    bloqueo_total      BOOLEAN,
-    centroide_lon      DOUBLE PRECISION,
-    centroide_lat      DOUBLE PRECISION,
-    fuente             TEXT,
-    geom               geometry(LineString, 4326) NOT NULL
-);
-CREATE INDEX IF NOT EXISTS cortes_ruta_tomtom_geom_idx ON cortes_ruta_tomtom USING GIST (geom);
+DROP TABLE IF EXISTS cortes_ruta_tomtom CASCADE;
 
 -- Robos con violencia recientes de STOP (ventana de 7 días): hacia dónde se mueve el delito.
 -- Misma grilla que robo_con_violencia_hexagonos (mismos hex_id), para poder cruzarlas.
@@ -304,21 +279,7 @@ CREATE INDEX IF NOT EXISTS aristas_aereas_target_idx ON aristas_aereas (target);
 
 -- ===== 05 - FASE 3: RESTRICCIONES ESTÁTICAS Y PROBABILIDAD DE FALLA =====
 
--- Zonas de exclusión aérea permanentes (OpenStreetMap vía Overpass): aeródromos, helipuertos,
--- recintos militares y cárceles. geom es la zona ya ampliada con radio_exclusion_m; el ruteo la
--- trata como obstáculo duro (ninguna arista del grafo de visibilidad puede cruzarla).
-CREATE TABLE IF NOT EXISTS zonas_restringidas (
-    id                SERIAL PRIMARY KEY,
-    osm_ref           TEXT NOT NULL UNIQUE,          -- "way/123", "node/456", "relation/789"
-    tipo              TEXT NOT NULL,                 -- aerodromo | helipuerto | militar | carcel
-    nombre            TEXT,
-    motivo            TEXT,
-    radio_exclusion_m DOUBLE PRECISION NOT NULL,
-    fuente            TEXT,
-    geom_original     geometry(Geometry, 4326) NOT NULL,
-    geom              geometry(MultiPolygon, 4326) NOT NULL
-);
-CREATE INDEX IF NOT EXISTS zonas_restringidas_geom_idx ON zonas_restringidas USING GIST (geom);
+DROP TABLE IF EXISTS zonas_restringidas CASCADE;
 
 -- Elevación del terreno (Open-Meteo Elevation API, DEM Copernicus 90 m) por hexágono de 500 m.
 -- La API de ruteo marca como obstáculo todo hexágono cuyo terreno supera el techo de vuelo
@@ -336,12 +297,12 @@ CREATE TABLE IF NOT EXISTS elevacion_terreno_hexagonos (
 CREATE INDEX IF NOT EXISTS elevacion_terreno_hexagonos_geom_idx ON elevacion_terreno_hexagonos USING GIST (geom);
 
 -- Probabilidad de falla por amenaza (03 - Amenazas/probabilidad_falla.py, parámetros por defecto).
--- Cada zona de amenaza (hexágono de lluvia/viento/STOP 7d o tramo con corte) tiene una p de falla
+-- Cada zona de amenaza (hexágono de lluvia/viento/STOP 7d) tiene una p de falla
 -- para el dron que la cruza. Las aristas y nodos del grafo aéreo heredan p de las zonas que tocan.
 CREATE TABLE IF NOT EXISTS probabilidad_falla_zonas (
     id        SERIAL PRIMARY KEY,
     zona_id   TEXT NOT NULL UNIQUE,                  -- "<amenaza>:<id de origen>"
-    amenaza   TEXT NOT NULL,                         -- lluvia | viento | robo_7d | cortes
+    amenaza   TEXT NOT NULL,                         -- lluvia | viento | robo_7d
     origen_id TEXT NOT NULL,
     p_falla   DOUBLE PRECISION NOT NULL CHECK (p_falla BETWEEN 0 AND 1),
     detalle   TEXT,

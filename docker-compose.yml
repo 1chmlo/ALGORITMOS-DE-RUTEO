@@ -35,6 +35,7 @@ services:
     environment:
       - PGHOST=db
       - MAPILLARY_TOKEN # opcional: si no está definido en el host se usa el del script
+      - TOMTOM_API_KEY
     volumes:
       - "./02 - Metadata/salida:/app/salida"
 
@@ -46,7 +47,6 @@ services:
         condition: service_healthy
     environment:
       - PGHOST=db
-      - TOMTOM_API_KEY
       - LLUVIA_UMBRAL_MM_H # opcionales: ver 03 - Amenazas/lluvia_open_meteo_hexagonos.md
       - LLUVIA_UMBRAL_PROB
       - LLUVIA_VENTANA_HORAS

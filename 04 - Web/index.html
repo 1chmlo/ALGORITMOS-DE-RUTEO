@@ -3,240 +3,410 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ruteo de drones · Maipú</title>
+<title>Ruteo de Drones · Maipú</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
 :root {
-    --bg: #0f172a; --panel: rgba(15, 23, 42, 0.96); --panel2: rgba(30, 41, 59, 0.75);
-    --borde: rgba(148, 163, 184, 0.22); --texto: #f1f5f9; --suave: #94a3b8; --acento: #38bdf8;
-    --ok: #22c55e; --mal: #ef4444; --warn: #f59e0b;
+    --bg: #0f172a;
+    --panel: rgba(15, 23, 42, 0.96);
+    --panel2: rgba(30, 41, 59, 0.85);
+    --borde: rgba(148, 163, 184, 0.2);
+    --texto: #f8fafc;
+    --suave: #94a3b8;
+    --acento: #38bdf8;
+    --ok: #22c55e;
+    --mal: #ef4444;
+    --warn: #f59e0b;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(--texto);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 12px; }
+html, body {
+    height: 100%; overflow: hidden; background: var(--bg); color: var(--texto);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px; line-height: 1.4;
+}
 #map { position: absolute; inset: 0; z-index: 1; background: #e2e8f0; }
-#map .leaflet-tile-pane { filter: saturate(0.35) brightness(1.04); }
+#map .leaflet-tile-pane { filter: saturate(0.4) brightness(1.02); }
 #map.oscuro { background: #0b0f19; }
-#map.oscuro .leaflet-tile-pane { filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(115%); }
-.panel { position: absolute; top: 12px; left: 12px; bottom: 12px; width: 410px; z-index: 1000; display: flex;
-    flex-direction: column; background: var(--panel); border: 1px solid var(--borde); border-radius: 14px;
-    box-shadow: 0 15px 35px rgba(0,0,0,.5); overflow: hidden; }
-.cabecera { padding: 12px 16px; background: var(--panel2); border-bottom: 1px solid var(--borde); }
-.cabecera h1 { font-size: 15px; font-weight: 800; }
-.cabecera .sub { color: var(--suave); font-size: 11px; margin-top: 2px; }
-.estado { display: flex; align-items: center; gap: 8px; margin-top: 8px; font-size: 11px; color: var(--suave); }
-.punto { width: 8px; height: 8px; border-radius: 50%; background: var(--suave); }
-.punto.ok { background: var(--ok); } .punto.mal { background: var(--mal); }
+#map.oscuro .leaflet-tile-pane { filter: invert(100%) hue-rotate(180deg) brightness(88%) contrast(112%); }
+
+/* Panel principal */
+.panel {
+    position: absolute; top: 12px; left: 12px; bottom: 12px; width: 420px; z-index: 1000;
+    display: flex; flex-direction: column; background: var(--panel);
+    border: 1px solid var(--borde); border-radius: 14px;
+    box-shadow: 0 16px 40px rgba(0,0,0,.5); overflow: hidden;
+    backdrop-filter: blur(12px);
+}
+.cabecera {
+    padding: 14px 16px; background: var(--panel2); border-bottom: 1px solid var(--borde);
+}
+.cabecera-top {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+}
+.cabecera h1 { font-size: 16px; font-weight: 800; letter-spacing: -0.01em; }
+.acciones-top { display: flex; gap: 6px; align-items: center; }
+.btn-chip {
+    border: 1px solid var(--borde); background: #1e293b; color: var(--texto);
+    padding: 5px 10px; border-radius: 8px; cursor: pointer; font-size: 11.5px; font-weight: 600;
+    transition: all .15s;
+}
+.btn-chip:hover { border-color: var(--acento); background: #334155; }
+.btn-chip.demo { background: #831843; border-color: #db2777; color: #fce7f3; }
+.btn-chip.demo:hover { background: #9d174d; }
+
+.estado {
+    display: flex; align-items: center; gap: 8px; margin-top: 8px;
+    font-size: 12px; color: var(--suave);
+}
+.punto { width: 8px; height: 8px; border-radius: 50%; background: var(--suave); flex: none; }
+.punto.ok { background: var(--ok); box-shadow: 0 0 8px var(--ok); }
+.punto.mal { background: var(--mal); }
 .punto.cargando { background: var(--acento); animation: pulso 0.8s infinite alternate; }
 @keyframes pulso { from { opacity: .3 } to { opacity: 1 } }
-.cuerpo { overflow-y: auto; padding: 8px 12px 16px; flex: 1; }
-.cuerpo::-webkit-scrollbar { width: 6px; } .cuerpo::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
-details { border: 1px solid var(--borde); border-radius: 10px; margin-top: 8px; background: rgba(30,41,59,.35); }
-summary { cursor: pointer; padding: 9px 12px; font-weight: 700; font-size: 12px; list-style: none; display: flex;
-    justify-content: space-between; align-items: center; }
-summary::after { content: "▸"; color: var(--suave); transition: transform .15s; }
+
+/* Cuerpo y secciones */
+.cuerpo { overflow-y: auto; padding: 10px 14px 18px; flex: 1; }
+.cuerpo::-webkit-scrollbar { width: 6px; }
+.cuerpo::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+
+details {
+    border: 1px solid var(--borde); border-radius: 10px; margin-bottom: 10px;
+    background: rgba(30, 41, 59, 0.35);
+}
+details details {
+    margin-top: 8px; margin-bottom: 0; background: rgba(15, 23, 42, 0.45);
+    border-color: rgba(148, 163, 184, 0.14);
+}
+summary {
+    cursor: pointer; padding: 10px 14px; font-weight: 700; font-size: 13px;
+    list-style: none; display: flex; justify-content: space-between; align-items: center;
+    user-select: none;
+}
+details details > summary { padding: 7px 10px; font-size: 12px; color: var(--suave); font-weight: 600; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "▸"; color: var(--suave); transition: transform .15s; margin-left: 6px; }
 details[open] > summary::after { transform: rotate(90deg); }
-summary .n { color: var(--suave); font-weight: 500; font-size: 11px; margin-left: auto; margin-right: 8px; }
-.sec { padding: 4px 12px 12px; }
-.fila { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 5px 0; }
-.fila label { color: #cbd5e1; }
-.fila input[type=number], .fila select { width: 92px; background: #0b1220; color: var(--texto); border: 1px solid #334155;
-    border-radius: 6px; padding: 4px 6px; font-size: 12px; }
-.fila select.ancho { width: 200px; }
-.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 12px; }
-.check { display: flex; align-items: center; gap: 7px; margin: 4px 0; cursor: pointer; color: #e2e8f0; }
-.check input { accent-color: var(--acento); }
+summary .n {
+    color: var(--acento); background: rgba(56, 189, 248, 0.12);
+    padding: 2px 8px; border-radius: 999px; font-weight: 600; font-size: 11px;
+    margin-left: auto;
+}
+.sec { padding: 4px 14px 14px; }
+details details > .sec { padding: 6px 10px 10px; }
+
+/* Controles */
+.subtitulo {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--suave); margin: 10px 0 6px; display: flex; justify-content: space-between; align-items: center;
+}
+.subtitulo:first-child { margin-top: 2px; }
+.link-accion {
+    color: var(--acento); background: none; border: none; cursor: pointer;
+    font-size: 11px; font-weight: 600; text-transform: none;
+}
+.link-accion:hover { text-decoration: underline; }
+
+.fila {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 7px 0;
+}
+.fila label { color: #cbd5e1; font-size: 12.5px; }
+.fila input[type=number], .fila select {
+    width: 96px; background: #0b1220; color: var(--texto); border: 1px solid #334155;
+    border-radius: 7px; padding: 5px 8px; font-size: 12.5px;
+}
+.fila select.ancho { flex: 1; max-width: 240px; }
+
+.grid-params {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 6px 0;
+}
+.card-input {
+    background: #0b1220; border: 1px solid #1e293b; border-radius: 8px; padding: 7px 10px;
+    display: flex; flex-direction: column; gap: 4px;
+}
+.card-input label { font-size: 11px; color: var(--suave); font-weight: 600; }
+.card-input input {
+    width: 100%; background: transparent; border: none; color: var(--texto);
+    font-size: 14px; font-weight: 700; outline: none;
+}
+
+.check {
+    display: flex; align-items: center; gap: 8px; padding: 5px 6px; border-radius: 6px;
+    cursor: pointer; color: #e2e8f0; font-size: 12.5px; transition: background .12s;
+}
+.check:hover { background: rgba(255,255,255,0.04); }
+.check input[type=checkbox] { accent-color: var(--acento); width: 15px; height: 15px; cursor: pointer; flex: none; }
 .chip { display: inline-block; width: 11px; height: 11px; border-radius: 3px; flex: none; }
-.ayuda { color: var(--suave); font-size: 10.5px; line-height: 1.45; margin: 4px 0 6px; }
-.seg { display: flex; gap: 4px; background: #0b1220; border-radius: 8px; padding: 3px; margin: 6px 0; }
-.seg button { flex: 1; border: none; background: transparent; color: var(--suave); padding: 6px; border-radius: 6px;
-    cursor: pointer; font-weight: 600; font-size: 11.5px; }
-.seg button.activo { background: #1e3a5f; color: var(--texto); }
-.btn { width: 100%; border: 1px solid #1d4ed8; background: #1e40af; color: white; padding: 8px; border-radius: 8px;
-    cursor: pointer; font-weight: 700; font-size: 12px; margin-top: 6px; }
-.btn.sec2 { background: #1e293b; border-color: #334155; }
-.btn.rosa { background: #9d174d; border-color: #db2777; }
+.ayuda { color: var(--suave); font-size: 11.5px; line-height: 1.45; margin: 4px 0 6px; }
+
+.seg {
+    display: flex; gap: 4px; background: #0b1220; border-radius: 8px; padding: 4px; margin: 4px 0 10px;
+    border: 1px solid #1e293b;
+}
+.seg button {
+    flex: 1; border: none; background: transparent; color: var(--suave); padding: 7px;
+    border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 12px; transition: all .15s;
+}
+.seg button.activo { background: #0284c7; color: white; }
+
+.btn {
+    width: 100%; border: 1px solid #0284c7; background: #0369a1; color: white;
+    padding: 9px 12px; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 12.5px;
+    margin-top: 6px; transition: background .15s;
+}
+.btn:hover { background: #0284c7; }
+.btn.sec2 { background: #1e293b; border-color: #334155; color: #e2e8f0; }
+.btn.sec2:hover { background: #334155; }
 .btn:disabled { opacity: .5; cursor: wait; }
-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 6px; }
-th { text-align: left; color: var(--suave); font-weight: 600; padding: 4px 3px; border-bottom: 1px solid var(--borde); }
-td { padding: 5px 3px; border-bottom: 1px solid rgba(148,163,184,.1); vertical-align: top; }
+
+/* Tabla de rutas */
+table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 4px; }
+th {
+    text-align: left; color: var(--suave); font-weight: 600; font-size: 11px;
+    padding: 6px 4px; border-bottom: 1px solid var(--borde); text-transform: uppercase;
+}
+td { padding: 8px 4px; border-bottom: 1px solid rgba(148,163,184,.1); vertical-align: middle; }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
-.tag { display: inline-block; padding: 1px 6px; border-radius: 999px; font-size: 10px; font-weight: 700; }
-.tag.ok { background: rgba(34,197,94,.15); color: #4ade80; } .tag.mal { background: rgba(239,68,68,.15); color: #f87171; }
-.tag.warn { background: rgba(245,158,11,.15); color: #fbbf24; }
-.motivo { color: #fca5a5; font-size: 10px; margin-top: 2px; }
-.caja { background: #0b1220; border: 1px solid #334155; border-radius: 8px; padding: 8px 10px; margin-top: 8px; line-height: 1.5; }
-.caja b { color: #e2e8f0; }
-.lista-sim { margin-top: 4px; }
-.lista-sim div { display: flex; justify-content: space-between; align-items: center; padding: 3px 0; color: #cbd5e1; }
-.lista-sim button { background: none; border: none; color: #f87171; cursor: pointer; font-size: 13px; }
-.leyenda { position: absolute; right: 12px; bottom: 24px; z-index: 1000; background: var(--panel); border: 1px solid var(--borde);
-    border-radius: 12px; padding: 10px 12px; min-width: 300px; box-shadow: 0 10px 25px rgba(0,0,0,.4); }
-.leyenda h3 { font-size: 11.5px; margin-bottom: 6px; }
-.ley-ruta { display: grid; grid-template-columns: 26px 1fr auto; gap: 6px; align-items: center; margin: 4px 0; }
+.tag {
+    display: inline-block; padding: 2px 7px; border-radius: 999px; font-size: 10.5px; font-weight: 700;
+}
+.tag.ok { background: rgba(34,197,94,.16); color: #4ade80; }
+.tag.mal { background: rgba(239,68,68,.16); color: #f87171; }
+.tag.warn { background: rgba(245,158,11,.16); color: #fbbf24; }
+.motivo { color: #fca5a5; font-size: 11px; margin-top: 3px; }
+
+.caja {
+    background: #0b1220; border: 1px solid #1e293b; border-radius: 8px;
+    padding: 10px 12px; margin-top: 8px; font-size: 12px; line-height: 1.5;
+}
+.caja b { color: #f8fafc; }
+
+.lista-sim { margin-top: 6px; }
+.lista-sim div {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 5px 8px; background: #0b1220; border-radius: 6px; margin-top: 4px;
+    color: #cbd5e1; font-size: 12px;
+}
+.lista-sim button { background: none; border: none; color: #f87171; cursor: pointer; font-size: 14px; padding: 0 4px; }
+
+/* Leyenda flotante */
+.leyenda {
+    position: absolute; right: 12px; bottom: 24px; z-index: 1000; background: var(--panel);
+    border: 1px solid var(--borde); border-radius: 12px; padding: 12px 14px; min-width: 310px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.45); backdrop-filter: blur(10px);
+}
+.leyenda h3 { font-size: 12px; font-weight: 700; margin-bottom: 8px; color: #e2e8f0; }
+.ley-ruta {
+    display: grid; grid-template-columns: 28px 1fr auto; gap: 8px; align-items: center;
+    margin: 6px 0; cursor: pointer;
+}
 .ley-ruta .linea { height: 4px; border-radius: 2px; }
-.ley-ruta .met { color: var(--suave); font-size: 10.5px; text-align: right; font-variant-numeric: tabular-nums; }
+.ley-ruta .met { color: var(--suave); font-size: 11.5px; text-align: right; font-variant-numeric: tabular-nums; }
 .ley-ruta.apagada { opacity: .35; }
+
 .clic-activo #map { cursor: crosshair; }
-.aviso-clic { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 1000; background: #9d174d;
-    padding: 6px 14px; border-radius: 999px; font-weight: 700; display: none; }
+.aviso-clic {
+    position: absolute; top: 14px; left: 50%; transform: translateX(-50%); z-index: 1000;
+    background: #be185d; color: white; padding: 8px 18px; border-radius: 999px;
+    font-weight: 700; font-size: 12.5px; box-shadow: 0 6px 20px rgba(0,0,0,.4); display: none;
+}
 .clic-activo .aviso-clic { display: block; }
-.marcador-nodo { border-radius: 50%; border: 2px solid white; display: flex; align-items: center; justify-content: center;
-    font-weight: 800; font-size: 10px; color: white; box-shadow: 0 2px 6px rgba(0,0,0,.4); }
-.marcador-nodo { position: relative; }
-.orden-visita { position: absolute; top: -9px; right: -12px; background: #0f172a; color: #fbbf24; border: 1px solid #fbbf24;
-    border-radius: 999px; font-size: 9px; padding: 0 4px; line-height: 14px; }
-.leaflet-popup-content { font-size: 11.5px; line-height: 1.45; }
+
+.marcador-nodo {
+    border-radius: 50%; border: 2px solid white; display: flex; align-items: center;
+    justify-content: center; font-weight: 800; font-size: 10.5px; color: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,.45); position: relative;
+}
+.orden-visita {
+    position: absolute; top: -9px; right: -12px; background: #0f172a; color: #fbbf24;
+    border: 1px solid #fbbf24; border-radius: 999px; font-size: 9.5px; padding: 0 4px; line-height: 14px;
+}
+.leaflet-popup-content { font-size: 12px; line-height: 1.45; }
 .leaflet-popup-content b { color: #0f172a; }
-@media (max-width: 700px) {
-    .panel { width: auto; right: 12px; bottom: 45%; }
+
+.pie-links {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 6px; font-size: 11.5px; color: var(--suave);
+}
+.pie-links a { color: var(--acento); text-decoration: none; }
+.pie-links a:hover { text-decoration: underline; }
+
+@media (max-width: 760px) {
+    .panel { width: auto; right: 12px; bottom: 42%; }
     .leyenda { left: 12px; right: 12px; min-width: 0; bottom: 12px; }
 }
 </style>
 </head>
 <body>
+
 <div class="panel">
     <div class="cabecera">
-        <h1>🚁 Ruteo de drones policiales · Maipú</h1>
-        <div class="sub">Patrullaje de puntos críticos de encerronas · Fase 3 (grafo de visibilidad)</div>
-        <div class="estado"><span class="punto" id="punto-estado"></span><span id="texto-estado">Conectando con la API…</span></div>
+        <div class="cabecera-top">
+            <h1>🚁 Ruteo de Drones · Maipú</h1>
+            <div class="acciones-top">
+                <button class="btn-chip demo" id="btn-demo" title="Cargar escenario de prueba con tormenta">⚡ Demo tormenta</button>
+                <button class="btn-chip" id="btn-tema" title="Cambiar tema del mapa">🌙 Mapa</button>
+            </div>
+        </div>
+        <div class="estado">
+            <span class="punto" id="punto-estado"></span>
+            <span id="texto-estado">Conectando con la API…</span>
+        </div>
     </div>
-    <div class="cuerpo">
 
+    <div class="cuerpo">
         <!-- 1. Misión -->
         <details open>
-            <summary>1 · Misión del usuario</summary>
+            <summary>1 · Misión de patrullaje</summary>
             <div class="sec">
                 <div class="seg" id="seg-modo">
-                    <button data-modo="circuito" class="activo">Circuito de patrullaje</button>
+                    <button data-modo="circuito" class="activo">Circuito completo</button>
                     <button data-modo="punto">Ir a un punto</button>
                 </div>
-                <div class="fila"><label>Base de despegue</label><select id="origen" class="ancho"></select></div>
+                <div class="fila">
+                    <label>Base de salida</label>
+                    <select id="origen" class="ancho"></select>
+                </div>
                 <div id="bloque-destinos">
-                    <div class="ayuda">Puntos críticos a visitar (el dron vuelve a la base):</div>
+                    <div class="subtitulo">
+                        <span>Puntos críticos a visitar</span>
+                        <button type="button" class="link-accion" id="btn-todos-destinos">Marcar todos</button>
+                    </div>
                     <div id="destinos"></div>
                 </div>
                 <div id="bloque-punto" style="display:none">
-                    <div class="fila"><label>Destino</label><select id="destino-punto" class="ancho"></select></div>
+                    <div class="fila">
+                        <label>Punto de destino</label>
+                        <select id="destino-punto" class="ancho"></select>
+                    </div>
                 </div>
             </div>
         </details>
 
-        <!-- 2. Restricciones -->
+        <!-- 2. Parámetros del dron -->
         <details open>
-            <summary>2 · Restricciones y modelo</summary>
+            <summary>2 · Parámetros del dron y modelo</summary>
             <div class="sec">
-                <div class="grid2">
-                    <div class="fila"><label>Autonomía (km)</label><input type="number" id="bateria_km" min="1" step="0.5"></div>
-                    <div class="fila"><label>Velocidad (km/h)</label><input type="number" id="velocidad_kmh" min="5" step="5"></div>
-                    <div class="fila"><label>Altura vuelo (m)</label><input type="number" id="altura_vuelo_m" min="20" max="500" step="10"></div>
-                    <div class="fila"><label>Riesgo máx. (%)</label><input type="number" id="riesgo_max" min="0" max="100" step="5"></div>
+                <div class="grid-params">
+                    <div class="card-input">
+                        <label>Autonomía (km)</label>
+                        <input type="number" id="bateria_km" min="1" step="0.5">
+                    </div>
+                    <div class="card-input">
+                        <label>Velocidad (km/h)</label>
+                        <input type="number" id="velocidad_kmh" min="5" step="5">
+                    </div>
+                    <div class="card-input">
+                        <label>Altura de vuelo (m)</label>
+                        <input type="number" id="altura_vuelo_m" min="20" max="500" step="10">
+                    </div>
+                    <div class="card-input">
+                        <label>Riesgo máx. (%)</label>
+                        <input type="number" id="riesgo_max" min="0" max="100" step="5">
+                    </div>
                 </div>
-                <div class="fila"><label>Modelo de amenaza</label>
+
+                <div class="fila">
+                    <label>Modo de riesgo</label>
                     <select id="modelo" class="ancho">
-                        <option value="probabilistico">Probabilístico (zona cae si p ≥ umbral)</option>
-                        <option value="ponderado">Ponderado (solo costo, nada se bloquea)</option>
-                    </select></div>
-                <div class="grid2">
-                    <div class="fila"><label>Umbral falla (%)</label><input type="number" id="umbral_falla" min="0" max="100" step="5"></div>
-                    <div class="fila"><label>Umbral rodeo (%)</label><input type="number" id="umbral_blando" min="0" max="100" step="5"></div>
-                    <div class="fila"><label>β riesgo</label><input type="number" id="peso_riesgo" min="0" step="0.5"></div>
-                    <div class="fila"><label>γ vigilancia</label><input type="number" id="peso_metadatos" min="0" step="0.1"></div>
+                        <option value="probabilistico">Bloquear zonas críticas (p ≥ umbral)</option>
+                        <option value="ponderado">Ponderado (solo penaliza el costo)</option>
+                    </select>
                 </div>
-                <div class="ayuda">
-                    <b>Umbral falla</b>: en el modelo probabilístico, una zona con p ≥ umbral se considera caída y nadie puede cruzarla.
-                    <b>Umbral rodeo</b>: desde esta p se agregan waypoints para poder rodear la zona.
-                    <b>β</b>: cuánto pesa el riesgo frente a la distancia. <b>γ</b>: recargo por volar sobre zonas sin valor de vigilancia.
-                </div>
-            </div>
-        </details>
 
-        <!-- 3. Amenazas -->
-        <details open>
-            <summary>3 · Amenazas <span class="n" id="n-amenazas"></span></summary>
-            <div class="sec">
-                <div class="ayuda">Activar = se dibuja <i>y</i> se considera en el cálculo. Cada zona tiene su probabilidad de falla p (03 - Amenazas/probabilidad_falla.py).</div>
-                <div id="lista-amenazas"></div>
-                <details style="margin-top:6px">
-                    <summary>Parámetros de probabilidad</summary>
-                    <div class="sec" id="params-amenazas"></div>
+                <label class="check">
+                    <input type="checkbox" id="restricciones_estaticas" checked>
+                    <span>Evitar cerros sobre la altura de vuelo</span>
+                </label>
+
+                <details>
+                    <summary>Ajustes avanzados del modelo</summary>
+                    <div class="sec">
+                        <div class="fila"><label>Umbral bloqueo zona (%)</label><input type="number" id="umbral_falla" min="0" max="100" step="5"></div>
+                        <div class="fila"><label>Umbral rodeo waypoints (%)</label><input type="number" id="umbral_blando" min="0" max="100" step="5"></div>
+                        <div class="fila"><label>Peso del riesgo (β)</label><input type="number" id="peso_riesgo" min="0" step="0.5"></div>
+                        <div class="fila"><label>Peso de vigilancia (γ)</label><input type="number" id="peso_metadatos" min="0" step="0.1"></div>
+                    </div>
                 </details>
             </div>
         </details>
 
-        <!-- 4. Metadatos -->
-        <details>
-            <summary>4 · Metadatos (valor de vigilancia) <span class="n" id="n-metadatos"></span></summary>
-            <div class="sec">
-                <div class="ayuda">Volar sobre focos de delito, calles oscuras, tráfico lento y enlaces/curvas aporta vigilancia; el costo baja según γ.</div>
-                <div id="lista-metadatos"></div>
-                <label class="check"><input type="checkbox" id="ver-grilla-vigilancia"> Ver grilla de vigilancia combinada (500 m)</label>
-            </div>
-        </details>
-
-        <!-- 5. Infraestructura -->
-        <details>
-            <summary>5 · Infraestructura y grafo</summary>
-            <div class="sec">
-                <label class="check"><input type="checkbox" id="restricciones_estaticas" checked>
-                    <span class="chip" style="background:#64748b"></span> Restricciones estáticas (calcular)</label>
-                <div class="ayuda">Zonas de exclusión DGAC (aeródromos, helipuertos, recintos militares, cárceles) y cerros sobre el techo de vuelo (base + altura). Nunca se cruzan.</div>
-                <label class="check"><input type="checkbox" id="ver-obstaculos" checked> <span class="chip" style="background:#475569"></span> Ver obstáculos del grafo</label>
-                <label class="check"><input type="checkbox" id="ver-restringidas"> <span class="chip" style="background:#f97316"></span> Ver zonas restringidas (OSM)</label>
-                <label class="check"><input type="checkbox" id="ver-terreno"> <span class="chip" style="background:#a16207"></span> Ver terreno sobre el techo de vuelo</label>
-                <label class="check"><input type="checkbox" id="ver-grafo"> <span class="chip" style="background:#cbd5e1"></span> Ver grafo de visibilidad</label>
-                <div class="caja" id="info-grafo" style="display:none"></div>
-            </div>
-        </details>
-
-        <!-- 6. Rutas -->
+        <!-- 3. Amenazas y Vigilancia -->
         <details open>
-            <summary>6 · Rutas calculadas</summary>
+            <summary>3 · Amenazas y vigilancia <span class="n" id="n-capas"></span></summary>
             <div class="sec">
-                <div id="lista-rutas"></div>
+                <div class="subtitulo">Amenazas activas (se dibujan y evalúan)</div>
+                <div id="lista-amenazas"></div>
+
+                <div class="subtitulo" style="margin-top:12px">Simular amenaza en el mapa</div>
+                <div class="fila" style="gap:6px">
+                    <select id="sim-tipo" style="width:95px">
+                        <option value="lluvia">Lluvia</option>
+                        <option value="viento">Viento</option>
+                        <option value="robo_7d">Robos 7d</option>
+                    </select>
+                    <input type="number" id="sim-radio" value="1200" min="100" step="100" style="width:78px" title="Radio en metros" placeholder="Radio m">
+                    <input type="number" id="sim-p" value="0.95" min="0" max="1" step="0.05" style="width:68px" title="Probabilidad de falla (0 a 1)" placeholder="Prob. p">
+                    <button class="btn sec2" id="btn-clic" style="margin:0;flex:1;padding:6px 8px">📍 Ubicar</button>
+                </div>
+                <div class="lista-sim" id="lista-sim"></div>
+                <div class="caja" id="texto-demo" style="display:none"></div>
+
+                <div class="subtitulo" style="margin-top:12px">Metadatos de vigilancia (priorizan ruta)</div>
+                <div id="lista-metadatos"></div>
+                <label class="check">
+                    <input type="checkbox" id="ver-grilla-vigilancia">
+                    <span style="color:var(--suave)">Mostrar grilla combinada de vigilancia (500 m)</span>
+                </label>
+
+                <details>
+                    <summary>Capas técnicas y umbrales de amenaza</summary>
+                    <div class="sec">
+                        <label class="check"><input type="checkbox" id="ver-obstaculos" checked> <span class="chip" style="background:#475569"></span> Ver zonas bloqueadas (obstáculos)</label>
+                        <label class="check"><input type="checkbox" id="ver-terreno"> <span class="chip" style="background:#a16207"></span> Ver cerros sobre techo de vuelo</label>
+                        <label class="check"><input type="checkbox" id="ver-grafo"> <span class="chip" style="background:#cbd5e1"></span> Ver grafo de visibilidad</label>
+                        <div class="caja" id="info-grafo" style="display:none"></div>
+                        <div id="params-amenazas" style="margin-top:8px"></div>
+                    </div>
+                </details>
+            </div>
+        </details>
+
+        <!-- 4. Rutas calculadas -->
+        <details open>
+            <summary>4 · Comparación de rutas (4 algoritmos)</summary>
+            <div class="sec">
                 <div id="tabla-rutas"></div>
             </div>
         </details>
 
-        <!-- 7. Simulación -->
+        <!-- 5. Simulación de fallas -->
         <details>
-            <summary>7 · Simulación de fallas (0–100)</summary>
+            <summary>5 · Sorteo de fallas aleatorias (0–100)</summary>
             <div class="sec">
-                <div class="ayuda">Para cada zona activa se sortea un número entre 0 y 100. Si es menor que 100·p, la falla ocurre: la zona se bloquea y las rutas se recalculan.</div>
-                <div class="fila"><label>Semilla</label><input type="number" id="semilla" step="1">
-                    <button class="btn sec2" style="width:auto;margin:0;padding:4px 10px" id="btn-semilla">🎲</button></div>
-                <button class="btn" id="btn-simular">Sortear fallas</button>
+                <div class="ayuda">Sortea un valor entre 0 y 100 para cada zona activa. Si es menor que 100·p, la zona falla y se recalculan las rutas.</div>
+                <div class="fila">
+                    <label>Semilla aleatoria</label>
+                    <div style="display:flex;gap:6px">
+                        <input type="number" id="semilla" step="1">
+                        <button class="btn sec2" style="width:auto;margin:0;padding:5px 10px" id="btn-semilla" title="Nueva semilla">🎲</button>
+                    </div>
+                </div>
+                <button class="btn" id="btn-simular">Sortear fallas ahora</button>
                 <div id="resultado-sim"></div>
             </div>
         </details>
 
-        <!-- 8. Amenazas simuladas / escenario -->
-        <details>
-            <summary>8 · Escenario de ejemplo y amenazas simuladas</summary>
-            <div class="sec">
-                <button class="btn rosa" id="btn-demo">▶ Cargar escenario: tormenta sobre el corredor 6 → 8</button>
-                <div class="caja" id="texto-demo" style="display:none"></div>
-                <div class="ayuda" style="margin-top:10px">O agregue amenazas haciendo clic en el mapa:</div>
-                <div class="grid2">
-                    <div class="fila"><label>Tipo</label><select id="sim-tipo"><option>lluvia</option><option>viento</option><option>robo_7d</option><option>cortes</option></select></div>
-                    <div class="fila"><label>Radio (m)</label><input type="number" id="sim-radio" value="1200" min="100" step="100"></div>
-                    <div class="fila"><label>p de falla</label><input type="number" id="sim-p" value="0.95" min="0" max="1" step="0.05"></div>
-                    <div class="fila"><button class="btn sec2" id="btn-clic" style="margin:0">📍 Clic en mapa</button></div>
-                </div>
-                <div class="lista-sim" id="lista-sim"></div>
-            </div>
-        </details>
-
-        <div class="ayuda" style="margin-top:12px">
-            API: <a href="/api/docs" target="_blank" style="color:var(--acento)">/api/docs</a> ·
-            Fase 2 (estática): <a href="visualizador_dijkstra.html" style="color:var(--acento)">visualizador_dijkstra.html</a> ·
-            <label style="cursor:pointer"><input type="checkbox" id="mapa-oscuro"> mapa oscuro</label>
+        <div class="pie-links">
+            <span><a href="/api/docs" target="_blank">Documentación API</a> · <a href="visualizador_dijkstra.html">Vista Fase 2</a></span>
         </div>
     </div>
 </div>
 
-<div class="leyenda" id="leyenda"><h3>Rutas · algoritmo · tiempo de cómputo · resiliencia</h3><div id="ley-rutas" class="ayuda">Calculando…</div></div>
-<div class="aviso-clic">Haga clic en el mapa para ubicar la amenaza simulada (Esc para cancelar)</div>
+<div class="leyenda" id="leyenda">
+    <h3>Rutas · Resiliencia (R) · Cómputo</h3>
+    <div id="ley-rutas" class="ayuda">Calculando…</div>
+</div>
+<div class="aviso-clic">Haga clic en el mapa para situar la amenaza simulada (Esc para cancelar)</div>
 <div id="map"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -246,35 +416,37 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 // ------------------------------------------------------------------------------------------
 const API = (location.protocol === 'file:' || !['8080', '80', ''].includes(location.port)) ? 'http://localhost:8000/api' : '/api';
 const AMENAZAS = {
-    lluvia:  { nombre: 'Lluvia (Open-Meteo)', color: '#3b82f6' },
-    viento:  { nombre: 'Viento (Open-Meteo)', color: '#a855f7' },
-    robo_7d: { nombre: 'Robos últimos 7 días (STOP)', color: '#ef4444' },
-    cortes:  { nombre: 'Cortes de ruta (TomTom)', color: '#eab308' },
-    simulada:{ nombre: 'Simulada', color: '#ec4899' },
+    lluvia:   { nombre: 'Lluvia (Open-Meteo)', color: '#3b82f6' },
+    viento:   { nombre: 'Viento (Open-Meteo)', color: '#a855f7' },
+    robo_7d:  { nombre: 'Robos últimos 7 días (STOP)', color: '#ef4444' },
+    simulada: { nombre: 'Amenaza simulada', color: '#ec4899' },
 };
 const METADATOS = {
     stop_90d:  { nombre: 'Robos 90 días (STOP)', color: '#dc2626', capa: 'stop_90d' },
-    oscuridad: { nombre: 'Oscuridad (luminarias Mapillary)', color: '#facc15', capa: 'luminarias' },
+    oscuridad: { nombre: 'Oscuridad (Mapillary)', color: '#facc15', capa: 'luminarias' },
     trafico:   { nombre: 'Tráfico lento (TomTom)', color: '#fb923c', capa: 'trafico' },
     formas:    { nombre: 'Curvas y enlaces (Overpass)', color: '#14b8a6', capa: 'formas' },
 };
 const ETIQUETAS_PARAM = {
-    umbral_mm_h: 'Umbral lluvia (mm/h)', peso_probabilidad: 'Peso prob. de lluvia', umbral_kmh: 'Umbral viento (km/h)',
-    umbral_rafaga_kmh: 'Umbral ráfaga (km/h)', inicio_riesgo: 'Inicio de riesgo (× umbral)', p_max: 'p máxima (nivel 4/4)',
-    p_base: 'p base', p_por_magnitud: 'p por magnitud', radio_m: 'Radio afectado (m)',
+    umbral_mm_h: 'Umbral lluvia (mm/h)',
+    peso_probabilidad: 'Peso prob. de lluvia',
+    umbral_kmh: 'Umbral viento (km/h)',
+    umbral_rafaga_kmh: 'Umbral ráfaga (km/h)',
+    inicio_riesgo: 'Inicio de riesgo (× umbral)',
+    p_max: 'p máxima (nivel 4/4)',
 };
-const ESTILO_RUTA = {   // dibujo en capas: la más ancha abajo para que se vean superpuestas
-    dijkstra_distancia: { weight: 9, opacity: 0.75, dashArray: null },
-    dijkstra_parametros:{ weight: 7, opacity: 0.85, dashArray: null },
-    genetico:           { weight: 4.5, opacity: 0.95, dashArray: '10 7' },
-    gurobi:             { weight: 3, opacity: 1, dashArray: null },
+const ESTILO_RUTA = {
+    dijkstra_distancia:  { weight: 9, opacity: 0.75, dashArray: null },
+    dijkstra_parametros: { weight: 7, opacity: 0.85, dashArray: null },
+    genetico:            { weight: 4.5, opacity: 0.95, dashArray: '10 7' },
+    gurobi:              { weight: 3, opacity: 1, dashArray: null },
 };
 const ORDEN_DIBUJO = ['dijkstra_distancia', 'dijkstra_parametros', 'genetico', 'gurobi'];
 
 const estado = {
     defecto: null, nodos: [], modo: 'circuito', simuladas: [], resultado: null, sim: null, verDespues: true,
     rutasVisibles: { dijkstra_distancia: true, gurobi: true, dijkstra_parametros: true, genetico: true },
-    capasCache: {}, nombresTecnicas: {}, peticion: null,
+    capasCache: {}, nombresTecnicas: {}, peticion: null, oscuro: false,
 };
 
 // ------------------------------------------------------------------------------------------
@@ -292,7 +464,7 @@ map.createPane('nodos').style.zIndex = 620;
 
 const capas = {
     metadatos: {}, grilla: L.layerGroup().addTo(map), zonas: L.layerGroup().addTo(map),
-    obstaculos: L.layerGroup().addTo(map), restringidas: L.layerGroup().addTo(map), terreno: L.layerGroup().addTo(map),
+    obstaculos: L.layerGroup().addTo(map), terreno: L.layerGroup().addTo(map),
     grafo: L.layerGroup().addTo(map), rutas: L.layerGroup().addTo(map), nodos: L.layerGroup().addTo(map),
     simuladas: L.layerGroup().addTo(map),
 };
@@ -304,12 +476,16 @@ const $ = id => document.getElementById(id);
 const pct = x => (x == null ? '—' : (100 * x).toFixed(1) + '%');
 const km = m => (m == null ? '—' : (m / 1000).toFixed(2) + ' km');
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
 function popupTabla(titulo, props, omitir = []) {
     const filas = Object.entries(props).filter(([k, v]) => !omitir.includes(k) && v !== null && v !== '')
         .map(([k, v]) => `<tr><td style="color:#64748b;padding:1px 8px 1px 0">${esc(k)}</td><td>${esc(typeof v === 'number' ? +v.toFixed(4) : v)}</td></tr>`).join('');
     return `<b>${titulo}</b><table style="margin-top:4px">${filas}</table>`;
 }
-function setEstado(tipo, texto) { $('punto-estado').className = 'punto ' + tipo; $('texto-estado').textContent = texto; }
+function setEstado(tipo, texto) {
+    $('punto-estado').className = 'punto ' + tipo;
+    $('texto-estado').textContent = texto;
+}
 async function api(ruta, cuerpo, signal) {
     const r = await fetch(API + ruta, cuerpo ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(cuerpo), signal } : { signal });
     if (!r.ok) throw new Error((await r.json().catch(() => ({}))).detail || `HTTP ${r.status}`);
@@ -336,30 +512,42 @@ function construirPanel(cfg) {
     const interes = estado.nodos.filter(n => n.tipo === 'interes');
     $('origen').innerHTML = comisarias.map(n => `<option value="${n.id}">${n.id} · ${esc(n.nombre)}</option>`).join('');
     $('origen').value = d.origen;
-    $('destinos').innerHTML = interes.map(n => `<label class="check"><input type="checkbox" class="chk-destino" value="${n.id}" ${d.destinos.includes(n.id) ? 'checked' : ''}>
-        <span class="chip" style="background:#ef4444;border-radius:50%"></span>${n.id} · ${esc(n.nombre)}</label>`).join('');
+    $('destinos').innerHTML = interes.map(n => `<label class="check">
+        <input type="checkbox" class="chk-destino" value="${n.id}" ${d.destinos.includes(n.id) ? 'checked' : ''}>
+        <span class="chip" style="background:#ef4444;border-radius:50%"></span>
+        <span><b>${n.id}</b> · ${esc(n.nombre)}</span>
+    </label>`).join('');
     $('destino-punto').innerHTML = interes.map(n => `<option value="${n.id}">${n.id} · ${esc(n.nombre)}</option>`).join('');
 
-    $('lista-amenazas').innerHTML = cfg.amenazas.map(a => `<label class="check"><input type="checkbox" class="chk-amenaza" value="${a}" checked>
-        <span class="chip" style="background:${AMENAZAS[a].color}"></span>${AMENAZAS[a].nombre}
-        <span style="margin-left:auto;color:#64748b">peso <input type="number" class="peso-amenaza" data-a="${a}" value="1" min="0" step="0.5" style="width:46px;background:#0b1220;color:#e2e8f0;border:1px solid #334155;border-radius:5px;padding:2px 4px"></span></label>`).join('');
-    $('params-amenazas').innerHTML = Object.entries(cfg.params_amenazas).map(([a, ps]) =>
-        `<div style="margin-top:6px;color:${AMENAZAS[a].color};font-weight:700">${AMENAZAS[a].nombre}</div>` +
+    $('lista-amenazas').innerHTML = cfg.amenazas.filter(a => AMENAZAS[a]).map(a => `<label class="check">
+        <input type="checkbox" class="chk-amenaza" value="${a}" checked>
+        <span class="chip" style="background:${AMENAZAS[a].color}"></span>
+        <span>${AMENAZAS[a].nombre}</span>
+    </label>`).join('');
+
+    $('params-amenazas').innerHTML = Object.entries(cfg.params_amenazas).filter(([a]) => AMENAZAS[a]).map(([a, ps]) =>
+        `<div style="margin-top:8px;color:${AMENAZAS[a].color};font-weight:700;font-size:12px">${AMENAZAS[a].nombre}</div>` +
         Object.entries(ps).map(([k, v]) => `<div class="fila"><label>${ETIQUETAS_PARAM[k] || k}</label>
             <input type="number" class="param-amenaza" data-a="${a}" data-k="${k}" value="${v}" step="any"></div>`).join('')).join('');
 
-    $('lista-metadatos').innerHTML = cfg.metadatos.map(m => `<label class="check"><input type="checkbox" class="chk-metadato" value="${m}" checked>
-        <span class="chip" style="background:${METADATOS[m].color}"></span>${METADATOS[m].nombre}
-        <label style="margin-left:auto;color:#64748b;display:flex;gap:4px;align-items:center"><input type="checkbox" class="ver-metadato" value="${m}">ver</label></label>`).join('');
+    $('lista-metadatos').innerHTML = cfg.metadatos.map(m => `<div class="check" style="justify-content:space-between">
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;flex:1">
+            <input type="checkbox" class="chk-metadato" value="${m}" checked>
+            <span class="chip" style="background:${METADATOS[m].color}"></span>
+            <span>${METADATOS[m].nombre}</span>
+        </label>
+        <label style="color:#64748b;font-size:11px;display:flex;gap:4px;align-items:center;cursor:pointer" title="Dibujar capa en el mapa">
+            <input type="checkbox" class="ver-metadato" value="${m}"> mapa
+        </label>
+    </div>`).join('');
 
-    $('lista-rutas').innerHTML = Object.entries(cfg.tecnicas).map(([t, info]) => `<label class="check"><input type="checkbox" class="chk-ruta" value="${t}" checked>
-        <span class="chip" style="background:${info.color}"></span>${info.nombre}</label>`).join('');
     actualizarContadores();
 }
 
 function actualizarContadores() {
-    $('n-amenazas').textContent = `${document.querySelectorAll('.chk-amenaza:checked').length}/4 activas`;
-    $('n-metadatos').textContent = `${document.querySelectorAll('.chk-metadato:checked').length}/4 activos`;
+    const na = document.querySelectorAll('.chk-amenaza:checked').length;
+    const nm = document.querySelectorAll('.chk-metadato:checked').length;
+    $('n-capas').textContent = `${na} amenazas · ${nm} metadatos`;
 }
 
 function consulta() {
@@ -368,20 +556,25 @@ function consulta() {
     document.querySelectorAll('.param-amenaza').forEach(i => {
         (params[i.dataset.a] ??= {})[i.dataset.k] = parseFloat(i.value);
     });
-    const pesos = {};
-    document.querySelectorAll('.peso-amenaza').forEach(i => pesos[i.dataset.a] = parseFloat(i.value));
     return {
         modo: estado.modo,
         origen: +$('origen').value,
         destinos: estado.modo === 'punto' ? [+$('destino-punto').value]
             : [...document.querySelectorAll('.chk-destino:checked')].map(i => +i.value),
-        bateria_km: num('bateria_km'), velocidad_kmh: num('velocidad_kmh'), altura_vuelo_m: num('altura_vuelo_m'),
-        riesgo_max: num('riesgo_max') / 100, umbral_falla: num('umbral_falla') / 100, umbral_blando: num('umbral_blando') / 100,
-        modelo: $('modelo').value, peso_riesgo: num('peso_riesgo'), peso_metadatos: num('peso_metadatos'),
+        bateria_km: num('bateria_km'),
+        velocidad_kmh: num('velocidad_kmh'),
+        altura_vuelo_m: num('altura_vuelo_m'),
+        riesgo_max: num('riesgo_max') / 100,
+        umbral_falla: num('umbral_falla') / 100,
+        umbral_blando: num('umbral_blando') / 100,
+        modelo: $('modelo').value,
+        peso_riesgo: num('peso_riesgo'),
+        peso_metadatos: num('peso_metadatos'),
         amenazas: [...document.querySelectorAll('.chk-amenaza:checked')].map(i => i.value),
         metadatos: [...document.querySelectorAll('.chk-metadato:checked')].map(i => i.value),
         restricciones_estaticas: $('restricciones_estaticas').checked,
-        pesos_amenazas: pesos, params_amenazas: params,
+        pesos_amenazas: {},
+        params_amenazas: params,
         amenazas_simuladas: estado.simuladas,
         semilla: parseInt($('semilla').value) || 42,
         incluir_grafo: true,
@@ -392,18 +585,18 @@ function consulta() {
 // Cálculo
 // ------------------------------------------------------------------------------------------
 let temporizador = null;
-function recalcular(retardo = 450) {
+function recalcular(retardo = 400) {
     clearTimeout(temporizador);
     temporizador = setTimeout(calcular, retardo);
 }
 
 async function calcular() {
     const c = consulta();
-    if (!c.destinos.length) { setEstado('mal', 'Elija al menos un destino'); return; }
+    if (!c.destinos.length) { setEstado('mal', 'Seleccione al menos un destino'); return; }
     estado.peticion?.abort();
     const ctrl = new AbortController();
     estado.peticion = ctrl;
-    setEstado('cargando', 'Calculando las 4 rutas…');
+    setEstado('cargando', 'Calculando rutas…');
     try {
         const t0 = performance.now();
         const res = await api('/rutas', c, ctrl.signal);
@@ -411,8 +604,7 @@ async function calcular() {
         estado.sim = null;
         $('resultado-sim').innerHTML = '';
         dibujarResultado(res);
-        const e = res.estadisticas;
-        setEstado('ok', `Listo en ${((performance.now() - t0) / 1000).toFixed(1)} s · grafo ${e.nodos_grafo_b} nodos / ${e.aristas_grafo_b} aristas`);
+        setEstado('ok', `Rutas calculadas en ${((performance.now() - t0) / 1000).toFixed(1)} s`);
         if ($('texto-demo').dataset.activo) explicarDemo(res);
     } catch (err) {
         if (err.name === 'AbortError') return;
@@ -441,16 +633,18 @@ function dibujarZonas(fc) {
         pane: 'zonas',
         style: f => {
             const p = f.properties, col = p.fallada ? '#dc2626' : AMENAZAS[p.amenaza]?.color || '#64748b';
-            return { color: col, weight: p.dura || p.fallada ? 2.2 : 0.8, dashArray: p.dura && !p.fallada ? '5 4' : null,
-                fillColor: col, fillOpacity: p.fallada ? 0.55 : 0.08 + 0.45 * p.p };
+            return {
+                color: col, weight: p.dura || p.fallada ? 2.2 : 0.8,
+                dashArray: p.dura && !p.fallada ? '5 4' : null,
+                fillColor: col, fillOpacity: p.fallada ? 0.55 : 0.08 + 0.45 * p.p
+            };
         },
         onEachFeature: (f, l) => {
             const p = f.properties;
             l.bindPopup(`<b style="color:${AMENAZAS[p.amenaza]?.color}">${AMENAZAS[p.amenaza]?.nombre || p.amenaza}</b><br>
                 ${esc(p.detalle)}<br>Probabilidad de falla: <b>${pct(p.p)}</b>
-                ${p.dura ? '<br><b style="color:#dc2626">Zona caída: bloquea el paso</b>' : ''}
-                ${p.fallada ? '<br><b style="color:#dc2626">FALLA OCURRIDA en el sorteo</b>' : ''}
-                <br><span style="color:#64748b">${esc(p.zona_id)}</span>`);
+                ${p.dura ? '<br><b style="color:#dc2626">Zona bloqueada (p ≥ umbral)</b>' : ''}
+                ${p.fallada ? '<br><b style="color:#dc2626">FALLA OCURRIDA en el sorteo</b>' : ''}`);
         },
     }).addTo(capas.zonas);
 }
@@ -458,23 +652,28 @@ function dibujarZonas(fc) {
 function dibujarObstaculos(fc) {
     capas.obstaculos.clearLayers();
     if (!$('ver-obstaculos').checked) return;
-    L.geoJSON(fc, { pane: 'obst', style: { color: '#334155', weight: 1.5, fillColor: '#475569', fillOpacity: 0.25, dashArray: '2 4' },
-        onEachFeature: (f, l) => l.bindPopup('<b>Obstáculo del grafo</b><br>Unión de zonas restringidas, terreno sobre el techo y zonas caídas, con 40 m de holgura. Ninguna ruta (salvo pgr_dijkstra solo distancia frente a amenazas) lo cruza.') }).addTo(capas.obstaculos);
+    L.geoJSON(fc, {
+        pane: 'obst',
+        style: { color: '#334155', weight: 1.5, fillColor: '#475569', fillOpacity: 0.25, dashArray: '3 4' },
+        onEachFeature: (f, l) => l.bindPopup('<b>Obstáculo bloqueado</b><br>Terreno sobre la altura de vuelo y zonas críticas caídas (+40 m de seguridad).')
+    }).addTo(capas.obstaculos);
 }
 
 function dibujarGrafo(g) {
     capas.grafo.clearLayers();
     if (!$('ver-grafo').checked || !g) return;
-    L.geoJSON(g.aristas, { style: f => ({ color: '#64748b', weight: 0.6, opacity: 0.35 }) }).addTo(capas.grafo);
+    L.geoJSON(g.aristas, { style: () => ({ color: '#64748b', weight: 0.6, opacity: 0.35 }) }).addTo(capas.grafo);
     L.geoJSON(g.waypoints, {
-        pointToLayer: (f, ll) => L.circleMarker(ll, { radius: 3.5, color: f.properties.tipo === 'waypoint_duro' ? '#0f172a' : '#be185d', weight: 1.5, fillColor: '#fff', fillOpacity: 1 }),
-        onEachFeature: (f, l) => l.bindPopup(`<b>Waypoint ${f.properties.id}</b><br>${f.properties.tipo === 'waypoint_duro' ? 'Vértice de un obstáculo (rodeo obligatorio)' : 'Vértice de una zona de riesgo (rodeo opcional)'}`),
+        pointToLayer: (f, ll) => L.circleMarker(ll, {
+            radius: 3.5, color: f.properties.tipo === 'waypoint_duro' ? '#0f172a' : '#be185d',
+            weight: 1.5, fillColor: '#fff', fillOpacity: 1
+        }),
+        onEachFeature: (f, l) => l.bindPopup(`<b>Waypoint ${f.properties.id}</b><br>${f.properties.tipo === 'waypoint_duro' ? 'Rodeo de obstáculo' : 'Rodeo de zona de amenaza'}`),
     }).addTo(capas.grafo);
 }
 
 function rutasMostradas() {
-    const base = estado.sim ? (estado.verDespues ? estado.sim.despues : estado.sim.antes) : estado.resultado;
-    return base;
+    return estado.sim ? (estado.verDespues ? estado.sim.despues : estado.sim.antes) : estado.resultado;
 }
 
 function dibujarRutas(res) {
@@ -490,8 +689,7 @@ function dibujarRutas(res) {
                 Distancia: <b>${km(r.distancia_m)}</b> · vuelo ${r.tiempo_vuelo_min} min<br>
                 Resiliencia R: <b>${pct(r.resiliencia)}</b> (Monte Carlo ${pct(r.resiliencia_mc)})<br>
                 Costo J: ${r.costo?.toLocaleString('es-CL')} · cómputo ${r.tiempo_computo_ms} ms<br>
-                Orden de visita: ${r.orden_visita.join(' → ')}<br>
-                Zonas de amenaza tocadas: ${r.zonas_cruzadas.length} · waypoints: ${r.waypoints}
+                Orden de visita: ${r.orden_visita.join(' → ')}
                 ${r.motivos.map(m => `<div style="color:#b91c1c">• ${esc(m)}</div>`).join('')}`),
         }).addTo(capas.rutas);
     }
@@ -511,13 +709,15 @@ function dibujarNodos(res) {
         const pos = orden.indexOf(n.id);
         const texto = n.id === c.origen ? 'B' + n.id : n.id;
         const insignia = pos >= 0 ? `<span class="orden-visita">${pos + 1}º</span>` : '';
-        const icono = L.divIcon({ className: '', iconSize: [tam, tam], iconAnchor: [tam / 2, tam / 2],
-            html: `<div class="marcador-nodo" style="width:${tam}px;height:${tam}px;background:${color};opacity:${enMision ? 1 : .55};${fallados.has(n.id) ? 'outline:3px solid #dc2626;' : ''}">${inalc ? '✕' : texto}${insignia}</div>` });
+        const icono = L.divIcon({
+            className: '', iconSize: [tam, tam], iconAnchor: [tam / 2, tam / 2],
+            html: `<div class="marcador-nodo" style="width:${tam}px;height:${tam}px;background:${color};opacity:${enMision ? 1 : .55};${fallados.has(n.id) ? 'outline:3px solid #dc2626;' : ''}">${inalc ? '✕' : texto}${insignia}</div>`
+        });
         L.marker([n.lat, n.lon], { icon: icono, pane: 'nodos' }).bindPopup(`<b>${n.id} · ${esc(n.nombre)}</b><br>${esc(n.descripcion || '')}<br>
-            Tipo: ${n.tipo} · elevación ${n.elevacion_m ?? '?'} m s.n.m.<br>
+            Elevación: ${n.elevacion_m ?? '?'} m s.n.m.<br>
             ${pos >= 0 ? `Visita n.º ${pos + 1} en la mejor ruta (${esc(mejor.nombre)})<br>` : ''}
             ${inalc ? '<b style="color:#dc2626">Inalcanzable: queda dentro de un obstáculo</b>' : ''}
-            ${fallados.has(n.id) ? '<b style="color:#dc2626">Nodo afectado por una falla sorteada</b>' : ''}`).addTo(capas.nodos);
+            ${fallados.has(n.id) ? '<b style="color:#dc2626">Nodo afectado por falla sorteada</b>' : ''}`).addTo(capas.nodos);
     }
 }
 
@@ -525,17 +725,34 @@ function tablaRutas(res) {
     const filas = res.rutas.map(r => {
         const est = !r.ok ? '<span class="tag mal">sin ruta</span>' : r.factible ? '<span class="tag ok">factible</span>' : '<span class="tag warn">infactible</span>';
         const marcas = (r.mejor ? ' ★' : '') + (r.mas_resiliente ? ' 🛡' : '');
-        return `<tr><td><span class="chip" style="background:${r.color}"></span> ${esc(r.nombre)}${marcas}<br>${est}
-                ${r.motivos.map(m => `<div class="motivo">${esc(m)}</div>`).join('')}</td>
-            <td class="num">${r.ok ? km(r.distancia_m) : '—'}<br><span style="color:#64748b">${r.ok ? r.tiempo_vuelo_min + ' min' : ''}</span></td>
-            <td class="num"><b>${r.ok ? pct(r.resiliencia) : '—'}</b><br><span style="color:#64748b">MC ${r.ok ? pct(r.resiliencia_mc) : '—'}</span></td>
-            <td class="num">${r.tiempo_computo_ms} ms<br><span style="color:#64748b">J ${r.costo != null ? Math.round(r.costo).toLocaleString('es-CL') : '—'}</span></td></tr>`;
+        const checked = estado.rutasVisibles[r.tecnica] ? 'checked' : '';
+        return `<tr>
+            <td>
+                <label style="display:flex;align-items:flex-start;gap:7px;cursor:pointer">
+                    <input type="checkbox" class="chk-ruta" value="${r.tecnica}" ${checked} style="margin-top:2px;accent-color:${r.color}">
+                    <div>
+                        <span class="chip" style="background:${r.color}"></span> <b>${esc(r.nombre)}</b>${marcas}<br>
+                        ${est}
+                        ${r.motivos.map(m => `<div class="motivo">${esc(m)}</div>`).join('')}
+                    </div>
+                </label>
+            </td>
+            <td class="num">${r.ok ? km(r.distancia_m) : '—'}<br><span style="color:#64748b;font-size:11px">${r.ok ? r.tiempo_vuelo_min + ' min' : ''}</span></td>
+            <td class="num"><b>${r.ok ? pct(r.resiliencia) : '—'}</b><br><span style="color:#64748b;font-size:11px">MC ${r.ok ? pct(r.resiliencia_mc) : '—'}</span></td>
+            <td class="num">${r.tiempo_computo_ms} ms</td>
+        </tr>`;
     }).join('');
     const mejor = res.rutas.find(r => r.mejor);
-    $('tabla-rutas').innerHTML = `<table><tr><th>Técnica</th><th class="num">Distancia</th><th class="num">Resiliencia</th><th class="num">Cómputo</th></tr>${filas}</table>
-        <div class="caja">${mejor ? `★ <b>Mejor ruta:</b> ${esc(mejor.nombre)} (menor costo J entre las factibles).` : '★ Ninguna ruta cumple todas las restricciones: relaje la autonomía o el riesgo máximo.'}<br>
-        🛡 <b>Más resiliente:</b> ${esc(res.rutas.find(r => r.mas_resiliente)?.nombre || '—')}.<br>
-        <span style="color:#94a3b8">R = Π(1 − p) de las zonas que toca la ruta = probabilidad de completar la misión sin fallas. J = distancia ponderada por vigilancia + β·1000·Σ −ln(1 − p).</span></div>`;
+    const masRes = res.rutas.find(r => r.mas_resiliente);
+    $('tabla-rutas').innerHTML = `
+        <table>
+            <tr><th>Algoritmo (mostrar)</th><th class="num">Distancia</th><th class="num">Resiliencia</th><th class="num">Tiempo</th></tr>
+            ${filas}
+        </table>
+        <div class="caja">
+            ★ <b>Recomendada:</b> ${mejor ? esc(mejor.nombre) : 'Ninguna cumple todas las restricciones'}<br>
+            🛡 <b>Más resiliente:</b> ${masRes ? `${esc(masRes.nombre)} (${pct(masRes.resiliencia)} éxito)` : '—'}
+        </div>`;
 }
 
 function leyenda(res) {
@@ -544,22 +761,31 @@ function leyenda(res) {
         if (!r) return '';
         const est = ESTILO_RUTA[t];
         const linea = est.dashArray ? `background: repeating-linear-gradient(90deg, ${r.color} 0 6px, transparent 6px 10px)` : `background:${r.color}`;
-        return `<div class="ley-ruta ${estado.rutasVisibles[t] ? '' : 'apagada'}"><div class="linea" style="${linea}"></div>
+        return `<div class="ley-ruta ${estado.rutasVisibles[t] ? '' : 'apagada'}" data-tec="${t}" title="Clic para mostrar/ocultar">
+            <div class="linea" style="${linea}"></div>
             <div><b>${esc(r.nombre)}</b>${r.mejor ? ' ★' : ''}${r.mas_resiliente ? ' 🛡' : ''}</div>
-            <div class="met">${r.ok ? `${r.tiempo_computo_ms} ms · R ${pct(r.resiliencia)}` : 'sin ruta'}</div></div>`;
-    }).join('') + `<div class="ayuda" style="margin-top:6px">★ mejor (menor costo, factible) · 🛡 más resiliente · R = P(misión sin fallas)</div>`;
+            <div class="met">${r.ok ? `${km(r.distancia_m)} · R ${pct(r.resiliencia)}` : 'sin ruta'}</div>
+        </div>`;
+    }).join('');
+    document.querySelectorAll('.ley-ruta').forEach(el => {
+        el.onclick = () => {
+            const t = el.dataset.tec;
+            estado.rutasVisibles[t] = !estado.rutasVisibles[t];
+            const chk = document.querySelector(`.chk-ruta[value="${t}"]`);
+            if (chk) chk.checked = estado.rutasVisibles[t];
+            const actual = rutasMostradas();
+            if (actual) { dibujarRutas(actual); leyenda(actual); }
+        };
+    });
 }
 
 function infoGrafo(res) {
     const e = res.estadisticas;
     $('info-grafo').style.display = 'block';
-    $('info-grafo').innerHTML = `<b>Grafo de visibilidad</b><br>
-        Solo distancia: ${e.nodos_grafo_a} nodos, ${e.aristas_grafo_a} aristas<br>
-        Con amenazas: ${e.nodos_grafo_b} nodos, ${e.aristas_grafo_b} aristas${e.grafo_podado ? ' (podado para el MILP)' : ''}<br>
-        Zonas de amenaza: ${e.zonas_activas} (${e.zonas_duras} caídas, ${e.zonas_blandas} con rodeo)<br>
-        Zonas restringidas: ${e.zonas_restringidas} · hexágonos de cerro: ${e.hexagonos_terreno}<br>
-        Techo de vuelo: ${e.techo_vuelo_msnm ?? '—'} m s.n.m. (base a ${e.elevacion_base_msnm ?? '—'} m)<br>
-        Tiempo grafos: ${e.tiempo_grafos_ms} ms · total: ${e.tiempo_total_ms} ms`;
+    $('info-grafo').innerHTML = `<b>Resumen del grafo</b><br>
+        Nodos: ${e.nodos_grafo_b} · Aristas: ${e.aristas_grafo_b}<br>
+        Zonas de amenaza: ${e.zonas_activas} (${e.zonas_duras} bloqueadas)<br>
+        Cerros sobre el techo (${e.techo_vuelo_msnm ?? '—'} m s.n.m.): ${e.hexagonos_terreno} hexágonos`;
 }
 
 async function dibujarTerreno() {
@@ -569,17 +795,8 @@ async function dibujarTerreno() {
     const fc = await capaApi('terreno');
     L.geoJSON({ type: 'FeatureCollection', features: fc.features.filter(f => techo && f.properties.elevacion_m >= techo - 30) }, {
         style: { color: '#a16207', weight: 0.6, fillColor: '#ca8a04', fillOpacity: 0.35 },
-        onEachFeature: (f, l) => l.bindPopup(`<b>Cerro sobre el techo de vuelo</b><br>Elevación ${f.properties.elevacion_m} m s.n.m. ≥ techo ${techo} m − 30 m de margen`),
+        onEachFeature: (f, l) => l.bindPopup(`<b>Cerro sobre el techo de vuelo</b><br>Elevación ${f.properties.elevacion_m} m s.n.m. ≥ techo ${techo} m − 30 m`),
     }).addTo(capas.terreno);
-}
-
-async function dibujarRestringidas() {
-    capas.restringidas.clearLayers();
-    if (!$('ver-restringidas').checked) return;
-    L.geoJSON(await capaApi('zonas_restringidas'), {
-        pane: 'obst', style: { color: '#ea580c', weight: 1.5, fillColor: '#f97316', fillOpacity: 0.3 },
-        onEachFeature: (f, l) => l.bindPopup(popupTabla('Zona restringida (' + f.properties.tipo + ')', f.properties)),
-    }).addTo(capas.restringidas);
 }
 
 async function dibujarMetadato(m, visible) {
@@ -589,14 +806,21 @@ async function dibujarMetadato(m, visible) {
     const col = METADATOS[m].color;
     let capa;
     if (m === 'stop_90d') {
-        capa = L.geoJSON(fc, { pane: 'zonas', style: f => ({ color: f.properties.color || col, weight: 0.6, fillColor: f.properties.color || col, fillOpacity: 0.12 + 0.12 * f.properties.nivel }),
-            onEachFeature: (f, l) => l.bindPopup(popupTabla('Robos con violencia 90 días (STOP)', f.properties, ['color'])) });
+        capa = L.geoJSON(fc, {
+            pane: 'zonas',
+            style: f => ({ color: f.properties.color || col, weight: 0.6, fillColor: f.properties.color || col, fillOpacity: 0.12 + 0.12 * f.properties.nivel }),
+            onEachFeature: (f, l) => l.bindPopup(popupTabla('Robos con violencia 90 días (STOP)', f.properties, ['color']))
+        });
     } else if (m === 'oscuridad') {
-        capa = L.geoJSON(fc, { pointToLayer: (f, ll) => L.circleMarker(ll, { radius: 2, stroke: false, fillColor: col, fillOpacity: 0.8 }),
-            onEachFeature: (f, l) => l.bindPopup(popupTabla('Luminaria (Mapillary)', f.properties)) });
+        capa = L.geoJSON(fc, {
+            pointToLayer: (f, ll) => L.circleMarker(ll, { radius: 2, stroke: false, fillColor: col, fillOpacity: 0.8 }),
+            onEachFeature: (f, l) => l.bindPopup(popupTabla('Luminaria (Mapillary)', f.properties))
+        });
     } else {
-        capa = L.geoJSON(fc, { style: f => ({ color: col, weight: m === 'trafico' ? 2 + 6 * (f.properties.factor_riesgo_trafico || 0) : 1 + 5 * (f.properties.factor_riesgo_geom || 0), opacity: 0.8 }),
-            onEachFeature: (f, l) => l.bindPopup(popupTabla(METADATOS[m].nombre, f.properties)) });
+        capa = L.geoJSON(fc, {
+            style: f => ({ color: col, weight: m === 'trafico' ? 2 + 6 * (f.properties.factor_riesgo_trafico || 0) : 1 + 5 * (f.properties.factor_riesgo_geom || 0), opacity: 0.8 }),
+            onEachFeature: (f, l) => l.bindPopup(popupTabla(METADATOS[m].nombre, f.properties))
+        });
     }
     capas.metadatos[m] = capa.addTo(map);
 }
@@ -640,43 +864,57 @@ function mostrarSimulacion() {
     const res = estado.verDespues ? s.despues : s.antes;
     dibujarResultado(res);
     const nombre = t => estado.nombresTecnicas[t]?.nombre || t;
-    const impacto = s.impacto.map(i => `<tr><td>${esc(nombre(i.tecnica))}</td><td>${i.sobrevive ? '<span class="tag ok">sobrevive</span>' : '<span class="tag mal">cae</span>'}</td>
-        <td style="color:#94a3b8">${i.sobrevive ? '' : (i.zonas_falladas || []).length + ' zona(s)' + (i.nodos_fallados?.length ? ', nodos ' + i.nodos_fallados.join(', ') : '')}</td></tr>`).join('');
-    const sorteos = s.sorteos.slice(0, 14).map(x => `<tr><td><span class="chip" style="background:${AMENAZAS[x.amenaza]?.color}"></span> ${esc(x.zona_id.split(':')[0])}</td>
-        <td class="num">${x.umbral.toFixed(1)}</td><td class="num">${x.numero.toFixed(1)}</td><td>${x.falla ? '<span class="tag mal">falla</span>' : '<span class="tag ok">no</span>'}</td></tr>`).join('');
+    const impacto = s.impacto.map(i => `<tr>
+        <td>${esc(nombre(i.tecnica))}</td>
+        <td>${i.sobrevive ? '<span class="tag ok">sobrevive</span>' : '<span class="tag mal">bloqueada</span>'}</td>
+        <td style="color:#94a3b8">${i.sobrevive ? '' : (i.zonas_falladas || []).length + ' zona(s)'}</td>
+    </tr>`).join('');
     $('resultado-sim').innerHTML = `
-        <div class="seg"><button id="sim-antes" class="${estado.verDespues ? '' : 'activo'}">Rutas antes del sorteo</button>
-            <button id="sim-despues" class="${estado.verDespues ? 'activo' : ''}">Rutas recalculadas</button></div>
-        <div class="caja"><b>${s.zonas_falladas.length}</b> de ${s.sorteos.length} zonas fallaron (semilla ${s.semilla}).
-            ${s.nodos_fallados.length ? `<br>Nodos afectados: <b>${s.nodos_fallados.join(', ')}</b>` : ''}</div>
-        <table><tr><th>Ruta original</th><th>Resultado</th><th></th></tr>${impacto}</table>
-        <table><tr><th>Zona</th><th class="num">100·p</th><th class="num">Sorteo</th><th></th></tr>${sorteos}</table>
-        <div class="ayuda">Falla si sorteo &lt; 100·p. Se muestran las fallas primero (${s.sorteos.length} zonas en total).</div>`;
+        <div class="seg" style="margin-top:8px">
+            <button id="sim-antes" class="${estado.verDespues ? '' : 'activo'}">Antes del sorteo</button>
+            <button id="sim-despues" class="${estado.verDespues ? 'activo' : ''}">Rutas recalculadas</button>
+        </div>
+        <div class="caja"><b>${s.zonas_falladas.length}</b> de ${s.sorteos.length} zonas sufrieron falla (semilla ${s.semilla}).</div>
+        <table><tr><th>Ruta original</th><th>Estado</th><th>Impacto</th></tr>${impacto}</table>`;
     $('sim-antes').onclick = () => { estado.verDespues = false; mostrarSimulacion(); };
     $('sim-despues').onclick = () => { estado.verDespues = true; mostrarSimulacion(); };
 }
 
 // ------------------------------------------------------------------------------------------
-// Amenazas simuladas y escenario de ejemplo (punto 9)
+// Amenazas simuladas y escenario de ejemplo
 // ------------------------------------------------------------------------------------------
 function dibujarSimuladas() {
     capas.simuladas.clearLayers();
-    $('lista-sim').innerHTML = estado.simuladas.map((s, i) => `<div><span><span class="chip" style="background:${AMENAZAS.simulada.color}"></span>
-        ${s.tipo} · r ${s.radio_m} m · p ${s.p}</span><button data-i="${i}" title="Quitar">✕</button></div>`).join('');
+    $('lista-sim').innerHTML = estado.simuladas.map((s, i) => `<div>
+        <span><span class="chip" style="background:${AMENAZAS.simulada.color}"></span>
+        ${esc(s.tipo)} · radio ${s.radio_m} m · p=${s.p}</span>
+        <button data-i="${i}" title="Quitar">✕</button>
+    </div>`).join('');
     document.querySelectorAll('#lista-sim button').forEach(b => b.onclick = () => {
-        estado.simuladas.splice(+b.dataset.i, 1); dibujarSimuladas(); recalcular(50);
+        estado.simuladas.splice(+b.dataset.i, 1);
+        if (!estado.simuladas.length) {
+            $('texto-demo').style.display = 'none';
+            delete $('texto-demo').dataset.activo;
+        }
+        dibujarSimuladas();
+        recalcular(50);
     });
 }
 
 function modoClic(activo) {
     document.body.classList.toggle('clic-activo', activo);
-    $('btn-clic').textContent = activo ? 'Cancelar' : '📍 Clic en mapa';
+    $('btn-clic').textContent = activo ? 'Cancelar' : '📍 Ubicar';
 }
 
 map.on('click', e => {
     if (!document.body.classList.contains('clic-activo')) return;
-    estado.simuladas.push({ tipo: $('sim-tipo').value, lon: +e.latlng.lng.toFixed(6), lat: +e.latlng.lat.toFixed(6),
-        radio_m: parseFloat($('sim-radio').value), p: parseFloat($('sim-p').value) });
+    estado.simuladas.push({
+        tipo: $('sim-tipo').value,
+        lon: +e.latlng.lng.toFixed(6),
+        lat: +e.latlng.lat.toFixed(6),
+        radio_m: parseFloat($('sim-radio').value) || 1200,
+        p: parseFloat($('sim-p').value) || 0.95
+    });
     modoClic(false);
     dibujarSimuladas();
     recalcular(50);
@@ -686,7 +924,8 @@ function cargarDemo() {
     const d = estado.defecto;
     estado.modo = 'circuito';
     document.querySelectorAll('#seg-modo button').forEach(b => b.classList.toggle('activo', b.dataset.modo === 'circuito'));
-    $('bloque-destinos').style.display = ''; $('bloque-punto').style.display = 'none';
+    $('bloque-destinos').style.display = '';
+    $('bloque-punto').style.display = 'none';
     $('origen').value = 1;
     document.querySelectorAll('.chk-destino').forEach(i => i.checked = true);
     document.querySelectorAll('.chk-amenaza').forEach(i => i.checked = true);
@@ -698,7 +937,7 @@ function cargarDemo() {
     dibujarSimuladas();
     $('texto-demo').dataset.activo = '1';
     $('texto-demo').style.display = 'block';
-    $('texto-demo').innerHTML = 'Calculando el escenario…';
+    $('texto-demo').innerHTML = 'Calculando escenario de demostración…';
     actualizarContadores();
     map.setView([-33.515, -70.77], 13);
     recalcular(10);
@@ -709,13 +948,9 @@ function explicarDemo(res) {
     const base = r('dijkstra_distancia'), best = res.rutas.find(x => x.mejor) || r('gurobi');
     if (!base?.ok || !best?.ok) { $('texto-demo').innerHTML = 'No se pudo calcular el escenario.'; return; }
     const extra = (best.distancia_m - base.distancia_m) / 1000;
-    $('texto-demo').innerHTML = `<b>Escenario (punto 9):</b> la base 1 patrulla los 6 puntos críticos. Se simula una tormenta (p = 0.95, radio 1,3 km)
-        sobre el corredor entre la Plaza de Maipú (6) y Camino a Melipilla (8), por donde pasa la ruta más corta.<br><br>
-        • <b>pgr_dijkstra solo distancia</b> la atraviesa: ${km(base.distancia_m)}, R = <b style="color:#f87171">${pct(base.resiliencia)}</b>
-        ${base.factible ? '' : '(infactible: ' + esc(base.motivos[0]) + ')'}.<br>
-        • <b>${esc(best.nombre)}</b> la rodea por los waypoints del borde: ${km(best.distancia_m)} (${extra >= 0 ? '+' : ''}${extra.toFixed(2)} km),
-        R = <b style="color:#4ade80">${pct(best.resiliencia)}</b>, y sigue visitando los ${best.orden_visita.length} puntos dentro de la autonomía.<br><br>
-        Pruebe a cambiar el modelo a <i>ponderado</i>, mover la tormenta o sortear fallas en la sección 7.`;
+    $('texto-demo').innerHTML = `<b>Escenario activo:</b> tormenta intensa (p = 95%, radio 1,3 km) entre Plaza de Maipú (6) y Camino a Melipilla (8).<br>
+        • <b>Dijkstra distancia</b> la cruza directo (${km(base.distancia_m)}, R = <b style="color:#f87171">${pct(base.resiliencia)}</b>).<br>
+        • <b>${esc(best.nombre)}</b> la rodea (${km(best.distancia_m)}, ${extra >= 0 ? '+' : ''}${extra.toFixed(2)} km) elevando la resiliencia a <b style="color:#4ade80">${pct(best.resiliencia)}</b>.`;
 }
 
 // ------------------------------------------------------------------------------------------
@@ -729,7 +964,21 @@ function enlazarEventos() {
         $('bloque-punto').style.display = estado.modo === 'punto' ? '' : 'none';
         recalcular(50);
     });
-    // Cualquier cambio de parámetros recalcula (con retardo para no saturar la API)
+
+    $('btn-todos-destinos').onclick = () => {
+        const chks = [...document.querySelectorAll('.chk-destino')];
+        const todosMarcados = chks.every(c => c.checked);
+        chks.forEach((c, idx) => c.checked = todosMarcados ? idx === 0 : true);
+        $('btn-todos-destinos').textContent = todosMarcados ? 'Marcar todos' : 'Solo primero';
+        recalcular(50);
+    };
+
+    $('btn-tema').onclick = () => {
+        estado.oscuro = !estado.oscuro;
+        $('map').classList.toggle('oscuro', estado.oscuro);
+        $('btn-tema').textContent = estado.oscuro ? '☀️ Mapa' : '🌙 Mapa';
+    };
+
     document.querySelector('.cuerpo').addEventListener('change', e => {
         const t = e.target;
         if (t.matches('.chk-ruta')) {
@@ -743,17 +992,16 @@ function enlazarEventos() {
         if (t.id === 'ver-grafo') return dibujarGrafo(rutasMostradas()?.grafo);
         if (t.id === 'ver-obstaculos') return dibujarObstaculos(rutasMostradas()?.obstaculos);
         if (t.id === 'ver-terreno') return dibujarTerreno();
-        if (t.id === 'ver-restringidas') return dibujarRestringidas();
-        if (t.id === 'mapa-oscuro') { $('map').classList.toggle('oscuro', t.checked); return; }
         if (['semilla', 'sim-tipo', 'sim-radio', 'sim-p'].includes(t.id)) return;
         if (t.matches('.chk-metadato')) {
             const ver = document.querySelector(`.ver-metadato[value="${t.value}"]`);
-            if (ver) { ver.checked = t.checked; dibujarMetadato(t.value, t.checked && ver.checked); }
+            if (ver && !t.checked) { ver.checked = false; dibujarMetadato(t.value, false); }
             dibujarGrillaVigilancia();
         }
         actualizarContadores();
         recalcular();
     });
+
     $('btn-simular').onclick = simular;
     $('btn-semilla').onclick = () => { $('semilla').value = Math.floor(Math.random() * 100000); };
     $('btn-demo').onclick = cargarDemo;
@@ -772,7 +1020,7 @@ function enlazarEventos() {
         enlazarEventos();
         if (location.hash === '#demo') cargarDemo(); else calcular();
     } catch (err) {
-        setEstado('mal', 'No se pudo conectar con la API (' + err.message + '). ¿Está corriendo el servicio api? (docker compose up -d api web)');
+        setEstado('mal', 'Sin conexión con la API (' + err.message + '). Ejecute: docker compose up -d api web');
     }
 })();
 </script>

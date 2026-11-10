@@ -17,7 +17,7 @@ usa la aproximación c_e = L_e + β·K·Σ_{z∋e} w·(-ln(1 - p_z)), que cobra 
 un tramo la cruza (sobrestima el riesgo de las zonas grandes).
 
 1. dijkstra_distancia    pgr_dijkstra con costo = largo (ignora amenazas y metadatos). Solo
-                         respeta los obstáculos estáticos (zonas restringidas, terreno).
+                         respeta los obstáculos estáticos (terreno sobre el techo de vuelo).
 2. gurobi                MILP: restricciones duras de batería y riesgo (ver modelo en gurobi()).
 3. dijkstra_parametros   pgr_dijkstra con costo = c_e sobre el mismo grafo que Gurobi; las
                          restricciones de batería y riesgo solo se verifican después.

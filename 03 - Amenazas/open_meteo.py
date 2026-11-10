@@ -9,8 +9,8 @@ import requests
 
 OPEN_METEO_URL = "https://api.open-meteo.com/v1/forecast"
 
-# Mismo rectángulo de referencia de Maipú que usa etl_cortes_ruta_tomtom.py
-# (min_lon, min_lat, max_lon, max_lat). Contiene todos los nodos del grafo aéreo.
+# Rectángulo de referencia de Maipú (min_lon, min_lat, max_lon, max_lat).
+# Contiene todos los nodos del grafo aéreo.
 BBOX_MAIPU = (-70.93, -33.57, -70.71, -33.46)
 RADIO_HEX_M = 1000  # distancia del centro a cada vértice
 LOTE = 50  # coordenadas por solicitud a Open-Meteo (cada una cuenta como una llamada)

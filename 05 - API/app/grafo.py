@@ -1,11 +1,11 @@
 """Grafo de visibilidad para el vuelo del dron.
 
-Idea: el dron vuela en línea recta salvo que algo se lo impida. Los obstáculos (zonas
-restringidas, terreno sobre el techo de vuelo y zonas de amenaza con p >= umbral) se unen en
-polígonos; sus vértices convexos, desplazados unos metros hacia afuera, son los únicos puntos
-donde una ruta más corta puede doblar. El grafo tiene como nodos los puntos de misión más esos
-vértices, y una arista entre cada par de nodos que se "ven" (el segmento no cruza obstáculos).
-Dijkstra sobre este grafo da la ruta más corta que rodea los obstáculos.
+Idea: el dron vuela en línea recta salvo que algo se lo impida. Los obstáculos (terreno sobre
+el techo de vuelo y zonas de amenaza con p >= umbral) se unen en polígonos; sus vértices convexos,
+desplazados unos metros hacia afuera, son los únicos puntos donde una ruta más corta puede doblar.
+El grafo tiene como nodos los puntos de misión más esos vértices, y una arista entre cada par de
+nodos que se "ven" (el segmento no cruza obstáculos). Dijkstra sobre este grafo da la ruta más
+corta que rodea los obstáculos.
 
 Además se agregan los vértices de las zonas *blandas* (amenaza con p >= umbral_blando pero bajo
 el umbral duro): se pueden cruzar pagando su riesgo, pero así el optimizador también tiene la

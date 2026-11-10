@@ -1,6 +1,6 @@
 # Escenario de ejemplo: ruta alternativa frente a una amenaza (punto 9)
 
-**Cómo reproducirlo:** abrir `http://localhost:8080/#demo`, o pulsar *▶ Cargar escenario* en la sección 8 de la web. Por API:
+**Cómo reproducirlo:** abrir `http://localhost:8080/#demo`, o pulsar *⚡ Demo tormenta* en la cabecera de la web. Por API:
 
 ```bash
 curl -X POST http://localhost:8080/api/rutas -H 'Content-Type: application/json' \
@@ -12,9 +12,9 @@ curl -X POST http://localhost:8080/api/rutas -H 'Content-Type: application/json'
 El dron de la **25ª Comisaría de Maipú (base 1)** debe patrullar los **6 puntos críticos de encerronas** (nodos 4 a 9) y volver a la base. Tiene que cumplir:
 - autonomía de **25 km**;
 - probabilidad de falla de la misión de **60 %** como máximo;
-- no cruzar zonas restringidas ni cerros sobre su techo de vuelo (609 m s.n.m.).
+- no cruzar cerros sobre su techo de vuelo (609 m s.n.m.).
 
-Las amenazas reales son las de la extracción del 2026-11-09: lluvia y viento de Open-Meteo, robos STOP de 7 días y cortes de TomTom.
+Las amenazas reales son las de la extracción: lluvia y viento de Open-Meteo, y robos STOP de 7 días.
 
 ## Amenaza
 
@@ -40,11 +40,11 @@ Se simula una tormenta (p = 0,95, radio de 1,3 km) sobre el corredor entre la **
 
 ## Simulación de fallas sobre el escenario
 
-Con la sección 7 (*Sortear fallas*) se sortea un número entre 0 y 100 por zona: la falla ocurre si el número es menor que 100·p. La web muestra:
+Con la sección 5 (*Sortear fallas ahora*) se sortea un número entre 0 y 100 por zona: la falla ocurre si el número es menor que 100·p. La web muestra:
 - qué rutas originales caen;
 - los nodos que quedan inalcanzables (✕);
 - las rutas recalculadas sin las zonas falladas.
 
 ![Simulación de fallas](capturas/simulacion_fallas.png)
 
-> Los valores dependen de la extracción del día (clima, robos y cortes cambian), así que al reproducirlo los números pueden variar. La comparación cualitativa se mantiene mientras la tormenta simulada bloquee el corredor 6 → 8.
+> Los valores dependen de la extracción del día (clima y robos cambian), así que al reproducirlo los números pueden variar. La comparación cualitativa se mantiene mientras la tormenta simulada bloquee el corredor 6 → 8.

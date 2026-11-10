@@ -16,13 +16,11 @@ Cada amenaza se convierte en zonas (polígonos) con una probabilidad p ∈ [0, 1
 | `lluvia` | Celda del modelo Open-Meteo (unión de sus hexágonos) | `i = min(1, precip_max / umbral_mm_h)`, `q = prob_max/100`, `p = 1 − (1 − i)(1 − peso_probabilidad·q)` | `umbral_mm_h = 0.5`, `peso_probabilidad = 0.25` |
 | `viento` | Celda del modelo Open-Meteo | `r = max(viento_max/umbral_kmh, rafaga_max/umbral_rafaga_kmh)`, `p = clamp((r − inicio)/(1 − inicio))` | `36 km/h`, `43 km/h`, `inicio_riesgo = 0.7` |
 | `robo_7d` | Hexágono STOP de 7 días | `p = p_max · nivel / niveles_total` | `p_max = 0.3` |
-| `cortes` | Corte TomTom con un radio de 150 m | `p = min(0.95, p_base + p_por_magnitud · magnitud_retraso)` | `0.15`, `0.1` |
 
 Por qué cada amenaza afecta al dron:
 - **Lluvia:** si supera el umbral, la falla es segura. La sola probabilidad de lluvia aporta a lo más un 25 % (el pronóstico es incierto).
 - **Viento:** p crece linealmente desde el 70 % del umbral hasta el umbral.
 - **Robo 7 días:** riesgo de ataque o de inhibidores de señal, que se usan en encerronas.
-- **Cortes de ruta:** indican una operación de emergencia en la vía, y la DAN 151 prohíbe sobrevolar emergencias y multitudes.
 
 **Agrupación por celda:** los hexágonos de lluvia y viento que caen en la misma celda del modelo meteorológico (de 9 a 13 km) reciben exactamente el mismo pronóstico. Son **un solo evento**, no eventos independientes, así que se agrupan en una zona. Sin esta agrupación, una ruta que cruza 5 hexágonos con la misma lluvia la pagaría 5 veces.
 
@@ -40,10 +38,10 @@ Contiene un `Feature` (`Polygon`/`MultiPolygon`) por zona con p > 0.
 | Campo | Descripción |
 |---|---|
 | `zona_id` | `<amenaza>:<origen_id>` |
-| `amenaza` | `lluvia`, `viento`, `robo_7d` o `cortes` |
-| `origen_id` | Celda del modelo (lluvia, viento), `hex_id` STOP o `incident_id` TomTom |
+| `amenaza` | `lluvia`, `viento` o `robo_7d` |
+| `origen_id` | Celda del modelo (lluvia, viento) o `hex_id` STOP |
 | `p` | Probabilidad de falla |
-| `detalle` | Valores que originan p (precipitación, viento, robos, descripción del corte) |
+| `detalle` | Valores que originan p (precipitación, viento, robos) |
 
 ## probabilidad_falla_grafo.geojson
 

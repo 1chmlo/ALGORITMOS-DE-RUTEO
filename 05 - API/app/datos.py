@@ -78,21 +78,6 @@ def area_ruteo():
 
 # ------------------------------------------------------------------ obstáculos estáticos
 
-def zonas_restringidas():
-    def cargar():
-        _, wkt = area_ruteo()
-        with conectar() as con:
-            filas = con.execute("""
-                SELECT osm_ref, tipo, nombre, motivo, radio_exclusion_m, ST_AsGeoJSON(geom, 6)
-                FROM zonas_restringidas WHERE ST_Intersects(geom, ST_GeomFromText(%s, 4326))""", (wkt,)).fetchall()
-        return [
-            {"osm_ref": r, "tipo": t, "nombre": n, "motivo": m, "radio_exclusion_m": rad,
-             "geojson": json.loads(g), "geom": geom_a_metros(shape(json.loads(g)))}
-            for r, t, n, m, rad, g in filas
-        ]
-    return cache.obtener("restringidas", 600, cargar)
-
-
 def terreno():
     def cargar():
         _, wkt = area_ruteo()
@@ -220,9 +205,6 @@ def capa(nombre):
                       FROM viento_open_meteo_hexagonos WHERE {f}""", (wkt,)),
         "robo_7d": (f"""SELECT hex_id, cantidad, nivel, niveles_total, rango, color, periodo_desde, periodo_hasta, geom
                        FROM robo_con_violencia_semanal_hexagonos WHERE {f}""", (wkt,)),
-        "cortes": (f"""SELECT incident_id, descripcion_evento, desde_via, hasta_via, magnitud_retraso,
-                          retraso_seg, longitud_m, fecha_inicio, fecha_fin, geom
-                      FROM cortes_ruta_tomtom WHERE {f}""", (wkt,)),
         "stop_90d": (f"""SELECT hex_id, cantidad, nivel, niveles_total, rango, color, periodo_desde, periodo_hasta, geom
                         FROM robo_con_violencia_hexagonos WHERE {f}""", (wkt,)),
         "luminarias": (f"""SELECT mapillary_id, object_value, detections_count, factor_iluminacion, geom
@@ -233,8 +215,6 @@ def capa(nombre):
         "formas": (f"""SELECT nombre, ref_via, highway, forma_vial, es_enlace_salida, es_curva_pronunciada,
                           indice_sinuosidad, factor_riesgo_geom, geom
                       FROM overpass_formas_viales WHERE {f}""", (wkt,)),
-        "zonas_restringidas": (f"""SELECT osm_ref, tipo, nombre, motivo, radio_exclusion_m, geom
-                                  FROM zonas_restringidas WHERE {f}""", (wkt,)),
         "terreno": (f"""SELECT hex_id, elevacion_m, geom FROM elevacion_terreno_hexagonos WHERE {f}""", (wkt,)),
     }
     if nombre == "metadatos_grilla":

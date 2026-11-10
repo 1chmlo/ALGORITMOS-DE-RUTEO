@@ -18,13 +18,11 @@ echo "==> 01 - Infraestructura: extraccion y transformacion"
 $INFRA python etl_comisarias.py
 $INFRA python etl_puntos_criticos_fiscalia.py
 # Restricciones físicas del vuelo (si la API externa falla se conserva el GeoJSON versionado)
-$INFRA python etl_zonas_restringidas_overpass.py
 $INFRA python etl_elevacion_terreno.py
 
 echo "==> 01 - Infraestructura: carga a la base de datos"
 $INFRA python carga_comisarias.py
 $INFRA python carga_puntos_criticos_fiscalia.py
-$INFRA python carga_zonas_restringidas.py
 $INFRA python carga_elevacion_terreno.py
 
 echo "==> 01 - Infraestructura: generando grafo aéreo y aristas para Dijkstra"
@@ -44,13 +42,11 @@ $META python carga_overpass_formas_viales.py
 $META python carga_tomtom_trafico.py
 
 echo "==> 03 - Amenazas: extraccion y transformacion"
-$AMENAZAS python etl_cortes_ruta_tomtom.py
 $AMENAZAS python etl_robo_con_violencia_semanal.py
 $AMENAZAS python etl_lluvia_open_meteo.py
 $AMENAZAS python etl_viento_open_meteo.py
 
 echo "==> 03 - Amenazas: carga a la base de datos"
-$AMENAZAS python carga_cortes_ruta_tomtom.py
 $AMENAZAS python carga_robo_con_violencia_semanal_hexagonos.py
 $AMENAZAS python carga_robo_con_violencia_semanal_centroides.py
 $AMENAZAS python carga_lluvia_open_meteo_hexagonos.py
