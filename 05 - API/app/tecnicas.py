@@ -85,11 +85,45 @@ def requeridos(cfg, grafo):
     return [d for d in dest if d in grafo.nodos], [d for d in dest if d not in grafo.nodos]
 
 
+def _orden_exacto_dp(destinos, origen, costo, circuito):
+    """Orden óptimo por programación dinámica (Held-Karp): O(n²·2ⁿ), exacto hasta ~12 destinos."""
+    n = len(destinos)
+    c0 = [costo(origen, d) for d in destinos]
+    cd = [[costo(a, b) for b in destinos] for a in destinos]
+    dp = [[math.inf] * n for _ in range(1 << n)]
+    padre = [[-1] * n for _ in range(1 << n)]
+    for j in range(n):
+        dp[1 << j][j] = c0[j]
+    for mask in range(1, 1 << n):
+        for j in range(n):
+            actual = dp[mask][j]
+            if actual == math.inf or not (mask >> j) & 1:
+                continue
+            for k in range(n):
+                if (mask >> k) & 1:
+                    continue
+                nuevo, v = mask | (1 << k), actual + cd[j][k]
+                if v < dp[nuevo][k]:
+                    dp[nuevo][k], padre[nuevo][k] = v, j
+    todos = (1 << n) - 1
+    fin = min(range(n), key=lambda j: dp[todos][j] + (c0[j] if circuito else 0))
+    if math.isinf(dp[todos][fin]):
+        raise SinRuta("No existe una secuencia que conecte todos los destinos")
+    orden, mask, j = [], todos, fin
+    while j != -1:
+        orden.append(destinos[j])
+        mask, j = mask ^ (1 << j), padre[mask][j]
+    return orden[::-1]
+
+
 def mejor_orden(destinos, origen, costo, circuito):
-    """Orden de visita óptimo por enumeración (≤ 8 destinos => ≤ 40.320 permutaciones)."""
+    """Orden de visita óptimo: enumeración (≤ 8 destinos), programación dinámica (≤ 12) o,
+    si hay más, vecino más cercano (aproximado)."""
     if not destinos:
         return []
-    if len(destinos) > 8:  # no ocurre con 9 nodos, pero por si acaso: vecino más cercano
+    if 8 < len(destinos) <= 12:
+        return _orden_exacto_dp(destinos, origen, costo, circuito)
+    if len(destinos) > 12:
         orden, actual, resto = [], origen, set(destinos)
         while resto:
             actual = min(resto, key=lambda d: costo(actual, d))

@@ -25,13 +25,21 @@ class AmenazaSimulada(BaseModel):
     p: float = Field(1.0, ge=0, le=1)
 
 
+class PuntoTemporal(BaseModel):
+    lon: float
+    lat: float
+
+
 class Consulta(BaseModel):
     modo: Literal["circuito", "punto"] = "circuito"
     origen: int = 1
     destinos: list[int] = [4, 5, 6, 7, 8, 9]
+    # Puntos de paso obligatorio creados al vuelo (solo modo circuito); no se guardan en la BD
+    puntos_temporales: list[PuntoTemporal] = Field([], max_length=servicio.MAX_PUNTOS_TEMPORALES)
     # Restricciones del usuario (aplicación: dron policial de patrullaje)
     bateria_km: float = Field(25, gt=0, description="Autonomía máxima del dron")
-    velocidad_kmh: float = Field(60, gt=0)
+    # 54 km/h = 15 m/s, máxima en modo Normal, el único que admite el DJI Dock 3 (ficha técnica DJI)
+    velocidad_kmh: float = Field(54, gt=0)
     altura_vuelo_m: float = Field(120, gt=0, le=500, description="Altura sobre la base de despegue")
     riesgo_max: float = Field(0.6, ge=0, le=1, description="Probabilidad máxima aceptada de que la misión falle")
     umbral_falla: float = Field(0.7, ge=0, le=1, description="p desde la que una zona se considera caída (modelo probabilístico)")

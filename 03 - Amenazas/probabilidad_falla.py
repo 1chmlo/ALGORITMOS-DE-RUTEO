@@ -13,9 +13,9 @@ p ∈ [0, 1]: la probabilidad de que el dron no complete la misión si cruza esa
                                   p = clamp((r - inicio_riesgo) / (1 - inicio_riesgo), 0, 1)
            Rampa lineal: p = 0 bajo `inicio_riesgo` del umbral, p = 1 desde el umbral.
 
-  robo_7d  hexágonos STOP 7 días  p = p_max · nivel / niveles_total
-           Riesgo de ataque o de inhibidores de señal (usados en encerronas) sobre focos
-           recientes de robo con violencia.
+Los robos con violencia ya no son una amenaza para el dron (inflaban el grafo con decenas de
+zonas blandas sin representar un riesgo para la infraestructura). Los robos de 90 días siguen
+como *metadato de vigilancia* (05 - API/app/datos.py), que es otro uso.
 
 Lluvia y viento: los hexágonos que caen en la misma celda del modelo meteorológico reciben el
 mismo pronóstico; se agrupan en una sola zona porque son un único evento (no independientes).
@@ -34,12 +34,20 @@ import copy
 import json
 import math
 
-AMENAZAS = ("lluvia", "viento", "robo_7d")
+AMENAZAS = ("lluvia", "viento")
 
+# Valores por defecto para DJI Dock 3 + Matrice 4D. Detalle y fuentes en probabilidad_falla.md.
+#   umbral_mm_h        2 mm/h: lluvia máxima con la que el Dock 3 "sigue operando con normalidad"
+#                      (FAQ oficial de DJI, enterprise.dji.com/dock-3/faq).
+#   umbral_kmh y       12 m/s = 43,2 km/h: el manual prohíbe pilotar con viento superior a 12 m/s
+#   umbral_rafaga_kmh  (manual de la aeronave Matrice 4D con Dock 3 v1.2, sección 3.1) y es la
+#                      resistencia al viento de la ficha técnica. No distingue sostenido de ráfaga.
+#   inicio_riesgo      0.67: el riesgo empieza a 2/3 del límite (regla práctica de guías no
+#                      oficiales); es un supuesto de diseño, no un dato de DJI.
+#   peso_probabilidad  supuesto del modelo, sin fuente externa.
 PARAMS_DEFECTO = {
-    "lluvia": {"umbral_mm_h": 0.5, "peso_probabilidad": 0.25},
-    "viento": {"umbral_kmh": 36.0, "umbral_rafaga_kmh": 43.0, "inicio_riesgo": 0.7},
-    "robo_7d": {"p_max": 0.3},
+    "lluvia": {"umbral_mm_h": 2.0, "peso_probabilidad": 0.25},
+    "viento": {"umbral_kmh": 43.2, "umbral_rafaga_kmh": 43.2, "inicio_riesgo": 0.67},
 }
 
 P_MAX = 0.999  # tope para no tener log(0) en los modelos que usan -ln(1 - p)
@@ -68,10 +76,6 @@ def p_viento(viento_max_kmh, rafaga_max_kmh, prm):
     r = max((viento_max_kmh or 0.0) / prm["umbral_kmh"], (rafaga_max_kmh or 0.0) / prm["umbral_rafaga_kmh"])
     inicio = prm["inicio_riesgo"]
     return _clamp((r - inicio) / (1.0 - inicio)) if inicio < 1 else float(r >= 1)
-
-
-def p_robo(nivel, niveles_total, prm):
-    return _clamp(prm["p_max"] * (nivel or 0) / (niveles_total or 1))
 
 
 def combinar(probabilidades):
@@ -109,10 +113,6 @@ SQL_ZONAS = {
                ST_AsGeoJSON(ST_Union(geom), 6) AS geojson
         FROM viento_open_meteo_hexagonos WHERE {_FILTRO}
         GROUP BY celda_modelo_lon, celda_modelo_lat, viento_max_kmh, rafaga_max_kmh, simulado""",
-    "robo_7d": f"""
-        SELECT hex_id AS origen_id, cantidad, nivel, niveles_total, periodo_desde, periodo_hasta,
-               ST_AsGeoJSON(geom, 6) AS geojson
-        FROM robo_con_violencia_semanal_hexagonos WHERE {_FILTRO}""",
 }
 
 
@@ -122,14 +122,10 @@ def _probabilidad_y_detalle(amenaza, f, prm):
         det = (f"Precipitación máx. {f['precipitacion_max_mm_h']} mm/h, "
                f"probabilidad máx. {f['probabilidad_max_pct']}% ({f['hexagonos']} hexágonos de la misma celda del modelo)"
                + (" (simulada)" if f["simulado"] else ""))
-    elif amenaza == "viento":
+    else:  # viento
         p = p_viento(f["viento_max_kmh"], f["rafaga_max_kmh"], prm)
         det = (f"Viento máx. {f['viento_max_kmh']} km/h (80-120 m), ráfaga máx. {f['rafaga_max_kmh']} km/h "
                f"({f['hexagonos']} hexágonos de la misma celda del modelo)" + (" (simulado)" if f["simulado"] else ""))
-    else:
-        p = p_robo(f["nivel"], f["niveles_total"], prm)
-        det = (f"{f['cantidad']} robos con violencia en 7 días (nivel {f['nivel']}/{f['niveles_total']}, "
-               f"{f['periodo_desde']} a {f['periodo_hasta']})")
     return p, det
 
 

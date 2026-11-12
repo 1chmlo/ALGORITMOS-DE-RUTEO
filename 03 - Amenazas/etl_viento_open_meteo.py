@@ -16,8 +16,9 @@ hexágono no volable por viento, igual que con la lluvia.
 Resolución: igual que la lluvia, Open-Meteo usa celdas de ~9-13 km en Chile.
 
 Variables de entorno (opcionales):
-  VIENTO_UMBRAL_KMH         viento sostenido máximo (por defecto 36 km/h = 10 m/s)
-  VIENTO_UMBRAL_RAFAGA_KMH  ráfaga máxima (por defecto 43 km/h = 12 m/s)
+  VIENTO_UMBRAL_KMH         viento sostenido máximo (por defecto 43.2 km/h = 12 m/s: límite del
+                            manual del Matrice 4D con Dock 3, que no distingue sostenido de ráfaga)
+  VIENTO_UMBRAL_RAFAGA_KMH  ráfaga máxima (por defecto 43.2 km/h = 12 m/s)
   VIENTO_VENTANA_HORAS      horas evaluadas desde la hora actual (por defecto 2)
   VIENTO_SIMULADO           "lon,lat,radio_m": fuerza viento fuerte en un círculo, para
                             probar el ruteo. Queda registrado en la metadata (`simulacion`).
@@ -35,8 +36,8 @@ from open_meteo import (
     dentro_de_simulacion, grilla_hexagonos, parsear_simulacion, serie,
 )
 
-UMBRAL_KMH = float(os.environ.get("VIENTO_UMBRAL_KMH", "36"))
-UMBRAL_RAFAGA_KMH = float(os.environ.get("VIENTO_UMBRAL_RAFAGA_KMH", "43"))
+UMBRAL_KMH = float(os.environ.get("VIENTO_UMBRAL_KMH", "43.2"))
+UMBRAL_RAFAGA_KMH = float(os.environ.get("VIENTO_UMBRAL_RAFAGA_KMH", "43.2"))
 VENTANA_HORAS = int(os.environ.get("VIENTO_VENTANA_HORAS", "2"))
 VARIABLES = [
     "wind_speed_80m", "wind_speed_120m", "wind_direction_120m", "wind_gusts_10m",

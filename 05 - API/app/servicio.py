@@ -20,6 +20,22 @@ import grafo as gr
 import tecnicas as tc
 
 
+MAX_PUNTOS_TEMPORALES = 6
+ID_TEMPORAL_BASE = 100  # los puntos temporales son 101, 102, ... (los de la BD son 1-9, los waypoints >= 1000)
+
+
+def _nodos(cfg):
+    """Nodos de la BD más los puntos temporales de la consulta (tipo 'temporal')."""
+    nodos = {n["id"]: n for n in datos.nodos()}
+    for i, p in enumerate(cfg.get("puntos_temporales") or [], start=1):
+        nodos[ID_TEMPORAL_BASE + i] = {
+            "id": ID_TEMPORAL_BASE + i, "tipo": "temporal", "nombre": f"Punto temporal {i}",
+            "descripcion": "Punto de paso obligatorio agregado desde la web",
+            "lon": p["lon"], "lat": p["lat"], "xy": gr.a_metros(p["lon"], p["lat"]),
+        }
+    return nodos
+
+
 def _zonas(cfg, fallas):
     """Zonas de amenaza activas (BD + simuladas) como objetos Zona en metros."""
     zonas = []
@@ -38,10 +54,14 @@ def _zonas(cfg, fallas):
 
 def resolver(cfg, fallas=frozenset()):
     t0 = time.perf_counter()
-    nodos = {n["id"]: n for n in datos.nodos()}
+    nodos = _nodos(cfg)
     if cfg["origen"] not in nodos:
         raise ValueError(f"Origen {cfg['origen']} no existe")
-    cfg["destinos"] = [d for d in cfg["destinos"] if d in nodos and d != cfg["origen"]]
+    temporales = [i for i, n in nodos.items() if n["tipo"] == "temporal"]
+    if temporales and cfg["modo"] == "punto":
+        raise ValueError("Los puntos temporales solo se pueden usar en el modo «Circuito completo»")
+    # Los puntos temporales se tratan como destinos obligatorios más
+    cfg["destinos"] = [d for d in cfg["destinos"] if d in nodos and d != cfg["origen"] and d not in temporales] + temporales
     if cfg["modo"] == "punto":
         cfg["destinos"] = cfg["destinos"][:1]
     if not cfg["destinos"]:
@@ -213,8 +233,8 @@ def simular(cfg):
         sorteos.append({"zona_id": z.zona_id, "amenaza": z.amenaza, "p": z.p, "umbral": round(100 * z.p, 2),
                         "numero": r, "falla": r < 100 * z.p, "detalle": z.detalle})
     fallidas = {s["zona_id"] for s in sorteos if s["falla"]}
-    nodos = {n["id"]: n for n in datos.nodos()}
-    nodos_fallados = sorted(i for i, n in nodos.items()
+    nodos = _nodos(cfg)
+    nodos_fallados =sorted(i for i, n in nodos.items()
                             if any(z.zona_id in fallidas and z.geom.contains(Point(n["xy"])) for z in zonas))
     impacto = []
     for r in antes["rutas"]:

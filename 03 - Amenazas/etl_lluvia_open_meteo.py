@@ -14,7 +14,8 @@ caen en la misma celda del modelo y reciben el mismo valor; las propiedades
 aristas con precisión, no agrega detalle meteorológico.
 
 Variables de entorno (opcionales):
-  LLUVIA_UMBRAL_MM_H     mm/h desde los que no se vuela (por defecto 0.5)
+  LLUVIA_UMBRAL_MM_H     mm/h desde los que no se vuela (por defecto 2: límite de lluvia del
+                         DJI Dock 3 según la FAQ oficial de DJI)
   LLUVIA_UMBRAL_PROB     % de probabilidad desde el que no se vuela (por defecto 70)
   LLUVIA_VENTANA_HORAS   horas evaluadas desde la hora actual (por defecto 2)
   LLUVIA_SIMULADA        "lon,lat,radio_m": fuerza lluvia en un círculo, para probar el
@@ -33,7 +34,7 @@ from open_meteo import (
     dentro_de_simulacion, grilla_hexagonos, parsear_simulacion, serie,
 )
 
-UMBRAL_MM_H = float(os.environ.get("LLUVIA_UMBRAL_MM_H", "0.5"))
+UMBRAL_MM_H = float(os.environ.get("LLUVIA_UMBRAL_MM_H", "2"))
 UMBRAL_PROB = float(os.environ.get("LLUVIA_UMBRAL_PROB", "70"))
 VENTANA_HORAS = int(os.environ.get("LLUVIA_VENTANA_HORAS", "2"))
 VARIABLES = ["precipitation", "precipitation_probability"]

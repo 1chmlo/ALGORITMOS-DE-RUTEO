@@ -288,7 +288,7 @@ DROP TABLE IF EXISTS elevacion_terreno_hexagonos CASCADE;
 CREATE TABLE IF NOT EXISTS probabilidad_falla_zonas (
     id        SERIAL PRIMARY KEY,
     zona_id   TEXT NOT NULL UNIQUE,                  -- "<amenaza>:<id de origen>"
-    amenaza   TEXT NOT NULL,                         -- lluvia | viento | robo_7d
+    amenaza   TEXT NOT NULL,                         -- lluvia | viento
     origen_id TEXT NOT NULL,
     p_falla   DOUBLE PRECISION NOT NULL CHECK (p_falla BETWEEN 0 AND 1),
     detalle   TEXT,

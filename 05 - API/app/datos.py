@@ -182,8 +182,6 @@ def capa(nombre):
         "viento": (f"""SELECT hex_id, viento_actual_kmh, viento_max_kmh, rafaga_max_kmh, direccion_grados,
                           hora_desde, hora_hasta, no_volable, motivo, simulado, geom
                       FROM viento_open_meteo_hexagonos WHERE {f}""", (wkt,)),
-        "robo_7d": (f"""SELECT hex_id, cantidad, nivel, niveles_total, rango, color, periodo_desde, periodo_hasta, geom
-                       FROM robo_con_violencia_semanal_hexagonos WHERE {f}""", (wkt,)),
         "stop_90d": (f"""SELECT hex_id, cantidad, nivel, niveles_total, rango, color, periodo_desde, periodo_hasta, geom
                         FROM robo_con_violencia_hexagonos WHERE {f}""", (wkt,)),
         "luminarias": (f"""SELECT mapillary_id, object_value, detections_count, factor_iluminacion, geom

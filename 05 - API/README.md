@@ -16,7 +16,7 @@ El front de la Fase 2 tenía las rutas escritas a mano. La Fase 3 exige recalcul
 |---|---|---|
 | GET | `/api/salud` | Verifica conexión a la BD |
 | GET | `/api/config` | Amenazas, metadatos, parámetros y consulta por defecto |
-| GET | `/api/capas/{nombre}` | GeoJSON desde PostGIS: `nodos`, `lluvia`, `viento`, `robo_7d`, `stop_90d`, `luminarias`, `trafico`, `formas`, `metadatos_grilla` |
+| GET | `/api/capas/{nombre}` | GeoJSON desde PostGIS: `nodos`, `lluvia`, `viento`, `stop_90d`, `luminarias`, `trafico`, `formas`, `metadatos_grilla` |
 | POST | `/api/rutas` | Calcula las 4 rutas (cuerpo: ver abajo) |
 | POST | `/api/simular-fallas` | Sorteo 0–100 por zona y rutas recalculadas (punto 7) |
 | POST | `/api/recargar` | Vacía la caché después de volver a correr los ETL |
@@ -27,12 +27,12 @@ Cuerpo de `/api/rutas` y `/api/simular-fallas`. Todos los campos son opcionales:
 {
   "modo": "circuito",                 // "circuito" (vuelve a la base) o "punto" (origen → destino)
   "origen": 1, "destinos": [4,5,6,7,8,9],
-  "bateria_km": 25, "velocidad_kmh": 60, "altura_vuelo_m": 120,
+  "bateria_km": 25, "velocidad_kmh": 54, "altura_vuelo_m": 120,
   "riesgo_max": 0.6,                  // P(falla de la misión) máxima aceptada
   "umbral_falla": 0.7,                // zona caída si p >= umbral (modelo probabilístico)
   "umbral_blando": 0.15,              // desde esta p se agregan waypoints para rodear la zona
   "modelo": "probabilistico",         // o "ponderado"
-  "amenazas": ["lluvia","viento","robo_7d"],
+  "amenazas": ["lluvia","viento"],
   "metadatos": ["stop_90d","oscuridad","trafico","formas"],
   "restricciones_estaticas": true,
   "peso_riesgo": 2.0, "peso_metadatos": 0.3,

@@ -18,12 +18,12 @@ Open-Meteo usa modelos globales con celdas de unos 9 a 13 km en Chile, así que 
 
 Un hexágono queda `no_volable` si, en las `ventana_horas` que empiezan en la hora actual, se cumple alguna de estas condiciones:
 
-- precipitación ≥ `LLUVIA_UMBRAL_MM_H` (por defecto **0.5 mm/h**), o
+- precipitación ≥ `LLUVIA_UMBRAL_MM_H` (por defecto **2 mm/h**, la lluvia máxima con la que el DJI Dock 3 sigue operando con normalidad según la [FAQ oficial](https://enterprise.dji.com/dock-3/faq)), o
 - probabilidad de lluvia ≥ `LLUVIA_UMBRAL_PROB` (por defecto **70 %**).
 
 | Variable de entorno | Por defecto | Uso |
 |---|---|---|
-| `LLUVIA_UMBRAL_MM_H` | `0.5` | Umbral de precipitación |
+| `LLUVIA_UMBRAL_MM_H` | `2` | Umbral de precipitación |
 | `LLUVIA_UMBRAL_PROB` | `70` | Umbral de probabilidad (%) |
 | `LLUVIA_VENTANA_HORAS` | `2` | Horas evaluadas desde la hora actual |
 | `LLUVIA_SIMULADA` | vacío | `"lon,lat,radio_m"`: fuerza lluvia en un círculo para probar el ruteo en días secos. Ejemplo: `LLUVIA_SIMULADA="-70.7695,-33.5361,1500" ./main.sh` deja aislado el nodo 8 |

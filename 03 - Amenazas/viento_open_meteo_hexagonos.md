@@ -16,15 +16,15 @@ Es la misma grilla de la lluvia: 130 hexágonos de 1000 m de radio, con `hex_id`
 
 Un hexágono queda `no_volable` si, en las `ventana_horas` que empiezan en la hora actual, se cumple alguna de estas condiciones:
 
-- **viento sostenido a la altura de vuelo** ≥ `VIENTO_UMBRAL_KMH` (por defecto **36 km/h**, unos 10 m/s). Para cada hora se toma el mayor valor entre 80 m y 120 m sobre el suelo, que es la franja donde vuela un dron (el techo en Chile está cerca de 120 m).
-- **ráfagas** ≥ `VIENTO_UMBRAL_RAFAGA_KMH` (por defecto **43 km/h**, unos 12 m/s). Open-Meteo solo entrega ráfagas a 10 m. A la altura de vuelo suelen ser más fuertes, así que este dato subestima el riesgo.
+- **viento sostenido a la altura de vuelo** ≥ `VIENTO_UMBRAL_KMH` (por defecto **43,2 km/h**, es decir 12 m/s). Para cada hora se toma el mayor valor entre 80 m y 120 m sobre el suelo, que es la franja donde vuela un dron (el techo en Chile está cerca de 120 m).
+- **ráfagas** ≥ `VIENTO_UMBRAL_RAFAGA_KMH` (por defecto **43,2 km/h**, es decir 12 m/s). Open-Meteo solo entrega ráfagas a 10 m. A la altura de vuelo suelen ser más fuertes, así que este dato subestima el riesgo.
 
-Los valores por defecto corresponden a la tolerancia típica de un dron comercial mediano. Conviene reemplazarlos por la que indique el fabricante del dron que se use.
+Los valores por defecto corresponden al DJI Dock 3 con Matrice 4D: el manual de la aeronave (v1.2, sección 3.1) prohíbe pilotar con viento superior a 12 m/s y no distingue entre viento sostenido y ráfagas. Si se usa otro dron, conviene reemplazarlos por los que indique su fabricante.
 
 | Variable de entorno | Por defecto | Uso |
 |---|---|---|
-| `VIENTO_UMBRAL_KMH` | `36` | Umbral de viento sostenido (km/h) |
-| `VIENTO_UMBRAL_RAFAGA_KMH` | `43` | Umbral de ráfagas (km/h) |
+| `VIENTO_UMBRAL_KMH` | `43.2` | Umbral de viento sostenido (km/h) |
+| `VIENTO_UMBRAL_RAFAGA_KMH` | `43.2` | Umbral de ráfagas (km/h) |
 | `VIENTO_VENTANA_HORAS` | `2` | Horas evaluadas desde la hora actual |
 | `VIENTO_SIMULADO` | vacío | `"lon,lat,radio_m"`: fuerza viento fuerte en un círculo para probar el ruteo. Ejemplo: `VIENTO_SIMULADO="-70.7992,-33.5076,1500" ./main.sh` aísla el nodo 7 y también la base 2 (52A Rinconada, a 860 m), así que el dron 2 no puede despegar |
 

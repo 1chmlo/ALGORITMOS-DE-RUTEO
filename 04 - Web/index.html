@@ -279,6 +279,15 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
                         <select id="destino-punto" class="ancho"></select>
                     </div>
                 </div>
+                <div id="bloque-temporales" style="margin-top:10px">
+                    <div class="subtitulo">
+                        <span>Puntos temporales de paso <span class="n" id="n-temp"></span></span>
+                        <button type="button" class="link-accion" id="btn-limpiar-temp">Quitar todos</button>
+                    </div>
+                    <button class="btn sec2" id="btn-clic-temp" style="margin:0;padding:6px 8px">📍 Agregar en el mapa</button>
+                    <div class="ayuda" style="margin-top:4px">El dron debe pasar por ellos además de los puntos críticos. Sirven para forzar recorridos y comparar cómo los resuelve cada algoritmo. No se guardan.</div>
+                    <div class="lista-sim" id="lista-temp"></div>
+                </div>
             </div>
         </details>
 
@@ -337,7 +346,6 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
                     <select id="sim-tipo" style="width:95px">
                         <option value="lluvia">Lluvia</option>
                         <option value="viento">Viento</option>
-                        <option value="robo_7d">Robos 7d</option>
                     </select>
                     <input type="number" id="sim-radio" value="1200" min="100" step="100" style="width:78px" title="Radio en metros" placeholder="Radio m">
                     <input type="number" id="sim-p" value="0.95" min="0" max="1" step="0.05" style="width:68px" title="Probabilidad de falla (0 a 1)" placeholder="Prob. p">
@@ -400,7 +408,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
     <h3>Rutas · Resiliencia (R) · Cómputo</h3>
     <div id="ley-rutas" class="ayuda">Calculando…</div>
 </div>
-<div class="aviso-clic">Haga clic en el mapa para situar la amenaza simulada (Esc para cancelar)</div>
+<div class="aviso-clic" id="aviso-clic"></div>
 <div id="map"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -412,7 +420,6 @@ const API = (location.protocol === 'file:' || !['8080', '80', ''].includes(locat
 const AMENAZAS = {
     lluvia:   { nombre: 'Lluvia (Open-Meteo)', color: '#3b82f6' },
     viento:   { nombre: 'Viento (Open-Meteo)', color: '#a855f7' },
-    robo_7d:  { nombre: 'Robos últimos 7 días (STOP)', color: '#ef4444' },
     simulada: { nombre: 'Amenaza simulada', color: '#ec4899' },
 };
 const METADATOS = {
@@ -427,7 +434,6 @@ const ETIQUETAS_PARAM = {
     umbral_kmh: 'Umbral viento (km/h)',
     umbral_rafaga_kmh: 'Umbral ráfaga (km/h)',
     inicio_riesgo: 'Inicio de riesgo (× umbral)',
-    p_max: 'p máxima (nivel 4/4)',
 };
 const ESTILO_RUTA = {
     dijkstra_distancia:  { weight: 9, opacity: 0.75, dashArray: null },
@@ -438,7 +444,8 @@ const ESTILO_RUTA = {
 const ORDEN_DIBUJO = ['dijkstra_distancia', 'dijkstra_parametros', 'genetico', 'gurobi'];
 
 const estado = {
-    defecto: null, nodos: [], modo: 'circuito', simuladas: [], resultado: null, sim: null, verDespues: true,
+    defecto: null, nodos: [], modo: 'circuito', simuladas: [], temporales: [], modoClic: null,
+    resultado: null, sim: null, verDespues: true,
     rutasVisibles: { dijkstra_distancia: true, gurobi: true, dijkstra_parametros: true, genetico: true },
     capasCache: {}, nombresTecnicas: {}, peticion: null, oscuro: false,
 };
@@ -461,8 +468,9 @@ const capas = {
     metadatos: {}, grilla: L.layerGroup().addTo(map), zonas: L.layerGroup().addTo(map),
     obstaculos: L.layerGroup().addTo(map),
     grafo: L.layerGroup().addTo(map), rutas: L.layerGroup().addTo(map), nodos: L.layerGroup().addTo(map),
-    simuladas: L.layerGroup().addTo(map),
+    simuladas: L.layerGroup().addTo(map), temporales: L.layerGroup().addTo(map),
 };
+const MAX_TEMPORALES = 6; // mismo límite que la API (servicio.MAX_PUNTOS_TEMPORALES)
 
 // ------------------------------------------------------------------------------------------
 // Utilidades
@@ -570,6 +578,7 @@ function consulta() {
         pesos_amenazas: {},
         params_amenazas: params,
         amenazas_simuladas: estado.simuladas,
+        puntos_temporales: estado.modo === 'circuito' ? estado.temporales : [],
         semilla: parseInt($('semilla').value) || 42,
         incluir_grafo: true,
     };
@@ -586,7 +595,7 @@ function recalcular(retardo = 400) {
 
 async function calcular() {
     const c = consulta();
-    if (!c.destinos.length) { setEstado('mal', 'Seleccione al menos un destino'); return; }
+    if (!c.destinos.length && !c.puntos_temporales.length) { setEstado('mal', 'Seleccione al menos un destino'); return; }
     estado.peticion?.abort();
     const ctrl = new AbortController();
     estado.peticion = ctrl;
@@ -618,7 +627,6 @@ function dibujarResultado(res) {
     tablaRutas(res);
     leyenda(res);
     infoGrafo(res);
-    dibujarTerreno();
 }
 
 function dibujarZonas(fc) {
@@ -712,12 +720,13 @@ function dibujarNodos(res) {
     const c = consulta();
     const fallados = new Set(estado.sim?.nodos_fallados || []);
     for (const n of res.nodos) {
-        const enMision = n.id === c.origen || c.destinos.includes(n.id);
+        const temporal = n.tipo === 'temporal';
+        const enMision = n.id === c.origen || c.destinos.includes(n.id) || temporal;
         const inalc = res.inalcanzables.includes(n.id);
-        const color = inalc || fallados.has(n.id) ? '#6b7280' : n.tipo === 'comisaria' ? '#16a34a' : '#dc2626';
+        const color = inalc || fallados.has(n.id) ? '#6b7280' : temporal ? '#7c3aed' : n.tipo === 'comisaria' ? '#16a34a' : '#dc2626';
         const tam = n.id === c.origen ? 30 : enMision ? 24 : 18;
         const pos = orden.indexOf(n.id);
-        const texto = n.id === c.origen ? 'B' + n.id : n.id;
+        const texto = n.id === c.origen ? 'B' + n.id : temporal ? 'T' + (n.id - 100) : n.id;
         const insignia = pos >= 0 ? `<span class="orden-visita">${pos + 1}º</span>` : '';
         const icono = L.divIcon({
             className: '', iconSize: [tam, tam], iconAnchor: [tam / 2, tam / 2],
@@ -898,24 +907,57 @@ function dibujarSimuladas() {
     });
 }
 
-function modoClic(activo) {
-    document.body.classList.toggle('clic-activo', activo);
-    $('btn-clic').textContent = activo ? 'Cancelar' : '📍 Ubicar';
+// tipo: 'amenaza' | 'punto' | null (cancelar)
+function modoClic(tipo) {
+    estado.modoClic = tipo || null;
+    document.body.classList.toggle('clic-activo', !!tipo);
+    $('btn-clic').textContent = tipo === 'amenaza' ? 'Cancelar' : '📍 Ubicar';
+    $('btn-clic-temp').textContent = tipo === 'punto' ? 'Listo (Esc)' : '📍 Agregar en el mapa';
+    $('aviso-clic').textContent = tipo === 'punto'
+        ? 'Haga clic en el mapa para agregar puntos temporales de paso (Esc para terminar)'
+        : 'Haga clic en el mapa para situar la amenaza simulada (Esc para cancelar)';
 }
 
 map.on('click', e => {
-    if (!document.body.classList.contains('clic-activo')) return;
-    estado.simuladas.push({
-        tipo: $('sim-tipo').value,
-        lon: +e.latlng.lng.toFixed(6),
-        lat: +e.latlng.lat.toFixed(6),
-        radio_m: parseFloat($('sim-radio').value) || 1200,
-        p: parseFloat($('sim-p').value) || 0.95
-    });
-    modoClic(false);
-    dibujarSimuladas();
-    recalcular(50);
+    const lon = +e.latlng.lng.toFixed(6), lat = +e.latlng.lat.toFixed(6);
+    if (estado.modoClic === 'amenaza') {
+        estado.simuladas.push({
+            tipo: $('sim-tipo').value, lon, lat,
+            radio_m: parseFloat($('sim-radio').value) || 1200,
+            p: parseFloat($('sim-p').value) || 0.95
+        });
+        modoClic(null);
+        dibujarSimuladas();
+        recalcular(50);
+    } else if (estado.modoClic === 'punto') {
+        estado.temporales.push({ lon, lat });
+        if (estado.temporales.length >= MAX_TEMPORALES) modoClic(null); // límite alcanzado
+        dibujarTemporales();
+        recalcular(400); // permite agregar varios puntos seguidos antes de calcular
+    }
 });
+
+// Puntos temporales de paso: vista previa inmediata y lista con botón para quitar cada uno
+function dibujarTemporales() {
+    capas.temporales.clearLayers();
+    const activos = estado.modo === 'circuito';
+    $('bloque-temporales').style.display = activos ? '' : 'none';
+    $('n-temp').textContent = estado.temporales.length ? `(${estado.temporales.length}/${MAX_TEMPORALES})` : '';
+    $('lista-temp').innerHTML = estado.temporales.map((p, i) => `<div>
+        <span><span class="chip" style="background:#7c3aed;border-radius:50%"></span>
+        T${i + 1} · ${p.lat.toFixed(4)}, ${p.lon.toFixed(4)}</span>
+        <button data-i="${i}" title="Quitar">✕</button>
+    </div>`).join('');
+    document.querySelectorAll('#lista-temp button').forEach(b => b.onclick = () => {
+        estado.temporales.splice(+b.dataset.i, 1);
+        dibujarTemporales();
+        recalcular(50);
+    });
+    if (!activos) return;
+    estado.temporales.forEach((p, i) => L.circleMarker([p.lat, p.lon], {
+        radius: 6, color: '#fff', weight: 2, fillColor: '#7c3aed', fillOpacity: 1,
+    }).bindTooltip('T' + (i + 1)).addTo(capas.temporales));
+}
 
 function cargarDemo() {
     const d = estado.defecto;
@@ -931,6 +973,8 @@ function cargarDemo() {
     for (const k of ['riesgo_max', 'umbral_falla', 'umbral_blando']) $(k).value = Math.round(d[k] * 100);
     $('modelo').value = 'probabilistico';
     estado.simuladas = [{ tipo: 'lluvia', lon: -70.763, lat: -33.523, radio_m: 1300, p: 0.95 }];
+    estado.temporales = [];
+    dibujarTemporales();
     dibujarSimuladas();
     $('texto-demo').dataset.activo = '1';
     $('texto-demo').style.display = 'block';
@@ -959,6 +1003,8 @@ function enlazarEventos() {
         document.querySelectorAll('#seg-modo button').forEach(x => x.classList.toggle('activo', x === b));
         $('bloque-destinos').style.display = estado.modo === 'circuito' ? '' : 'none';
         $('bloque-punto').style.display = estado.modo === 'punto' ? '' : 'none';
+        if (estado.modo !== 'circuito' && estado.modoClic === 'punto') modoClic(null);
+        dibujarTemporales();
         recalcular(50);
     });
 
@@ -1001,8 +1047,20 @@ function enlazarEventos() {
     $('btn-simular').onclick = simular;
     $('btn-semilla').onclick = () => { $('semilla').value = Math.floor(Math.random() * 100000); };
     $('btn-demo').onclick = cargarDemo;
-    $('btn-clic').onclick = () => modoClic(!document.body.classList.contains('clic-activo'));
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') modoClic(false); });
+    $('btn-clic').onclick = () => modoClic(estado.modoClic === 'amenaza' ? null : 'amenaza');
+    $('btn-clic-temp').onclick = () => {
+        if (estado.temporales.length >= MAX_TEMPORALES) { setEstado('mal', `Máximo ${MAX_TEMPORALES} puntos temporales`); return; }
+        modoClic(estado.modoClic === 'punto' ? null : 'punto');
+    };
+    $('btn-limpiar-temp').onclick = () => {
+        if (!estado.temporales.length) return;
+        estado.temporales = [];
+        dibujarTemporales();
+        recalcular(50);
+    };
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') modoClic(null); });
+    modoClic(null);
+    dibujarTemporales();
 }
 
 // ------------------------------------------------------------------------------------------
