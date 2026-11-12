@@ -875,12 +875,24 @@ function mostrarSimulacion() {
         <td>${i.sobrevive ? '<span class="tag ok">sobrevive</span>' : '<span class="tag mal">bloqueada</span>'}</td>
         <td style="color:#94a3b8">${i.sobrevive ? '' : (i.zonas_falladas || []).length + ' zona(s)'}</td>
     </tr>`).join('');
+    // Un número aleatorio 0-100 por zona: falla si es menor que 100·p (umbral de falla)
+    const sorteos = s.sorteos.map(z => `<tr>
+        <td>${esc(z.zona_id)}</td>
+        <td class="num">${pct(z.p)}</td>
+        <td class="num"><b>${z.numero.toFixed(2)}</b></td>
+        <td class="num">&lt; ${z.umbral.toFixed(2)}</td>
+        <td>${z.falla ? '<span class="tag mal">FALLA</span>' : '<span class="tag ok">no falla</span>'}</td>
+    </tr>`).join('');
     $('resultado-sim').innerHTML = `
         <div class="seg" style="margin-top:8px">
             <button id="sim-antes" class="${estado.verDespues ? '' : 'activo'}">Antes del sorteo</button>
             <button id="sim-despues" class="${estado.verDespues ? 'activo' : ''}">Rutas recalculadas</button>
         </div>
         <div class="caja"><b>${s.zonas_falladas.length}</b> de ${s.sorteos.length} zonas sufrieron falla (semilla ${s.semilla}).</div>
+        <div class="ayuda" style="margin-top:8px">Número aleatorio entre 0 y 100 por zona. Si es menor que 100·p (el umbral de falla), la zona falla.</div>
+        <div style="max-height:190px;overflow:auto">
+            <table><tr><th>Zona</th><th class="num">p</th><th class="num">Número</th><th class="num">Falla si</th><th>Resultado</th></tr>${sorteos}</table>
+        </div>
         <table><tr><th>Ruta original</th><th>Estado</th><th>Impacto</th></tr>${impacto}</table>`;
     $('sim-antes').onclick = () => { estado.verDespues = false; mostrarSimulacion(); };
     $('sim-despues').onclick = () => { estado.verDespues = true; mostrarSimulacion(); };
